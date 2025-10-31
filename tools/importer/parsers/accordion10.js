@@ -1,67 +1,54 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to extract all accordion sections and their nested items
-  function extractAccordionSections(col) {
-    const rows = [];
+  // Helper to extract accordion items from a column
+  function extractAccordionItems(col) {
+    const items = [];
     col.querySelectorAll('.teasers__teaser').forEach(teaser => {
-      // Top-level section title
-      const sectionTitle = teaser.querySelector('.accordions__toggler');
-      if (!sectionTitle) return;
-      const sectionContentContainer = sectionTitle.nextElementSibling;
-      let hasSubItems = false;
-      // Collect all sub-items (nested toggler/content pairs)
-      if (sectionContentContainer) {
-        let node = sectionContentContainer.firstChild;
-        const frag = document.createDocumentFragment();
-        while (node) {
-          if (node.nodeType === 1 && node.classList.contains('accordions__toggler')) {
-            const content = node.nextElementSibling;
-            if (content && content.classList.contains('accordion__element')) {
-              frag.appendChild(node.cloneNode(true));
-              frag.appendChild(content.cloneNode(true));
-              hasSubItems = true;
-              node = content.nextSibling;
-              continue;
+      let children = Array.from(teaser.children);
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        if (child.classList && child.classList.contains('accordions__toggler')) {
+          // Find the next .accordions__element sibling after this toggler
+          let content = null;
+          for (let j = i + 1; j < children.length; j++) {
+            if (children[j].classList && children[j].classList.contains('accordions__element')) {
+              content = children[j];
+              break;
             }
           }
-          node = node.nextSibling;
+          if (content) {
+            // Gather all content inside the .accordions__element (including nested blocks)
+            let contentBlocks = [];
+            Array.from(content.childNodes).forEach(node => {
+              if (node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '')) {
+                contentBlocks.push(node.cloneNode(true));
+              }
+            });
+            // If content is empty, preserve empty string
+            if (contentBlocks.length === 0) {
+              contentBlocks = [''];
+            }
+            items.push([
+              child.textContent.trim(),
+              contentBlocks.length === 1 ? contentBlocks[0] : contentBlocks
+            ]);
+          }
         }
-        if (hasSubItems) {
-          rows.push([
-            sectionTitle.cloneNode(true),
-            frag
-          ]);
-        }
-      }
-      // If no sub-items, add the section title as its own row
-      if (!hasSubItems) {
-        rows.push([
-          sectionTitle.cloneNode(true),
-          sectionContentContainer ? sectionContentContainer.cloneNode(true) : ''
-        ]);
       }
     });
-    return rows;
+    return items;
   }
 
-  // Get the two columns
-  const columns = element.querySelectorAll('.col-xs-12.col-sm-6');
-  const leftRows = columns[0] ? extractAccordionSections(columns[0]) : [];
-  const rightRows = columns[1] ? extractAccordionSections(columns[1]) : [];
+  // Get both columns
+  const columns = element.querySelectorAll(':scope > div.row > div');
+  let rows = [['Accordion (accordion10)']]; // Header row
 
-  // Interleave rows to match screenshot's two-column grid
-  const rows = [];
-  const maxRows = Math.max(leftRows.length, rightRows.length);
-  for (let i = 0; i < maxRows; i++) {
-    if (leftRows[i]) rows.push(leftRows[i]);
-    if (rightRows[i]) rows.push(rightRows[i]);
-  }
+  columns.forEach(col => {
+    const items = extractAccordionItems(col);
+    rows = rows.concat(items);
+  });
 
-  // Table header
-  const headerRow = ['Accordion (accordion10)'];
-  const tableCells = [headerRow, ...rows];
-
-  // Create and replace
-  const table = WebImporter.DOMUtils.createTable(tableCells, document);
+  // Create the table and replace the element
+  const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

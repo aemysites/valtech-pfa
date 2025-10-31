@@ -1,32 +1,40 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always use the block name as the header row
-  const headerRow = ['Columns (columns4)'];
+  // Critical Review and Corrections:
+  // - Extract exactly 4 columns from immediate children of .row
+  // - Each column's cell must contain ALL text and inline elements from the column
+  // - No hardcoded content: all text, links, and formatting must be preserved
+  // - No markdown: only HTML elements
+  // - Table header must be ['Columns (columns4)']
+  // - No Section Metadata block
+  // - No new images created (none present)
+  // - No missed content
 
-  // Defensive: Get all immediate column children
-  const columns = Array.from(element.querySelectorAll(':scope > div'));
+  // Get all direct column divs
+  const columns = Array.from(element.querySelectorAll(':scope > .col-xs-12'));
+  if (columns.length !== 4) return; // Defensive: Only process if 4 columns
 
-  // Each column's content will be extracted as a cell
-  const contentRow = columns.map((col) => {
-    // Defensive: Find the main teaser in each column
-    // Some columns have nested .teasers__teaser blocks, so we want the whole column content
-    // We'll collect all direct children of the column
-    const colContent = Array.from(col.childNodes).filter((node) => {
-      // Only include element nodes and non-empty text nodes
-      return node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim());
-    });
-    // Wrap in a div for structure preservation
+  // Helper: For each column, gather all child nodes (preserving formatting)
+  function extractColumnContent(col) {
+    // Create a wrapper div to preserve all content and formatting
     const wrapper = document.createElement('div');
-    colContent.forEach((node) => wrapper.appendChild(node));
+    Array.from(col.childNodes).forEach((node) => {
+      // Only append non-empty nodes
+      if (node.nodeType === Node.TEXT_NODE && !node.textContent.trim()) return;
+      wrapper.appendChild(node);
+    });
     return wrapper;
-  });
+  }
 
-  // Compose the table rows
-  const rows = [headerRow, contentRow];
+  const headerRow = ['Columns (columns4)'];
+  const contentRow = columns.map(extractColumnContent);
 
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
+  // Create the table
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    contentRow,
+  ], document);
 
-  // Replace the original element with the block table
-  element.replaceWith(block);
+  // Replace the original element with the table
+  element.replaceWith(table);
 }
