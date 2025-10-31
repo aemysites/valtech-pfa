@@ -10,9 +10,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-import headingsTransformer from './transformers/headings.js';
-import sectionsTransformer from './transformers/sections.js';
-import videosTransformer from './transformers/videos.js';
+
 /**
  * A map of custom parser names to imported parser functions.
  *
@@ -39,8 +37,4 @@ export const customElements = [];
 /**
  * Custom transformers
  */
-export const customTransformers = {
-    headings: headingsTransformer,
-    sections: sectionsTransformer,
-    videos: videosTransformer
-};
+export const customTransformers = {};
