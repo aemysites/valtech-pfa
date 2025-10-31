@@ -6,13 +6,16 @@ export default function parse(element, { document }) {
     const img = panel.querySelector('.panel__image img');
     // Find text content
     const body = panel.querySelector('.panel__body');
-    // Compose card cells
-    return [img || '', body ? body : ''];
+    // Only return a card if it has at least image or body and is not both empty
+    if (img || (body && body.textContent.trim())) {
+      return [img || '', body ? body : ''];
+    }
+    return null;
   }
 
   // Cards table header
   const headerRow = ['Cards (cards14)'];
-  const rows = [headerRow];
+  const rows = [];
 
   // Select all card columns
   const cols = Array.from(element.querySelectorAll('.row.panels > .col-sm-12, .row.panels > .col-sm-6, .row.panels > .col-md-4'));
@@ -22,7 +25,8 @@ export default function parse(element, { document }) {
   if (heroCol) {
     let heroPanel = heroCol.querySelector('.narrow-hero__panel--desktop') || heroCol.querySelector('.narrow-hero__panel--mobile');
     if (heroPanel) {
-      rows.push(extractCard(heroPanel));
+      const card = extractCard(heroPanel);
+      if (card) rows.push(card);
     }
   }
 
@@ -31,30 +35,34 @@ export default function parse(element, { document }) {
     // Podcast, Seniorliv, Investeringer, Green panel
     const panelImage = col.querySelector('.panel.panel--image');
     if (panelImage) {
-      rows.push(extractCard(panelImage));
+      const card = extractCard(panelImage);
+      if (card) rows.push(card);
       return;
     }
     // News panel
     const panelNews = col.querySelector('.panel.panel--news');
     if (panelNews) {
-      rows.push(extractCard(panelNews));
+      const card = extractCard(panelNews);
+      if (card) rows.push(card);
       return;
     }
     // Links panel
     const panelLinks = col.querySelector('.panel.panel--shortcuts-secondary');
     if (panelLinks) {
-      rows.push(extractCard(panelLinks));
+      const card = extractCard(panelLinks);
+      if (card) rows.push(card);
       return;
     }
     // Green panel (no image, just text and button)
     const panelGreen = col.querySelector('.panel.panel--green');
     if (panelGreen) {
-      rows.push(extractCard(panelGreen));
+      const card = extractCard(panelGreen);
+      if (card) rows.push(card);
       return;
     }
   });
 
-  // Build table and replace
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Build table and replace (no empty rows)
+  const table = WebImporter.DOMUtils.createTable([headerRow, ...rows], document);
   element.replaceWith(table);
 }
