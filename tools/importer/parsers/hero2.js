@@ -1,41 +1,40 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Table header row
+  // 1. Header row: always the block name
   const headerRow = ['Hero (hero2)'];
 
-  // 2. Background image row
-  // Locate the image inside .panel__image
+  // 2. Image row: find the hero image (background or <img>)
+  // The image is inside .panel__image > img
+  let imageRowContent = '';
   const panelImage = element.querySelector('.panel__image img');
-  let imageRow;
   if (panelImage) {
-    imageRow = [panelImage];
-  } else {
-    imageRow = [''];
+    imageRowContent = panelImage;
   }
 
-  // 3. Content row (headline, subheading)
-  // Locate the panel__body content
+  // 3. Content row: headline, kicker, and any CTA
+  // Headline: .panel__headline
+  // Kicker/subheading: .panel__kicker
+  // No CTA in this example
   const panelBody = element.querySelector('.panel__body');
-  let contentRow;
+  let contentRowContent = [];
   if (panelBody) {
-    // We'll collect kicker, headline, and any CTA (none present here)
-    const cells = [];
-    // Subheading/kicker
+    // Kicker
     const kicker = panelBody.querySelector('.panel__kicker');
-    if (kicker) cells.push(kicker);
-    // Main headline
+    if (kicker) contentRowContent.push(kicker);
+    // Headline
     const headline = panelBody.querySelector('.panel__headline');
-    if (headline) cells.push(headline);
-    // No CTA detected in this block
-    contentRow = [cells];
-  } else {
-    contentRow = [''];
+    if (headline) contentRowContent.push(headline);
   }
 
-  // Compose table rows
-  const rows = [headerRow, imageRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Compose the table rows
+  const rows = [
+    headerRow,
+    [imageRowContent],
+    [contentRowContent]
+  ];
 
-  // Replace original element
+  // Create the block table
+  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Replace the original element
   element.replaceWith(table);
 }

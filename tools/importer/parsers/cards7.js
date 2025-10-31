@@ -1,56 +1,112 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to extract card image and text content
-  function extractImageAndText(cardEl) {
-    let img = cardEl.querySelector('.panel__image img');
-    let body = cardEl.querySelector('.panel__body');
-    let textContent = body || cardEl;
-    // Always return two columns, even if no image
-    return [img || '', textContent];
+  // Helper for cards with image
+  function extractCard(panel) {
+    let img = panel.querySelector('.panel__image img');
+    let imageCell = img ? img : '';
+    const body = panel.querySelector('.panel__body');
+    let textFragments = [];
+    if (body) {
+      const kicker = body.querySelector('.panel__kicker');
+      if (kicker) textFragments.push(kicker);
+      const headline = body.querySelector('.panel__headline');
+      if (headline) textFragments.push(headline);
+      body.querySelectorAll('p:not(.panel__kicker)').forEach(p => {
+        if (!headline || p !== headline) textFragments.push(p);
+      });
+      const cta = body.querySelector('.cta-btn');
+      if (cta) textFragments.push(cta);
+    }
+    if (panel.tagName === 'A') {
+      const link = document.createElement('a');
+      link.href = panel.href;
+      textFragments.forEach(frag => link.appendChild(frag.cloneNode(true)));
+      return [imageCell, link];
+    }
+    return [imageCell, textFragments];
   }
 
-  // Find all card containers in visual order
-  const cards = [];
-  // Hero card (desktop only, as screenshot shows desktop layout)
-  const heroDesktop = element.querySelector('.narrow-hero__panel--desktop');
-  if (heroDesktop) {
-    cards.push(heroDesktop);
+  // Helper for news card (no image)
+  function extractNews(panel) {
+    const body = panel.querySelector('.panel__body');
+    let textFragments = [];
+    if (body) {
+      const headline = body.querySelector('.panel__headline');
+      if (headline) textFragments.push(headline);
+      const newsList = body.querySelector('.panel__news-list');
+      if (newsList) textFragments.push(newsList);
+      const tags = body.querySelector('.panel__tags');
+      if (tags) textFragments.push(tags);
+    }
+    return ['', textFragments];
   }
-  // Spot cards (image cards)
-  element.querySelectorAll('.col-sm-6.col-md-4 > a.panel--image').forEach(card => {
-    cards.push(card);
-  });
-  // News panel
+
+  // Helper for links card (no image)
+  function extractLinks(panel) {
+    const body = panel.querySelector('.panel__body');
+    let textFragments = [];
+    if (body) {
+      const kicker = body.querySelector('.panel__kicker');
+      if (kicker) textFragments.push(kicker);
+      const list = body.querySelector('.panel__list');
+      if (list) textFragments.push(list);
+    }
+    return ['', textFragments];
+  }
+
+  // Helper for new investment profiles card (no image, but must preserve link)
+  function extractNewInvest(panel) {
+    const body = panel.querySelector('.panel__body');
+    let textFragments = [];
+    if (body) {
+      const headline = body.querySelector('.panel__headline');
+      if (headline) textFragments.push(headline);
+      const cta = body.querySelector('.cta-btn');
+      if (cta) textFragments.push(cta);
+    }
+    // preserve the link wrapper
+    if (panel.tagName === 'A') {
+      const link = document.createElement('a');
+      link.href = panel.href;
+      textFragments.forEach(frag => link.appendChild(frag.cloneNode(true)));
+      return ['', link];
+    }
+    return ['', textFragments];
+  }
+
+  const cards = [];
+  const heroPanel = element.querySelector('.narrow-hero__panel--desktop');
+  if (heroPanel) {
+    cards.push(extractCard(heroPanel));
+  }
+  const podcastPanel = element.querySelector('a[href*="podcast"].panel--image');
+  if (podcastPanel) {
+    cards.push(extractCard(podcastPanel));
+  }
+  const seniorPanel = element.querySelector('a[href*="det-gode-seniorliv-hub"].panel--image');
+  if (seniorPanel) {
+    cards.push(extractCard(seniorPanel));
+  }
   const newsPanel = element.querySelector('.panel--news');
   if (newsPanel) {
-    cards.push(newsPanel);
+    cards.push(extractNews(newsPanel));
   }
-  // Links panel
+  const investPanel = element.querySelector('a[href*="klogere-paa-investeringer"].panel--image');
+  if (investPanel) {
+    cards.push(extractCard(investPanel));
+  }
   const linksPanel = element.querySelector('.panel--shortcuts-secondary');
   if (linksPanel) {
-    cards.push(linksPanel);
+    cards.push(extractLinks(linksPanel));
   }
-  // Green panel (CTA)
-  const greenPanel = element.querySelector('.panel--green');
-  if (greenPanel) {
-    cards.push(greenPanel);
+  const newInvestPanel = element.querySelector('a.panel--green');
+  if (newInvestPanel) {
+    cards.push(extractNewInvest(newInvestPanel));
   }
 
-  // Build table rows
-  const rows = [];
-  // Header row
-  rows.push(['Cards (cards7)']);
-  // Card rows
-  cards.forEach(cardEl => {
-    const [img, textContent] = extractImageAndText(cardEl);
-    rows.push([
-      img,
-      textContent
-    ]);
-  });
+  const rows = [['Cards (cards7)']];
+  cards.forEach(card => rows.push(card));
 
-  // Create block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace element
-  element.replaceWith(block);
+  const table = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(table);
 }

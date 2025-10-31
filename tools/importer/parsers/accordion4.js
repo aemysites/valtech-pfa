@@ -1,56 +1,39 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header row
+  // Accordion block header
   const headerRow = ['Accordion (accordion4)'];
 
   // Find heading and intro paragraph
-  const h2 = element.querySelector('h2');
-  let introPs = [];
-  if (h2) {
-    let next = h2.nextElementSibling;
-    while (next && next.tagName === 'P' && !next.classList.contains('accordions__toggler')) {
-      introPs.push(next);
-      next = next.nextElementSibling;
-    }
-  }
+  const heading = element.querySelector('h2');
+  const intro = element.querySelector('h2 + p');
 
-  // Find the toggler (accordion title)
+  // Find the accordion toggler (title for the accordion item)
   const toggler = element.querySelector('.accordions__toggler');
 
-  // Find the accordion content container
-  const accordionElement = element.querySelector('.accordions__element');
+  // Find the content for the accordion item (the next sibling with .accordions__element)
+  const accordionContent = toggler && toggler.nextElementSibling;
 
-  // Compose accordion content: intro, table, and any notes
-  const accordionContent = document.createElement('div');
-  // Add intro paragraphs
-  introPs.forEach(p => {
-    accordionContent.appendChild(p.cloneNode(true));
-  });
+  // Compose left cell: heading + intro + toggler
+  const leftCell = document.createElement('div');
+  if (heading) leftCell.appendChild(heading.cloneNode(true));
+  if (intro) leftCell.appendChild(intro.cloneNode(true));
+  if (toggler) leftCell.appendChild(toggler.cloneNode(true));
 
-  // Table (prefer .show-in-print, fallback to .hide-in-print)
-  let table = accordionElement ? accordionElement.querySelector('.table.show-in-print') : null;
-  if (!table && accordionElement) table = accordionElement.querySelector('.table.hide-in-print');
-  if (table) accordionContent.appendChild(table.cloneNode(true));
-
-  // Add any explanatory paragraphs after the tables (footnotes), skipping empty or duplicate 'Ulemper' labels
-  if (accordionElement) {
-    accordionElement.querySelectorAll('p').forEach(p => {
-      const text = p.textContent.trim();
-      if (text && text !== 'Ulemper' && !introPs.some(introP => introP.isSameNode(p))) {
-        accordionContent.appendChild(p.cloneNode(true));
-      }
-    });
+  // Compose right cell: accordion content
+  let rightCell = '';
+  if (accordionContent) {
+    rightCell = accordionContent.cloneNode(true);
   }
 
-  const rows = [headerRow];
-  if (toggler && accordionContent.childNodes.length) {
-    rows.push([
-      toggler.textContent.trim(),
-      accordionContent
-    ]);
-  }
+  // Build the rows for the block
+  const rows = [
+    headerRow,
+    [leftCell, rightCell]
+  ];
 
-  // Create the block table and replace the element
+  // Create the table block
   const block = WebImporter.DOMUtils.createTable(rows, document);
+
+  // Replace the original element with the block
   element.replaceWith(block);
 }
