@@ -1,50 +1,47 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row for the block
+  // Columns block header row
   const headerRow = ['Columns (columns5)'];
 
-  // Defensive selectors for the two columns
-  const leftCol = element.querySelector('.col-sm-8');
-  const rightCol = element.querySelector('.col-sm-4');
+  // Find the two column divs
+  const columns = element.querySelectorAll(':scope > div');
+  if (columns.length < 2) return;
 
-  // Left column content: heading, paragraphs, link
-  let leftContent = [];
-  if (leftCol) {
-    // Extract heading (h5), paragraphs, and links in order
-    leftCol.childNodes.forEach((node) => {
-      if (node.nodeType === Node.ELEMENT_NODE) {
-        // Only push if not an empty div
-        if (node.tagName === 'H5' || node.tagName === 'P' || node.tagName === 'A') {
-          leftContent.push(node);
-        } else if (node.tagName === 'DIV') {
-          // If DIV, check for non-empty text or children
-          if (node.textContent.trim() || node.children.length) {
-            leftContent.push(node);
-          }
-        }
+  // LEFT COLUMN: Gather all non-empty content
+  const leftCol = columns[0];
+  const leftContent = [];
+  leftCol.childNodes.forEach((node) => {
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      // Ignore empty .teasers__teaser divs
+      if (
+        node.classList.contains('teasers__teaser') &&
+        !node.textContent.trim() &&
+        !node.querySelector('img')
+      ) {
+        return;
       }
-    });
-  }
+      leftContent.push(node);
+    }
+  });
 
-  // Right column content: image
+  // RIGHT COLUMN: Find the image inside the teaser div
+  const rightCol = columns[1];
   let rightContent = [];
-  if (rightCol) {
-    // Find the image inside right column
-    const img = rightCol.querySelector('img');
+  const teaserDiv = rightCol.querySelector('.teasers__teaser');
+  if (teaserDiv) {
+    const img = teaserDiv.querySelector('img');
     if (img) {
-      rightContent.push(img);
+      rightContent = [img];
     }
   }
 
-  // Build the table rows
-  const cells = [
+  // Build rows for the table
+  const rows = [
     headerRow,
-    [leftContent, rightContent]
+    [leftContent, rightContent],
   ];
 
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace the original element
-  element.replaceWith(block);
+  // Create the columns block table
+  const table = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(table);
 }

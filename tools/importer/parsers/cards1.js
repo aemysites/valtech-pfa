@@ -1,117 +1,105 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to extract card content, preserving links and mandatory image/icon cell
-  function extractCardContent(card, col) {
-    // Find the wrapping anchor if present
-    let link = card.closest('a[href]') || card.querySelector('a[href]');
-    // Image (if present)
-    let img = card.querySelector('.panel__image img');
-    let imageCell = '';
-    if (img) {
-      imageCell = img.cloneNode(true);
-    } else {
-      // If no image, use a colored block as a visual placeholder
-      let color = '';
-      if (card.classList.contains('panel--primary')) color = '#a60a1c';
-      else if (card.classList.contains('panel--green')) color = '#006e6a';
-      else if (card.classList.contains('panel--tertiary')) color = '#eaeaea';
-      if (color) {
-        const colorDiv = document.createElement('div');
-        colorDiv.style.width = '100%';
-        colorDiv.style.height = '40px';
-        colorDiv.style.background = color;
-        colorDiv.setAttribute('aria-label', 'color');
-        imageCell = colorDiv;
-      }
+  // Helper to extract image from a panel
+  function getPanelImage(panel) {
+    const img = panel.querySelector('.panel__image img');
+    if (img) return img;
+    // If no image, check for color panel classes and create a colored div with label
+    const panelClass = panel.className;
+    let color = '', label = '';
+    if (panelClass.includes('panel--primary')) { color = '#a40000'; label = 'Red Card'; }
+    if (panelClass.includes('panel--green')) { color = '#006d6d'; label = 'Teal Card'; }
+    if (panelClass.includes('panel--tertiary')) { color = '#fff'; label = 'White Card'; }
+    if (panelClass.includes('panel--news')) { color = '#f5f5f5'; label = 'News Card'; }
+    if (color) {
+      const div = document.createElement('div');
+      div.style.background = color;
+      div.style.width = '100%';
+      div.style.height = '80px';
+      div.style.borderRadius = '8px';
+      div.style.border = '1px solid #eee';
+      div.style.display = 'flex';
+      div.style.alignItems = 'center';
+      div.style.justifyContent = 'center';
+      div.style.fontWeight = 'bold';
+      div.textContent = label;
+      return div;
     }
-    // Body content
-    const body = card.querySelector('.panel__body');
-    let bodyElements = [];
-    if (body) {
-      const kicker = body.querySelector('.panel__kicker');
-      if (kicker) bodyElements.push(kicker.cloneNode(true));
-      const headline = body.querySelector('.panel__headline');
-      if (headline) {
-        // Only add headline once (avoid duplicate <p> inside <h2>)
-        if (headline.childElementCount === 1 && headline.firstElementChild.tagName === 'P') {
-          bodyElements.push(headline.firstElementChild.cloneNode(true));
-        } else {
-          bodyElements.push(headline.cloneNode(true));
-        }
-      }
-      const cta = body.querySelector('.cta-btn');
-      if (cta) bodyElements.push(cta.cloneNode(true));
-    }
-    if (bodyElements.length === 0 && body) {
-      bodyElements = Array.from(body.children).map((el) => el.cloneNode(true));
-    }
-    if (!body) {
-      bodyElements = Array.from(card.children).map((el) => el.cloneNode(true));
-    }
-    // Wrap text cell with link if present
-    let textCell = bodyElements;
-    if (link && link.getAttribute('href')) {
-      const wrapper = document.createElement('a');
-      wrapper.href = link.getAttribute('href');
-      if (link.hasAttribute('target')) {
-        wrapper.setAttribute('target', link.getAttribute('target'));
-      }
-      bodyElements.forEach((el) => wrapper.appendChild(el));
-      textCell = [wrapper];
-    }
-    return [imageCell, textCell];
+    return '';
   }
 
-  // Helper for news card
-  function extractNewsCard(card) {
-    const body = card.querySelector('.panel__body');
-    let bodyElements = [];
-    if (body) {
-      const headline = body.querySelector('.panel__headline');
-      if (headline) bodyElements.push(headline.cloneNode(true));
-      const newsList = body.querySelector('.panel__news-list');
-      if (newsList) bodyElements.push(newsList.cloneNode(true));
-      const tags = body.querySelector('.panel__tags');
-      if (tags) bodyElements.push(tags.cloneNode(true));
+  // Helper to extract card text content
+  function getPanelText(panel) {
+    const body = panel.querySelector('.panel__body');
+    if (!body) return '';
+    const fragments = [];
+    // Kicker
+    const kicker = body.querySelector('.panel__kicker');
+    if (kicker) fragments.push(kicker.cloneNode(true));
+    // Headline (may be h1, h2, or h2 > p)
+    const headline = body.querySelector('.panel__headline');
+    if (headline) {
+      if (headline.querySelector('p')) {
+        fragments.push(headline.querySelector('p').cloneNode(true));
+      } else {
+        fragments.push(headline.cloneNode(true));
+      }
     }
-    // Use white color block for news card
-    const colorDiv = document.createElement('div');
-    colorDiv.style.width = '100%';
-    colorDiv.style.height = '40px';
-    colorDiv.style.background = '#fff';
-    colorDiv.setAttribute('aria-label', 'color');
-    return [colorDiv, bodyElements];
+    // News panel: add news list if present
+    const newsList = body.querySelector('.panel__news-list');
+    if (newsList) fragments.push(newsList.cloneNode(true));
+    // CTA
+    const cta = body.querySelector('.cta-btn');
+    if (cta) fragments.push(cta.cloneNode(true));
+    // Tags (for news panel)
+    const tags = body.querySelector('.panel__tags');
+    if (tags) fragments.push(tags.cloneNode(true));
+    if (fragments.length === 0) return '';
+    const div = document.createElement('div');
+    fragments.forEach(frag => div.appendChild(frag));
+    return div;
   }
 
   // Find all card columns (excluding empty ones)
-  const cardColumns = Array.from(element.querySelectorAll('.row.panels > .col-sm-6, .row.panels > .col-md-4, .row.panels > .col-sm-4, .row.panels > .col-sm-8'));
-  // Special handling for hero card (first child)
-  const heroCol = element.querySelector('.narrow-hero');
-  let heroCard;
-  if (heroCol) {
-    heroCard = heroCol.querySelector('.narrow-hero__panel--desktop') || heroCol.querySelector('.narrow-hero__panel--mobile');
+  const cardColumns = Array.from(element.querySelectorAll('.row.panels > .col-sm-6, .row.panels > .col-md-4'));
+
+  // Find the hero panel (desktop version preferred)
+  const heroPanel = element.querySelector('.narrow-hero__panel--desktop') || element.querySelector('.narrow-hero__panel--mobile');
+
+  // Build cards array
+  const cards = [];
+
+  // 1. Hero card (always first)
+  if (heroPanel) {
+    const img = getPanelImage(heroPanel);
+    const text = getPanelText(heroPanel);
+    cards.push([
+      img ? img : '',
+      text ? text : ''
+    ]);
   }
-  // News card detection
-  const newsCard = element.querySelector('.panel--news');
-  // Build rows
-  const rows = [];
-  rows.push(['Cards (cards1)']);
-  // Hero card (if present)
-  if (heroCard) {
-    rows.push(extractCardContent(heroCard, heroCol));
-  }
-  // Iterate over card columns
-  cardColumns.forEach((col) => {
-    const panel = col.querySelector('.panel');
-    if (!panel) return;
-    if (panel.classList.contains('panel--hero') || panel.classList.contains('panel--news')) return;
-    rows.push(extractCardContent(panel, col));
+
+  // 2. Other cards
+  cardColumns.forEach(col => {
+    let panel = col.querySelector('.panel');
+    if (!panel && col.classList.contains('panel')) panel = col;
+    if (panel) {
+      const img = getPanelImage(panel);
+      const text = getPanelText(panel);
+      cards.push([
+        img ? img : '',
+        text ? text : ''
+      ]);
+    }
   });
-  // News card (if present)
-  if (newsCard) {
-    rows.push(extractNewsCard(newsCard));
-  }
-  // Replace element with block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(block);
+
+  // Add header row
+  const headerRow = ['Cards (cards1)'];
+  const tableRows = [headerRow, ...cards];
+
+  // Create block table
+  const blockTable = WebImporter.DOMUtils.createTable(tableRows, document);
+
+  // Replace element
+  element.replaceWith(blockTable);
 }
