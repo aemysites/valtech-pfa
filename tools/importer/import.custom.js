@@ -42,5 +42,5 @@ export const customElements = [];
 export const customTransformers = {
     headings: headingsTransformer,
     sections: sectionsTransformer,
-    videos: videosTransforme
+    videos: videosTransformer
 };
