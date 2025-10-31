@@ -1,54 +1,44 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to extract accordion items from a column
-  function extractAccordionItems(col) {
+  // Helper to extract all accordion items (title/content pairs) from a teaser
+  function extractAccordionItems(teaser) {
     const items = [];
-    col.querySelectorAll('.teasers__teaser').forEach(teaser => {
-      let children = Array.from(teaser.children);
-      for (let i = 0; i < children.length; i++) {
-        const child = children[i];
-        if (child.classList && child.classList.contains('accordions__toggler')) {
-          // Find the next .accordions__element sibling after this toggler
-          let content = null;
-          for (let j = i + 1; j < children.length; j++) {
-            if (children[j].classList && children[j].classList.contains('accordions__element')) {
-              content = children[j];
-              break;
-            }
-          }
-          if (content) {
-            // Gather all content inside the .accordions__element (including nested blocks)
-            let contentBlocks = [];
-            Array.from(content.childNodes).forEach(node => {
-              if (node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '')) {
-                contentBlocks.push(node.cloneNode(true));
-              }
-            });
-            // If content is empty, preserve empty string
-            if (contentBlocks.length === 0) {
-              contentBlocks = [''];
-            }
-            items.push([
-              child.textContent.trim(),
-              contentBlocks.length === 1 ? contentBlocks[0] : contentBlocks
-            ]);
+    // Find all toggler/content pairs inside this teaser
+    const togglers = teaser.querySelectorAll(':scope > .accordions__toggler');
+    let current = teaser.firstElementChild;
+    while (current) {
+      if (current.classList.contains('accordions__toggler')) {
+        const titleElem = current;
+        let contentElem = current.nextElementSibling;
+        // Only accept if the next sibling is an accordions__element
+        if (contentElem && contentElem.classList.contains('accordions__element')) {
+          // Check if content is empty (e.g., <p></p>), skip if so
+          const hasContent = contentElem.textContent.trim().length > 0 || contentElem.querySelector('a, strong, em, br');
+          if (hasContent) {
+            items.push([titleElem.cloneNode(true), contentElem.cloneNode(true)]);
           }
         }
       }
-    });
+      current = current.nextElementSibling;
+    }
     return items;
   }
 
-  // Get both columns
-  const columns = element.querySelectorAll(':scope > div.row > div');
-  let rows = [['Accordion (accordion10)']]; // Header row
-
-  columns.forEach(col => {
-    const items = extractAccordionItems(col);
-    rows = rows.concat(items);
+  // Find all teasers in all columns
+  const teasers = element.querySelectorAll('.teasers__teaser');
+  const rows = [];
+  // Header row
+  rows.push(['Accordion (accordion10)']);
+  // For each teaser, extract its accordion items
+  teasers.forEach(teaser => {
+    const items = extractAccordionItems(teaser);
+    items.forEach(([titleElem, contentElem]) => {
+      rows.push([titleElem, contentElem]);
+    });
   });
 
-  // Create the table and replace the element
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(table);
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(rows, document);
+  // Replace the original element
+  element.replaceWith(block);
 }
