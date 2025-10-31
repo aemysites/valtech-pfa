@@ -1,58 +1,54 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // --- Critical Review ---
-  // 1. No hardcoded content: All content is extracted from the DOM.
-  // 2. No markdown formatting: Only HTML elements are used.
-  // 3. All columns are created (3 left, 1 right).
-  // 4. Table header matches block name exactly.
-  // 5. Handles edge cases (missing headings, lists, address, social links).
-  // 6. No Section Metadata block required (not present in example).
-  // 7. Existing elements are referenced, not cloned.
-  // 8. Semantic meaning (headings, lists, address, links) is retained.
-  // 9. All text content is included in table cells.
-  // 10. No new images created (none present in source).
-  // 11. No model provided, so no html comments for model fields.
-
-  // Helper to collect columns
-  const columns = [];
-  const mainRow = element.querySelector('.row');
-  if (!mainRow) return;
-
-  // Get the three left columns (PFA, Genveje, Øvrige)
-  const leftCols = mainRow.querySelectorAll('.col-md-4');
-  leftCols.forEach((col) => {
-    // Compose cell: heading + accordion content
-    const cell = document.createElement('div');
-    const heading = col.querySelector('.footer__heading');
-    if (heading) cell.appendChild(heading);
-    const wrapper = col.querySelector('.footer__wrapper');
-    if (wrapper) cell.appendChild(wrapper);
-    columns.push(cell);
-  });
-
-  // Get the right column (company info)
-  // Try nextElementSibling, fallback to querySelector
-  let rightCol = mainRow.nextElementSibling;
-  if (!rightCol || !rightCol.classList.contains('col-md-3')) {
-    rightCol = mainRow.parentElement.querySelector('.col-md-3');
-  }
-  if (rightCol) {
-    const cell = document.createElement('div');
-    const heading = rightCol.querySelector('.footer__heading');
-    if (heading) cell.appendChild(heading);
-    const address = rightCol.querySelector('address');
-    if (address) cell.appendChild(address);
-    const share = rightCol.querySelector('.share--footer');
-    if (share) cell.appendChild(share);
-    columns.push(cell);
-  }
-
-  // Table header
+  // Columns (columns6) block header
   const headerRow = ['Columns (columns6)'];
-  // Table body: one row, four columns
-  const tableRows = [columns];
-  // Build table
-  const table = WebImporter.DOMUtils.createTable([headerRow, ...tableRows], document);
-  // Replace element
-  element.replaceWith(table);
+
+  // Find the main .row elements inside the footer
+  const mainRows = element.querySelectorAll('.row');
+  if (!mainRows || mainRows.length === 0) return;
+
+  // The first .row contains three columns (.col-md-4)
+  const linkCols = mainRows[0].querySelectorAll('.col-md-4');
+  // The address/social column is .col-md-3 (outside the first .row)
+  const infoCol = element.querySelector('.col-md-3');
+  if (linkCols.length !== 3 || !infoCol) return;
+
+  // Column 1: PFA
+  const col1 = document.createElement('div');
+  col1.appendChild(linkCols[0].querySelector('.footer__heading'));
+  col1.appendChild(linkCols[0].querySelector('.footer__wrapper'));
+
+  // Column 2: Genveje
+  const col2 = document.createElement('div');
+  col2.appendChild(linkCols[1].querySelector('.footer__heading'));
+  col2.appendChild(linkCols[1].querySelector('.footer__wrapper'));
+
+  // Column 3: Øvrige
+  const col3 = document.createElement('div');
+  col3.appendChild(linkCols[2].querySelector('.footer__heading'));
+  col3.appendChild(linkCols[2].querySelector('.footer__wrapper'));
+
+  // Column 4: Company info and social
+  const col4 = document.createElement('div');
+  // Heading
+  const heading = infoCol.querySelector('.footer__heading');
+  if (heading) col4.appendChild(heading);
+  // Address
+  const address = infoCol.querySelector('address');
+  if (address) col4.appendChild(address);
+  // Social links
+  const socials = infoCol.querySelector('.share--footer');
+  if (socials) col4.appendChild(socials);
+
+  // Build the table rows
+  const cells = [
+    headerRow,
+    [col1, col2, col3, col4]
+  ];
+
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace the original element
+  element.replaceWith(block);
 }

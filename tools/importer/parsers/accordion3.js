@@ -3,58 +3,67 @@ export default function parse(element, { document }) {
   // Accordion block header
   const headerRow = ['Accordion (accordion3)'];
 
-  // Get heading and all following paragraphs up to the toggler
-  const heading = element.querySelector('h2');
+  // Find the main content container
+  const container = element.querySelector('.container-fluid');
+  if (!container) return;
+
+  // Extract heading and all descriptive paragraphs (before the toggler)
+  const h2 = container.querySelector('h2');
   const descParas = [];
-  let node = heading && heading.nextElementSibling;
-  while (node && !node.classList.contains('accordions__toggler')) {
-    if (node.tagName === 'P' && node.textContent.trim()) {
-      descParas.push(node.cloneNode(true));
+  let foundToggler = false;
+  container.querySelectorAll('p').forEach(p => {
+    if (p.classList.contains('accordions__toggler')) {
+      foundToggler = true;
+    } else if (!foundToggler) {
+      descParas.push(p);
     }
-    node = node.nextElementSibling;
-  }
+  });
 
-  // Compose intro fragment (heading + all description paragraphs)
+  // Compose intro fragment (heading + description)
   const introFragment = document.createDocumentFragment();
-  if (heading) introFragment.appendChild(heading.cloneNode(true));
-  descParas.forEach(p => introFragment.appendChild(p));
+  if (h2) introFragment.appendChild(h2.cloneNode(true));
+  descParas.forEach(p => {
+    if (p.textContent.trim()) {
+      introFragment.appendChild(p.cloneNode(true));
+    }
+  });
 
-  // Find the toggler (accordion title)
-  const toggler = element.querySelector('.accordions__toggler');
-  if (!toggler) return;
+  // Find the accordion toggler (title for the first item)
+  const toggler = container.querySelector('.accordions__toggler');
 
-  // Find the accordion content (the expandable details)
-  const accordionContent = element.querySelector('.accordions__element');
-  let contentCell = '';
-  if (accordionContent) {
-    // Only keep one inner table (prefer .show-in-print)
-    const mainTable = accordionContent.querySelector('.show-in-print') || accordionContent.querySelector('table');
-    // Remove all .hide-in-print tables
-    accordionContent.querySelectorAll('.hide-in-print').forEach(t => t.remove());
-    // Remove empty paragraphs/spans
-    accordionContent.querySelectorAll('p, span').forEach(node => {
-      if (!node.textContent.trim()) node.remove();
-    });
-    // Compose a fragment with the main table and any remaining content (no duplicates)
+  // Find the accordion content (the details block)
+  const accordionElement = container.querySelector('.accordions__element');
+
+  // Compose the rows
+  const rows = [headerRow];
+
+  if (toggler && accordionElement) {
+    // Compose the content cell: intro content + accordion details (only one table)
     const contentFragment = document.createDocumentFragment();
-    if (mainTable) contentFragment.appendChild(mainTable.cloneNode(true));
-    // Add any remaining paragraphs/spans that are not inside the table
-    accordionContent.childNodes.forEach(child => {
-      if ((child.tagName === 'P' || child.tagName === 'SPAN') && child.textContent.trim()) {
-        contentFragment.appendChild(child.cloneNode(true));
+    contentFragment.appendChild(introFragment);
+    // Only include the first pension info table (not both)
+    const mainTable = accordionElement.querySelector('table');
+    if (mainTable) {
+      contentFragment.appendChild(mainTable.cloneNode(true));
+    }
+    // Include only non-empty, non-duplicate explanatory footnotes after the table
+    const seenFootnotes = new Set();
+    accordionElement.querySelectorAll('p').forEach(p => {
+      const txt = p.textContent.trim();
+      if (txt && !seenFootnotes.has(txt) && txt !== 'Ulemper') {
+        contentFragment.appendChild(p.cloneNode(true));
+        seenFootnotes.add(txt);
       }
     });
-    contentCell = contentFragment;
+    rows.push([
+      toggler.cloneNode(true), // Title cell (clickable label)
+      contentFragment // Content cell (intro + accordion details)
+    ]);
   }
 
-  // Compose rows: header + intro row + accordion item row
-  const rows = [
-    headerRow,
-    [introFragment, ''],
-    [toggler.cloneNode(true), contentCell]
-  ];
-
-  // Create the table block
+  // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
+
+  // Replace the original element
   element.replaceWith(block);
 }

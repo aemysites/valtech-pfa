@@ -12,10 +12,10 @@
 /* global WebImporter */
 /* eslint-disable no-console */
 import hero2Parser from './parsers/hero2.js';
+import accordion4Parser from './parsers/accordion4.js';
 import accordion5Parser from './parsers/accordion5.js';
 import columns6Parser from './parsers/columns6.js';
 import accordion3Parser from './parsers/accordion3.js';
-import accordion4Parser from './parsers/accordion4.js';
 import cards7Parser from './parsers/cards7.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
@@ -34,10 +34,10 @@ import {
 const parsers = {
   metadata: metadataParser,
   hero2: hero2Parser,
+  accordion4: accordion4Parser,
   accordion5: accordion5Parser,
   columns6: columns6Parser,
   accordion3: accordion3Parser,
-  accordion4: accordion4Parser,
   cards7: cards7Parser,
   ...customParsers,
 };
