@@ -1,36 +1,3 @@
 {
-  "templates": [
-    {
-      "name": "'Portfolio Grid Template'",
-      "cluster": 1,
-      "pages": [
-        {
-          "url": "https://www.pfa.dk/kontakt/",
-          "uuid": "ec95361ff4f4d2803a875bb8b8bdb6997c88955f"
-        },
-        {
-          "url": "https://www.pfa.dk/erhverv/",
-          "uuid": "6dbd0e883e331188e1ca7f674ce9de225f7ef1d0"
-        },
-        {
-          "url": "https://www.pfa.dk/privat/",
-          "uuid": "109d2b1ef4db84ec2e6cd8efb3e585e7f9010ab7"
-        },
-        {
-          "url": "https://www.pfa.dk/om-pfa/",
-          "uuid": "33a005a8f60afd13376dc63e48ebca794a19bf03"
-        }
-      ]
-    },
-    {
-      "name": "'Corporate Homepage'",
-      "cluster": 2,
-      "pages": [
-        {
-          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
-          "uuid": "e5476f6fff0392c9ebca091a887891498140b79e"
-        }
-      ]
-    }
-  ]
+  "templates": []
 }

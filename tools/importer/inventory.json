@@ -1,0 +1,141 @@
+{
+  "fragments": [
+    {
+      "name": "nav",
+      "path": "/nav",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://pff.pfa.dk/forside/",
+          "urlHash": "3d040d7fc329058fbd9a91d43e4f35ef07c17e86",
+          "uuid": "3d040d7f-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://pff.pfa.dk/kontakt/",
+          "urlHash": "8909449f741f95207fa66a1bc84903a2d2aa693a",
+          "uuid": "8909449f-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        }
+      ],
+      "styles": {
+        "height": 113,
+        "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    },
+    {
+      "name": "footer",
+      "path": "/footer",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://pff.pfa.dk/forside/",
+          "urlHash": "3d040d7fc329058fbd9a91d43e4f35ef07c17e86",
+          "uuid": "3d040d7f-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://pff.pfa.dk/kontakt/",
+          "urlHash": "8909449f741f95207fa66a1bc84903a2d2aa693a",
+          "uuid": "8909449f-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        }
+      ],
+      "styles": {
+        "background": "rgb(51, 51, 51) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "name": "header",
+      "cluster": 1,
+      "source": "Header",
+      "target": "Header (header1)",
+      "key": "header1",
+      "instances": [
+        {
+          "url": "https://pff.pfa.dk/forside/",
+          "urlHash": "3d040d7fc329058fbd9a91d43e4f35ef07c17e86",
+          "uuid": "3d040d7f-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 2,
+      "source": "Cards",
+      "target": "Cards (cards2)",
+      "key": "cards2",
+      "instances": [
+        {
+          "url": "https://pff.pfa.dk/forside/",
+          "urlHash": "3d040d7fc329058fbd9a91d43e4f35ef07c17e86",
+          "uuid": "3d040d7f-01-ee7a6796f533ca1a641266fa982b337f0ba6fbf3",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 3,
+      "source": "Columns",
+      "target": "Columns (columns3)",
+      "key": "columns3",
+      "instances": [
+        {
+          "url": "https://pff.pfa.dk/forside/",
+          "urlHash": "3d040d7fc329058fbd9a91d43e4f35ef07c17e86",
+          "uuid": "3d040d7f-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-2"
+        },
+        {
+          "url": "https://pff.pfa.dk/kontakt/",
+          "urlHash": "8909449f741f95207fa66a1bc84903a2d2aa693a",
+          "uuid": "8909449f-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-2"
+        }
+      ]
+    },
+    {
+      "name": "header",
+      "cluster": 4,
+      "source": "Header",
+      "target": "Header (header4)",
+      "key": "header4",
+      "instances": [
+        {
+          "url": "https://pff.pfa.dk/kontakt/",
+          "urlHash": "8909449f741f95207fa66a1bc84903a2d2aa693a",
+          "uuid": "8909449f-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "url": "https://pff.pfa.dk/kontakt/",
+      "urlHash": "8909449f741f95207fa66a1bc84903a2d2aa693a",
+      "uuid": "8909449f-01-ee7a6796f533ca1a641266fa982b337f0ba6fbf3",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]"
+    }
+  ],
+  "sections": [
+    {
+      "name": "section-1",
+      "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 2
+    },
+    {
+      "name": "section-2",
+      "background": "rgb(51, 51, 51) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 2
+    }
+  ]
+}
