@@ -1,69 +1,37 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header
+  // Find heading and description paragraphs (before the accordion toggler)
+  const heading = element.querySelector('h2');
+  const allPs = Array.from(element.querySelectorAll('p'));
+  const toggler = element.querySelector('.accordions__toggler');
+  const togglerIdx = allPs.findIndex(p => p === toggler);
+  // All paragraphs before the toggler are description
+  const descriptionPs = togglerIdx > 0 ? allPs.slice(0, togglerIdx) : [];
+
+  // Compose a fragment for heading + description
+  const introFragment = document.createElement('div');
+  if (heading) introFragment.appendChild(heading.cloneNode(true));
+  descriptionPs.forEach(p => introFragment.appendChild(p.cloneNode(true)));
+
+  // Find the accordion content element (the next .accordions__element after toggler)
+  const accordionContent = element.querySelector('.accordions__element');
+  if (!toggler || !accordionContent) return;
+
+  // Build the block table
   const headerRow = ['Accordion (accordion3)'];
-
-  // Find the main content container
-  const container = element.querySelector('.container-fluid');
-  if (!container) return;
-
-  // Extract heading and all descriptive paragraphs (before the toggler)
-  const h2 = container.querySelector('h2');
-  const descParas = [];
-  let foundToggler = false;
-  container.querySelectorAll('p').forEach(p => {
-    if (p.classList.contains('accordions__toggler')) {
-      foundToggler = true;
-    } else if (!foundToggler) {
-      descParas.push(p);
-    }
-  });
-
-  // Compose intro fragment (heading + description)
-  const introFragment = document.createDocumentFragment();
-  if (h2) introFragment.appendChild(h2.cloneNode(true));
-  descParas.forEach(p => {
-    if (p.textContent.trim()) {
-      introFragment.appendChild(p.cloneNode(true));
-    }
-  });
-
-  // Find the accordion toggler (title for the first item)
-  const toggler = container.querySelector('.accordions__toggler');
-
-  // Find the accordion content (the details block)
-  const accordionElement = container.querySelector('.accordions__element');
-
-  // Compose the rows
   const rows = [headerRow];
 
-  if (toggler && accordionElement) {
-    // Compose the content cell: intro content + accordion details (only one table)
-    const contentFragment = document.createDocumentFragment();
-    contentFragment.appendChild(introFragment);
-    // Only include the first pension info table (not both)
-    const mainTable = accordionElement.querySelector('table');
-    if (mainTable) {
-      contentFragment.appendChild(mainTable.cloneNode(true));
-    }
-    // Include only non-empty, non-duplicate explanatory footnotes after the table
-    const seenFootnotes = new Set();
-    accordionElement.querySelectorAll('p').forEach(p => {
-      const txt = p.textContent.trim();
-      if (txt && !seenFootnotes.has(txt) && txt !== 'Ulemper') {
-        contentFragment.appendChild(p.cloneNode(true));
-        seenFootnotes.add(txt);
-      }
-    });
-    rows.push([
-      toggler.cloneNode(true), // Title cell (clickable label)
-      contentFragment // Content cell (intro + accordion details)
-    ]);
-  }
+  // First row: toggler as title, heading+description+accordion content as content
+  const contentFragment = document.createElement('div');
+  if (introFragment.childNodes.length) contentFragment.appendChild(introFragment);
+  contentFragment.appendChild(accordionContent.cloneNode(true));
 
-  // Create the block table
+  rows.push([
+    toggler.cloneNode(true),
+    contentFragment
+  ]);
+
+  // Replace original element with block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
-
-  // Replace the original element
   element.replaceWith(block);
 }

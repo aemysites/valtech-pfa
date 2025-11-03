@@ -1,40 +1,47 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Header row: always the block name
+  // Find the hero panel
+  const panel = element.querySelector('.panel--hero');
+  if (!panel) return;
+
+  // Extract image from .panel__image
+  const imageWrapper = panel.querySelector('.panel__image');
+  let image = null;
+  if (imageWrapper) {
+    image = imageWrapper.querySelector('img');
+  }
+
+  // Extract text content from .panel__body
+  const body = panel.querySelector('.panel__body');
+  let kicker = null, headline = null;
+  if (body) {
+    kicker = body.querySelector('.panel__kicker');
+    headline = body.querySelector('.panel__headline');
+  }
+
+  // Compose content cell for row 3, preserving semantic structure
+  const contentCell = document.createElement('div');
+  if (kicker) {
+    const kickerEl = document.createElement('p');
+    kickerEl.textContent = kicker.textContent;
+    contentCell.appendChild(kickerEl);
+  }
+  if (headline) {
+    const headlineEl = document.createElement('h1');
+    headlineEl.innerHTML = headline.innerHTML;
+    contentCell.appendChild(headlineEl);
+  }
+
+  // Table rows
   const headerRow = ['Hero (hero2)'];
+  const imageRow = [image ? image : ''];
+  const contentRow = [contentCell];
 
-  // 2. Image row: find the hero image (background or <img>)
-  // The image is inside .panel__image > img
-  let imageRowContent = '';
-  const panelImage = element.querySelector('.panel__image img');
-  if (panelImage) {
-    imageRowContent = panelImage;
-  }
+  const cells = [headerRow, imageRow, contentRow];
 
-  // 3. Content row: headline, kicker, and any CTA
-  // Headline: .panel__headline
-  // Kicker/subheading: .panel__kicker
-  // No CTA in this example
-  const panelBody = element.querySelector('.panel__body');
-  let contentRowContent = [];
-  if (panelBody) {
-    // Kicker
-    const kicker = panelBody.querySelector('.panel__kicker');
-    if (kicker) contentRowContent.push(kicker);
-    // Headline
-    const headline = panelBody.querySelector('.panel__headline');
-    if (headline) contentRowContent.push(headline);
-  }
+  // Create block table
+  const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Compose the table rows
-  const rows = [
-    headerRow,
-    [imageRowContent],
-    [contentRowContent]
-  ];
-
-  // Create the block table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace the original element
-  element.replaceWith(table);
+  // Replace original element
+  element.replaceWith(block);
 }
