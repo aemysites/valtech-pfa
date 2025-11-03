@@ -1,0 +1,33 @@
+{
+  "originUrl": "https://pff.pfa.dk",
+  "aborted": false,
+  "urls": [
+    {
+      "url": "https://pff.pfa.dk/forside/",
+      "source": "MANUAL",
+      "targetPath": "/forside",
+      "id": "3d040d7fc329058fbd9a91d43e4f35ef07c17e86"
+    },
+    {
+      "url": "https://pff.pfa.dk/kontakt/",
+      "source": "MANUAL",
+      "targetPath": "/kontakt",
+      "id": "8909449f741f95207fa66a1bc84903a2d2aa693a"
+    }
+  ],
+  "lastCrawled": "MANUAL",
+  "crawlOptions": {
+    "timeout": 10000,
+    "inclusionPatterns": [],
+    "exclusionPatterns": [],
+    "limit": 1000,
+    "sameDomain": true,
+    "keepHash": false,
+    "strategy": "manual",
+    "strategiesAttempted": [
+      "MANUAL"
+    ]
+  },
+  "extractionErrors": [],
+  "errorCountMessage": "none"
+}
