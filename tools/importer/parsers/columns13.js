@@ -1,34 +1,30 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Collect the four columns in the footer
-  const columns = [];
+  // Find the .row.teasers container
+  const rowDiv = element.querySelector('.row.teasers');
+  if (!rowDiv) return;
 
-  // First three columns: .row > .col-md-4 inside .col-md-9
-  const mainRow = element.querySelector('.col-xs-landscape-6.col-sm-6.col-md-9 > .row');
-  if (mainRow) {
-    const colDivs = mainRow.querySelectorAll('.col-md-4');
-    colDivs.forEach(col => columns.push(col));
-  }
+  // Find the .col-sm-12 container inside .row.teasers
+  const colSm12Div = rowDiv.querySelector('.col-sm-12');
+  if (!colSm12Div) return;
 
-  // Fourth column: company info and social links
-  const companyCol = element.querySelector('.col-xs-landscape-6.col-sm-6.col-md-3');
-  if (companyCol) {
-    columns.push(companyCol);
-  }
+  // Get the two columns inside colSm12Div
+  const mainContentDiv = colSm12Div.querySelector('.col-sm-9');
+  const sidebarDiv = colSm12Div.querySelector('.col-sm-3');
+  if (!mainContentDiv || !sidebarDiv) return;
 
-  // Fallback: If columns not found, use all direct children of .row
-  if (columns.length === 0) {
-    const fallbackCols = element.querySelectorAll('.row > div');
-    fallbackCols.forEach(col => columns.push(col));
-  }
-
-  // Table header must match block name exactly
+  // Table header
   const headerRow = ['Columns (columns13)'];
 
-  // Table row: each cell is a reference to the column element (not cloned)
-  const contentRow = columns.map(col => col);
+  // Table content row: two columns, left and right
+  const contentRow = [mainContentDiv, sidebarDiv];
 
-  // Create the table block
-  const table = WebImporter.DOMUtils.createTable([headerRow, contentRow], document);
+  // Build the table
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    contentRow
+  ], document);
+
+  // Replace the original element
   element.replaceWith(table);
 }
