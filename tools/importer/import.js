@@ -169,7 +169,7 @@ function transformPage(main, { inventory, ...source }) {
   // transform all elements using parsers
   [...defaultContentElements, ...blockElements, ...pageElements]
     // sort elements by order in the page
-    .sort((a, b) => (a.uuid ? parseInt(a.uuid.split('-')[1], 10) - parseInt(b.uuid.split('-')[1], 10) : 999))
+    .sort((a, b) => (a.uuid && b.uuid ? parseInt(a.uuid.split('-')[1], 10) - parseInt(b.uuid.split('-')[1], 10) : 999))
     // filter out fragment elements
     .filter((item) => !fragmentElements.includes(item.element))
     .forEach((item, idx, arr) => {
