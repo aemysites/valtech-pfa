@@ -1,103 +1,109 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to extract image or color block/icon for a card
-  function extractVisual(card) {
-    // Try image first
-    const imgDiv = card.querySelector('.panel__image');
-    if (imgDiv) {
-      const img = imgDiv.querySelector('img');
-      if (img) return img;
-    }
-    // If no image, use a color block for cards with strong background
-    const panel = card.closest('.panel') || card;
-    let color = '';
-    if (panel.classList.contains('panel--primary')) color = '#a4001a'; // red
-    else if (panel.classList.contains('panel--green')) color = '#007a7a'; // teal
-    else if (panel.classList.contains('panel--tertiary')) color = '#fff'; // white
-    else if (panel.classList.contains('panel--news')) color = '#fff'; // news card
-    // If color is set, create a colored div
-    if (color) {
-      const colorDiv = document.createElement('div');
-      colorDiv.style.width = '48px';
-      colorDiv.style.height = '48px';
-      colorDiv.style.background = color;
-      colorDiv.style.borderRadius = '8px';
-      colorDiv.style.display = 'inline-block';
-      colorDiv.title = 'Color block';
-      return colorDiv;
-    }
-    // If nothing, use a non-breaking space
-    return document.createTextNode('\u00A0');
+  // Helper to extract CTA from a card
+  function extractCTA(card) {
+    // Look for .cta-btn or a single link at the bottom
+    const cta = card.querySelector('.cta-btn, a.cta-btn');
+    if (cta) return cta.cloneNode(true);
+    // For news card, look for .panel__tags a
+    const tagsLink = card.querySelector('.panel__tags a');
+    if (tagsLink) return tagsLink.cloneNode(true);
+    // For generic case, pick last anchor in card if it looks like a CTA
+    const links = Array.from(card.querySelectorAll('a'));
+    if (links.length === 1) return links[0].cloneNode(true);
+    return null;
+  }
+
+  // Helper to extract image from a card
+  function extractImage(card) {
+    // Look for img inside .panel__image or direct img
+    const img = card.querySelector('.panel__image img, img');
+    return img ? img.cloneNode(true) : '';
   }
 
   // Helper to extract text content from a card
   function extractText(card) {
-    const body = card.querySelector('.panel__body');
-    if (!body) return '';
-    const fragments = [];
+    const textParts = [];
     // Kicker
-    const kicker = body.querySelector('.panel__kicker');
-    if (kicker) fragments.push(kicker);
-    // Headline (h1 or h2)
-    let headline = body.querySelector('.panel__headline');
+    const kicker = card.querySelector('.panel__kicker');
+    if (kicker) textParts.push(kicker.cloneNode(true));
+    // Headline (fix for investeringsprofiler card: headline is <h2><p>...</p></h2>)
+    let headline = card.querySelector('.panel__headline');
     if (headline) {
-      if (headline.querySelector('p')) {
-        headline.querySelectorAll('p').forEach(p => fragments.push(p));
+      // If headline is empty and has a <p> child, use the <p> as headline
+      if (!headline.textContent.trim() && headline.querySelector('p')) {
+        const h2 = document.createElement('h2');
+        h2.textContent = headline.querySelector('p').textContent;
+        textParts.push(h2);
       } else {
-        fragments.push(headline);
+        textParts.push(headline.cloneNode(true));
       }
     }
-    // News list (for news card)
-    const newsList = body.querySelector('.panel__news-list');
-    if (newsList) fragments.push(newsList);
-    // Tags (for 'Se flere nyheder' link)
-    const tags = body.querySelector('.panel__tags');
-    if (tags) fragments.push(tags);
-    // CTA button
-    const cta = body.querySelector('.cta-btn');
-    if (cta) fragments.push(cta);
-    // For cards with only headline (no kicker, no CTA)
-    if (fragments.length === 0) {
-      const altHeadline = card.querySelector('.panel__headline');
-      if (altHeadline) fragments.push(altHeadline);
+    // Description: <p> after headline, or <ul>, or .panel__tags
+    // For podcast/senior/investeringstendenser cards: <p> after headline
+    const descs = Array.from(card.querySelectorAll('p')).filter(
+      p => !p.classList.contains('panel__kicker') && (!headline || p !== headline)
+    );
+    descs.forEach(p => textParts.push(p.cloneNode(true)));
+    // For news card: <ul.panel__news-list>
+    const newsList = card.querySelector('.panel__news-list');
+    if (newsList) {
+      // Only push if it contains at least one <li>
+      if (newsList.querySelector('li')) {
+        textParts.push(newsList.cloneNode(true));
+      }
     }
-    return fragments.length ? fragments : '';
+    // For news card: .panel__tags (Se flere nyheder >)
+    const tags = card.querySelector('.panel__tags');
+    if (tags) textParts.push(tags.cloneNode(true));
+    // For links card: <ul.panel__list>
+    const linkList = card.querySelector('.panel__list');
+    if (linkList) textParts.push(linkList.cloneNode(true));
+    // For CTA
+    const cta = extractCTA(card);
+    if (cta && !textParts.some(el => el.isSameNode(cta))) {
+      textParts.push(cta);
+    }
+    return textParts;
   }
 
-  // Find all cards in the block
+  // Find all cards (panels) in the block, including the hero card
   const cards = [];
   // Hero card (desktop)
-  const heroDesktop = element.querySelector('.narrow-hero__panel--desktop');
-  if (heroDesktop) cards.push(heroDesktop);
-  // All grid cards
-  const panelCols = element.querySelectorAll('.row.panels > [class*="col-"]');
-  panelCols.forEach(col => {
-    const panel = col.querySelector('.panel');
-    if (panel && !panel.classList.contains('narrow-hero__panel--mobile')) {
-      cards.push(panel);
-    }
-  });
+  const heroPanel = element.querySelector('.narrow-hero__panel--desktop');
+  if (heroPanel) cards.push(heroPanel);
+  // Podcast card
+  const podcastPanel = element.querySelector('.col-sm-6.col-md-4 > a.panel.panel--image');
+  if (podcastPanel) cards.push(podcastPanel);
+  // Seniorliv card
+  const seniorPanel = Array.from(element.querySelectorAll('.col-sm-6.col-md-4 > a.panel.panel--image'))[1];
+  if (seniorPanel) cards.push(seniorPanel);
+  // News card
+  const newsPanel = element.querySelector('.panel.panel--news');
+  if (newsPanel) cards.push(newsPanel);
+  // Investeringstendenser card
+  const investPanel = Array.from(element.querySelectorAll('.col-sm-6.col-md-4 > a.panel.panel--image'))[2];
+  if (investPanel) cards.push(investPanel);
+  // Nyttige links card
+  const linksPanel = element.querySelector('.panel.panel--shortcuts-secondary');
+  if (linksPanel) cards.push(linksPanel);
+  // Investeringsprofiler card
+  const profilerPanel = element.querySelector('.panel.panel--green');
+  if (profilerPanel) cards.push(profilerPanel);
 
-  // Table header
-  const headerRow = ['Cards (cards14)'];
-  const rows = [headerRow];
+  // Build table rows
+  const rows = [];
+  // Header row
+  rows.push(['Cards (cards14)']);
 
-  // Parse each card
+  // Each card: [image/icon, text content]
   cards.forEach(card => {
-    const visual = extractVisual(card);
-    const textContent = extractText(card);
-    // Only add rows that have at least one non-empty cell (no empty rows)
-    const isVisualEmpty = (visual instanceof Text && visual.textContent.trim() === '') || (!visual);
-    const isTextEmpty = !textContent || (Array.isArray(textContent) && textContent.length === 0);
-    // Do not add row if both cells are a non-breaking space or empty
-    if (!(visual instanceof Text && visual.textContent === '\u00A0' && isTextEmpty)) {
-      if (!(isVisualEmpty && isTextEmpty)) {
-        rows.push([visual, textContent]);
-      }
-    }
+    const img = extractImage(card);
+    const text = extractText(card);
+    rows.push([img, text]);
   });
 
-  // Create table
+  // Create table and replace element
   const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }
