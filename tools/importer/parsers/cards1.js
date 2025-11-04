@@ -1,105 +1,128 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
   // Helper to extract image from a panel
-  function getPanelImage(panel) {
+  function extractImage(panel) {
     const img = panel.querySelector('.panel__image img');
-    if (img) return img;
-    // If no image, check for color panel classes and create a colored div with label
-    const panelClass = panel.className;
-    let color = '', label = '';
-    if (panelClass.includes('panel--primary')) { color = '#a40000'; label = 'Red Card'; }
-    if (panelClass.includes('panel--green')) { color = '#006d6d'; label = 'Teal Card'; }
-    if (panelClass.includes('panel--tertiary')) { color = '#fff'; label = 'White Card'; }
-    if (panelClass.includes('panel--news')) { color = '#f5f5f5'; label = 'News Card'; }
-    if (color) {
-      const div = document.createElement('div');
-      div.style.background = color;
-      div.style.width = '100%';
-      div.style.height = '80px';
-      div.style.borderRadius = '8px';
-      div.style.border = '1px solid #eee';
-      div.style.display = 'flex';
-      div.style.alignItems = 'center';
-      div.style.justifyContent = 'center';
-      div.style.fontWeight = 'bold';
-      div.textContent = label;
-      return div;
-    }
-    return '';
+    return img || null;
   }
 
-  // Helper to extract card text content
-  function getPanelText(panel) {
+  // Helper to extract text content from a panel
+  function extractText(panel) {
     const body = panel.querySelector('.panel__body');
-    if (!body) return '';
+    if (!body) return null;
     const fragments = [];
-    // Kicker
+    // Kicker (optional)
     const kicker = body.querySelector('.panel__kicker');
     if (kicker) fragments.push(kicker.cloneNode(true));
-    // Headline (may be h1, h2, or h2 > p)
-    const headline = body.querySelector('.panel__headline');
+    // Headline (h1/h2)
+    let headline = body.querySelector('.panel__headline');
     if (headline) {
-      if (headline.querySelector('p')) {
-        fragments.push(headline.querySelector('p').cloneNode(true));
+      const hero = headline.querySelector('.hero');
+      if (hero) {
+        const h = document.createElement('h2');
+        h.innerHTML = hero.innerHTML;
+        fragments.push(h);
+      } else if (headline.querySelector('p')) {
+        // Only use the p as the headline, not both
+        const h = document.createElement('h2');
+        h.innerHTML = headline.querySelector('p').innerHTML;
+        fragments.push(h);
       } else {
-        fragments.push(headline.cloneNode(true));
+        const h = document.createElement('h2');
+        h.innerHTML = headline.innerHTML;
+        fragments.push(h);
       }
     }
-    // News panel: add news list if present
-    const newsList = body.querySelector('.panel__news-list');
-    if (newsList) fragments.push(newsList.cloneNode(true));
-    // CTA
+    // Description (paragraphs not kicker/headline)
+    body.querySelectorAll('p').forEach(p => {
+      if (p !== kicker && (!headline || p !== headline) && (!headline || !headline.contains(p))) {
+        fragments.push(p.cloneNode(true));
+      }
+    });
+    // CTA (span.cta-btn)
     const cta = body.querySelector('.cta-btn');
     if (cta) fragments.push(cta.cloneNode(true));
-    // Tags (for news panel)
+    return fragments;
+  }
+
+  // Helper to extract news card
+  function extractNewsCard(panel) {
+    const body = panel.querySelector('.panel__body');
+    if (!body) return null;
+    const fragments = [];
+    // Headline
+    const headline = body.querySelector('.panel__headline');
+    if (headline && headline.textContent.trim()) {
+      const h = document.createElement('h2');
+      h.innerHTML = headline.textContent.trim();
+      fragments.push(h);
+    }
+    // News list
+    const ul = body.querySelector('.panel__news-list');
+    if (ul) {
+      const newsList = document.createElement('ul');
+      ul.querySelectorAll('li').forEach(li => {
+        newsList.appendChild(li.cloneNode(true));
+      });
+      fragments.push(newsList);
+    }
+    // Tags (see more link)
     const tags = body.querySelector('.panel__tags');
     if (tags) fragments.push(tags.cloneNode(true));
-    if (fragments.length === 0) return '';
-    const div = document.createElement('div');
-    fragments.forEach(frag => div.appendChild(frag));
-    return div;
+    return fragments;
   }
 
-  // Find all card columns (excluding empty ones)
-  const cardColumns = Array.from(element.querySelectorAll('.row.panels > .col-sm-6, .row.panels > .col-md-4'));
+  // Helper to create a card row
+  function createCardRow(img, text) {
+    // Always ensure first cell is image or icon
+    if (!img) {
+      const icon = document.createElement('span');
+      icon.textContent = '🗂';
+      icon.setAttribute('aria-label', 'Card');
+      img = icon;
+    }
+    return [img, text];
+  }
 
-  // Find the hero panel (desktop version preferred)
-  const heroPanel = element.querySelector('.narrow-hero__panel--desktop') || element.querySelector('.narrow-hero__panel--mobile');
-
-  // Build cards array
+  // Find all card columns
   const cards = [];
+  const rowPanels = element.querySelector('.row.panels');
+  if (!rowPanels) return;
+  const cols = Array.from(rowPanels.children);
 
-  // 1. Hero card (always first)
-  if (heroPanel) {
-    const img = getPanelImage(heroPanel);
-    const text = getPanelText(heroPanel);
-    cards.push([
-      img ? img : '',
-      text ? text : ''
-    ]);
+  // Hero Card (desktop)
+  const heroCol = cols.find(col => col.classList.contains('narrow-hero'));
+  if (heroCol) {
+    const heroPanel = heroCol.querySelector('.narrow-hero__panel--desktop');
+    if (heroPanel) {
+      const img = extractImage(heroPanel);
+      const text = extractText(heroPanel);
+      cards.push(createCardRow(img, text));
+    }
   }
 
-  // 2. Other cards
-  cardColumns.forEach(col => {
-    let panel = col.querySelector('.panel');
-    if (!panel && col.classList.contains('panel')) panel = col;
+  // Other cards
+  cols.forEach(col => {
+    if (col.classList.contains('narrow-hero') || !col.innerHTML.trim()) return;
+    if (col.querySelector('.panel--news')) {
+      const newsPanel = col.querySelector('.panel--news');
+      const text = extractNewsCard(newsPanel);
+      cards.push(createCardRow(null, text));
+      return;
+    }
+    const panel = col.querySelector('.panel');
     if (panel) {
-      const img = getPanelImage(panel);
-      const text = getPanelText(panel);
-      cards.push([
-        img ? img : '',
-        text ? text : ''
-      ]);
+      const img = extractImage(panel);
+      const text = extractText(panel);
+      cards.push(createCardRow(img, text));
     }
   });
 
-  // Add header row
+  // Table header
   const headerRow = ['Cards (cards1)'];
   const tableRows = [headerRow, ...cards];
 
-  // Create block table
-  const blockTable = WebImporter.DOMUtils.createTable(tableRows, document);
-
-  // Replace element
-  element.replaceWith(blockTable);
+  // Create table and replace element
+  const block = WebImporter.DOMUtils.createTable(tableRows, document);
+  element.replaceWith(block);
 }

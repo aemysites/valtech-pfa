@@ -1,58 +1,37 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main row containing all columns
-  const mainRow = element.querySelector('.container-fluid > .row');
-  if (!mainRow) return;
+  // Helper: Find the two main columns
+  // Left: .col-xs-12.col-sm-9
+  // Right: .col-xs-12.col-sm-3
+  const leftCol = element.querySelector('.col-xs-12.col-sm-9');
+  const rightCol = element.querySelector('.col-xs-12.col-sm-3');
 
-  // Find the three left columns (accordion lists)
-  const leftCols = mainRow.querySelectorAll('.col-md-4');
-  // Find the right column (company info)
-  const rightCol = mainRow.querySelector('.col-md-3');
-
-  // Prepare columns array
-  const columns = [];
-
-  // Parse each left column
-  leftCols.forEach(col => {
-    const colContent = [];
-    // Heading
-    const heading = col.querySelector('p.footer__heading');
-    if (heading) colContent.push(heading);
-    // List of links
-    const wrapper = col.querySelector('.footer__wrapper');
-    if (wrapper) {
-      const list = wrapper.querySelector('ul');
-      if (list) colContent.push(list);
+  // Defensive: fallback if columns not found
+  let columns = [];
+  if (leftCol && rightCol) {
+    columns = [leftCol, rightCol];
+  } else {
+    // Try fallback: find first two direct children with col- classes
+    columns = Array.from(element.querySelectorAll('[class*="col-"]')).slice(0, 2);
+    if (columns.length < 2) {
+      // If still not found, treat entire element as one column
+      columns = [element];
     }
-    columns.push(colContent);
-  });
-
-  // Parse right column
-  if (rightCol) {
-    const colContent = [];
-    // Heading
-    const heading = rightCol.querySelector('p.footer__heading');
-    if (heading) colContent.push(heading);
-    // Address
-    const address = rightCol.querySelector('address');
-    if (address) colContent.push(address);
-    // Social links
-    const share = rightCol.querySelector('.share--footer');
-    if (share) colContent.push(share);
-    columns.push(colContent);
   }
 
-  // Build table rows
+  // Table header
   const headerRow = ['Columns (columns6)'];
-  // Each cell in the next row is an array of elements for that column
-  const row = columns.map(colArr => {
-    const cell = document.createElement('div');
-    colArr.forEach(el => cell.appendChild(el));
-    return cell;
-  });
-  const tableRows = [headerRow, row];
 
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(tableRows, document);
-  element.replaceWith(block);
+  // Build content row
+  // Reference the actual column elements (do not clone)
+  const contentRow = columns.map((col) => col);
+
+  // Create table
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    contentRow,
+  ], document);
+
+  // Replace the original element
+  element.replaceWith(table);
 }
