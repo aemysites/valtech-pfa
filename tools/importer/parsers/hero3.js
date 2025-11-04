@@ -1,32 +1,41 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Header row with block name (required)
-  const headerRow = ['Hero (hero3)'];
+  // Find the hero panel
+  const heroPanel = element.querySelector('.panel--hero');
+  if (!heroPanel) return;
 
-  // 2. Extract the background image (from <img> inside .panel__image)
+  // --- IMAGE ---
+  // Find the image element inside the hero panel
+  const imageContainer = heroPanel.querySelector('.panel__image');
   let imageEl = null;
-  const imageContainer = element.querySelector('.panel__image img');
   if (imageContainer) {
-    imageEl = imageContainer;
+    // Use the actual <img> element reference
+    imageEl = imageContainer.querySelector('img');
   }
 
-  // 3. Extract the headline (from <h1> inside .panel__body)
-  let headline = null;
-  const headlineEl = element.querySelector('.panel__body h1');
-  if (headlineEl) {
-    headline = headlineEl;
+  // --- HEADLINE ---
+  // Find the headline element (h1-h6)
+  const bodyContainer = heroPanel.querySelector('.panel__body');
+  let headlineEl = null;
+  if (bodyContainer) {
+    headlineEl = bodyContainer.querySelector('h1, h2, h3, h4, h5, h6');
   }
 
-  // 4. Build table rows
-  const rows = [
+  // --- TABLE CONSTRUCTION ---
+  // Always use the required header row
+  const headerRow = ['Hero (hero3)'];
+  // Second row: image (reference the element, not alt or src)
+  const imageRow = [imageEl ? imageEl : ''];
+  // Third row: headline (reference the element, not text)
+  const contentRow = [headlineEl ? headlineEl : ''];
+
+  // Create the table block
+  const table = WebImporter.DOMUtils.createTable([
     headerRow,
-    [imageEl ? imageEl : ''],
-    [headline ? headline : ''],
-  ];
+    imageRow,
+    contentRow
+  ], document);
 
-  // 5. Create the block table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-
-  // 6. Replace the original element
+  // Replace the original element with the block
   element.replaceWith(table);
 }

@@ -1,75 +1,112 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  const rows = Array.from(element.querySelectorAll(':scope > div > div.row.panels > div'));
+  // Find the main panels row
+  const panelsRow = element.querySelector('.row.panels');
+  if (!panelsRow) return;
+  const cols = Array.from(panelsRow.querySelectorAll(':scope > div'));
 
   // --- HERO SECTION ---
-  const heroPanel = rows.find(r => r.classList.contains('narrow-hero'));
-  let heroContent;
+  const heroCol = cols.find(col => col.classList.contains('narrow-hero'));
+  let heroPanel = null;
+  if (heroCol) {
+    heroPanel = heroCol.querySelector('.narrow-hero__panel--desktop') || heroCol.querySelector('.panel--hero');
+  }
+  let heroCell = '';
   if (heroPanel) {
-    // Desktop hero
-    const desktopLink = heroPanel.querySelector('.narrow-hero__panel--desktop');
-    if (desktopLink) {
-      const heroImgDiv = desktopLink.querySelector('.panel__image');
-      const heroImg = heroImgDiv && heroImgDiv.querySelector('img');
-      const heroBody = desktopLink.querySelector('.panel__body');
-      heroContent = document.createElement('div');
-      if (heroImg) heroContent.appendChild(heroImg);
-      if (heroBody) {
-        // Fix: preserve anchor for CTA if present
-        const ctaBtn = heroBody.querySelector('.cta-btn');
-        if (ctaBtn) {
-          const parentLink = desktopLink;
-          if (parentLink && parentLink.tagName === 'A' && parentLink.getAttribute('href')) {
-            const anchor = document.createElement('a');
-            anchor.href = parentLink.getAttribute('href');
-            anchor.innerHTML = ctaBtn.innerHTML;
-            ctaBtn.replaceWith(anchor);
-          }
-        }
-        heroContent.appendChild(heroBody);
+    const imgDiv = heroPanel.querySelector('.panel__image');
+    const heroImage = imgDiv ? imgDiv.querySelector('img') : null;
+    const bodyDiv = heroPanel.querySelector('.panel__body');
+    if (heroImage || bodyDiv) {
+      const heroDiv = document.createElement('div');
+      if (heroImage) heroDiv.appendChild(heroImage.cloneNode(true));
+      if (bodyDiv) {
+        const kicker = bodyDiv.querySelector('.panel__kicker');
+        if (kicker) heroDiv.appendChild(kicker.cloneNode(true));
+        const headline = bodyDiv.querySelector('.panel__headline');
+        if (headline) heroDiv.appendChild(headline.cloneNode(true));
+        const cta = bodyDiv.querySelector('.cta-btn');
+        if (cta) heroDiv.appendChild(cta.cloneNode(true));
       }
+      heroCell = heroDiv;
     }
   }
 
   // --- THREE COLUMNS BELOW HERO ---
-  // 1. Årsrapporter card (image + label)
-  const cardPanel = rows.find(r => r.querySelector('.panel--imagespot-green'));
-  let cardContent;
-  if (cardPanel) {
-    const cardLink = cardPanel.querySelector('a.panel--imagespot-green');
-    if (cardLink) {
-      cardContent = document.createElement('div');
-      const cardImgDiv = cardLink.querySelector('.panel__image');
-      const cardImg = cardImgDiv && cardImgDiv.querySelector('img');
-      if (cardImg) cardContent.appendChild(cardImg);
-      const spotText = cardLink.querySelector('.panel__spot-text');
-      if (spotText) cardContent.appendChild(spotText);
+  const bottomCols = cols.filter(col => col.classList.contains('col-md-4'));
+
+  // 1. Årsrapporter (image spot)
+  let spotCell = '';
+  if (bottomCols[0]) {
+    const spotPanel = bottomCols[0].querySelector('.panel--imagespot');
+    if (spotPanel) {
+      const spotImageDiv = spotPanel.querySelector('.panel__image');
+      const spotImage = spotImageDiv ? spotImageDiv.querySelector('img') : null;
+      const spotTextDiv = spotPanel.querySelector('.panel__spot-text');
+      const cellDiv = document.createElement('div');
+      if (spotImage) cellDiv.appendChild(spotImage.cloneNode(true));
+      if (spotTextDiv) cellDiv.appendChild(spotTextDiv.cloneNode(true));
+      spotCell = cellDiv;
     }
   }
 
-  // 2. Kontakt panel (red background, headline, CTA)
-  const kontaktPanel = rows.find(r => r.querySelector('.panel--primary'));
-  let kontaktContent;
-  if (kontaktPanel) {
-    const kontaktLink = kontaktPanel.querySelector('a.panel--primary');
-    if (kontaktLink) {
-      kontaktContent = kontaktLink.querySelector('.panel__body');
+  // 2. Kontakt center (red card)
+  let kontaktCell = '';
+  if (bottomCols[1]) {
+    const kontaktPanel = bottomCols[1].querySelector('.panel--primary');
+    if (kontaktPanel) {
+      const kontaktBody = kontaktPanel.querySelector('.panel__body');
+      if (kontaktBody) {
+        kontaktCell = kontaktBody.cloneNode(true);
+      }
     }
   }
 
-  // 3. News panel (headline, list, link)
-  const newsPanel = rows.find(r => r.querySelector('.panel--news'));
-  let newsContent;
-  if (newsPanel) {
-    const newsBody = newsPanel.querySelector('.panel__body');
-    if (newsBody) newsContent = newsBody;
+  // 3. Nyheder (news list)
+  let newsCell = '';
+  if (bottomCols[2]) {
+    const newsPanel = bottomCols[2].querySelector('.panel--news');
+    if (newsPanel) {
+      const newsBody = newsPanel.querySelector('.panel__body');
+      if (newsBody) {
+        // Ensure all news items are included, even if some are hidden or not in <li>
+        const newsList = newsBody.querySelector('.panel__news-list');
+        if (newsList) {
+          // Collect all <li> items
+          const items = Array.from(newsList.querySelectorAll('li'));
+          // Check for extra headlines not in <li>
+          const extraHeadline = newsBody.querySelector('.panel__headline.panel__kicker--underlined.hide-for-desktop');
+          if (extraHeadline && extraHeadline.textContent.trim()) {
+            const exists = items.some(li => li.textContent.includes(extraHeadline.textContent.trim()));
+            if (!exists) {
+              const li = document.createElement('li');
+              li.textContent = extraHeadline.textContent.trim();
+              newsList.insertBefore(li, newsList.firstChild);
+            }
+          }
+          // Check for time/date and news headline not wrapped in <li>
+          // Find all <a> inside newsList
+          const allAnchors = Array.from(newsList.querySelectorAll('a'));
+          allAnchors.forEach(a => {
+            // If parent is not <li>, wrap in <li>
+            if (a.parentElement !== newsList) return;
+            const li = document.createElement('li');
+            li.appendChild(a.cloneNode(true));
+            newsList.replaceChild(li, a);
+          });
+        }
+        newsCell = newsBody.cloneNode(true);
+      }
+    }
   }
 
-  // --- TABLE CONSTRUCTION ---
+  // Table header
   const headerRow = ['Columns (columns12)'];
-  const heroRow = [heroContent];
-  const columnsRow = [cardContent, kontaktContent, newsContent];
-  const cells = [headerRow, heroRow, columnsRow];
+  // Table rows: hero section, then the three columns
+  const tableRows = [[heroCell], [spotCell, kontaktCell, newsCell]];
+
+  // Create table
+  const cells = [headerRow, ...tableRows];
   const block = WebImporter.DOMUtils.createTable(cells, document);
+  // Replace element
   element.replaceWith(block);
 }

@@ -1,47 +1,42 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Columns block header row
-  const headerRow = ['Columns (columns5)'];
-
-  // Find the two column divs
-  const columns = element.querySelectorAll(':scope > div');
+  // Get the two columns
+  const columns = Array.from(element.querySelectorAll(':scope > div'));
   if (columns.length < 2) return;
 
-  // LEFT COLUMN: Gather all non-empty content
+  // --- LEFT COLUMN ---
   const leftCol = columns[0];
-  const leftContent = [];
-  leftCol.childNodes.forEach((node) => {
-    if (node.nodeType === Node.ELEMENT_NODE) {
-      // Ignore empty .teasers__teaser divs
-      if (
-        node.classList.contains('teasers__teaser') &&
-        !node.textContent.trim() &&
-        !node.querySelector('img')
-      ) {
-        return;
+  let leftContent = [];
+  // Heading
+  const heading = leftCol.querySelector('h5');
+  if (heading) leftContent.push(heading);
+  // Paragraphs and links
+  const teasers = leftCol.querySelectorAll('.teasers__teaser');
+  teasers.forEach(teaser => {
+    Array.from(teaser.childNodes).forEach(node => {
+      // Only add elements (p, a, etc) and skip empty text nodes
+      if (node.nodeType === Node.ELEMENT_NODE && node.textContent.trim()) {
+        leftContent.push(node);
       }
-      leftContent.push(node);
-    }
+    });
   });
 
-  // RIGHT COLUMN: Find the image inside the teaser div
+  // --- RIGHT COLUMN ---
   const rightCol = columns[1];
   let rightContent = [];
-  const teaserDiv = rightCol.querySelector('.teasers__teaser');
-  if (teaserDiv) {
-    const img = teaserDiv.querySelector('img');
-    if (img) {
-      rightContent = [img];
-    }
-  }
+  // Find image (img inside h3)
+  const img = rightCol.querySelector('img');
+  if (img) rightContent.push(img);
 
-  // Build rows for the table
-  const rows = [
+  // Table header must match block name exactly
+  const headerRow = ['Columns (columns5)'];
+  const contentRow = [leftContent, rightContent];
+
+  // Create table with correct structure
+  const table = WebImporter.DOMUtils.createTable([
     headerRow,
-    [leftContent, rightContent],
-  ];
+    contentRow
+  ], document);
 
-  // Create the columns block table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

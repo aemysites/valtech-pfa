@@ -1,56 +1,38 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always use the block name as the header row
-  const headerRow = ['Columns (columns9)'];
-
-  // Defensive: Get immediate children columns
-  const columns = element.querySelectorAll(':scope > div');
-  // Expecting two columns: left (text), right (image)
-  let leftCol, rightCol;
-  if (columns.length === 2) {
-    leftCol = columns[0];
-    rightCol = columns[1];
-  } else {
-    // Fallback: treat all children as a single row
-    leftCol = element;
-    rightCol = null;
+  // Find columns: .row > .col-xs-12
+  const columns = Array.from(element.querySelectorAll(':scope > .row > .col-xs-12'));
+  if (columns.length === 0) {
+    columns.push(...element.querySelectorAll(':scope > .col-xs-12'));
   }
 
-  // LEFT COLUMN: Gather heading, paragraphs, and link
-  // Defensive: Find heading, paragraphs, and links inside leftCol
-  let leftContent = [];
-  // Heading (h5 or h3/h4)
-  const heading = leftCol.querySelector('h5, h3, h4');
-  if (heading) leftContent.push(heading);
-  // Paragraphs
-  leftCol.querySelectorAll('p').forEach(p => leftContent.push(p));
-  // Standalone links not inside paragraphs
-  leftCol.querySelectorAll('a:not(p a)').forEach(a => leftContent.push(a));
+  // For each column, collect all .teasers__teaser blocks (each is a full accordion group)
+  const columnTeasers = columns.map(colEl => {
+    // Only direct children .teasers__teaser
+    return Array.from(colEl.querySelectorAll(':scope > .teasers__teaser'));
+  });
 
-  // If nothing found, fallback to all children
-  if (leftContent.length === 0) {
-    leftContent = Array.from(leftCol.childNodes).filter(n => n.nodeType === 1);
-  }
+  // Build rows: each row contains one teaser from each column (or empty string)
+  // Only include rows where at least one column has a teaser
+  const rows = [];
+  const leftTeasers = columnTeasers[0] || [];
+  const rightTeasers = columnTeasers[1] || [];
+  const leftCount = leftTeasers.length;
+  const rightCount = rightTeasers.length;
+  const maxRows = Math.max(leftCount, rightCount);
 
-  // RIGHT COLUMN: Find image (img)
-  let rightContent = [];
-  if (rightCol) {
-    // Find image inside rightCol
-    const img = rightCol.querySelector('img');
-    if (img) rightContent.push(img);
-    // If no image, fallback to all children
-    if (rightContent.length === 0) {
-      rightContent = Array.from(rightCol.childNodes).filter(n => n.nodeType === 1);
+  for (let i = 0; i < maxRows; i++) {
+    const leftCell = leftTeasers[i] ? leftTeasers[i].cloneNode(true) : '';
+    const rightCell = rightTeasers[i] ? rightTeasers[i].cloneNode(true) : '';
+    // Only push row if at least one cell is not empty
+    if (leftCell || rightCell) {
+      rows.push([leftCell, rightCell]);
     }
   }
 
-  // Compose table rows
-  const contentRow = [leftContent, rightContent];
-
-  // Build table
-  const cells = [headerRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace original element with block table
-  element.replaceWith(table);
+  // Compose table data
+  const headerRow = ['Columns (columns9)'];
+  const cells = [headerRow, ...rows];
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(block);
 }
