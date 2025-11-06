@@ -3,6 +3,294 @@
   "aborted": false,
   "urls": [
     {
+      "url": "https://www.pfa.dk/andet/aktier-og-obligationer/",
+      "source": "MANUAL",
+      "targetPath": "/andet/aktier-og-obligationer",
+      "id": "297d4c9bb228eb38f9e8ca46380b5c00015b7ed4"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/anbefalinger-mit-pfa/",
+      "source": "MANUAL",
+      "targetPath": "/andet/anbefalinger-mit-pfa",
+      "id": "7f2ec6e1b4333c85d53d177371f1022d8830fbdb"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/behandling-af-personoplysninger/",
+      "source": "MANUAL",
+      "targetPath": "/andet/behandling-af-personoplysninger",
+      "id": "efa46abc19580c4779bab643cda039597edf447f"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/din-kundeoplevelse/",
+      "source": "MANUAL",
+      "targetPath": "/andet/din-kundeoplevelse",
+      "id": "61c929ad4427b926642399413622fc941f06b298"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/eiopa2021/",
+      "source": "MANUAL",
+      "targetPath": "/andet/eiopa2021",
+      "id": "561941cff11d2e5060efc621e243694201881b8c"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/feedback/",
+      "source": "MANUAL",
+      "targetPath": "/andet/feedback",
+      "id": "559fe3938a0637327c5d287c271338cb3f2233ac"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/feedback/tak3/",
+      "source": "MANUAL",
+      "targetPath": "/andet/feedback/tak3",
+      "id": "36e58d9db705afea112ee7a0c3fda68ef092e0de"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/feedback/tak4/",
+      "source": "MANUAL",
+      "targetPath": "/andet/feedback/tak4",
+      "id": "7c63a51504bf8c12594dc46b616ab324aca82972"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/finanstilsyn/",
+      "source": "MANUAL",
+      "targetPath": "/andet/finanstilsyn",
+      "id": "4e2f98792d674e174d5f87298efde87bd2fa285a"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/forsikringsbetingelser/",
+      "source": "MANUAL",
+      "targetPath": "/andet/forsikringsbetingelser",
+      "id": "6481d21c42708de73ff25f44386d7f25087b6943"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/forudsaetninger-opsparingsberegner/",
+      "source": "MANUAL",
+      "targetPath": "/andet/forudsaetninger-opsparingsberegner",
+      "id": "3c424d021699765d6e9e4a8acea6dc7be5455b62"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/lederne/",
+      "source": "MANUAL",
+      "targetPath": "/andet/lederne",
+      "id": "8a5370a22cbba77aa9defa45ed2cc3896314720c"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/lederne/lederne-kvittering/",
+      "source": "MANUAL",
+      "targetPath": "/andet/lederne/lederne-kvittering",
+      "id": "44ce1d1fdbb4d34cdb6427394093eb8210fa5df9"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/legitimation/",
+      "source": "MANUAL",
+      "targetPath": "/andet/legitimation",
+      "id": "be70d69e09f8f5d741e492c17f07a24d1060c5cf"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/legitimation/legitimation-kunde/",
+      "source": "MANUAL",
+      "targetPath": "/andet/legitimation/legitimation-kunde",
+      "id": "577a71eca4e12728b892dd07b534efe912d56129"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/legitimation/legitimation-kunde/legitimation-kvittering/",
+      "source": "MANUAL",
+      "targetPath": "/andet/legitimation/legitimation-kunde/legitimation-kvittering",
+      "id": "3209d2eaaeea6ae1a96398abcd945acb9c7e92ec"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/legitimation/legitimation-ved-doedsfald/",
+      "source": "MANUAL",
+      "targetPath": "/andet/legitimation/legitimation-ved-doedsfald",
+      "id": "70004bdc119a55e57e81e546cb5ead5a88cd223a"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/legitimation/legitimation-ved-doedsfald/dokumentation-kvittering/",
+      "source": "MANUAL",
+      "targetPath": "/andet/legitimation/legitimation-ved-doedsfald/dokumentation-kvittering",
+      "id": "40e082f380cbb2fb30e5c15301a068d236d392b7"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/leveattest/",
+      "source": "MANUAL",
+      "targetPath": "/andet/leveattest",
+      "id": "58d54bf297d2bc55846f8a8c72b98ad0ab9a5349"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/leveattest/leveattest-kvittering/",
+      "source": "MANUAL",
+      "targetPath": "/andet/leveattest/leveattest-kvittering",
+      "id": "4ffa06a13b344ac3662828eebbdab4a6333f135e"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/markedsudvikling/",
+      "source": "MANUAL",
+      "targetPath": "/andet/markedsudvikling",
+      "id": "99a809efdd6c5f1c355b1c872760cb49782a9a7b"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-a/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler-a",
+      "id": "334c44e45ed2d9f76458379c94ed3050de2f8596"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-b/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler-b",
+      "id": "7cd6e52ada805f05a049a2831bceff53e114de91"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-btb/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler-btb",
+      "id": "eeac71ba69e74d0d3dec2826fbca2aa4254f3b8d"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-c/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler-c",
+      "id": "5e73881d729d7a88b7d23e93af585c61a800f4fc"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-d/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler-d",
+      "id": "d37621e87ff71f160452d52991909b7571dde7f8"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-fleksibel/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler-fleksibel",
+      "id": "6f3be984324a117b10ba790046e7f38520f66e5e"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-klima/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler-klima",
+      "id": "e7d28bc0f22dfedeeee4a276c90f3fe2a5880090"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-webinar/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler-webinar",
+      "id": "be8a1ea9abdeb03739bee1c13c30f23ec5110e08"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler/",
+      "source": "MANUAL",
+      "targetPath": "/andet/nye-investeringsprofiler",
+      "id": "6ac3c8add4473dc6c5aaddc2afb43a658445e96c"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/paragraf-41/",
+      "source": "MANUAL",
+      "targetPath": "/andet/paragraf-41",
+      "id": "2d11dbb010ca9dd030cd38f487dd71e97b8d41e9"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/paragraf-41/paragraf-41-kvittering/",
+      "source": "MANUAL",
+      "targetPath": "/andet/paragraf-41/paragraf-41-kvittering",
+      "id": "63bcb591cd4eb8d356ec14bf851bf799a339bf76"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/persondata-kf/",
+      "source": "MANUAL",
+      "targetPath": "/andet/persondata-kf",
+      "id": "4293082cd02117aa6f0bce050ae66855ace92ff3"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/pfa-ungeraad/",
+      "source": "MANUAL",
+      "targetPath": "/andet/pfa-ungeraad",
+      "id": "95f074ae407b077acbfab254b2e01f71d0fa653f"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/priseksempler/",
+      "source": "MANUAL",
+      "targetPath": "/andet/priseksempler",
+      "id": "34ac3b64955808d5d8a2dfd4c6679bb42af05a0f"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/produktinformation/",
+      "source": "MANUAL",
+      "targetPath": "/andet/produktinformation",
+      "id": "9ee1759622a794ef5c694395e36c41ae166f4cf4"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/ratepension/",
+      "source": "MANUAL",
+      "targetPath": "/andet/ratepension",
+      "id": "589eb4bc2708875c0bb845f7c1e206d1b6c0f71a"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/saerlige-undersoegelser/",
+      "source": "MANUAL",
+      "targetPath": "/andet/saerlige-undersoegelser",
+      "id": "3ee4b87425686160dd6e60197693c281296328d0"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/samarbejdspartnere/",
+      "source": "MANUAL",
+      "targetPath": "/andet/samarbejdspartnere",
+      "id": "1e1801a5e13c15d9596d6f399e0eccc03ccfc902"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/update/",
+      "source": "MANUAL",
+      "targetPath": "/andet/update",
+      "id": "ac49aa2a08fbc3a0c0bb0932dbb083b4eb7303b6"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/velkommen/",
+      "source": "MANUAL",
+      "targetPath": "/andet/velkommen",
+      "id": "be3addf2fcc651cc484edffbbe2a58384d21bcad"
+    },
+    {
+      "url": "https://www.pfa.dk/companies/aeven/",
+      "source": "MANUAL",
+      "targetPath": "/companies/aeven",
+      "id": "f3a827bf2336fd447fc98c946f126560218e5c83"
+    },
+    {
+      "url": "https://www.pfa.dk/companies/aeven/din-pensionsordning/opsparing-i-pfa/",
+      "source": "MANUAL",
+      "targetPath": "/companies/aeven/din-pensionsordning/opsparing-i-pfa",
+      "id": "16121b7bb47b81c3a95b39a20bce1778a721cf52"
+    },
+    {
+      "url": "https://www.pfa.dk/companies/aeven/din-pensionsordning/saml/",
+      "source": "MANUAL",
+      "targetPath": "/companies/aeven/din-pensionsordning/saml",
+      "id": "52a793d2d8ee0910fc3e713b02c4f551077c71d0"
+    },
+    {
+      "url": "https://www.pfa.dk/companies/aeven/forsikringer/",
+      "source": "MANUAL",
+      "targetPath": "/companies/aeven/forsikringer",
+      "id": "00dd16e1521da45c5e4e32d513d6121667d1c398"
+    },
+    {
+      "url": "https://www.pfa.dk/companies/apotekerforeningen/velkommen/",
+      "source": "MANUAL",
+      "targetPath": "/companies/apotekerforeningen/velkommen",
+      "id": "7849c6ffdbca646ac34ec160b9dac3905fb610f1"
+    },
+    {
+      "url": "https://www.pfa.dk/companies/carlsberg/",
+      "source": "MANUAL",
+      "targetPath": "/companies/carlsberg",
+      "id": "4fa14c1065d384b9cdae8ff65072667d8b66ac06"
+    },
+    {
+      "url": "https://www.pfa.dk/companies/co10/",
+      "source": "MANUAL",
+      "targetPath": "/companies/co10",
+      "id": "8efbe8595514eecc3b43cc86f61ba2cf56c00d59"
+    },
+    {
       "url": "https://www.pfa.dk/erhverv/",
       "source": "MANUAL",
       "targetPath": "/erhverv",
@@ -40,6 +328,15 @@
       "MANUAL"
     ]
   },
-  "extractionErrors": [],
-  "errorCountMessage": "none"
+  "extractionErrors": [
+    {
+      "url": "https://www.pfa.dk/andet/nye-invisteringsprofiler-c/",
+      "message": "resource crawl error: Url https://www.pfa.dk/andet/nye-invisteringsprofiler-c/: 404 Not Found"
+    },
+    {
+      "url": "https://www.pfa.dk/andet/ratepension'/",
+      "message": "resource crawl error: Url https://www.pfa.dk/andet/ratepension'/: 404 Not Found"
+    }
+  ],
+  "errorCountMessage": "{\"E_404\":2}"
 }
