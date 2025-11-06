@@ -328,15 +328,6 @@
       "MANUAL"
     ]
   },
-  "extractionErrors": [
-    {
-      "url": "https://www.pfa.dk/andet/nye-invisteringsprofiler-c/",
-      "message": "resource crawl error: Url https://www.pfa.dk/andet/nye-invisteringsprofiler-c/: 404 Not Found"
-    },
-    {
-      "url": "https://www.pfa.dk/andet/ratepension'/",
-      "message": "resource crawl error: Url https://www.pfa.dk/andet/ratepension'/: 404 Not Found"
-    }
-  ],
-  "errorCountMessage": "{\"E_404\":2}"
+  "extractionErrors": [],
+  "errorCountMessage": "none"
 }
