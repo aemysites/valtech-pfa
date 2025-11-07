@@ -21,12 +21,6 @@
       "id": "efa46abc19580c4779bab643cda039597edf447f"
     },
     {
-      "url": "https://www.pfa.dk/andet/din-kundeoplevelse/",
-      "source": "MANUAL",
-      "targetPath": "/andet/din-kundeoplevelse",
-      "id": "61c929ad4427b926642399413622fc941f06b298"
-    },
-    {
       "url": "https://www.pfa.dk/andet/eiopa2021/",
       "source": "MANUAL",
       "targetPath": "/andet/eiopa2021",
@@ -169,12 +163,6 @@
       "source": "MANUAL",
       "targetPath": "/andet/nye-investeringsprofiler-klima",
       "id": "e7d28bc0f22dfedeeee4a276c90f3fe2a5880090"
-    },
-    {
-      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-webinar/",
-      "source": "MANUAL",
-      "targetPath": "/andet/nye-investeringsprofiler-webinar",
-      "id": "be8a1ea9abdeb03739bee1c13c30f23ec5110e08"
     },
     {
       "url": "https://www.pfa.dk/andet/nye-investeringsprofiler/",
