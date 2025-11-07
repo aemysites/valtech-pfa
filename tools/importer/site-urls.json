@@ -237,40 +237,16 @@
       "id": "1e1801a5e13c15d9596d6f399e0eccc03ccfc902"
     },
     {
-      "url": "https://www.pfa.dk/andet/update/",
-      "source": "MANUAL",
-      "targetPath": "/andet/update",
-      "id": "ac49aa2a08fbc3a0c0bb0932dbb083b4eb7303b6"
-    },
-    {
-      "url": "https://www.pfa.dk/andet/velkommen/",
-      "source": "MANUAL",
-      "targetPath": "/andet/velkommen",
-      "id": "be3addf2fcc651cc484edffbbe2a58384d21bcad"
-    },
-    {
       "url": "https://www.pfa.dk/companies/aeven/",
       "source": "MANUAL",
       "targetPath": "/companies/aeven",
       "id": "f3a827bf2336fd447fc98c946f126560218e5c83"
     },
     {
-      "url": "https://www.pfa.dk/companies/aeven/din-pensionsordning/opsparing-i-pfa/",
-      "source": "MANUAL",
-      "targetPath": "/companies/aeven/din-pensionsordning/opsparing-i-pfa",
-      "id": "16121b7bb47b81c3a95b39a20bce1778a721cf52"
-    },
-    {
       "url": "https://www.pfa.dk/companies/aeven/din-pensionsordning/saml/",
       "source": "MANUAL",
       "targetPath": "/companies/aeven/din-pensionsordning/saml",
       "id": "52a793d2d8ee0910fc3e713b02c4f551077c71d0"
-    },
-    {
-      "url": "https://www.pfa.dk/companies/aeven/forsikringer/",
-      "source": "MANUAL",
-      "targetPath": "/companies/aeven/forsikringer",
-      "id": "00dd16e1521da45c5e4e32d513d6121667d1c398"
     },
     {
       "url": "https://www.pfa.dk/companies/apotekerforeningen/velkommen/",
