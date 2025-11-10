@@ -63,18 +63,6 @@
       "id": "3fde3a8b7a528182c1c751f0100189055d4a4639"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/klogere-paa-investeringer-old/",
-      "source": "MANUAL",
-      "targetPath": "/privat/opsparing/klogere-paa-investeringer-old",
-      "id": "3a2fb515f4b80d287a98ae021f407c0ac20fb93b"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/opsparing/klogere-paa-investeringer/",
-      "source": "MANUAL",
-      "targetPath": "/privat/opsparing/klogere-paa-investeringer",
-      "id": "fc1e976f43d57e9ceacdae3857be611fe4aea880"
-    },
-    {
       "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
       "source": "MANUAL",
       "targetPath": "/privat/opsparing/opsparing-i-gennemsnitsrente",
@@ -99,12 +87,6 @@
       "id": "fab9135e29a157101ff8ca97f8253954eb386471"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/pfa-investerer/",
-      "source": "MANUAL",
-      "targetPath": "/privat/opsparing/pfa-investerer",
-      "id": "298691005166913d62544fb3805d6d7ab6f6bd59"
-    },
-    {
       "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
       "source": "MANUAL",
       "targetPath": "/privat/opsparing/pfa-klima-plus",
@@ -121,18 +103,6 @@
       "source": "MANUAL",
       "targetPath": "/privat/opsparing/pfa-plus-fri",
       "id": "eac8783b4cfe4dd8175ae8552f63299a46df890a"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/opsparing/planlaeg-din-opsparing/",
-      "source": "MANUAL",
-      "targetPath": "/privat/opsparing/planlaeg-din-opsparing",
-      "id": "b9daddce64c17dd256536850fe20174b056b7707"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/opsparing/profil-forsigtig/",
-      "source": "MANUAL",
-      "targetPath": "/privat/opsparing/profil-forsigtig",
-      "id": "95b6cf4c85aa032a4c7318be690d889d120e8610"
     },
     {
       "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
@@ -153,22 +123,10 @@
       "id": "91b0c288f5058d60137b7131e4315108700a83c6"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/sparekstraop/",
-      "source": "MANUAL",
-      "targetPath": "/privat/opsparing/sparekstraop",
-      "id": "fe0d05cbcf9ffbffb38da478e7cbc5f6126665eb"
-    },
-    {
       "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
       "source": "MANUAL",
       "targetPath": "/privat/opsparing/target-begunstigelse",
       "id": "cc4caf43597c5951502deb0124871b848d4e1428"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/opsparing/udbetaling-af-pension/",
-      "source": "MANUAL",
-      "targetPath": "/privat/opsparing/udbetaling-af-pension",
-      "id": "9792efed4d0b71025ec1c9d4d98b4e2d0b192ed4"
     },
     {
       "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
