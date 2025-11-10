@@ -1,27 +1,55 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main row containing columns
-  const row = element.querySelector(':scope > div.row');
-  if (!row) return;
-  // Find all direct column divs (col-xs-12 col-sm-6)
-  const columns = Array.from(row.children).filter(child => child.matches('div'));
-  if (columns.length < 2) return; // Must have at least two columns for columns block
-
-  // For each column, extract all .teasers__teaser blocks (accordion groups)
-  function extractColumnContent(colDiv) {
-    // Only direct children .teasers__teaser
-    const teasers = Array.from(colDiv.children).filter(child => child.classList.contains('teasers__teaser'));
-    // Defensive: skip empty columns
-    if (!teasers.length) return document.createTextNode('');
-    // Wrap all teasers in a fragment
-    const frag = document.createDocumentFragment();
-    teasers.forEach(teaser => frag.appendChild(teaser.cloneNode(true)));
-    return frag;
-  }
-
-  // Compose the table rows
+  // Header row for the block
   const headerRow = ['Columns (columns15)'];
-  const contentRow = columns.map(colDiv => extractColumnContent(colDiv));
+
+  // Defensive: Find the main row containing the four columns
+  const mainRow = element.querySelector('.container-fluid > .row');
+  if (!mainRow) return;
+
+  // Get the four columns (three link columns, one contact column)
+  // The first child is a row with three columns, the second is the contact/social column
+  const leftColsContainer = mainRow.querySelector('.col-md-9 > .row');
+  const leftCols = leftColsContainer ? Array.from(leftColsContainer.children) : [];
+  const rightCol = mainRow.querySelector('.col-md-3');
+
+  // Defensive: Ensure we have all four columns
+  if (leftCols.length !== 3 || !rightCol) return;
+
+  // Build the cells for each column
+  // Column 1: PFA
+  const col1Heading = leftCols[0].querySelector('.footer__heading');
+  const col1List = leftCols[0].querySelector('.footer__list');
+  const col1Content = [];
+  if (col1Heading) col1Content.push(col1Heading);
+  if (col1List) col1Content.push(col1List);
+
+  // Column 2: Genveje
+  const col2Heading = leftCols[1].querySelector('.footer__heading');
+  const col2List = leftCols[1].querySelector('.footer__list');
+  const col2Content = [];
+  if (col2Heading) col2Content.push(col2Heading);
+  if (col2List) col2Content.push(col2List);
+
+  // Column 3: Øvrige
+  const col3Heading = leftCols[2].querySelector('.footer__heading');
+  const col3List = leftCols[2].querySelector('.footer__list');
+  const col3Content = [];
+  if (col3Heading) col3Content.push(col3Heading);
+  if (col3List) col3Content.push(col3List);
+
+  // Column 4: Company info and social
+  const col4Heading = rightCol.querySelector('.footer__heading');
+  const col4Address = rightCol.querySelector('address');
+  const col4Share = rightCol.querySelector('.share--footer');
+  const col4Content = [];
+  if (col4Heading) col4Content.push(col4Heading);
+  if (col4Address) col4Content.push(col4Address);
+  if (col4Share) col4Content.push(col4Share);
+
+  // Build the table rows
+  const contentRow = [col1Content, col2Content, col3Content, col4Content];
+
   const rows = [headerRow, contentRow];
 
   // Create the block table

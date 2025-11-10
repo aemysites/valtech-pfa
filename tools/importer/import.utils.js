@@ -104,9 +104,6 @@ export async function handleOnLoad({ document }) {
   );
   document.elementFromPoint(0, 0)?.click();
 
-  // try declining cookies
-  document.getElementById('CybotCookiebotDialogBodyButtonDecline')?.click();
-
   const body = document.body || document.documentElement;
 
   // add element markers

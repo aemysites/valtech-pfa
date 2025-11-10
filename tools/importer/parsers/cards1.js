@@ -1,128 +1,153 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to extract image from a panel
-  function extractImage(panel) {
-    const img = panel.querySelector('.panel__image img');
-    return img || null;
-  }
-
-  // Helper to extract text content from a panel
-  function extractText(panel) {
-    const body = panel.querySelector('.panel__body');
-    if (!body) return null;
-    const fragments = [];
-    // Kicker (optional)
-    const kicker = body.querySelector('.panel__kicker');
-    if (kicker) fragments.push(kicker.cloneNode(true));
-    // Headline (h1/h2)
-    let headline = body.querySelector('.panel__headline');
-    if (headline) {
-      const hero = headline.querySelector('.hero');
-      if (hero) {
-        const h = document.createElement('h2');
-        h.innerHTML = hero.innerHTML;
-        fragments.push(h);
-      } else if (headline.querySelector('p')) {
-        // Only use the p as the headline, not both
-        const h = document.createElement('h2');
-        h.innerHTML = headline.querySelector('p').innerHTML;
-        fragments.push(h);
-      } else {
-        const h = document.createElement('h2');
-        h.innerHTML = headline.innerHTML;
-        fragments.push(h);
-      }
-    }
-    // Description (paragraphs not kicker/headline)
-    body.querySelectorAll('p').forEach(p => {
-      if (p !== kicker && (!headline || p !== headline) && (!headline || !headline.contains(p))) {
-        fragments.push(p.cloneNode(true));
-      }
-    });
-    // CTA (span.cta-btn)
-    const cta = body.querySelector('.cta-btn');
-    if (cta) fragments.push(cta.cloneNode(true));
-    return fragments;
-  }
-
-  // Helper to extract news card
-  function extractNewsCard(panel) {
-    const body = panel.querySelector('.panel__body');
-    if (!body) return null;
-    const fragments = [];
-    // Headline
-    const headline = body.querySelector('.panel__headline');
-    if (headline && headline.textContent.trim()) {
-      const h = document.createElement('h2');
-      h.innerHTML = headline.textContent.trim();
-      fragments.push(h);
-    }
-    // News list
-    const ul = body.querySelector('.panel__news-list');
-    if (ul) {
-      const newsList = document.createElement('ul');
-      ul.querySelectorAll('li').forEach(li => {
-        newsList.appendChild(li.cloneNode(true));
-      });
-      fragments.push(newsList);
-    }
-    // Tags (see more link)
-    const tags = body.querySelector('.panel__tags');
-    if (tags) fragments.push(tags.cloneNode(true));
-    return fragments;
-  }
-
-  // Helper to create a card row
-  function createCardRow(img, text) {
-    // Always ensure first cell is image or icon
+  // Helper to extract card content, including all text and visual cues
+  function extractCard(cardEl) {
+    let img = cardEl.querySelector('.panel__image img');
+    let imgCell = '';
+    const panelClasses = cardEl.className;
     if (!img) {
-      const icon = document.createElement('span');
-      icon.textContent = '🗂';
-      icon.setAttribute('aria-label', 'Card');
-      img = icon;
+      const bgDiv = cardEl.querySelector('.panel__image');
+      if (bgDiv && bgDiv.dataset.hlxBackgroundImage) {
+        const urlMatch = bgDiv.dataset.hlxBackgroundImage.match(/url\(("|')?(.*?)\1?\)/);
+        if (urlMatch && urlMatch[2]) {
+          img = document.createElement('img');
+          img.src = urlMatch[2];
+          imgCell = img;
+        }
+      }
+      // If no image but colored card, add a color swatch with kicker text
+      if (!imgCell && /panel--primary/.test(panelClasses)) {
+        const swatch = document.createElement('div');
+        const kicker = cardEl.querySelector('.panel__kicker');
+        swatch.textContent = kicker ? kicker.textContent : '';
+        swatch.style.background = '#a6001a';
+        swatch.style.color = '#fff';
+        swatch.style.padding = '8px';
+        swatch.style.borderRadius = '4px';
+        imgCell = swatch;
+      } else if (!imgCell && /panel--green/.test(panelClasses)) {
+        const swatch = document.createElement('div');
+        const kicker = cardEl.querySelector('.panel__kicker');
+        swatch.textContent = kicker ? kicker.textContent : '';
+        swatch.style.background = '#006d6a';
+        swatch.style.color = '#fff';
+        swatch.style.padding = '8px';
+        swatch.style.borderRadius = '4px';
+        imgCell = swatch;
+      } else if (!imgCell && /panel--tertiary/.test(panelClasses)) {
+        const swatch = document.createElement('div');
+        const kicker = cardEl.querySelector('.panel__kicker');
+        swatch.textContent = kicker ? kicker.textContent : '';
+        swatch.style.background = '#fff';
+        swatch.style.color = '#a6001a';
+        swatch.style.border = '1px solid #ccc';
+        swatch.style.padding = '8px';
+        swatch.style.borderRadius = '4px';
+        imgCell = swatch;
+      }
+    } else {
+      imgCell = img;
     }
-    return [img, text];
+    // Collect all text content
+    const body = cardEl.querySelector('.panel__body');
+    const fragments = [];
+    if (body) {
+      Array.from(body.childNodes).forEach((node) => {
+        if ((node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim()))) {
+          fragments.push(node);
+        }
+      });
+      // If there's a news list, keep its structure
+      const newsList = body.querySelector('.panel__news-list');
+      if (newsList) {
+        const ul = document.createElement('ul');
+        newsList.querySelectorAll('li').forEach((li) => {
+          ul.appendChild(li.cloneNode(true));
+        });
+        fragments.push(ul);
+      }
+    }
+    // If no body, fallback to all children
+    if (!body) {
+      Array.from(cardEl.childNodes).forEach((node) => {
+        if ((node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim()))) {
+          fragments.push(node);
+        }
+      });
+    }
+    return [imgCell, fragments.length ? fragments : ''];
   }
 
-  // Find all card columns
+  // Hero card (include all text content and image, ensure CTA is a link if present)
+  const heroDesktop = element.querySelector('.narrow-hero__panel--desktop');
+  let heroCard = null;
+  if (heroDesktop) {
+    let img = heroDesktop.querySelector('.panel__image img');
+    if (!img) {
+      const bgDiv = heroDesktop.querySelector('.panel__image');
+      if (bgDiv && bgDiv.dataset.hlxBackgroundImage) {
+        const urlMatch = bgDiv.dataset.hlxBackgroundImage.match(/url\(("|')?(.*?)\1?\)/);
+        if (urlMatch && urlMatch[2]) {
+          img = document.createElement('img');
+          img.src = urlMatch[2];
+        }
+      }
+    }
+    const body = heroDesktop.querySelector('.panel__body');
+    const fragments = [];
+    if (body) {
+      Array.from(body.childNodes).forEach((node) => {
+        if ((node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim()))) {
+          // Replace CTA span with a link if possible
+          if (node.classList && node.classList.contains('cta-btn')) {
+            const link = document.createElement('a');
+            link.textContent = node.textContent.trim();
+            link.href = heroDesktop.getAttribute('href') || '#';
+            fragments.push(link);
+          } else {
+            fragments.push(node);
+          }
+        }
+      });
+    }
+    heroCard = [img ? img : '', fragments.length ? fragments : ''];
+  }
+
   const cards = [];
-  const rowPanels = element.querySelector('.row.panels');
-  if (!rowPanels) return;
-  const cols = Array.from(rowPanels.children);
-
-  // Hero Card (desktop)
-  const heroCol = cols.find(col => col.classList.contains('narrow-hero'));
-  if (heroCol) {
-    const heroPanel = heroCol.querySelector('.narrow-hero__panel--desktop');
-    if (heroPanel) {
-      const img = extractImage(heroPanel);
-      const text = extractText(heroPanel);
-      cards.push(createCardRow(img, text));
-    }
+  if (heroCard) cards.push(heroCard);
+  // Senior card
+  const seniorCard = element.querySelector('a.panel--primary');
+  if (seniorCard) {
+    cards.push(extractCard(seniorCard));
+  }
+  // Firmapension card
+  const firmapensionCard = element.querySelector('a.panel--image[href*="bliv-kunde"]');
+  if (firmapensionCard) {
+    cards.push(extractCard(firmapensionCard));
+  }
+  // News card
+  const newsPanel = element.querySelector('.panel--news');
+  if (newsPanel) {
+    cards.push(extractCard(newsPanel));
+  }
+  // Investment profiles card
+  const investProfileCard = element.querySelector('a.panel--image[href*="nye-investeringsprofiler-btb"]');
+  if (investProfileCard) {
+    cards.push(extractCard(investProfileCard));
+  }
+  // Green partner card
+  const partnerCard = element.querySelector('a.panel--green');
+  if (partnerCard) {
+    cards.push(extractCard(partnerCard));
+  }
+  // Admin card
+  const adminCard = element.querySelector('a.panel--tertiary');
+  if (adminCard) {
+    cards.push(extractCard(adminCard));
   }
 
-  // Other cards
-  cols.forEach(col => {
-    if (col.classList.contains('narrow-hero') || !col.innerHTML.trim()) return;
-    if (col.querySelector('.panel--news')) {
-      const newsPanel = col.querySelector('.panel--news');
-      const text = extractNewsCard(newsPanel);
-      cards.push(createCardRow(null, text));
-      return;
-    }
-    const panel = col.querySelector('.panel');
-    if (panel) {
-      const img = extractImage(panel);
-      const text = extractText(panel);
-      cards.push(createCardRow(img, text));
-    }
-  });
-
-  // Table header
   const headerRow = ['Cards (cards1)'];
   const tableRows = [headerRow, ...cards];
-
-  // Create table and replace element
-  const block = WebImporter.DOMUtils.createTable(tableRows, document);
-  element.replaceWith(block);
+  const blockTable = WebImporter.DOMUtils.createTable(tableRows, document);
+  element.replaceWith(blockTable);
 }

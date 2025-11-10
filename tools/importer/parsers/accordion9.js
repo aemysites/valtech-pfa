@@ -1,90 +1,95 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper: extract all content nodes except empty <p>
-  function getContentNodes(content) {
-    return Array.from(content.childNodes).filter(node => {
-      if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P' && node.textContent.trim() === '') {
-        return false;
-      }
-      return true;
-    });
-  }
-
-  // Extract top-level accordion items (teasers)
-  function extractTeaserRows(teaser) {
-    const rows = [];
-    // The first toggler in teaser is the main section title
-    const mainToggler = teaser.querySelector(':scope > p.accordions__toggler');
-    if (!mainToggler) return rows;
-    // The next sibling is the main content wrapper
-    let mainContent = mainToggler.nextElementSibling;
-    // Gather all nested toggler/content pairs as inner accordions
-    let innerItems = [];
-    if (mainContent && mainContent.classList.contains('accordions__element')) {
-      const innerTogglers = Array.from(mainContent.querySelectorAll(':scope > p.accordions__toggler'));
-      innerTogglers.forEach(innerToggler => {
-        let innerContent = innerToggler.nextElementSibling;
-        if (innerContent && innerContent.classList.contains('accordions__element')) {
-          const contentNodes = getContentNodes(innerContent);
-          innerItems.push([
-            innerToggler.textContent.trim(),
-            contentNodes.length ? contentNodes : ''
-          ]);
-        }
-      });
-    }
-    // If there are innerItems, put them as a list in the content cell
-    let contentCell;
-    if (innerItems.length > 0) {
-      // Create a fragment with all inner accordions as blocks
-      const frag = document.createElement('div');
-      innerItems.forEach(([title, content]) => {
-        const block = document.createElement('div');
-        const h = document.createElement('strong');
-        h.textContent = title;
-        block.appendChild(h);
-        if (Array.isArray(content)) {
-          content.forEach(node => block.appendChild(node.cloneNode(true)));
-        } else if (content) {
-          block.appendChild(document.createTextNode(content));
-        }
-        frag.appendChild(block);
-      });
-      contentCell = frag.childNodes.length ? Array.from(frag.childNodes) : '';
-    } else {
-      // If no innerItems, just use the main content
-      if (mainContent && mainContent.classList.contains('accordions__element')) {
-        const nodes = getContentNodes(mainContent);
-        contentCell = nodes.length ? nodes : '';
-      } else {
-        contentCell = '';
-      }
-    }
-    rows.push([
-      mainToggler.textContent.trim(),
-      contentCell
-    ]);
-    return rows;
-  }
-
-  // The block header
+  // Accordion block header
   const headerRow = ['Accordion (accordion9)'];
-  // The main layout: two columns, each with a .col-xs-12.col-sm-6
-  const cols = element.querySelectorAll(':scope > div');
-  let rows = [];
-  cols.forEach(col => {
-    // Each col contains several .teasers__teaser blocks
-    const teasers = col.querySelectorAll(':scope > div.teasers__teaser');
-    teasers.forEach(teaser => {
-      rows.push(...extractTeaserRows(teaser));
+
+  // Find all direct children in the main content column
+  const mainCol = element.querySelector('.col-sm-12');
+  if (!mainCol) return;
+
+  // Get all children of the main column
+  const children = Array.from(mainCol.childNodes);
+
+  // Find all toggler paragraphs and their corresponding content blocks
+  const accordionRows = [];
+  for (let i = 0; i < children.length; i++) {
+    const node = children[i];
+    // Find toggler
+    if (node.nodeType === 1 && node.classList.contains('accordions__toggler')) {
+      // Title cell: extract text content only
+      const titleText = node.textContent.trim();
+      // Next element should be the content block
+      let contentCell = null;
+      for (let j = i + 1; j < children.length; j++) {
+        const nextNode = children[j];
+        if (nextNode.nodeType === 1 && nextNode.classList.contains('accordions__element')) {
+          // Get all content inside the accordion element
+          const contentParts = [];
+          nextNode.childNodes.forEach((el) => {
+            if (el.nodeType === 1) {
+              contentParts.push(el.cloneNode(true));
+            } else if (el.nodeType === 3) {
+              const txt = el.textContent.trim();
+              if (txt) contentParts.push(document.createTextNode(txt));
+            }
+          });
+          contentCell = contentParts.length === 1 ? contentParts[0] : contentParts;
+          break;
+        }
+        if (nextNode.nodeType === 1 && nextNode.classList.contains('accordions__toggler')) {
+          break;
+        }
+      }
+      if (contentCell) {
+        accordionRows.push([titleText, contentCell]);
+      }
+    }
+  }
+
+  // Compose the table rows: only header and accordion items
+  const rows = [headerRow, ...accordionRows];
+
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(rows, document);
+
+  // Replace the original element with the block
+  element.replaceWith(block);
+
+  // Now insert all non-accordion content before and after the block, in correct order
+  // Find the indices for the first and last accordion toggler/element
+  let firstAccordionIdx = children.findIndex(n => n.nodeType === 1 && (n.classList.contains('accordions__toggler') || n.classList.contains('accordions__element')));
+  let lastAccordionIdx = -1;
+  for (let idx = children.length - 1; idx >= 0; idx--) {
+    if (children[idx].nodeType === 1 && (children[idx].classList.contains('accordions__toggler') || children[idx].classList.contains('accordions__element'))) {
+      lastAccordionIdx = idx;
+      break;
+    }
+  }
+
+  // Helper to insert nodes before/after block, skipping empty paragraphs
+  function insertContent(nodes, refBlock, before = true) {
+    nodes.forEach((n) => {
+      if (n.nodeType === 1) {
+        // Skip empty paragraphs
+        if (n.tagName === 'P' && (!n.textContent.trim() || n.innerHTML.trim() === '&nbsp;')) return;
+        refBlock.parentNode.insertBefore(n.cloneNode(true), before ? refBlock : refBlock.nextSibling);
+      } else if (n.nodeType === 3) {
+        const txt = n.textContent.trim();
+        if (txt) {
+          refBlock.parentNode.insertBefore(document.createTextNode(txt), before ? refBlock : refBlock.nextSibling);
+        }
+      }
     });
-  });
+  }
 
-  // The block table: header + all accordion rows
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    ...rows
-  ], document);
-
-  element.replaceWith(table);
+  // Insert content before the block
+  if (firstAccordionIdx > 0) {
+    const beforeNodes = children.slice(0, firstAccordionIdx);
+    insertContent(beforeNodes, block, true);
+  }
+  // Insert content after the block
+  if (lastAccordionIdx >= 0 && lastAccordionIdx < children.length - 1) {
+    const afterNodes = children.slice(lastAccordionIdx + 1);
+    insertContent(afterNodes, block, false);
+  }
 }
