@@ -1,0 +1,152 @@
+{
+  "templates": [
+    {
+      "name": "'Business website template'",
+      "cluster": 1,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "uuid": "95c2018375199beb8ab8f2ce46f849d7c71272dc"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "uuid": "e5476f6fff0392c9ebca091a887891498140b79e"
+        }
+      ]
+    },
+    {
+      "name": "'business portfolio'",
+      "cluster": 2,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "uuid": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+          "uuid": "e21795e8cf3c19ef9d53253d674efa55b85c0255"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "uuid": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "uuid": "3fde3a8b7a528182c1c751f0100189055d4a4639"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "uuid": "eac8783b4cfe4dd8175ae8552f63299a46df890a"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "uuid": "fab9135e29a157101ff8ca97f8253954eb386471"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "uuid": "cc4caf43597c5951502deb0124871b848d4e1428"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "uuid": "aabec4b73b53599039a2302d005ed7f98c95dd95"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "uuid": "41ff4838cef884b2a143471516f62b587f81d234"
+        }
+      ]
+    },
+    {
+      "name": "'form page'",
+      "cluster": 3,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "uuid": "84d873f642b401a49aa03825dd5e328401e3ce23"
+        }
+      ]
+    },
+    {
+      "name": "'Service Information Page'",
+      "cluster": 4,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+          "uuid": "91b0c288f5058d60137b7131e4315108700a83c6"
+        }
+      ]
+    },
+    {
+      "name": "'Portfolio Showcase'",
+      "cluster": 5,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/",
+          "uuid": "109d2b1ef4db84ec2e6cd8efb3e585e7f9010ab7"
+        },
+        {
+          "url": "https://www.pfa.dk/erhverv/",
+          "uuid": "6dbd0e883e331188e1ca7f674ce9de225f7ef1d0"
+        },
+        {
+          "url": "https://www.pfa.dk/om-pfa/",
+          "uuid": "33a005a8f60afd13376dc63e48ebca794a19bf03"
+        }
+      ]
+    },
+    {
+      "name": "'video content page'",
+      "cluster": 6,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+          "uuid": "9853fd4140067af6fda3271dfd417fcafd7195e3"
+        }
+      ]
+    },
+    {
+      "name": "'Portfolio Page'",
+      "cluster": 7,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "uuid": "88a0c468bd96f4d8ced07444391f684f031c3d62"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard Template'",
+      "cluster": 8,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "uuid": "98ff691367671cfa69ede1f5d0f986913825e229"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard Template'",
+      "cluster": 9,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "uuid": "9c1f9638895128a3afd0e32ab486ef210d656bfe"
+        }
+      ]
+    },
+    {
+      "name": "'business portfolio'",
+      "cluster": 10,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+          "uuid": "6ae09e4f67dc688791f191f5509c370de3edf1b6"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "uuid": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d"
+        }
+      ]
+    }
+  ]
+}
