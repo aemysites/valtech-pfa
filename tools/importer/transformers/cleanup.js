@@ -37,6 +37,14 @@ export default function transform(hookName, element) {
     for (const sp of spans) {
       sp.replaceWith(sp.textContent);
     }
+    // remove all cookie consent related stuff
+    WebImporter.DOMUtils.remove(element, [
+      '#CybotCookiebotDialog',
+      '#CybotCookiebotDialogBodyUnderlay',
+      '#CookiebotSessionPixel'
+    ]);
+    // renable scrolling
+    element.setAttribute('style', 'overflow: scroll;')
   }
 
   if (hookName === TransformHook.beforeParse) {
