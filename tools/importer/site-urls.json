@@ -63,12 +63,6 @@
       "id": "3fde3a8b7a528182c1c751f0100189055d4a4639"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/klogere-paa-investeringer-old/",
-      "source": "MANUAL",
-      "targetPath": "/privat/opsparing/klogere-paa-investeringer-old",
-      "id": "3a2fb515f4b80d287a98ae021f407c0ac20fb93b"
-    },
-    {
       "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
       "source": "MANUAL",
       "targetPath": "/privat/opsparing/opsparing-i-gennemsnitsrente",
