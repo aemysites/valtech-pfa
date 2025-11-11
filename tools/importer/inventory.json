@@ -1,0 +1,2562 @@
+{
+  "fragments": [
+    {
+      "name": "nav",
+      "path": "/nav",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+          "uuid": "09a46beb-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/",
+          "urlHash": "109d2b1ef4db84ec2e6cd8efb3e585e7f9010ab7",
+          "uuid": "109d2b1e-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/om-pfa/",
+          "urlHash": "33a005a8f60afd13376dc63e48ebca794a19bf03",
+          "uuid": "33a005a8-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+          "uuid": "6772e48d-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+          "urlHash": "6ae09e4f67dc688791f191f5509c370de3edf1b6",
+          "uuid": "6ae09e4f-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/erhverv/",
+          "urlHash": "6dbd0e883e331188e1ca7f674ce9de225f7ef1d0",
+          "uuid": "6dbd0e88-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+          "uuid": "84d873f6-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+          "urlHash": "91b0c288f5058d60137b7131e4315108700a83c6",
+          "uuid": "91b0c288-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+          "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+          "uuid": "9853fd41-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+          "uuid": "9f499cd3-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+          "uuid": "aabec4b7-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+          "uuid": "cc4caf43-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+          "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+          "uuid": "e21795e8-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+          "uuid": "fab9135e-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]"
+        }
+      ],
+      "styles": {
+        "height": 113,
+        "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    },
+    {
+      "name": "footer",
+      "path": "/footer",
+      "totalBoxes": 1,
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+          "uuid": "09a46beb-11-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/",
+          "urlHash": "109d2b1ef4db84ec2e6cd8efb3e585e7f9010ab7",
+          "uuid": "109d2b1e-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/om-pfa/",
+          "urlHash": "33a005a8f60afd13376dc63e48ebca794a19bf03",
+          "uuid": "33a005a8-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-13-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-18-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+          "uuid": "6772e48d-06-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+          "urlHash": "6ae09e4f67dc688791f191f5509c370de3edf1b6",
+          "uuid": "6ae09e4f-05-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/erhverv/",
+          "urlHash": "6dbd0e883e331188e1ca7f674ce9de225f7ef1d0",
+          "uuid": "6dbd0e88-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+          "uuid": "84d873f6-06-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-20-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+          "urlHash": "91b0c288f5058d60137b7131e4315108700a83c6",
+          "uuid": "91b0c288-05-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-29-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+          "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+          "uuid": "9853fd41-17-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-20-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-25-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+          "uuid": "9f499cd3-07-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+          "uuid": "aabec4b7-10-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+          "uuid": "cc4caf43-15-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+          "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+          "uuid": "e21795e8-10-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-09-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-09-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+          "uuid": "fab9135e-22-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        }
+      ],
+      "styles": {
+        "background": "rgb(51, 51, 51) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Cards",
+      "cluster": 1,
+      "source": "Cards",
+      "target": "Cards (cards1)",
+      "key": "cards1",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/",
+          "urlHash": "109d2b1ef4db84ec2e6cd8efb3e585e7f9010ab7",
+          "uuid": "109d2b1e-01-ee7a6796f533ca1a641266fa982b337f0ba6fbf3",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/om-pfa/",
+          "urlHash": "33a005a8f60afd13376dc63e48ebca794a19bf03",
+          "uuid": "33a005a8-01-ee7a6796f533ca1a641266fa982b337f0ba6fbf3",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/erhverv/",
+          "urlHash": "6dbd0e883e331188e1ca7f674ce9de225f7ef1d0",
+          "uuid": "6dbd0e88-01-ee7a6796f533ca1a641266fa982b337f0ba6fbf3",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 2,
+      "source": "Hero",
+      "target": "Hero (hero2)",
+      "key": "hero2",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+          "uuid": "09a46beb-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+          "uuid": "6772e48d-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+          "urlHash": "6ae09e4f67dc688791f191f5509c370de3edf1b6",
+          "uuid": "6ae09e4f-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+          "uuid": "84d873f6-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+          "urlHash": "91b0c288f5058d60137b7131e4315108700a83c6",
+          "uuid": "91b0c288-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+          "uuid": "9f499cd3-01-7dabc7e31c45a802592651f60769eff199a48c33",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+          "uuid": "aabec4b7-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+          "uuid": "cc4caf43-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+          "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+          "uuid": "e21795e8-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+          "uuid": "fab9135e-01-63f4c5558121d05317cdfdd90b4ab2dbe3632880",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 3,
+      "source": "Columns",
+      "target": "Columns (columns3)",
+      "key": "columns3",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-04-217acbb172c1a19e906aa6605b80c0c0ab481f57",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-04-217acbb172c1a19e906aa6605b80c0c0ab481f57",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-13-8423bb11fdf663a098e7e0f2eade7de8c3d1b2b1",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]/div[1]/div[1]/div[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-19-8423bb11fdf663a098e7e0f2eade7de8c3d1b2b1",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-18-4ce1c8d9b2864c4d343f8bd517aad7fbd858c638",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[9]/div[1]/div[1]/div[1]/div[2]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+          "uuid": "fab9135e-07-217acbb172c1a19e906aa6605b80c0c0ab481f57",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+          "uuid": "fab9135e-10-8f2fa7c7ea6ac5039d206ce58f2dbedcb4f4d35b",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 4,
+      "source": "Columns",
+      "target": "Columns (columns4)",
+      "key": "columns4",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+          "uuid": "09a46beb-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+          "uuid": "6772e48d-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-15-a303f5ca6c759a2f556f77b2f0cbed49ec84dd75",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "header",
+      "cluster": 5,
+      "source": "Header",
+      "target": "Header (header5)",
+      "key": "header5",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+          "uuid": "09a46beb-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/",
+          "urlHash": "109d2b1ef4db84ec2e6cd8efb3e585e7f9010ab7",
+          "uuid": "109d2b1e-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/om-pfa/",
+          "urlHash": "33a005a8f60afd13376dc63e48ebca794a19bf03",
+          "uuid": "33a005a8-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+          "uuid": "6772e48d-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+          "urlHash": "6ae09e4f67dc688791f191f5509c370de3edf1b6",
+          "uuid": "6ae09e4f-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/erhverv/",
+          "urlHash": "6dbd0e883e331188e1ca7f674ce9de225f7ef1d0",
+          "uuid": "6dbd0e88-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+          "uuid": "84d873f6-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+          "urlHash": "91b0c288f5058d60137b7131e4315108700a83c6",
+          "uuid": "91b0c288-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+          "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+          "uuid": "9853fd41-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+          "uuid": "9f499cd3-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+          "uuid": "aabec4b7-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+          "uuid": "cc4caf43-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+          "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+          "uuid": "e21795e8-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+          "uuid": "fab9135e-00-6df8f4543caf3607c339ed9b102242abc3870e7f",
+          "xpath": "/html[1]/body[1]/div[2]/header[1]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 6,
+      "source": "Columns",
+      "target": "Columns (columns6)",
+      "key": "columns6",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-04-217acbb172c1a19e906aa6605b80c0c0ab481f57",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+          "uuid": "cc4caf43-04-217acbb172c1a19e906aa6605b80c0c0ab481f57",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 7,
+      "source": "Columns",
+      "target": "Columns (columns7)",
+      "key": "columns7",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-06-8f2fa7c7ea6ac5039d206ce58f2dbedcb4f4d35b",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/div[1]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-08-b5b2f5037e52a43d99283596214fa34e519d5c80",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-10-fc11f2310808d5ebdd96ba135b8cfd5acd71771d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]/div[1]/div[1]/div[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 8,
+      "source": "Accordion",
+      "target": "Accordion (accordion8)",
+      "key": "accordion8",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-04-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]",
+          "section": "section-3"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-05-3086b43427eeef69490b641da437c1774c1caeda",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-06-5fb6ff45d67384833676cc6165e60e24aa3384f7",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 9,
+      "source": "Accordion",
+      "target": "Accordion (accordion9)",
+      "key": "accordion9",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-13-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]",
+          "section": "section-3"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+          "uuid": "cc4caf43-10-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 10,
+      "source": "Accordion",
+      "target": "Accordion (accordion10)",
+      "key": "accordion10",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-07-3086b43427eeef69490b641da437c1774c1caeda",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 11,
+      "source": "Cards",
+      "target": "Cards (cards11)",
+      "key": "cards11",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+          "uuid": "9f499cd3-03-61c0cdf0126cf48f1672b4e63a44bc5a68543f82",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 12,
+      "source": "Accordion",
+      "target": "Accordion (accordion12)",
+      "key": "accordion12",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+          "uuid": "84d873f6-04-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 13,
+      "source": "Accordion",
+      "target": "Accordion (accordion13)",
+      "key": "accordion13",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-11-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-12-3086b43427eeef69490b641da437c1774c1caeda",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-13-5fb6ff45d67384833676cc6165e60e24aa3384f7",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-14-27a1afc02bbcea6e1f5538749c43cbc146f2970d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 14,
+      "source": "Columns",
+      "target": "Columns (columns14)",
+      "key": "columns14",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+          "uuid": "9f499cd3-05-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 15,
+      "source": "Columns",
+      "target": "Columns (columns15)",
+      "key": "columns15",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+          "uuid": "09a46beb-11-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/",
+          "urlHash": "109d2b1ef4db84ec2e6cd8efb3e585e7f9010ab7",
+          "uuid": "109d2b1e-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/om-pfa/",
+          "urlHash": "33a005a8f60afd13376dc63e48ebca794a19bf03",
+          "uuid": "33a005a8-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-13-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-18-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+          "uuid": "6772e48d-06-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+          "urlHash": "6ae09e4f67dc688791f191f5509c370de3edf1b6",
+          "uuid": "6ae09e4f-05-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/erhverv/",
+          "urlHash": "6dbd0e883e331188e1ca7f674ce9de225f7ef1d0",
+          "uuid": "6dbd0e88-02-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+          "uuid": "84d873f6-06-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-20-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+          "urlHash": "91b0c288f5058d60137b7131e4315108700a83c6",
+          "uuid": "91b0c288-05-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-29-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+          "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+          "uuid": "9853fd41-17-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-20-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-25-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+          "uuid": "9f499cd3-07-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+          "uuid": "aabec4b7-10-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+          "uuid": "cc4caf43-15-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+          "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+          "uuid": "e21795e8-10-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+          "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+          "uuid": "e5476f6f-09-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-09-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+          "uuid": "fab9135e-22-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]",
+          "section": "section-5"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 16,
+      "source": "Columns",
+      "target": "Columns (columns16)",
+      "key": "columns16",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-05-b324a14e293effe4cda8f69ad451970289c14804",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/ul[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-26-eca77a05c97dd652319bb0ef8047fb21919a3c9c",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]/div[1]/div[1]/div[1]/ul[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-16-16b6ef0c138a38558deacc6b490c31270a7979b1",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[15]/div[1]/div[1]/div[1]/ul[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-20-e4c91a30ca903d51849c86663ca32b4abd40527b",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[16]/div[1]/div[1]/div[1]/ul[1]",
+          "section": "section-2"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 17,
+      "source": "Columns",
+      "target": "Columns (columns17)",
+      "key": "columns17",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+          "uuid": "09a46beb-08-3086b43427eeef69490b641da437c1774c1caeda",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-05-3086b43427eeef69490b641da437c1774c1caeda",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-07-27a1afc02bbcea6e1f5538749c43cbc146f2970d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-09-e1353db8ff1b7572f1b6227a5ae29258337de3ca",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[9]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-11-35044df2a042562b667b1599c2b07371f2e420b0",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[11]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-13-4a2fbb82bf446e234bd645bd4dba198e67d0983f",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[13]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 18,
+      "source": "Columns",
+      "target": "Columns (columns18)",
+      "key": "columns18",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-04-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-06-5fb6ff45d67384833676cc6165e60e24aa3384f7",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-08-a303f5ca6c759a2f556f77b2f0cbed49ec84dd75",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-10-b00d91dff272fbc37e0496eedd9a51fc79cd1d3f",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[10]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-12-d41ee05d863b27985799813a45412af99616f890",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[12]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-14-6ce32babd9558175c307f6f91fec73e85a2a2868",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[14]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 19,
+      "source": "Accordion",
+      "target": "Accordion (accordion19)",
+      "key": "accordion19",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+          "uuid": "aabec4b7-07-27a1afc02bbcea6e1f5538749c43cbc146f2970d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]",
+          "section": "section-5"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 20,
+      "source": "Accordion",
+      "target": "Accordion (accordion20)",
+      "key": "accordion20",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-11-5fb6ff45d67384833676cc6165e60e24aa3384f7",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 21,
+      "source": "Cards",
+      "target": "Cards (cards21)",
+      "key": "cards21",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-05-8f2fa7c7ea6ac5039d206ce58f2dbedcb4f4d35b",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 22,
+      "source": "Hero",
+      "target": "Hero (hero22)",
+      "key": "hero22",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+          "uuid": "9c1f9638-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 23,
+      "source": "Columns",
+      "target": "Columns (columns23)",
+      "key": "columns23",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+          "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+          "uuid": "e21795e8-06-8f2fa7c7ea6ac5039d206ce58f2dbedcb4f4d35b",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 24,
+      "source": "Columns",
+      "target": "Columns (columns24)",
+      "key": "columns24",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-04-bee67303da43670df54edd103c6135d6bb7a12de",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/app-active-composition[1]/div[1]/div[1]/app-rich-text[1]"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 25,
+      "source": "Cards",
+      "target": "Cards (cards25)",
+      "key": "cards25",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-10-3086b43427eeef69490b641da437c1774c1caeda",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 26,
+      "source": "Columns",
+      "target": "Columns (columns26)",
+      "key": "columns26",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-09-d9988bc154912a50e6a1147952d6230932d741b4",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/app-active-composition-flexible[1]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 27,
+      "source": "Columns",
+      "target": "Columns (columns27)",
+      "key": "columns27",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+          "uuid": "41ff4838-16-b5b2f5037e52a43d99283596214fa34e519d5c80",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+          "uuid": "cc4caf43-13-b5b2f5037e52a43d99283596214fa34e519d5c80",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 28,
+      "source": "Accordion",
+      "target": "Accordion (accordion28)",
+      "key": "accordion28",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-17-434f6c3a163ed0d4a5032f67f47e4e893de01da3",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[10]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 29,
+      "source": "Columns",
+      "target": "Columns (columns29)",
+      "key": "columns29",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+          "uuid": "3fde3a8b-11-27a1afc02bbcea6e1f5538749c43cbc146f2970d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 30,
+      "source": "Columns",
+      "target": "Columns (columns30)",
+      "key": "columns30",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-12-8f2fa7c7ea6ac5039d206ce58f2dbedcb4f4d35b",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 31,
+      "source": "Accordion",
+      "target": "Accordion (accordion31)",
+      "key": "accordion31",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+          "uuid": "84d873f6-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 32,
+      "source": "Accordion",
+      "target": "Accordion (accordion32)",
+      "key": "accordion32",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+          "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+          "uuid": "98ff6913-15-a303f5ca6c759a2f556f77b2f0cbed49ec84dd75",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 33,
+      "source": "Accordion",
+      "target": "Accordion (accordion33)",
+      "key": "accordion33",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+          "uuid": "6772e48d-04-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "cluster": 34,
+      "source": "Cards",
+      "target": "Cards (cards34)",
+      "key": "cards34",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+          "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+          "uuid": "95c20183-06-61c0cdf0126cf48f1672b4e63a44bc5a68543f82",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[2]",
+          "section": "section-1"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+          "uuid": "eac8783b-06-66454f7bd633adbeceb5b896b1d4650855c69e58",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/div[2]"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+          "uuid": "fab9135e-16-bdfac885bd2e6536f45337a873997c1e31d1e07a",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/div[2]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 35,
+      "source": "Accordion",
+      "target": "Accordion (accordion35)",
+      "key": "accordion35",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+          "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+          "uuid": "88a0c468-09-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]",
+          "section": "section-1"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 36,
+      "source": "Accordion",
+      "target": "Accordion (accordion36)",
+      "key": "accordion36",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+          "urlHash": "91b0c288f5058d60137b7131e4315108700a83c6",
+          "uuid": "91b0c288-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 37,
+      "source": "Accordion",
+      "target": "Accordion (accordion37)",
+      "key": "accordion37",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+          "uuid": "aabec4b7-04-08a8ecf5a5a05a592639f93f732c4973929f905d",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]",
+          "section": "section-3"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 38,
+      "source": "Columns",
+      "target": "Columns (columns38)",
+      "key": "columns38",
+      "instances": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+          "uuid": "09a46beb-07-8f2fa7c7ea6ac5039d206ce58f2dbedcb4f4d35b",
+          "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/div[1]",
+          "section": "section-2"
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+      "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+      "uuid": "09a46beb-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+      "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+      "uuid": "09a46beb-04-6e09cff437f94b749b7511e4c2a8cf52972d4a49",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/h2[1]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+      "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+      "uuid": "09a46beb-05-0842875b0de6294f5d815a97b01c58062abead93",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+      "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+      "uuid": "09a46beb-06-254841b0ff50ae83bbaab6a1b462f4c6ec42b8f9",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+      "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+      "uuid": "09a46beb-09-5fb6ff45d67384833676cc6165e60e24aa3384f7",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]",
+      "section": "section-3"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+      "urlHash": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4",
+      "uuid": "09a46beb-10-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+      "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+      "uuid": "3fde3a8b-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+      "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+      "uuid": "3fde3a8b-03-7ee91af686d9ca944321f2143e8aa1430e6628ec",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h2[1]/span[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+      "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+      "uuid": "3fde3a8b-05-437240b4e8fc05887466652d908950fb1bc02e21",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/h3[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+      "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+      "uuid": "3fde3a8b-07-118d1bcd198c88d9074f427386a2abe4895c5d7c",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/h3[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+      "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+      "uuid": "3fde3a8b-09-ca4c811d6bf1c797eb55285997ea0e3cf377c531",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]/div[1]/div[1]/div[1]/h3[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+      "urlHash": "3fde3a8b7a528182c1c751f0100189055d4a4639",
+      "uuid": "3fde3a8b-12-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-03-001e408f4c80978e0a9f64d9db80a905a3776ca2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h2[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-06-be343c8bf949c6f2d05e6fefce3cc6f849ba13b1",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-07-c2218751dc195b2dced29cf8b86c742b53e98a0b",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h5[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-08-eec0c66d1a0c149027ac556713f36d023a0d3ef2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[3]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-09-f9e25dbf4288ef8920b543c801a3b5f8da1c0016",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[5]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-10-1d37bde65b5a0552b449df5f6f570276676c783b",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h5[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-11-0f6eabd5bce223eabd89ca5b0e0a4cb536b457de",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[6]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-12-c5baa7880ee07d3ae80e78d5ce85192c1828e48b",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[7]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-14-9a60c52d530aac8a9a8bbc739e99297471788f81",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/h2[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-15-2dd439b557126bbc549abde8bd1e25579b9ddb98",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "urlHash": "41ff4838cef884b2a143471516f62b587f81d234",
+      "uuid": "41ff4838-17-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+      "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+      "uuid": "6772e48d-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+      "urlHash": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d",
+      "uuid": "6772e48d-05-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+      "urlHash": "6ae09e4f67dc688791f191f5509c370de3edf1b6",
+      "uuid": "6ae09e4f-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+      "urlHash": "6ae09e4f67dc688791f191f5509c370de3edf1b6",
+      "uuid": "6ae09e4f-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+      "urlHash": "6ae09e4f67dc688791f191f5509c370de3edf1b6",
+      "uuid": "6ae09e4f-04-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+      "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+      "uuid": "84d873f6-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+      "urlHash": "84d873f642b401a49aa03825dd5e328401e3ce23",
+      "uuid": "84d873f6-05-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-03-631ed072eb88f98a5cde058d47700960bd36a4e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h2[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-05-b9931bfeca3fddacf2c8169cc747ecdb1aafdc50",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-06-be343c8bf949c6f2d05e6fefce3cc6f849ba13b1",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-07-eec0c66d1a0c149027ac556713f36d023a0d3ef2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[3]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-08-c2218751dc195b2dced29cf8b86c742b53e98a0b",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h5[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-12-aae06fc9d2019eee3269e5fe175df12cf24c3230",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]/div[1]/div[1]/div[1]/h2[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-14-fcc1461cb98267315cf2bc9c9f42249f38099d39",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]/div[1]/div[1]/div[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-16-e1353db8ff1b7572f1b6227a5ae29258337de3ca",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[9]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-18-71311b2ffe4d76e9488969085f6dbbed1c0ade7a",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[10]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "urlHash": "88a0c468bd96f4d8ced07444391f684f031c3d62",
+      "uuid": "88a0c468-19-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+      "urlHash": "91b0c288f5058d60137b7131e4315108700a83c6",
+      "uuid": "91b0c288-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+      "urlHash": "91b0c288f5058d60137b7131e4315108700a83c6",
+      "uuid": "91b0c288-04-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-03-631ed072eb88f98a5cde058d47700960bd36a4e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h2[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-04-be343c8bf949c6f2d05e6fefce3cc6f849ba13b1",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-05-8c8758d9055206cb7cd3f36391ef3a634a6bf6b3",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[4]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-07-f9e25dbf4288ef8920b543c801a3b5f8da1c0016",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[5]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-08-0f6eabd5bce223eabd89ca5b0e0a4cb536b457de",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[6]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-09-c5baa7880ee07d3ae80e78d5ce85192c1828e48b",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[7]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-10-c9394f172fbe30ec0f1bdb088b282c85933c8fa5",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[8]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-11-fd4f5f970f9d4897f8333836b10da18c19fd541a",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/h2[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-13-0842875b0de6294f5d815a97b01c58062abead93",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-14-254841b0ff50ae83bbaab6a1b462f4c6ec42b8f9",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-15-445ffec1784ece6e0456e40e9ed5f6cb8e8e9345",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/p[3]",
+      "section": "section-6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-16-3086b43427eeef69490b641da437c1774c1caeda",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-17-5fb6ff45d67384833676cc6165e60e24aa3384f7",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-18-aae06fc9d2019eee3269e5fe175df12cf24c3230",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]/div[1]/div[1]/div[1]/h2[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-20-671cdab11d822ca5c7a20f0cccd9f3ca8b1fb2d5",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]/div[1]/div[1]/div[1]/h5[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-21-4c662e06970c3281c70d204921453308e6b32d9a",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-22-f7b01d994440698640152c2d2ff59c832f5023d5",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]/div[1]/div[1]/div[1]/div[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-23-dd475a24f2878db58e2f87994493f07426c9fbf5",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-24-ed67061cd6a3a64bb203bc1f2bc3b7d073f05dc0",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]/div[1]/div[1]/div[1]/div[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-25-a7d58b412ff15e64968867897fd4aa9ef5a408cb",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]/div[1]/div[1]/div[1]/h5[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-27-e1353db8ff1b7572f1b6227a5ae29258337de3ca",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[9]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "urlHash": "95c2018375199beb8ab8f2ce46f849d7c71272dc",
+      "uuid": "95c20183-28-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-01-829bbcd21476f78a60728d3cbc65b3eeb5bd503f",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/h2[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-02-d0d678d9bb5d7b0ccedfa60139973aad8b7b633b",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/p[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-03-c827424e41304263e69a233ff50085b386b52a13",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/ul[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-04-1dfa15c372f55b4f32abd96b618b882127ba4a42",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/h3[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-05-360f28397d3e8ca441435268177c3737c8b61261",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/p[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-06-60e851cd91ed1ed79288ce4cb040f9282cee3c3a",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/p[3]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-07-69ed7763b5e8f5582076c35b54bc27d319a05627",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/p[4]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-08-351019705c21fe969f58aa123ad6ec5408443ee5",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/h3[3]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-09-dd967d61e3c5791312e248c48e092e430016cd49",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/p[5]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-10-06da3a63b33be0948ed2fd2b06eece5a3b4a6ae1",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/p[6]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-11-8310c477dfc82e0fc3b26264fce3180e1cd866cf",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/ul[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-12-229afed176fb3dc1786d8228fe8ce647d0734bf3",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/h3[5]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-13-b8c4c41eaef37b7059ca2b1602514312e12694c2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/div[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-14-fbbc1a9c1d3bb03c5194a3c5196e02e3ac60ff4d",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/div[3]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-15-10fe572c215071947b393ace385bfa400428827c",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[1]/div[1]/div[1]/div[1]/div[4]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "urlHash": "9853fd4140067af6fda3271dfd417fcafd7195e3",
+      "uuid": "9853fd41-16-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-03-4916d94c880a314a03115adbcf9992f958c07a4a",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/app-active-composition[1]/div[1]/div[1]/h2[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-05-1cc02ef79208573404cb54d2392869ca289e0fe0",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/app-active-composition[1]/div[1]/div[1]/div[1]/form[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-06-0f16348d4814d2e3867e7058679073d321acda2b",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/app-active-composition[1]/div[1]/div[1]/div[1]/div[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-07-2cdca9e5b89558fc0b96ed99fc254621321dc8e2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/app-active-composition-flexible[1]/div[1]/div[1]/h2[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-08-8406b3b78e54bcc4f38157accebf7378b55c6813",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/app-active-composition-flexible[1]/div[1]/div[1]/app-rich-text[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-10-a61cbc3bb5dc9ca6e0607030831c1f39ebaed0e8",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/app-active-composition-flexible[1]/div[1]/div[1]/div[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-16-d9fe63f1087855b6177a3491ca4a5cd3f16698fc",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[9]/div[1]/div[1]/div[1]/h2[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-17-2f1c6ae2a30ebe77633b9a0f16b1c45fce63fe0e",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[9]/div[1]/div[1]/div[1]/div[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "urlHash": "98ff691367671cfa69ede1f5d0f986913825e229",
+      "uuid": "98ff6913-19-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-15-53ef42e4dd841c4a8ab15f25d5d17356d37215c2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[15]/div[1]/div[1]/div[1]/h2[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-17-5794b8851873d4d43ddb3fa2900ed25b82186e14",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[16]/div[1]/div[1]/div[1]/h2[2]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-18-b4e338783f9384d6d0f5a57799d4f318c8cbdbdb",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[16]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-19-6ffa75f81a5bd8f25c1ed6e2d6f09fac826df10f",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[16]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-21-985551c026b4364e4036237cea1be577cd3a987a",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[17]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-22-442c2ddf20c31d237abab926b814d6296d34a814",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[18]",
+      "section": "section-3"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-23-31c33115e0cec934f3cb745fbc8d50c8adef2901",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[19]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "urlHash": "9c1f9638895128a3afd0e32ab486ef210d656bfe",
+      "uuid": "9c1f9638-24-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+      "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+      "uuid": "9f499cd3-02-217acbb172c1a19e906aa6605b80c0c0ab481f57",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+      "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+      "uuid": "9f499cd3-04-5846861e89666f5e4423d901a9a37c9336d6f3fa",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[3]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+      "urlHash": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0",
+      "uuid": "9f499cd3-06-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+      "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+      "uuid": "aabec4b7-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+      "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+      "uuid": "aabec4b7-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+      "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+      "uuid": "aabec4b7-05-3086b43427eeef69490b641da437c1774c1caeda",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]",
+      "section": "section-5"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+      "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+      "uuid": "aabec4b7-06-5fb6ff45d67384833676cc6165e60e24aa3384f7",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[6]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+      "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+      "uuid": "aabec4b7-08-a303f5ca6c759a2f556f77b2f0cbed49ec84dd75",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[8]",
+      "section": "section-3"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+      "urlHash": "aabec4b73b53599039a2302d005ed7f98c95dd95",
+      "uuid": "aabec4b7-09-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-03-001e408f4c80978e0a9f64d9db80a905a3776ca2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h2[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-05-61c0cdf0126cf48f1672b4e63a44bc5a68543f82",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-06-be343c8bf949c6f2d05e6fefce3cc6f849ba13b1",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-07-eec0c66d1a0c149027ac556713f36d023a0d3ef2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[3]",
+      "section": "section-6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-08-c2218751dc195b2dced29cf8b86c742b53e98a0b",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h5[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-09-8c8758d9055206cb7cd3f36391ef3a634a6bf6b3",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[4]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-11-9a60c52d530aac8a9a8bbc739e99297471788f81",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/h2[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-12-2dd439b557126bbc549abde8bd1e25579b9ddb98",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "urlHash": "cc4caf43597c5951502deb0124871b848d4e1428",
+      "uuid": "cc4caf43-14-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+      "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+      "uuid": "e21795e8-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+      "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+      "uuid": "e21795e8-03-be72241cb0cb7627bf4d0e48eca9c555757b4f9d",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+      "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+      "uuid": "e21795e8-04-fd4f5f970f9d4897f8333836b10da18c19fd541a",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/h2[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+      "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+      "uuid": "e21795e8-05-0842875b0de6294f5d815a97b01c58062abead93",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/p[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+      "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+      "uuid": "e21795e8-07-254841b0ff50ae83bbaab6a1b462f4c6ec42b8f9",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/p[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+      "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+      "uuid": "e21795e8-08-3086b43427eeef69490b641da437c1774c1caeda",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]",
+      "section": "section-3"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+      "urlHash": "e21795e8cf3c19ef9d53253d674efa55b85c0255",
+      "uuid": "e21795e8-09-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+      "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+      "uuid": "e5476f6f-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+      "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+      "uuid": "e5476f6f-07-27a1afc02bbcea6e1f5538749c43cbc146f2970d",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[7]",
+      "section": "section-2"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+      "urlHash": "e5476f6fff0392c9ebca091a887891498140b79e",
+      "uuid": "e5476f6f-08-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+      "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+      "uuid": "eac8783b-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+      "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+      "uuid": "eac8783b-04-fd4f5f970f9d4897f8333836b10da18c19fd541a",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/h2[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+      "urlHash": "eac8783b4cfe4dd8175ae8552f63299a46df890a",
+      "uuid": "eac8783b-08-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-02-7dabc7e31c45a802592651f60769eff199a48c33",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-03-001e408f4c80978e0a9f64d9db80a905a3776ca2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/h2[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-04-b9931bfeca3fddacf2c8169cc747ecdb1aafdc50",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-05-be343c8bf949c6f2d05e6fefce3cc6f849ba13b1",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-06-eec0c66d1a0c149027ac556713f36d023a0d3ef2",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/p[3]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-08-61c0cdf0126cf48f1672b4e63a44bc5a68543f82",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[1]/div[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-09-6e09cff437f94b749b7511e4c2a8cf52972d4a49",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/h2[1]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-11-66454f7bd633adbeceb5b896b1d4650855c69e58",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[4]/div[1]/div[1]/div[1]/div[2]"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-12-30d2cb4b321315b338402ecd84896fea92e92d30",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/h2[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-13-2dd439b557126bbc549abde8bd1e25579b9ddb98",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/p[1]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-14-44dc89e6280b6838c48bf91afa7b8c6b813f0b38",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/p[2]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-15-34b54baa9192b1b636a4ab10569490972a918fc3",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/p[3]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-17-2fae654aad2096f01f441822fb2547f170eaf571",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/p[4]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-18-ecd73e6285de0cc9453d82dc7f2bcfa5d9a5208f",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/p[5]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-19-2ed881d49f2e959c6e4227451b39250db4da558d",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/p[6]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-20-db97ecfd61af6095fd90bb49d40301a7f39634e5",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/div[5]/div[1]/div[1]/div[1]/div[3]",
+      "section": "section-1"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "urlHash": "fab9135e29a157101ff8ca97f8253954eb386471",
+      "uuid": "fab9135e-21-e3b494800f9c95c58140140e3533401c93f2b8e6",
+      "xpath": "/html[1]/body[1]/div[2]/main[1]/nav[1]",
+      "section": "section-4"
+    }
+  ],
+  "sections": [
+    {
+      "name": "section-1",
+      "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 119
+    },
+    {
+      "name": "section-2",
+      "background": "rgb(1, 97, 104) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 11
+    },
+    {
+      "name": "section-3",
+      "background": "rgb(153, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 7
+    },
+    {
+      "name": "section-4",
+      "background": "rgba(0, 0, 0, 0.05) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 19
+    },
+    {
+      "name": "section-5",
+      "background": "rgb(51, 51, 51) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 24
+    },
+    {
+      "name": "section-6",
+      "background": "rgb(103, 160, 164) none repeat scroll 0% 0% / auto padding-box border-box",
+      "count": 5
+    }
+  ]
+}
