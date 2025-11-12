@@ -1,36 +1,50 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block: extract accordion items (title + content)
+  // Find main content container
+  const container = element.querySelector('.container-fluid') || element;
+  const row = container.querySelector('.row.teasers') || container;
+  const col = row.querySelector('.col-sm-12') || row;
+
+  // Find accordion toggler (title)
+  const toggler = col.querySelector('.accordions__toggler');
+  // Find accordion content element
+  const accordionElement = col.querySelector('.accordions__element');
+
+  // Compose header row
   const headerRow = ['Accordion (accordion8)'];
-  const rows = [headerRow];
 
-  // Get the main heading and intro paragraph
-  const h2 = element.querySelector('h2');
-  const introP = h2 ? h2.nextElementSibling : null;
-
-  // Find the accordion toggler and its content container
-  const toggler = element.querySelector('.accordions__toggler');
-  const accordionContent = element.querySelector('.accordions__element');
-
-  if (toggler && accordionContent) {
-    // Prefer the 'show-in-print' table if present, else any table
-    let table = accordionContent.querySelector('.show-in-print') || accordionContent.querySelector('table');
-    // Get any footnote paragraphs inside accordionContent (those with '*')
-    const footnotes = Array.from(accordionContent.querySelectorAll('p')).filter(p => p.textContent.trim().startsWith('*'));
-    const contentCell = document.createElement('div');
-    if (table) contentCell.appendChild(table.cloneNode(true));
-    footnotes.forEach(fn => contentCell.appendChild(fn.cloneNode(true)));
-    rows.push([
-      document.createTextNode(toggler.textContent.trim()),
-      contentCell
-    ]);
+  // Compose accordion item row
+  // Title cell: toggler text
+  // Content cell: only one table (show-in-print preferred), plus notes outside the table (no duplication)
+  let contentCell = '';
+  if (accordionElement) {
+    // Prefer the table.show-in-print, but fallback to hide-in-print
+    let table = accordionElement.querySelector('table.show-in-print') || accordionElement.querySelector('table.hide-in-print');
+    // Collect notes that are direct children and not inside the table
+    const notes = [];
+    Array.from(accordionElement.children).forEach(child => {
+      if (child.tagName !== 'TABLE' && child.textContent && child.textContent.trim()) {
+        notes.push(child.cloneNode(true));
+      }
+    });
+    // Compose content cell as an array: table (if exists), then notes (if any)
+    const contentArr = [];
+    if (table) contentArr.push(table);
+    if (notes.length) contentArr.push(...notes);
+    contentCell = contentArr.length ? contentArr : '';
   }
 
-  // Create a fragment to hold heading/intro and the block
-  const fragment = document.createDocumentFragment();
-  if (h2) fragment.appendChild(h2.cloneNode(true));
-  if (introP) fragment.appendChild(introP.cloneNode(true));
+  const titleCell = toggler ? toggler.textContent.trim() : '';
+
+  // Compose rows
+  const rows = [headerRow];
+  if (titleCell) {
+    rows.push([titleCell, contentCell]);
+  }
+
+  // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
-  fragment.appendChild(block);
-  element.replaceWith(fragment);
+
+  // Replace the original element
+  element.replaceWith(block);
 }

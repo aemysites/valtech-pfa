@@ -1,73 +1,87 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to get background image URL from style attribute
-  function getBackgroundImageUrl(panelImageDiv) {
-    if (!panelImageDiv) return null;
-    const style = panelImageDiv.getAttribute('style') || '';
-    // Try desktop image first
-    const desktopMatch = style.match(/--imageDesktop: url\(['"]?([^'")]+)['"]?\)/);
-    if (desktopMatch) return desktopMatch[1];
-    // Fallback to mobile image
-    const mobileMatch = style.match(/--imageMobile: url\(['"]?([^'")]+)['"]?\)/);
-    if (mobileMatch) return mobileMatch[1];
-    return null;
+  // Helper to extract image URL from style attribute
+  function extractImageUrl(styleStr, key) {
+    if (!styleStr) return null;
+    const regex = new RegExp(`${key}\s*:\s*url\(['"]?([^'")]+)['"]?\)`);
+    const match = styleStr.match(regex);
+    return match ? match[1] : null;
   }
 
-  // Find the desktop hero panel
-  const desktopPanel = element.querySelector('.narrow-hero__panel--desktop');
-  // Fallback to mobile panel if desktop not found
-  const panel = desktopPanel || element.querySelector('.narrow-hero__panel--mobile');
-
-  // Get background image URL
-  let bgImageUrl = null;
-  let panelImageDiv = null;
-  if (panel) {
-    panelImageDiv = panel.querySelector('.panel__image');
-    bgImageUrl = getBackgroundImageUrl(panelImageDiv);
-  } else {
-    // Try to find .panel__image anywhere in the element
-    panelImageDiv = element.querySelector('.panel__image');
-    bgImageUrl = getBackgroundImageUrl(panelImageDiv);
-  }
-
-  // Create image element if background image exists
-  let imageEl = null;
-  if (bgImageUrl) {
-    imageEl = document.createElement('img');
-    imageEl.src = bgImageUrl;
-    imageEl.alt = '';
-  }
-
-  // Find all possible panel bodies (desktop and mobile)
-  const panelBodies = Array.from(element.querySelectorAll('.panel__body'));
-  // Collect all headline text from all panel bodies
-  let headlineText = '';
-  for (const body of panelBodies) {
-    const headline = body.querySelector('.panel__headline');
-    if (headline && headline.textContent.trim()) {
-      headlineText = headline.textContent.trim();
-      break; // Prefer first found
+  // Find the desktop hero panel (prefer desktop for image)
+  let imageUrl = null;
+  const desktopPanel = element.querySelector('.panel--image.narrow-hero__panel--desktop');
+  if (desktopPanel) {
+    const imageDiv = desktopPanel.querySelector('.panel__image');
+    if (imageDiv && imageDiv.getAttribute('style')) {
+      imageUrl = extractImageUrl(imageDiv.getAttribute('style'), '--imageDesktop');
     }
   }
 
-  // Compose table rows
-  const headerRow = ['Hero (hero2)'];
-  const imageRow = [imageEl ? imageEl : ''];
-
-  // For content row, create a heading element if headline text exists
-  let contentCell = '';
-  if (headlineText) {
-    const heading = document.createElement('h1');
-    heading.textContent = headlineText;
-    contentCell = heading;
+  // If no desktop image, fallback to mobile panel
+  if (!imageUrl) {
+    const mobilePanel = element.querySelector('.panel--image.narrow-hero__panel--mobile');
+    if (mobilePanel) {
+      const imageDiv = mobilePanel.querySelector('.panel__image');
+      if (imageDiv && imageDiv.getAttribute('style')) {
+        imageUrl = extractImageUrl(imageDiv.getAttribute('style'), '--imageMobile');
+      }
+    }
   }
 
-  const contentRow = [contentCell ? contentCell : ''];
+  // Always include imageEl in the image row, even if not found
+  let imageEl = '';
+  if (imageUrl) {
+    imageEl = document.createElement('img');
+    imageEl.src = imageUrl;
+    imageEl.alt = '';
+  } else {
+    imageEl = '';
+  }
 
-  // Build the block table
-  const cells = [headerRow, imageRow, contentRow];
+  // Prefer desktop panel body for text content
+  let panelBody = null;
+  if (desktopPanel) {
+    panelBody = desktopPanel.querySelector('.panel__body');
+  }
+  // Fallback to mobile panel body
+  if (!panelBody) {
+    const mobilePanel = element.querySelector('.panel--hero.narrow-hero__panel--mobile');
+    if (mobilePanel) {
+      panelBody = mobilePanel.querySelector('.panel__body');
+    }
+  }
+
+  // Extract all text content from the panel body, preserving structure
+  let textContent = [];
+  if (panelBody) {
+    // Extract kicker (subheading)
+    const kickerEl = panelBody.querySelector('.panel__kicker');
+    if (kickerEl) {
+      const kicker = document.createElement('p');
+      kicker.textContent = kickerEl.textContent;
+      textContent.push(kicker);
+    }
+    // Extract headline (title)
+    const headlineEl = panelBody.querySelector('.panel__headline');
+    if (headlineEl) {
+      const heroSpan = headlineEl.querySelector('.hero');
+      const h1 = document.createElement('h1');
+      if (heroSpan) {
+        h1.textContent = heroSpan.textContent;
+      } else {
+        h1.textContent = headlineEl.textContent;
+      }
+      textContent.push(h1);
+    }
+  }
+
+  // Table rows
+  const headerRow = ['Hero (hero2)'];
+  const imageRow = [imageEl]; // Always include imageEl, even if empty string
+  const textRow = [textContent.length ? textContent : ''];
+
+  const cells = [headerRow, imageRow, textRow];
   const block = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace the original element
   element.replaceWith(block);
 }

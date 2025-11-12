@@ -1,42 +1,28 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main content column
-  const mainCol = element.querySelector('.col-sm-12');
-  if (!mainCol) return;
-
-  // Accordion title: Prefer .accordions__toggler, fallback to visible h2
-  let title = mainCol.querySelector('.accordions__toggler');
-  if (!title) {
-    title = mainCol.querySelector('h2:not([style*="display:none"])');
-  }
-  if (!title) {
-    title = mainCol.querySelector('h2');
+  // Find the accordion title
+  let accordionTitle = '';
+  const toggler = element.querySelector('.accordions__toggler');
+  if (toggler) {
+    accordionTitle = toggler.textContent.trim();
   }
 
-  // Accordion content
-  const content = mainCol.querySelector('.accordions__element');
+  // Find the accordion content
+  const accordionContent = element.querySelector('.accordions__element');
 
-  // CTA button (outside accordion, but visually grouped)
-  const ctaDiv = element.querySelector('.col-xs-12');
-  const cta = ctaDiv ? ctaDiv.querySelector('a.cta-btn') : null;
+  // Find CTA button (outside accordion)
+  let cta = null;
+  const ctaDiv = element.querySelector('.col-xs-12.text-center');
+  if (ctaDiv) {
+    cta = ctaDiv.querySelector('a');
+  }
 
-  // Build table rows
+  // Table header
   const headerRow = ['Accordion (accordion19)'];
-  const rows = [];
+  // Table body: one accordion item (title, content)
+  const rows = [headerRow, [accordionTitle, [accordionContent, cta].filter(Boolean)]];
 
-  if (title && content) {
-    // Compose content cell: content + CTA if present
-    const contentCell = document.createElement('div');
-    contentCell.appendChild(content);
-    if (cta) contentCell.appendChild(cta);
-    rows.push([title, contentCell]);
-  }
-
-  // Create table
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    ...rows
-  ], document);
-
+  // Create and replace
+  const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

@@ -1,44 +1,65 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row: always block name
-  const headerRow = ['Columns (columns4)'];
-
-  // Defensive: get the main row containing the two columns
-  const mainRow = element.querySelector('.row.teasers .row');
-  if (!mainRow) return;
-
-  // Get the two columns
-  const columns = mainRow.querySelectorAll(':scope > div');
-  if (columns.length < 2) return;
-
-  // Left column: video iframe (convert to link)
-  const leftCol = columns[0];
-  const videoIframe = leftCol.querySelector('iframe');
-  let leftCellContent = [];
-  if (videoIframe && videoIframe.src) {
-    const a = document.createElement('a');
-    a.href = videoIframe.src;
-    a.textContent = 'Video';
-    leftCellContent.push(a);
+  // Find the inner row with columns
+  const innerRow = element.querySelector('.row.teasers > .row');
+  let leftCol = null, rightCol = null;
+  if (innerRow) {
+    leftCol = innerRow.querySelector('.col-xs-12.col-sm-8');
+    rightCol = innerRow.querySelector('.col-xs-12.col-sm-4');
   }
 
-  // Right column: heading + paragraphs
-  const rightCol = columns[1];
-  const heading = rightCol.querySelector('h2');
-  const paragraphs = Array.from(rightCol.querySelectorAll('p')).filter(p => p.textContent.trim() !== '');
-  let rightCellContent = [];
-  if (heading) rightCellContent.push(heading);
-  rightCellContent = rightCellContent.concat(paragraphs);
+  // Extract left column: get ONLY visible heading and paragraphs as elements
+  let leftContent = [];
+  if (leftCol) {
+    // Get visible heading (not hidden)
+    const headings = leftCol.querySelectorAll('h2');
+    headings.forEach(h => {
+      if (window.getComputedStyle(h).display !== 'none') {
+        leftContent.push(h.cloneNode(true));
+      }
+    });
+    // Get all paragraphs
+    leftCol.querySelectorAll('p').forEach(p => {
+      leftContent.push(p.cloneNode(true));
+    });
+  }
+
+  // Extract right column: get all images as elements
+  let rightContent = [];
+  if (rightCol) {
+    rightCol.querySelectorAll('img').forEach(img => {
+      rightContent.push(img.cloneNode(true));
+    });
+  }
+
+  // Fallback: If leftCol is missing, get visible heading and paragraphs from anywhere except hidden ones
+  if (leftContent.length === 0) {
+    element.querySelectorAll('h2').forEach(h => {
+      if (window.getComputedStyle(h).display !== 'none') {
+        leftContent.push(h.cloneNode(true));
+      }
+    });
+    element.querySelectorAll('p').forEach(p => {
+      leftContent.push(p.cloneNode(true));
+    });
+  }
+  // If rightCol is missing, get images from anywhere
+  if (rightContent.length === 0) {
+    element.querySelectorAll('img').forEach(img => {
+      rightContent.push(img.cloneNode(true));
+    });
+  }
 
   // Build table rows
-  const rows = [
+  const headerRow = ['Columns (columns4)'];
+  const contentRow = [leftContent, rightContent];
+
+  // Create the table
+  const table = WebImporter.DOMUtils.createTable([
     headerRow,
-    [leftCellContent, rightCellContent]
-  ];
+    contentRow
+  ], document);
 
-  // Create table block
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-
-  // Replace original element
-  element.replaceWith(block);
+  // Replace the element with the table
+  element.replaceWith(table);
 }

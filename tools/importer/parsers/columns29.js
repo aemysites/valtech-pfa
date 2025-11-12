@@ -1,67 +1,36 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper: get immediate child divs
-  const topDivs = Array.from(element.querySelectorAll(':scope > div'));
-
-  // Defensive: find the main content area
-  let mainRow = null;
-  for (const div of topDivs) {
-    // Look for a div with class 'container-fluid' or 'row teasers'
-    if (div.classList.contains('container-fluid')) {
-      mainRow = div.querySelector('.row.teasers');
-      break;
-    }
-    if (div.classList.contains('row') && div.classList.contains('teasers')) {
-      mainRow = div;
-      break;
-    }
-  }
+  // Find the main row containing columns
+  let mainRow = element.querySelector('.row.teasers');
+  if (!mainRow) mainRow = element.querySelector('.row');
   if (!mainRow) return;
 
-  // Find the content columns inside the teasers row
-  const colDivs = Array.from(mainRow.querySelectorAll(':scope > .col-sm-12 > .row > div'));
-  // Defensive: fallback if structure is different
-  if (!colDivs.length) {
-    // Try to find direct columns
-    const fallbackCols = Array.from(mainRow.querySelectorAll(':scope > .row > div'));
-    if (fallbackCols.length) {
-      colDivs.push(...fallbackCols);
-    }
-  }
-  if (colDivs.length < 2) return;
+  // Find the columns inside the row
+  const innerRow = mainRow.querySelector('.row');
+  if (!innerRow) return;
+  const leftCol = innerRow.querySelector('.col-sm-8');
+  const rightCol = innerRow.querySelector('.col-sm-4');
+  if (!leftCol || !rightCol) return;
 
-  // Left column: text content (heading, paragraph, CTA)
-  const leftCol = colDivs[0];
-  // Find teaser content
-  let teaserContent = leftCol.querySelector('.teasers__teaser');
-  if (!teaserContent) teaserContent = leftCol;
+  // Left column content
+  const teaser = leftCol.querySelector('.teasers__teaser') || leftCol;
+  const heading = teaser.querySelector('h2');
+  const paragraphs = Array.from(teaser.querySelectorAll('p')).filter(p => p.textContent.trim() && p.textContent.trim() !== '\u00A0');
+  const cta = teaser.querySelector('a.cta-btn');
+  const leftCell = [];
+  if (heading) leftCell.push(heading);
+  if (paragraphs.length) leftCell.push(...paragraphs);
+  if (cta) leftCell.push(cta);
 
-  // Right column: image content
-  const rightCol = colDivs[1];
+  // Right column content
   const img = rightCol.querySelector('img');
+  const rightCell = [];
+  if (img) rightCell.push(img);
 
-  // Compose left cell: heading, paragraph(s), CTA
-  // Defensive: get all children except empty paragraphs
-  const leftCellContent = [];
-  Array.from(teaserContent.children).forEach((child) => {
-    // Exclude empty paragraphs
-    if (child.tagName === 'P' && child.textContent.trim() === '\u00A0') return;
-    leftCellContent.push(child);
-  });
-
-  // Compose right cell: image only (if exists)
-  const rightCellContent = img ? [img] : [];
-
-  // Table structure
+  // Build table
   const headerRow = ['Columns (columns29)'];
-  const contentRow = [leftCellContent, rightCellContent];
-
-  // Create block table
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    contentRow
-  ], document);
-
-  // Replace original element
-  element.replaceWith(table);
+  const contentRow = [leftCell, rightCell];
+  const cells = [headerRow, contentRow];
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(block);
 }

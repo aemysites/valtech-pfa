@@ -1,51 +1,37 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header row
+  // Accordion (accordion13) block
   const headerRow = ['Accordion (accordion13)'];
+  const rows = [headerRow];
 
-  // Find the accordion toggler/title
+  // Find the accordion toggler/title (always reference the real element)
   const titleEl = element.querySelector('.accordions__toggler');
-  // Defensive: If no title found, fallback to first <p> inside element
-  const title = titleEl || element.querySelector('p');
-
-  // Find the content for the accordion item
-  // In this case, all tables inside .accordions__element are the content
-  const contentWrapper = element.querySelector('.accordions__element');
-  let contentCells = [];
-  if (contentWrapper) {
-    // Find all .col-xs-12.col-sm-6
-    const cols = contentWrapper.querySelectorAll('.row > .col-xs-12.col-sm-6');
-    cols.forEach((col) => {
-      // Find all tables inside each col
-      const tables = col.querySelectorAll('table');
-      tables.forEach((table) => {
-        contentCells.push(table);
-      });
-    });
+  let titleCell = '';
+  if (titleEl) {
+    titleCell = titleEl;
+  } else {
+    // Fallback: Try to find first <p> inside
+    const fallbackTitle = element.querySelector('p');
+    titleCell = fallbackTitle ? fallbackTitle : '';
   }
 
-  // If no content found, fallback to all tables in the block
-  if (contentCells.length === 0) {
-    const tables = element.querySelectorAll('table');
-    tables.forEach((table) => {
-      contentCells.push(table);
-    });
+  // Find the accordion content (reference the real element)
+  // In this screenshot, the accordion is collapsed, so no content is visible
+  // But in the HTML, the content is present in the following sibling div
+  let contentCell = '';
+  const elementDiv = element.querySelector('.accordions__element');
+  if (elementDiv) {
+    contentCell = elementDiv;
+  } else {
+    // Fallback: Try to find first <div> inside
+    const fallbackContent = element.querySelector('div');
+    contentCell = fallbackContent ? fallbackContent : '';
   }
 
-  // If still no content, fallback to all children of .accordions__element
-  if (contentCells.length === 0 && contentWrapper) {
-    contentCells = Array.from(contentWrapper.children);
-  }
-
-  // Accordion row: [title, content]
-  const accordionRow = [title, contentCells];
-
-  // Build the table rows
-  const rows = [headerRow, accordionRow];
+  // Add the accordion item row
+  rows.push([titleCell, contentCell]);
 
   // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
-
-  // Replace the original element with the block
   element.replaceWith(block);
 }

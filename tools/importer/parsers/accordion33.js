@@ -1,40 +1,48 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row as required
-  const headerRow = ['Accordion (accordion33)'];
-  const rows = [headerRow];
-
-  // Extract all intro nodes before the first accordion toggler
-  const firstToggler = element.querySelector('.accordions__toggler');
-  const introNodes = [];
-  let node = element.firstElementChild;
-  while (node && node !== firstToggler) {
-    introNodes.push(node.cloneNode(true));
-    node = node.nextElementSibling;
-  }
-  // Combine intro nodes into a single cell and add as the first accordion item
-  if (introNodes.length) {
-    const introCell = document.createElement('div');
-    introNodes.forEach(n => introCell.appendChild(n));
-    rows.push(['', introCell]);
+  // Find the visible heading and all <p> up to the first accordion toggler
+  const heading = element.querySelector('h2:not([style*="display:none"])');
+  const firstToggler = element.querySelector('p.accordions__toggler');
+  const introParas = [];
+  if (heading && firstToggler) {
+    let node = heading.nextElementSibling;
+    while (node && node !== firstToggler) {
+      if (node.tagName === 'P') introParas.push(node);
+      node = node.nextElementSibling;
+    }
   }
 
-  // Find all toggler and element pairs
-  const togglers = Array.from(element.querySelectorAll('.accordions__toggler'));
-  const elements = Array.from(element.querySelectorAll('.accordions__element'));
-  const itemCount = Math.min(togglers.length, elements.length);
+  // Insert heading and intro paragraphs before the block (not in a table)
+  const introFragment = document.createDocumentFragment();
+  if (heading) introFragment.appendChild(heading.cloneNode(true));
+  introParas.forEach(p => introFragment.appendChild(p.cloneNode(true)));
 
-  for (let i = 0; i < itemCount; i++) {
-    // Use only the textContent for the title cell
-    const titleText = togglers[i].textContent.trim();
-    // For content, clone the element so formatting is preserved
-    const contentCell = elements[i].cloneNode(true);
-    rows.push([titleText, contentCell]);
-  }
-
-  // Create the table block
+  // Accordion block rows
+  const rows = [];
+  rows.push(['Accordion (accordion33)']);
+  const togglers = Array.from(element.querySelectorAll('p.accordions__toggler'));
+  togglers.forEach((toggler) => {
+    // Title cell: Use the toggler's text content only
+    const titleCell = toggler.textContent.trim();
+    // Content cell: Find the next sibling with class 'accordions__element'
+    let contentCell = null;
+    let next = toggler.nextElementSibling;
+    while (next && !next.classList.contains('accordions__element')) {
+      next = next.nextElementSibling;
+    }
+    if (next && next.classList.contains('accordions__element')) {
+      contentCell = next;
+    } else {
+      contentCell = document.createElement('div');
+    }
+    rows.push([titleCell, contentCell]);
+  });
   const block = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace the original element with the block
-  element.replaceWith(block);
+  // Replace the original element with fragment + block
+  if (introFragment.childNodes.length) {
+    element.replaceWith(introFragment, block);
+  } else {
+    element.replaceWith(block);
+  }
 }

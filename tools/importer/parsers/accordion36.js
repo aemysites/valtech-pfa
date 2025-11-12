@@ -1,58 +1,49 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block: extract only top-level accordion items (title + content)
+  // Accordion block header
   const headerRow = ['Accordion (accordion36)'];
   const rows = [headerRow];
 
-  // Find the main heading (h2) and preserve it
+  // Get the main heading (if present)
   const heading = element.querySelector('h2');
+  if (heading) {
+    // Add heading as a separate row (optional, or as part of first accordion item)
+    // For Accordion block, it's usually not a separate row, so skip adding as a row
+    // But if needed, could be included in the first item's content
+  }
 
-  // Only select direct children togglers and their immediate content siblings
-  let child = element.firstElementChild;
-  while (child) {
-    if (
-      child.classList &&
-      child.classList.contains('accordions__toggler') &&
-      child.parentElement === element
-    ) {
-      // Find the next sibling that is an accordion content element
-      let contentEl = child.nextElementSibling;
-      while (
-        contentEl &&
-        (!contentEl.classList || !contentEl.classList.contains('accordions__element') || contentEl.parentElement !== element)
-      ) {
-        contentEl = contentEl.nextElementSibling;
-      }
-      if (contentEl) {
-        // Instead of extracting only text, include all content nodes (children) for full flexibility
-        // This ensures all text, tables, links, and nested elements are included
-        const contentNodes = Array.from(contentEl.childNodes).filter(node => {
-          // Filter out empty text nodes and whitespace-only nodes
-          return !(node.nodeType === Node.TEXT_NODE && !node.textContent.trim());
-        });
-        // If there are no child nodes, fallback to textContent
-        let cellContent;
-        if (contentNodes.length > 0) {
-          cellContent = contentNodes;
-        } else {
-          cellContent = contentEl.textContent.trim();
+  // Find all top-level accordion toggler/content pairs
+  // These are direct children of the main container
+  const mainContainer = element.querySelector('.row.teasers .col-sm-12');
+  if (!mainContainer) return;
+
+  // Find all toggler elements and their content panels
+  const children = Array.from(mainContainer.children);
+  for (let i = 0; i < children.length; i++) {
+    const child = children[i];
+    if (child.tagName === 'P' && child.classList.contains('accordions__toggler')) {
+      const titleCell = child.cloneNode(true);
+      // Find the next sibling that is a content panel
+      let contentCell = null;
+      for (let j = i + 1; j < children.length; j++) {
+        const next = children[j];
+        if (next.tagName === 'DIV' && next.classList.contains('accordions__element')) {
+          contentCell = next.cloneNode(true);
+          break;
         }
-        rows.push([child.textContent.trim(), cellContent]);
+        // If we hit another toggler before a content panel, break
+        if (next.tagName === 'P' && next.classList.contains('accordions__toggler')) {
+          break;
+        }
+      }
+      if (contentCell) {
+        rows.push([titleCell, contentCell]);
       }
     }
-    child = child.nextElementSibling;
   }
 
   // Create the table block
   const block = WebImporter.DOMUtils.createTable(rows, document);
-
-  // If heading exists, insert it before the block
-  if (heading) {
-    heading.remove();
-    element.parentNode.insertBefore(heading, element);
-    heading.parentNode.insertBefore(block, heading.nextSibling);
-    element.remove();
-  } else {
-    element.replaceWith(block);
-  }
+  // Replace the original element
+  element.replaceWith(block);
 }

@@ -1,25 +1,39 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header row
+  // Table header row as specified
+  // Must be a single cell, not two columns
   const headerRow = ['Accordion (accordion28)'];
 
-  // Find all toggler elements (accordion headers)
-  const rows = [];
-  const togglers = Array.from(element.querySelectorAll('.accordions__toggler'));
-  togglers.forEach((toggler) => {
-    // Find the next sibling that is the accordion content
-    let content = toggler.nextElementSibling;
-    if (content && content.classList.contains('accordions__element')) {
-      let contentDiv = content.querySelector('div');
-      let contentEl = contentDiv ? contentDiv : content;
-      rows.push([toggler, contentEl]);
-    }
-  });
+  // Extract heading and paragraph (intro content)
+  const heading = element.querySelector('h2, h1');
+  const introParagraph = element.querySelector('h2 ~ p, h1 ~ p');
+  let introContent = [];
+  if (heading) introContent.push(heading.cloneNode(true));
+  if (introParagraph) introContent.push(introParagraph.cloneNode(true));
 
-  // Compose table data: header row, then only accordion items
-  const tableData = [headerRow, ...rows];
+  // Find accordion toggler and content
+  const toggler = element.querySelector('.accordions__toggler');
+  const accordionContent = element.querySelector('.accordions__element, .accordion__element');
+
+  // Compose table data: header row, then each accordion item as [title, content]
+  const tableData = [headerRow];
+  if (toggler && accordionContent) {
+    tableData.push([
+      toggler.textContent,
+      accordionContent
+    ]);
+  }
 
   // Create the block table
   const block = WebImporter.DOMUtils.createTable(tableData, document);
-  element.replaceWith(block);
+
+  // If intro content exists, insert it before the block table
+  if (introContent.length) {
+    const introDiv = document.createElement('div');
+    introContent.forEach(el => introDiv.appendChild(el));
+    element.replaceWith(introDiv);
+    introDiv.insertAdjacentElement('afterend', block);
+  } else {
+    element.replaceWith(block);
+  }
 }

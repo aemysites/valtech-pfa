@@ -1,35 +1,34 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header
+  // Accordion block header row
   const headerRow = ['Accordion (accordion10)'];
   const rows = [headerRow];
 
   // Find all toggler and content pairs
   const togglers = Array.from(element.querySelectorAll('p.accordions__toggler'));
   togglers.forEach((toggler) => {
+    // Find the next sibling that is an accordion content element
     let content = toggler.nextElementSibling;
-    if (!content || !content.classList.contains('accordions__element')) {
-      content = Array.from(element.querySelectorAll('.accordions__element')).find(
-        el => el.previousElementSibling === toggler
-      );
+    while (content && !content.classList.contains('accordions__element')) {
+      content = content.nextElementSibling;
     }
-    if (!content) return;
-    rows.push([toggler, content]);
+    // Title cell: just the text content
+    const titleText = toggler.textContent.trim();
+    // Content cell: the inner HTML/content of the accordion element
+    let contentCell;
+    if (content) {
+      contentCell = document.createElement('div');
+      Array.from(content.childNodes).forEach((node) => {
+        contentCell.appendChild(node.cloneNode(true));
+      });
+    } else {
+      contentCell = '';
+    }
+    rows.push([titleText, contentCell]);
   });
 
   // Create the block table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-
-  // Add heading and intro paragraph above the table if present
-  const heading = element.querySelector('h2');
-  const intro = element.querySelector('p:not(.accordions__toggler)');
-  if (heading || intro) {
-    const wrapper = document.createElement('div');
-    if (heading) wrapper.appendChild(heading.cloneNode(true));
-    if (intro) wrapper.appendChild(intro.cloneNode(true));
-    element.replaceWith(wrapper);
-    wrapper.appendChild(table);
-  } else {
-    element.replaceWith(table);
-  }
+  const block = WebImporter.DOMUtils.createTable(rows, document);
+  // Replace the original element with the block table
+  element.replaceWith(block);
 }

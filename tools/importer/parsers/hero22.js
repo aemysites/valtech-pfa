@@ -1,57 +1,58 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
   // Hero (hero22) block parsing
-  // 1 column, 3 rows: [Header], [Image], [Content]
-
-  // Header row
-  const headerRow = ['Hero (hero22)'];
-
+  // Table: 1 column, 3 rows
+  // Row 1: Block name
   // Row 2: Background image (none in this case)
-  const imageRow = [''];
+  // Row 3: Heading, subheading, CTA, and ALL text content (including expandable accordion content)
 
-  // Row 3: Content (heading, subheading, CTA, and ALL visible text)
-  const contentContainer = element.querySelector('.col-sm-12') || element;
+  const mainCol = element.querySelector('.col-sm-12');
+  const contentRoot = mainCol || element;
 
-  const contentCell = [];
+  // Find heading (h2)
+  const heading = contentRoot.querySelector('h2');
 
-  // Heading
-  const heading = contentContainer.querySelector('h2');
-  if (heading) contentCell.push(heading.cloneNode(true));
+  // Find all paragraphs
+  const paragraphs = Array.from(contentRoot.querySelectorAll('p'));
 
-  // Paragraph (subheading)
-  const firstP = contentContainer.querySelector('p');
-  if (firstP) {
-    // Clone the paragraph for manipulation
-    const para = firstP.cloneNode(true);
-    // Remove toggler and accordion from the paragraph
-    const toggler = para.querySelector('.accordions__toggler');
-    if (toggler) toggler.remove();
-    const accordion = para.querySelector('.accordion__element');
-    if (accordion) accordion.remove();
-    // Only add paragraph if it has text content
-    if (para.textContent.trim()) contentCell.push(para);
-    // Add CTA (Læs mere) if present
-    const origToggler = firstP.querySelector('.accordions__toggler');
-    if (origToggler) {
-      const more = origToggler.querySelector('.more');
-      if (more) {
-        const cta = document.createElement('a');
-        cta.href = '#';
-        cta.textContent = more.textContent + ' ↓'; // add arrow as in screenshot
-        contentCell.push(cta);
-      }
-    }
-    // Do NOT add the accordion content (the expanded text)
-    // Only visible content per screenshot and block description
+  // Subheading: first <p> only
+  let subheading = null;
+  if (paragraphs.length) {
+    subheading = paragraphs[0];
   }
 
-  // Build table
-  const cells = [
-    headerRow,
-    imageRow,
-    [contentCell]
-  ];
+  // Find CTA toggler ('Læs mere') and format as a link
+  let cta = null;
+  let expandableContent = null;
+  for (const p of paragraphs) {
+    const togglerSpan = p.querySelector('.accordions__toggler .more');
+    if (togglerSpan && !cta) {
+      cta = document.createElement('a');
+      cta.textContent = togglerSpan.textContent;
+      cta.href = '#'; // No actual link in source, so use placeholder
+      cta.style.color = 'red'; // Optional: preserve visual hint
+    }
+    const accordionContent = p.querySelector('.accordion__element');
+    if (accordionContent && !expandableContent) {
+      expandableContent = accordionContent.cloneNode(true);
+    }
+  }
 
+  // Compose content for row 3: heading, summary, CTA link, and expandable accordion content
+  const row3Content = [];
+  if (heading) row3Content.push(heading);
+  if (subheading) row3Content.push(subheading);
+  if (cta) row3Content.push(cta);
+  if (expandableContent) row3Content.push(expandableContent);
+
+  // Table rows
+  const headerRow = ['Hero (hero22)'];
+  const imageRow = ['']; // No image in this block
+  const contentRow = [row3Content];
+
+  const cells = [headerRow, imageRow, contentRow];
   const table = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace original element
   element.replaceWith(table);
 }

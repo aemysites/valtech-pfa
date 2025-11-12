@@ -1,9 +1,9 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row for the block
+  // Always use the block name as the header row
   const headerRow = ['Columns (columns30)'];
 
-  // Defensive: Get immediate children that are columns
+  // Defensive: get immediate children columns
   const columns = Array.from(element.querySelectorAll(':scope > div'));
 
   // There should be two columns: left (text), right (image)
@@ -11,28 +11,43 @@ export default function parse(element, { document }) {
   let rightContent = null;
 
   if (columns.length === 2) {
-    // Left column: likely contains a teaser div with a paragraph
+    // Left column: find first .col-xs-12.col-sm-8
     const leftCol = columns[0];
-    // Find first paragraph inside left column
-    leftContent = leftCol.querySelector('p') || leftCol;
-
-    // Right column: likely contains a centered image
-    const rightCol = columns[1];
-    // Find first image inside right column
-    rightContent = rightCol.querySelector('img') || rightCol;
-  } else {
-    // Fallback: treat all content as a single column
-    leftContent = element;
-    rightContent = '';
+    // Defensive: find the teaser content (may be nested)
+    const teaser = leftCol.querySelector('.teasers__teaser') || leftCol;
+    leftContent = Array.from(teaser.childNodes).filter(node => {
+      // Only keep elements and meaningful text
+      return node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim());
+    });
+    // If only one node, don't wrap in array
+    if (leftContent.length === 1) leftContent = leftContent[0];
   }
 
-  // Content row: two columns, text and image
-  const contentRow = [leftContent, rightContent];
+  if (columns.length === 2) {
+    // Right column: find first .col-xs-12.col-sm-4
+    const rightCol = columns[1];
+    // Defensive: find image inside paragraph
+    const img = rightCol.querySelector('img');
+    if (img) {
+      rightContent = img;
+    } else {
+      // Fallback: use all content
+      rightContent = Array.from(rightCol.childNodes).filter(node => {
+        return node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim());
+      });
+      if (rightContent.length === 1) rightContent = rightContent[0];
+    }
+  }
 
-  // Build table
-  const cells = [headerRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Build table rows
+  const tableRows = [
+    headerRow,
+    [leftContent, rightContent]
+  ];
 
-  // Replace the original element with the block table
-  element.replaceWith(table);
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(tableRows, document);
+
+  // Replace the original element
+  element.replaceWith(block);
 }

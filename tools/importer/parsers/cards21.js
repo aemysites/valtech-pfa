@@ -1,61 +1,52 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Cards (cards21) block: 2 columns, header row, each row = card (image/icon, text content)
+  // Cards (cards21) block parsing
   const headerRow = ['Cards (cards21)'];
   const rows = [headerRow];
 
-  // Find all card columns (each .col-xs-12.col-sm-4 is a card)
-  const cardColumns = element.querySelectorAll('.col-xs-12.col-sm-4');
+  // Find all card containers (teasers)
+  const cardContainers = Array.from(element.querySelectorAll('.teasers__teaser'));
 
-  cardColumns.forEach((col) => {
-    const teaser = col.querySelector('.teasers__teaser');
-    if (!teaser) return;
+  cardContainers.forEach(card => {
+    // --- IMAGE CELL ---
+    // Include ALL images (background + icon) in the cell, as per validation feedback
+    const imgs = Array.from(card.querySelectorAll('img'));
+    const imageCell = imgs.length ? imgs : '';
 
-    // Find all images inside the teaser (first is background, second is icon)
-    const images = teaser.querySelectorAll('img');
-    let cardImage = null;
-    if (images.length > 1) {
-      // Compose a fragment with both images (background and icon)
-      const frag = document.createDocumentFragment();
-      frag.appendChild(images[0].cloneNode(true));
-      frag.appendChild(images[1].cloneNode(true));
-      cardImage = frag;
-    } else if (images.length === 1) {
-      cardImage = images[0].cloneNode(true);
-    }
-
-    // Heading
-    const heading = teaser.querySelector('h3');
-    // Description: all <p> except those that only contain a CTA link
-    const paragraphs = Array.from(teaser.querySelectorAll('p'));
-    let descriptionEls = [];
-    let ctaEl = null;
-    paragraphs.forEach((p) => {
-      const link = p.querySelector('a');
-      if (link && link.textContent.trim().length > 0 && p.textContent.trim().replace(/»/g, '').trim() === link.textContent.trim()) {
-        ctaEl = link.cloneNode(true);
-        // Add trailing » if not present
-        if (!ctaEl.textContent.trim().endsWith('»')) {
-          ctaEl.textContent = ctaEl.textContent.trim() + ' »';
-        }
-      } else {
-        descriptionEls.push(p.cloneNode(true));
-      }
+    // --- TEXT CELL ---
+    // Title (h3)
+    const title = card.querySelector('h3');
+    // Description: all <p> except those that only contain toggler/accordion elements
+    const paragraphs = Array.from(card.querySelectorAll('p'));
+    const descParas = paragraphs.filter(p => {
+      const toggler = p.querySelector('.accordions__toggler, .accordion__element');
+      return !(
+        p.childNodes.length === 1 && toggler
+      );
     });
+    const descElements = descParas.map(p => p);
 
-    // Compose text cell: heading, description, CTA (only if CTA is a real link in HTML)
-    const textCell = [];
-    if (heading) textCell.push(heading.cloneNode(true));
-    descriptionEls.forEach((desc) => textCell.push(desc));
-    if (ctaEl) textCell.push(ctaEl);
+    // Call-to-action: Only use a real <a> link as CTA if present
+    let ctaLink = null;
+    const links = Array.from(card.querySelectorAll('a'));
+    if (links.length) {
+      ctaLink = links[links.length - 1]; // usually the last link is CTA
+    }
+    // Do NOT fabricate a CTA from toggler text
+
+    // Compose text cell: [title, ...descElements, ctaLink]
+    const textCellContent = [];
+    if (title) textCellContent.push(title);
+    descElements.forEach(e => textCellContent.push(e));
+    if (ctaLink) textCellContent.push(ctaLink);
 
     rows.push([
-      cardImage,
-      textCell
+      imageCell,
+      textCellContent
     ]);
   });
 
-  // Create table and replace element
+  // Create and replace block table
   const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

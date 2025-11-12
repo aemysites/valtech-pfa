@@ -1,51 +1,88 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row for the block
+  // Always use the block name as the header row
   const headerRow = ['Columns (columns3)'];
 
-  // Get immediate column divs (each column contains a teaser)
+  // Get immediate column divs
   const columns = Array.from(element.querySelectorAll(':scope > div'));
-  if (columns.length < 2) return;
+  // There should be 2 columns for this block
+  const leftCol = columns[0];
+  const rightCol = columns[1];
 
-  // Helper: extract all content from a column, including images and ALL text
+  // Helper: extract all text content and elements from a column, including images and their alt text
   function extractColumnContent(col) {
-    // Find the teaser div (if present)
-    const teaser = col.querySelector('.teasers__teaser') || col;
-    // Create a wrapper div for all content
-    const wrapper = document.createElement('div');
-    // Copy all child nodes (including images, text, etc.)
-    Array.from(teaser.childNodes).forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        // Always include text nodes, even if whitespace (to preserve structure)
-        if (node.textContent) {
-          wrapper.appendChild(document.createTextNode(node.textContent));
+    if (!col) return '';
+    const teaser = col.querySelector('.teasers__teaser');
+    if (teaser) {
+      // Collect all images and their alt text
+      const imgs = Array.from(teaser.querySelectorAll('img'));
+      const imgContent = imgs.map(img => {
+        // If alt text is present and non-empty, include it as a paragraph
+        if (img.alt && img.alt.trim()) {
+          const p = document.createElement('p');
+          p.textContent = img.alt.trim();
+          return [img, p];
         }
-      } else {
-        wrapper.appendChild(node.cloneNode(true));
-      }
-    });
-    // Also extract any text content from teaser itself (not just child nodes)
-    // If teaser has meaningful text not already included, add it
-    const teaserText = teaser.textContent;
-    if (teaserText && teaserText.trim() && !wrapper.textContent.includes(teaserText.trim())) {
-      const p = document.createElement('p');
-      p.textContent = teaserText.trim();
-      wrapper.appendChild(p);
+        return img;
+      });
+      // Collect all text nodes in teaser
+      const textNodes = Array.from(teaser.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim());
+      const textContent = textNodes.map(node => {
+        const span = document.createElement('span');
+        span.textContent = node.textContent.trim();
+        return span;
+      });
+      // Collect all other elements except images
+      const otherContent = Array.from(teaser.children).filter(el => el.tagName !== 'IMG');
+      // Flatten and combine all content
+      return [].concat(...imgContent, ...textContent, ...otherContent);
     }
-    return wrapper;
+    return '';
   }
 
-  // Extract both columns' content, ensuring all text is included
-  const leftContent = extractColumnContent(columns[0]);
-  const rightContent = extractColumnContent(columns[1]);
+  // Helper: extract all text content from the column (including nested elements)
+  function extractAllText(col) {
+    if (!col) return '';
+    const teaser = col.querySelector('.teasers__teaser');
+    if (teaser) {
+      let text = '';
+      // Get all text from teaser and its descendants
+      teaser.querySelectorAll('*').forEach(el => {
+        if (el.childNodes.length) {
+          el.childNodes.forEach(node => {
+            if (node.nodeType === 3 && node.textContent.trim()) {
+              text += node.textContent.trim() + '\n';
+            }
+          });
+        }
+      });
+      // Also get direct text nodes
+      Array.from(teaser.childNodes).forEach(node => {
+        if (node.nodeType === 3 && node.textContent.trim()) {
+          text += node.textContent.trim() + '\n';
+        }
+      });
+      if (text.trim()) {
+        const div = document.createElement('div');
+        div.textContent = text.trim();
+        return div;
+      }
+    }
+    return '';
+  }
 
-  // Table rows: first row is header, second row is columns
-  const tableRows = [
+  // Combine image and text content for each column
+  const leftContent = [...extractColumnContent(leftCol), extractAllText(leftCol)].filter(Boolean);
+  const rightContent = [...extractColumnContent(rightCol), extractAllText(rightCol)].filter(Boolean);
+
+  // Build the table rows
+  const cells = [
     headerRow,
     [leftContent, rightContent]
   ];
 
-  // Create and replace with block table
-  const block = WebImporter.DOMUtils.createTable(tableRows, document);
+  // Create the table block
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+  // Replace the original element
   element.replaceWith(block);
 }

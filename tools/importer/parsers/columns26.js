@@ -2,56 +2,41 @@
 export default function parse(element, { document }) {
   // Header row for the block
   const headerRow = ['Columns (columns26)'];
-  const rows = [headerRow];
 
-  const sections = element.querySelectorAll('.mat-card-content');
+  // Helper to extract a row with two columns: left label, right content
+  function extractRow(rowEl) {
+    // Defensive: get direct children columns
+    const columns = Array.from(rowEl.querySelectorAll(':scope > .cal-column'));
+    if (columns.length !== 2) return [rowEl.cloneNode(true), '']; // fallback: single cell
 
-  // First section: risk filter (should have three columns)
-  if (sections[0]) {
-    const row = sections[0].querySelector('.cal-row');
-    if (row) {
-      const columns = row.querySelectorAll(':scope > .cal-column');
-      if (columns.length >= 2) {
-        // 1. Left label
-        const leftLabel = columns[0].querySelector('h4');
-        // 2. Left value + label
-        const leftValueContainer = columns[1].querySelectorAll('.share-label-container')[0];
-        // 3. Slider (ng5-slider)
-        const slider = columns[1].querySelector('ng5-slider');
-        // 4. Right value + label
-        const rightValueContainer = columns[1].querySelectorAll('.share-label-container')[1];
+    // Left column: usually just a heading
+    const left = columns[0];
+    // Right column: slider and labels
+    const right = columns[1];
 
-        // Compose the three columns:
-        // Column 1: left label
-        // Column 2: left value + label
-        // Column 3: slider + right value + label
-        const col1 = leftLabel;
-        const col2 = leftValueContainer;
-        // For column 3, group slider and right value container together
-        const col3 = [slider, rightValueContainer];
-        rows.push([col1, col2, col3]);
-      }
-    }
+    // For left: grab all children (usually h4)
+    const leftContent = Array.from(left.childNodes).filter(n => n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim()));
+    // For right: grab all children (labels, slider, etc)
+    const rightContent = Array.from(right.childNodes).filter(n => n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim()));
+
+    return [leftContent, rightContent];
   }
 
-  // Second section: climate filter (should have three columns)
-  if (sections[1]) {
-    const row = sections[1].querySelector('.cal-row');
-    if (row) {
-      const columns = row.querySelectorAll(':scope > .cal-column');
-      if (columns.length >= 2) {
-        // 1. Left label
-        const leftLabel = columns[0].querySelector('h4');
-        // 2. Slider (ng5-slider)
-        const slider = columns[1].querySelector('ng5-slider');
-        // 3. Value (h4 with percentage)
-        const value = columns[1].querySelector('h4.cal-filter__value');
-        rows.push([leftLabel, slider, value]);
-      }
+  // Find all rows within the block
+  // Each mat-card-content contains one row
+  const cardContents = Array.from(element.querySelectorAll('mat-card-content'));
+  const rows = [];
+  cardContents.forEach(cardContent => {
+    const rowEl = cardContent.querySelector('.cal-row');
+    if (rowEl) {
+      rows.push(extractRow(rowEl));
     }
-  }
+  });
 
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(block);
+  // Compose the table: header + rows
+  const tableCells = [headerRow, ...rows];
+  const blockTable = WebImporter.DOMUtils.createTable(tableCells, document);
+
+  // Replace original element with the block table
+  element.replaceWith(blockTable);
 }

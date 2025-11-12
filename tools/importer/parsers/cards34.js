@@ -1,45 +1,62 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Cards (cards34) block: 2 columns, multiple rows, first row is block name
+  // Cards (cards34) block parsing
+  // 1. Header row
   const headerRow = ['Cards (cards34)'];
-  const rows = [headerRow];
 
-  // Find all card columns (each card is inside .col-xs-12.col-sm-1 or .col-xs-12.col-sm-10)
-  // The main card content is in the center column (.col-xs-12.col-sm-10)
-  const centerCol = element.querySelector('.col-xs-12.col-sm-10');
-  if (centerCol) {
-    // Find the image from either left or right columns
-    let img = null;
-    const sideCols = element.querySelectorAll('.col-xs-12.col-sm-1');
-    for (const col of sideCols) {
-      const foundImg = col.querySelector('img');
-      if (foundImg) {
-        img = foundImg;
-        break;
+  // 2. Find all .row elements (each is a card row)
+  const rowNodes = Array.from(element.querySelectorAll('.row'));
+
+  // 3. Build rows for each card
+  const rows = rowNodes.map(row => {
+    // Image/Icon (first cell)
+    // Use the FIRST image found in left or right columns
+    let imgCell = '';
+    const leftImg = row.querySelector('.col-xs-12.col-sm-1 img');
+    if (leftImg) {
+      imgCell = leftImg.cloneNode(true);
+    } else {
+      // fallback: try right column
+      const rightImg = row.querySelector('.col-xs-12.col-sm-1:last-child img');
+      if (rightImg) imgCell = rightImg.cloneNode(true);
+    }
+
+    // Text Content (second cell)
+    // Get all content from the center column
+    let textCell = '';
+    const centerCol = row.querySelector('.col-xs-12.col-sm-10 .teasers__teaser');
+    if (centerCol) {
+      // Collect all elements (h3, p, span, etc) and any text nodes
+      const content = [];
+      Array.from(centerCol.childNodes).forEach(node => {
+        if (node.nodeType === 1) {
+          content.push(node.cloneNode(true));
+        } else if (node.nodeType === 3 && node.textContent.trim()) {
+          content.push(document.createTextNode(node.textContent.trim()));
+        }
+      });
+      // Ensure we include all text content, even if not wrapped in elements
+      if (content.length) {
+        textCell = content;
+      } else {
+        const txt = centerCol.textContent.trim();
+        if (txt) textCell = txt;
       }
     }
 
-    // Get all content from the center teaser
-    const teaser = centerCol.querySelector('.teasers__teaser');
-    const textContent = [];
-    if (teaser) {
-      // Get all child elements (to ensure all text is included)
-      teaser.childNodes.forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          textContent.push(node);
-        }
-      });
+    // Always add card row if there is any text content (even if no image)
+    if ((Array.isArray(textCell) ? textCell.length : textCell)) {
+      return [imgCell, textCell];
     }
+    return null;
+  }).filter(Boolean);
 
-    rows.push([
-      img ? img : '',
-      textContent
-    ]);
-  }
+  // 4. Compose table data
+  const cells = [headerRow, ...rows];
 
-  // Create the table block
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // 5. Create block table
+  const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Replace the original element with the new block table
-  element.replaceWith(table);
+  // 6. Replace original element
+  element.replaceWith(block);
 }

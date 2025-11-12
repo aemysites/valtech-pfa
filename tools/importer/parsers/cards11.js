@@ -1,35 +1,39 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Cards (cards11) block: 2 columns, header row, each card = [image/icon, text]
+  // Cards (cards11) block: 2 columns, multiple rows, first row is block name
   const headerRow = ['Cards (cards11)'];
-  const rows = [headerRow];
 
-  // Select all card columns (each card)
-  const cardEls = element.querySelectorAll('.col-xs-12.col-sm-4');
-  cardEls.forEach((cardEl) => {
-    // Find image/icon (first img inside card)
-    const img = cardEl.querySelector('img');
-    // Find title (first h4 inside card)
-    const title = cardEl.querySelector('h4');
-    // Defensive: fallback if h4 not found, try strong, p, or get text
-    let textContent = title;
-    if (!textContent) {
-      textContent = cardEl.querySelector('strong, p');
+  // Find all card columns (each card is a col-xs-12 col-sm-4)
+  const cardNodes = Array.from(element.querySelectorAll('.col-xs-12.col-sm-4'));
+
+  // Defensive: If no cards found, do nothing
+  if (!cardNodes.length) return;
+
+  // For each card, extract image and text content
+  const rows = cardNodes.map(card => {
+    // Image: find first img inside card
+    const img = card.querySelector('img');
+
+    // Text: find heading (h4) inside card
+    const heading = card.querySelector('h4');
+
+    // Compose text cell: if heading exists, use it; else fallback to text
+    let textCell;
+    if (heading) {
+      textCell = heading;
+    } else {
+      // Fallback: use all text content inside card
+      textCell = document.createElement('div');
+      textCell.textContent = card.textContent.trim();
     }
-    if (!textContent) {
-      // fallback: get all text
-      textContent = document.createElement('div');
-      textContent.textContent = cardEl.textContent.trim();
-    }
-    // Each card row: [image/icon, text]
-    rows.push([
-      img,
-      textContent
-    ]);
+
+    return [img, textCell];
   });
 
-  // Create block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace original element
-  element.replaceWith(block);
+  // Build table rows: header + card rows
+  const tableRows = [headerRow, ...rows];
+  const blockTable = WebImporter.DOMUtils.createTable(tableRows, document);
+
+  // Replace original element with block table
+  element.replaceWith(blockTable);
 }

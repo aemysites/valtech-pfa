@@ -1,34 +1,30 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header row
+  // Accordion block: 2 columns, multiple rows
+  // Header row
   const headerRow = ['Accordion (accordion31)'];
 
-  // Find the main heading (context for the block)
-  const heading = element.querySelector('h5');
-
-  // Find all toggler elements (accordion triggers)
-  const togglers = Array.from(element.querySelectorAll('.accordions__toggler'));
-
+  // Find all accordion toggler elements (titles)
+  const togglerEls = Array.from(element.querySelectorAll('.accordions__toggler'));
   // Find all accordion content blocks
-  const accordionContents = Array.from(element.querySelectorAll('.accordions__element'));
+  const contentEls = Array.from(element.querySelectorAll('.accordions__element'));
 
-  // Defensive: Only pair togglers and content if they are matched
+  // Only pair toggler with content if both exist
   const rows = [];
-  for (let i = 0; i < togglers.length; i++) {
-    const titleCell = togglers[i];
-    const contentCell = accordionContents[i] || document.createElement('div');
-    rows.push([titleCell, contentCell]);
+  for (let i = 0; i < togglerEls.length; i++) {
+    const titleEl = togglerEls[i];
+    const contentEl = contentEls[i];
+    if (!titleEl || !contentEl) continue;
+    // Title cell: Use only the text content of the toggler
+    // Content cell: Use the entire accordion content block
+    rows.push([
+      titleEl.textContent.trim(),
+      contentEl
+    ]);
   }
 
-  // Compose the final table
+  // Compose table data
   const cells = [headerRow, ...rows];
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-
-  // If a heading exists, insert it before the block for context
-  if (heading) {
-    element.parentNode.insertBefore(heading, element);
-  }
-
-  // Replace the original element with the block table
-  element.replaceWith(block);
+  const table = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(table);
 }
