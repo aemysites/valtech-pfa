@@ -45,3 +45,85 @@
     padding: 40px 32px;
   }
 }
+
+.hero.hero2.block.no-image {
+  /* Full width, full background image */
+  width: 100vw;
+  min-height: 480px;
+  background-image: url('YOUR-BACKGROUND-IMAGE.jpg'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;   /* Vertically center content */
+  gap: 0;                /* No gap, unless you want a bit of space between children */
+  position: relative;    /* For layering or overlays later */
+}
+
+.hero.hero2.block.no-image > div:first-child {
+  background: #a41c1c;
+
+  /* Size and position */
+  width: 460px;      /* Adjust as needed for layout */
+  height: 320px;     /* Adjust as needed for layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;   /* Inset from the left edge */
+  margin-top: 40px;    /* Inset from the top edge */
+  box-sizing: border-box;
+
+  /* Optional: Add box-shadow for depth */
+  box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
+}
+
+.hero.hero2.block.no-image > div:first-child img {
+  max-width: 80%;      /* Adjust image size within the overlay */
+  max-height: 80%;
+  display: block;
+  margin: auto;
+
+  /* Optional: Hide broken image icon */
+  opacity: 0; /* If you want to hide the image while keeping layout */
+}
+
+.hero.hero2.block.no-image > div:last-child {
+  display: flex;
+  align-items: flex-start; /* Start from top */
+  padding-left: 80px;      /* Space between image and text */
+  padding-right: 60px;
+  box-sizing: border-box;
+  min-width: 0;            /* Prevent overflow */
+}
+
+.hero.hero2.block.no-image h1 {
+  color: #fff;
+  font-family: Merriweather, serif; /* Example serif font */
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.15;
+  padding-top: 40px;
+
+  /* Optional: Add text-shadow for readability */
+  text-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+}
+
+@media (width <= 900px) {
+  .hero.hero2.block.no-image {
+    flex-direction: column;
+    min-height: 380px;
+  }
+
+  .hero.hero2.block.no-image > div:first-child,
+  .hero.hero2.block.no-image > div:last-child {
+    width: 100%;
+    margin: 0;
+    padding: 32px 24px;
+    height: auto;
+  }
+
+  .hero.hero2.block.no-image > div:last-child {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
