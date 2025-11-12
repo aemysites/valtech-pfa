@@ -1,100 +1,107 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Table header
-  const headerRow = ['Cards (cards25)'];
-  const rows = [headerRow];
-
-  // Helper to extract a card from a .col-xs-12.col-sm-6
-  function extractCard(col) {
-    const teaser = col.querySelector('.teasers__teaser');
-    if (!teaser) return null;
-    // Title
-    const titleEl = teaser.querySelector('.accordions__toggler');
-    // Content
-    const contentEl = teaser.querySelector('.accordions__element');
-    let descEl = null;
-    let imgEl = null;
-    if (contentEl) {
-      const textCol = contentEl.querySelector('.col-sm-10 .teasers__teaser');
-      if (textCol) {
-        const ps = Array.from(textCol.querySelectorAll('p'));
-        if (ps.length) {
-          descEl = document.createElement('div');
-          ps.forEach(p => descEl.appendChild(p.cloneNode(true)));
-        }
+  // Helper to extract all introductory and section text, including paragraphs
+  function extractIntroContent(mainCol, stopClass) {
+    const intro = [];
+    let node = mainCol.firstChild;
+    while (node) {
+      // Stop at the first .row (cards grid) or a specific class
+      if (node.nodeType === 1 && node.classList.contains(stopClass)) break;
+      if (node.nodeType === 1 && (node.tagName === 'STRONG' || node.tagName === 'BR' || node.tagName === 'P')) {
+        intro.push(node.cloneNode(true));
+      } else if (node.nodeType === 3 && node.textContent.trim()) {
+        intro.push(document.createTextNode(node.textContent));
       }
-      const imgCol = contentEl.querySelector('.col-sm-2 img');
-      if (imgCol) imgEl = imgCol;
+      node = node.nextSibling;
     }
-    if (!imgEl) {
-      const fallbackImg = teaser.querySelector('img');
-      if (fallbackImg) imgEl = fallbackImg;
-    }
-    if (!descEl && titleEl) {
-      let next = titleEl.nextElementSibling;
-      descEl = document.createElement('div');
-      while (next) {
-        if (next.tagName === 'P') {
-          descEl.appendChild(next.cloneNode(true));
-        }
-        next = next.nextElementSibling;
-      }
-      if (!descEl.hasChildNodes()) descEl = null;
-    }
-    const textCell = [];
-    if (titleEl) {
-      const heading = document.createElement('strong');
-      heading.textContent = titleEl.textContent.trim();
-      textCell.push(heading);
-    }
-    if (descEl) {
-      textCell.push(descEl);
-    }
-    if (imgEl && textCell.length) {
-      return [imgEl.cloneNode(true), textCell];
-    }
-    return null;
+    return intro;
   }
 
-  // Extract all cards from all .row > .col-xs-12.col-sm-6, but only add unique cards
+  // Helper to extract cards from a row
+  function extractCardsFromRow(row) {
+    const cards = [];
+    row.querySelectorAll('.col-xs-12.col-sm-6').forEach((col) => {
+      const teaser = col.querySelector('.teasers__teaser');
+      if (!teaser) return;
+      const title = teaser.querySelector('.accordions__toggler');
+      const description = teaser.querySelector('.accordions__element .teasers__teaser p:not(.accordions__toggler)');
+      const image = teaser.querySelector('.accordions__element img');
+      const textCell = [];
+      if (title) {
+        const h3 = document.createElement('h3');
+        h3.textContent = title.textContent.trim();
+        textCell.push(h3);
+      }
+      if (description) {
+        textCell.push(description.cloneNode(true));
+      }
+      if (image || textCell.length) {
+        cards.push([
+          image ? image.cloneNode(true) : '',
+          textCell.length ? textCell : ''
+        ]);
+      }
+    });
+    return cards;
+  }
+
+  // Find all .col-xs-12.col-sm-12 blocks (there are two: one for PFA, one for iShares)
+  const mainCols = element.querySelectorAll('.col-xs-12.col-sm-12');
+  const tableCells = [['Cards (cards25)']];
+
+  // First intro block (PFA-forvaltede indeksnære fonde)
+  if (mainCols[0]) {
+    const mainHeading = element.querySelector('.accordions__toggler.bg-secondary');
+    const intro = [];
+    if (mainHeading) {
+      const h2 = document.createElement('h2');
+      h2.textContent = mainHeading.textContent.trim();
+      intro.push(h2);
+    }
+    intro.push(...extractIntroContent(mainCols[0], 'row'));
+    if (intro.length) {
+      tableCells.push(['', intro]);
+    }
+  }
+
+  // Extract all card rows
+  const rows = Array.from(element.querySelectorAll('.row')).filter(row => row.querySelector('.col-xs-12.col-sm-6'));
+  let cardRows = [];
   const seenTitles = new Set();
-  element.querySelectorAll('.row').forEach((rowEl) => {
-    rowEl.querySelectorAll('.col-xs-12.col-sm-6').forEach((col) => {
-      const card = extractCard(col);
-      if (card) {
-        const title = card[1][0]?.textContent?.trim();
-        if (title && !seenTitles.has(title)) {
-          seenTitles.add(title);
-          rows.push(card);
-        }
+  rows.forEach(row => {
+    extractCardsFromRow(row).forEach(card => {
+      // Deduplicate by card title (h3 text)
+      const title = card[1] && card[1][0] && card[1][0].textContent ? card[1][0].textContent.trim() : '';
+      if (title && !seenTitles.has(title)) {
+        seenTitles.add(title);
+        cardRows.push(card);
       }
     });
   });
+  tableCells.push(...cardRows);
 
-  // Extract all top-level non-card text blocks as their own cards
-  let node = element.firstChild;
-  while (node) {
-    // Stop at the first .row (cards start here)
-    if (node.nodeType === 1 && node.classList.contains('row')) break;
-    if (node.nodeType === 1 && node.textContent.trim() && node.tagName !== 'BR') {
-      // Treat each intro block as a card with text only (no image)
-      rows.push(['', [node.cloneNode(true)]]);
+  // Second intro block (Eksternt forvaltede indeksfonde)
+  if (mainCols[0]) {
+    // Find the second <strong> (Eksternt forvaltede indeksfonde)
+    const strongs = mainCols[0].querySelectorAll('strong');
+    if (strongs.length > 1) {
+      const secondStrong = strongs[1];
+      const intro2 = [secondStrong.cloneNode(true)];
+      let node = secondStrong.nextSibling;
+      while (node && !(node.nodeType === 1 && node.classList.contains('row'))) {
+        if (node.nodeType === 1 && (node.tagName === 'BR' || node.tagName === 'P')) {
+          intro2.push(node.cloneNode(true));
+        } else if (node.nodeType === 3 && node.textContent.trim()) {
+          intro2.push(document.createTextNode(node.textContent));
+        }
+        node = node.nextSibling;
+      }
+      if (intro2.length) {
+        tableCells.push(['', intro2]);
+      }
     }
-    node = node.nextSibling;
   }
 
-  // Extract all bottom-level non-card text blocks as their own cards
-  const allRows = Array.from(element.querySelectorAll('.row'));
-  let lastRow = allRows.length ? allRows[allRows.length - 1] : null;
-  node = lastRow ? lastRow.nextSibling : null;
-  while (node) {
-    if (node.nodeType === 1 && node.textContent.trim() && node.tagName !== 'BR') {
-      rows.push(['', [node.cloneNode(true)]]);
-    }
-    node = node.nextSibling;
-  }
-
-  // Create table and replace element
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(table);
+  const block = WebImporter.DOMUtils.createTable(tableCells, document);
+  element.replaceWith(block);
 }
