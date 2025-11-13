@@ -160,34 +160,48 @@
 }
 
 
-.columns.columns3.block.columns-2-cols > div {
+.columns.columns-2-cols {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;   /* Top alignment */
-  gap: 2rem;                 /* Space between columns, adjust as needed */
-  padding: 2rem;             /* Overall block padding */
+  gap: 40px;
 }
 
-/* Left column: main text */
-.columns.columns3.block.columns-2-cols > div > div:first-child {
-  flex: 1 1 50%;
-  color: #222;               /* Dark gray text */
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 1.1rem;
+.columns.columns-2-cols > div {
+  flex: 1 1 0;
+  background: #fff;
+  padding: 30px 25px;
+  box-sizing: border-box;
 }
 
-/* Right column: caption (and video, if present) */
-.columns.columns3.block.columns-2-cols > div > div:last-child {
-  flex: 1 1 40%;
+.columns.columns-2-cols > div:first-child {
+  color: #222;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.columns.columns-2-cols > div:first-child p {
+  margin-bottom: 20px;
+}
+
+.columns.columns-2-cols > div:last-child {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  justify-content: flex-start;
 }
 
-/* Caption styling */
-.columns.columns3.block.columns-2-cols > div > div:last-child em {
-  font-size: 0.92rem;
-  color: #555;
+.columns.columns-2-cols > div:last-child img {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+
+.columns.columns-2-cols > div:last-child em,
+.columns.columns-2-cols > div:last-child p em {
+  font-size: 12px;
+  color: #636363;
   font-style: italic;
+  margin-top: 10px;
+  display: block;
 }
