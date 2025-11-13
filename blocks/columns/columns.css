@@ -35,125 +35,135 @@
 
 
 .columns.columns15 {
-  background: #333;
-  color: #f3f3f3;
-  padding: 48px 40px 32px;
-  border-bottom: 1px solid #eaeaea;
-  box-sizing: border-box;
+  background-color: #333;
+  color: #ededed;
+  padding: 32px 0 24px;
 }
 
-/* Main layout: four columns side by side, top-aligned */
-.columns.columns15 .columns-4-cols {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 56px;
-  align-items: flex-start;
-  justify-content: flex-start;
+/* Use grid for precise column and row control */
+.columns.columns15 div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 32px; /* vertical, horizontal gap */
+  max-width: 1064px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: start;
 }
 
-/* Each top-level column container (flex children) */
-.columns.columns15 .columns-4-cols div {
-  flex: 1 1 0;
-  min-width: 0;
+/* Columns: stack content vertically, flush left */
+.columns.columns15 div div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  box-sizing: border-box;
+  padding: 0;
+  min-width: 0;
+}
+
+/* Column headings: visually prominent */
+.columns.columns15 div div p:first-child {
+  font-weight: 700;
+  font-size: 1.17em;
+  color: #ededed;
+  margin: 0 0 10px;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+/* List styling: remove bullets, dense spacing */
+.columns.columns15 ul,
+.columns.columns15 li {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* Headings: bold, larger, uppercase, spaced below */
-.columns.columns15 .columns-4-cols div p:first-child,
-.columns.columns15 .columns-4-cols div ul li:first-child,
-.columns.columns15 .columns-4-cols div ol li:first-child {
-  font-weight: 700;
-  font-size: 1.125em;
-  text-transform: uppercase;
-  margin-top: 0;
-  margin-bottom: 1.2em;
-  color: #fff;
+.columns.columns15 li {
+  margin-bottom: 2px;
 }
 
-/* Remove bullets and standardize spacing for all lists */
-.columns.columns15 .columns-4-cols ul,
-.columns.columns15 .columns-4-cols ol {
-  list-style: none;
-  padding-left: 0;
-  margin: 0 0 0.7em;
-}
-
-/* List items: vertical spacing */
-.columns.columns15 .columns-4-cols li {
-  margin-bottom: 1em;
-}
-
-/* Links: light color, no underline, gold on hover, override base link color */
-.columns.columns15 .columns-4-cols a {
-  color: #f3f3f3;
+.columns.columns15 a {
+  color: #ededed;
   text-decoration: none;
-  transition: color 0.2s;
+  font-size: 0.97em;
+  line-height: 1.5;
+  transition: color 0.2s, text-decoration 0.2s;
 }
 
-.columns.columns15 .columns-4-cols a:hover,
-.columns.columns15 .columns-4-cols a:focus {
-  color: #daa520;
+.columns.columns15 a:hover,
+.columns.columns15 a:focus {
+  color: #fff;
   text-decoration: underline;
 }
 
-/* Social icons row: horizontal layout only for nested ul/ol inside last column */
-.columns.columns15 .columns-4-cols div ul ul,
-.columns.columns15 .columns-4-cols div ol ul,
-.columns.columns15 .columns-4-cols div ul ol {
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  margin-top: 1.3em;
-  margin-bottom: 0;
+/* Company info/address lines: dense, flush left */
+.columns.columns15 div div:last-child p,
+.columns.columns15 div div:last-child ul:not(:last-child) li {
+  font-size: 0.97em;
+  color: #ededed;
+  line-height: 1.5;
+  margin: 0 0 2px;
+  text-align: left;
+  padding: 0;
 }
 
-/* Social icon links: circular style */
-.columns.columns15 .columns-4-cols div ul ul a,
-.columns.columns15 .columns-4-cols div ol ul a,
-.columns.columns15 .columns-4-cols div ul ol a {
+/* Social icon row: horizontal, compact spacing */
+.columns.columns15 div div:last-child ul ul {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+/* Social icon circles */
+.columns.columns15 div div:last-child ul ul a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: 2px solid #f3f3f3;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: transparent;
-  color: #f3f3f3;
-  font-size: 18px;
-  line-height: 1;
-  transition: background 0.18s, color 0.18s, border-color 0.18s;
-}
-
-.columns.columns15 .columns-4-cols div ul ul a:hover,
-.columns.columns15 .columns-4-cols div ol ul a:hover,
-.columns.columns15 .columns-4-cols div ul ol a:hover,
-.columns.columns15 .columns-4-cols div ul ul a:focus,
-.columns.columns15 .columns-4-cols div ol ul a:focus,
-.columns.columns15 .columns-4-cols div ul ol a:focus {
-  background: #f3f3f3;
+  background: #ededed;
   color: #333;
-  border-color: #333;
+  font-size: 1.13em;
+  transition: background 0.2s, color 0.2s;
 }
 
-/* Remove excess top margin from first elements in any column */
-.columns.columns15 .columns-4-cols div *:first-child {
-  margin-top: 0;
+.columns.columns15 div div:last-child ul ul a:hover {
+  background: #fff;
+  color: #222;
 }
 
-/* Responsive: stack columns vertically on small screens */
+/* Remove bullets from company info nested lists */
+.columns.columns15 div div ul,
+.columns.columns15 div div ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Responsive: stack columns, reduce gaps and padding for mobile */
 @media (width <= 900px) {
   .columns.columns15 {
-    padding: 32px 12px 16px;
+    padding: 16px 0 8px;
   }
 
-  .columns.columns15 .columns-4-cols {
-    flex-direction: column;
-    gap: 32px;
+  .columns.columns15 div {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .columns.columns15 div div {
+    padding: 0;
+  }
+
+  .columns.columns15 div div:last-child ul ul {
+    gap: 8px;
+    margin-top: 8px;
   }
 }
