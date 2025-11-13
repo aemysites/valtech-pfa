@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .accordion details {
   border: 1px solid #dadada;
 }
@@ -62,158 +63,72 @@
 
 .accordion.accordion8 {
   background: #fff;
-  max-width: 700px;
-  margin: 48px auto 0;
-  position: relative;
-  border-radius: 0;
+  max-width: 880px;
+  margin: 64px auto 0;
+  border-radius: 0 0 8px 8px;
   box-sizing: border-box;
-
-  /* Create left/right "card" appearance */
-  box-shadow: 0 2px 8px rgb(0 0 0 / 1%);
-  padding-bottom: 0;
-  display: block;
-}
-
-.accordion.accordion8::after {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: #960000;
-  border-radius: 0;
-  pointer-events: none;
-  content: "";
-}
-
-.accordion.accordion8 details {
-  border: none;
-  background: transparent;
-  margin: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Accordion summary - header row */
-.accordion.accordion8 details summary {
+  padding: 48px 40px 0;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  background: #f7f7f7;
-  color: #666;
-  font-size: 1rem;
-  min-height: 54px;
-  padding: 0 24px 0 28px;
-  border: none;
-  border-radius: 0;
-  outline: none;
+  flex-direction: column;
+  position: relative;
+
+  /* ensures accent line is visible at the bottom */
+  border-bottom: 4px solid #a00000;
+}
+
+/* Dropdown/Button Bar */
+.accordion.accordion8 summary {
+  background: #f6f6f6;
+  border-radius: 4px;
+  min-height: 48px;
   width: 100%;
-  margin: 0;
-  line-height: 1.5;
-  text-align: left;
+  padding: 0 24px;
+  color: #555;
+  font-size: 1.14rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
   cursor: pointer;
+  margin-bottom: 0;
   box-sizing: border-box;
-  transition: background 0.15s;
-  letter-spacing: 0.01em;
+  border: none;
+  outline: none;
+  text-align: left;
+  transition: background 0.2s;
+  margin-top: 0;
 }
 
-/* Subtle hover effect for header */
-.accordion.accordion8 details summary:hover {
-  background: #ededed;
+.accordion.accordion8 summary svg,
+.accordion.accordion8 summary i,
+.accordion.accordion8 summary em {
+  margin-left: 12px;
+  min-width: 20px;
+  min-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Bolder text and subtle background change when open */
-.accordion.accordion8 details[open] summary {
-  font-weight: 700;
-  background: #f2f2f2;
-}
-
-/* Remove marker (triangle) */
-.accordion.accordion8 details summary::-webkit-details-marker,
-.accordion.accordion8 details summary::marker {
+.accordion.accordion8 summary::-webkit-details-marker,
+.accordion.accordion8 summary::marker {
   display: none;
 }
 
-/* If using a .chevron or span element for arrow in summary */
-.accordion.accordion8 details summary span,
-.accordion.accordion8 details summary .chevron {
-  margin-left: 18px;
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  border-right: 2px solid #999;
-  border-bottom: 2px solid #999;
-  transform: rotate(45deg);
-  transition: transform 0.2s;
-  box-sizing: border-box;
-  flex-shrink: 0;
+.accordion.accordion8 details[open] summary {
+  background: #ededed;
 }
 
-.accordion.accordion8 details[open] summary span,
-.accordion.accordion8 details[open] summary .chevron {
-  transform: rotate(-135deg);
-}
-
-/* Accordion body */
-.accordion.accordion8 details .accordion-item-body,
-.accordion.accordion8 details .block,
-.accordion.accordion8 details div {
-  background: #fff;
-  color: var(--text-color);
-  font-size: 1rem;
-  padding: 32px 28px 18px;
-  border-radius: 0;
-  margin: 0;
-  box-sizing: border-box;
-  text-align: left;
-}
-
-/* Table styling */
-.accordion.accordion8 details table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 18px;
-}
-
-.accordion.accordion8 details td {
-  padding: 8px 8px 8px 0;
-  vertical-align: top;
-  border: none;
-}
-
-.accordion.accordion8 details ul {
-  margin: 6px 0;
-  padding-left: 20px;
-}
-
-.accordion.accordion8 details p {
-  margin-top: 0.8em;
-  color: #666;
-  font-size: 1rem;
-}
-
-/* Responsive behavior */
-@media (width <= 750px) {
+/* Responsive: Stack cards vertically, reduce padding */
+@media (width <= 900px) {
   .accordion.accordion8 {
     max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    border-radius: 0;
+    padding: 28px 8px 0;
   }
 
-  .accordion.accordion8 details summary {
-    padding-left: 12px;
-    padding-right: 12px;
-    font-size: 0.98rem;
-    min-height: 48px;
-  }
-
-  .accordion.accordion8 details .accordion-item-body,
-  .accordion.accordion8 details .block,
-  .accordion.accordion8 details div {
-    padding: 18px 10px 12px;
-    font-size: 0.98rem;
+  .accordion.accordion8 summary {
+    min-height: 44px;
+    padding: 0 12px;
   }
 }
