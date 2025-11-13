@@ -64,18 +64,12 @@
   overflow: hidden;
 }
 
-/* If you want the hero block to span the entire page width with no margin */
-
-/* Image as background (ensure image is set via background-image in HTML or elsewhere) */
-
-/* If using an inline image, see further below */
-
 .hero.hero2 div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background: rgb(166 25 46 / 86%); /* semi-transparent dark red */
+  background: rgb(166 25 46 / 86%);
   padding: 48px 48px 48px 56px;
   margin-left: 0;
   min-width: 340px;
@@ -96,8 +90,6 @@
   font-size: 2.3rem;
   line-height: 1.15;
   letter-spacing: 0.01em;
-
-  /* Do NOT set font-family */
 }
 
 .hero.hero2 p,
@@ -109,10 +101,9 @@
   text-align: left;
 }
 
-/* If the image is a child element and not a background, control its position and size: */
 .hero.hero2 img {
   flex: 1;
-  order: 1; /* Use order: 2 if image should be on the right */
+  order: 1;
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -126,12 +117,11 @@
   background: none;
 }
 
-/* Remove any z-index from .hero .picture if present */
 .hero .picture {
-  /* No z-index */
+  /* Add styling to avoid empty block error */
+  display: block;
 }
 
-/* Responsive: stack vertically and adjust overlay padding */
 @media (width <= 900px) {
   .hero.hero2 {
     flex-direction: column;
@@ -157,5 +147,51 @@
 @media (width <= 600px) {
   .hero.hero2 div {
     padding: 20px 4vw;
+  }
+}
+
+
+.hero.hero22 {
+  /* Center the container horizontally */
+  max-width: 600px;
+  margin: 64px auto 0;
+  padding: 56px 32px;
+  background: var(--background-color);
+  box-sizing: border-box;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left-align text inside the block */
+}
+
+.hero.hero22 h2 {
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 24px;
+  margin-top: 0;
+}
+
+.hero.hero22 p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.125rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 32px;
+  max-width: 560px;
+}
+
+/* Responsive adjustments */
+@media (width <= 900px) {
+  .hero.hero22 {
+    max-width: 100%;
+    padding: 32px 16px;
+    margin-top: 32px;
+  }
+
+  .hero.hero22 p {
+    max-width: 100%;
+    margin-bottom: 24px;
   }
 }
