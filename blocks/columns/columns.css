@@ -40,18 +40,16 @@
   padding: 32px 0 24px;
 }
 
-/* Use grid for precise column and row control */
 .columns.columns15 div {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px 32px; /* vertical, horizontal gap */
+  gap: 20px 32px;
   max-width: 1064px;
   margin: 0 auto;
   width: 100%;
   align-items: start;
 }
 
-/* Columns: stack content vertically, flush left */
 .columns.columns15 div div {
   display: flex;
   flex-direction: column;
@@ -60,7 +58,6 @@
   min-width: 0;
 }
 
-/* Column headings: visually prominent */
 .columns.columns15 div div p:first-child {
   font-weight: 700;
   font-size: 1.17em;
@@ -71,7 +68,6 @@
   text-align: left;
 }
 
-/* List styling: remove bullets, dense spacing */
 .columns.columns15 ul,
 .columns.columns15 li {
   list-style: none;
@@ -97,7 +93,6 @@
   text-decoration: underline;
 }
 
-/* Company info/address lines: dense, flush left */
 .columns.columns15 div div:last-child p,
 .columns.columns15 div div:last-child ul:not(:last-child) li {
   font-size: 0.97em;
@@ -108,7 +103,6 @@
   padding: 0;
 }
 
-/* Social icon row: horizontal, compact spacing */
 .columns.columns15 div div:last-child ul ul {
   display: flex;
   flex-direction: row;
@@ -118,7 +112,6 @@
   justify-content: flex-start;
 }
 
-/* Social icon circles */
 .columns.columns15 div div:last-child ul ul a {
   display: flex;
   align-items: center;
@@ -137,7 +130,6 @@
   color: #222;
 }
 
-/* Remove bullets from company info nested lists */
 .columns.columns15 div div ul,
 .columns.columns15 div div ul li {
   list-style: none;
@@ -145,7 +137,6 @@
   margin: 0;
 }
 
-/* Responsive: stack columns, reduce gaps and padding for mobile */
 @media (width <= 900px) {
   .columns.columns15 {
     padding: 16px 0 8px;
@@ -166,4 +157,37 @@
     gap: 8px;
     margin-top: 8px;
   }
+}
+
+
+.columns.columns3.block.columns-2-cols > div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;   /* Top alignment */
+  gap: 2rem;                 /* Space between columns, adjust as needed */
+  padding: 2rem;             /* Overall block padding */
+}
+
+/* Left column: main text */
+.columns.columns3.block.columns-2-cols > div > div:first-child {
+  flex: 1 1 50%;
+  color: #222;               /* Dark gray text */
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Right column: caption (and video, if present) */
+.columns.columns3.block.columns-2-cols > div > div:last-child {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* Caption styling */
+.columns.columns3.block.columns-2-cols > div > div:last-child em {
+  font-size: 0.92rem;
+  color: #555;
+  font-style: italic;
 }
