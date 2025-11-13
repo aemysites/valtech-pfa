@@ -46,116 +46,43 @@
   }
 }
 
+.hero .picture {
+  display: none;
+}
 
-.hero.hero2 {
+
+.hero2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* left: 2/3, right: 1/3 */
+  min-height: 400px;
+  width: 100%;
   position: relative;
-  width: 100vw;
-  min-height: 480px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   overflow: hidden;
 }
 
-/* If you want the hero block to span the entire page width with no margin */
+/* Left column - background image */
+.hero2 > div:first-child {
+  background-image: url('YOUR_BACKGROUND_IMAGE_URL_HERE');
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+}
 
-/* Image as background (ensure image is set via background-image in HTML or elsewhere) */
-
-/* If using an inline image, see further below */
-
-.hero.hero2 div {
+/* Right column - red overlay with text */
+.hero2 > div:last-child {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  background: rgb(166 25 46 / 86%); /* semi-transparent dark red */
-  padding: 48px 48px 48px 56px;
-  margin-left: 0;
-  min-width: 340px;
-  max-width: 520px;
-  min-height: 320px;
-  box-sizing: border-box;
+  align-items: center;
+  justify-content: flex-start;
+  background: rgb(166 29 27 / 90%);
+  padding: 32px;
   color: #fff;
-  border-radius: 0;
+  min-height: 400px;
 }
 
-.hero.hero2 h1,
-.hero.hero2 h2,
-.hero.hero2 h3 {
-  color: #fff;
-  margin: 0 0 16px;
+.hero2 h1 {
+  font-size: 2rem;
   font-weight: 700;
-  text-align: left;
-  font-size: 2.3rem;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-
-  /* Do NOT set font-family */
-}
-
-.hero.hero2 p,
-.hero.hero2 div *:not(h1, h2, h3) {
   color: #fff;
-  font-size: 1.1rem;
-  line-height: 1.4;
-  margin: 0 0 10px;
-  text-align: left;
-}
-
-/* If the image is a child element and not a background, control its position and size: */
-.hero.hero2 img {
-  flex: 1;
-  order: 1; /* Use order: 2 if image should be on the right */
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-  min-height: 0;
-  max-width: none;
-  max-height: none;
   margin: 0;
-  padding: 0;
-  border: none;
-  background: none;
-}
-
-/* Remove any z-index from .hero .picture if present */
-.hero .picture {
-  /* No z-index */
-}
-
-/* Responsive: stack vertically and adjust overlay padding */
-@media (width <= 900px) {
-  .hero.hero2 {
-    flex-direction: column;
-    min-height: unset;
-  }
-
-  .hero.hero2 div {
-    width: 100vw;
-    max-width: 100vw;
-    min-width: unset;
-    min-height: 180px;
-    padding: 32px 8vw;
-    margin-left: 0;
-    border-radius: 0;
-  }
-
-  .hero.hero2 img {
-    width: 100vw;
-    height: 240px;
-  }
-}
-
-@media (width <= 600px) {
-  .hero.hero2 div {
-    padding: 20px 4vw;
-  }
+  line-height: 1.1;
 }
