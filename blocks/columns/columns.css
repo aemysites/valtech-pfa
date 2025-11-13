@@ -42,7 +42,6 @@
   box-sizing: border-box;
 }
 
-/* Main layout: four columns side by side, top-aligned */
 .columns.columns15 .columns-4-cols {
   display: flex;
   flex-flow: row nowrap;
@@ -51,7 +50,6 @@
   justify-content: flex-start;
 }
 
-/* Each top-level column container (flex children) */
 .columns.columns15 .columns-4-cols div {
   flex: 1 1 0;
   min-width: 0;
@@ -63,7 +61,6 @@
   padding: 0;
 }
 
-/* Headings: bold, larger, uppercase, spaced below */
 .columns.columns15 .columns-4-cols div p:first-child,
 .columns.columns15 .columns-4-cols div ul li:first-child,
 .columns.columns15 .columns-4-cols div ol li:first-child {
@@ -75,7 +72,6 @@
   color: #fff;
 }
 
-/* Remove bullets and standardize spacing for all lists */
 .columns.columns15 .columns-4-cols ul,
 .columns.columns15 .columns-4-cols ol {
   list-style: none;
@@ -83,12 +79,10 @@
   margin: 0 0 0.7em;
 }
 
-/* List items: vertical spacing */
 .columns.columns15 .columns-4-cols li {
   margin-bottom: 1em;
 }
 
-/* Links: light color, no underline, gold on hover, override base link color */
 .columns.columns15 .columns-4-cols a {
   color: #f3f3f3;
   text-decoration: none;
@@ -101,7 +95,6 @@
   text-decoration: underline;
 }
 
-/* Social icons row: horizontal layout only for nested ul/ol inside last column */
 .columns.columns15 .columns-4-cols div ul ul,
 .columns.columns15 .columns-4-cols div ol ul,
 .columns.columns15 .columns-4-cols div ul ol {
@@ -112,7 +105,6 @@
   margin-bottom: 0;
 }
 
-/* Social icon links: circular style */
 .columns.columns15 .columns-4-cols div ul ul a,
 .columns.columns15 .columns-4-cols div ol ul a,
 .columns.columns15 .columns-4-cols div ul ol a {
@@ -141,12 +133,10 @@
   border-color: #333;
 }
 
-/* Remove excess top margin from first elements in any column */
 .columns.columns15 .columns-4-cols div *:first-child {
   margin-top: 0;
 }
 
-/* Responsive: stack columns vertically on small screens */
 @media (width <= 900px) {
   .columns.columns15 {
     padding: 32px 12px 16px;
@@ -156,4 +146,109 @@
     flex-direction: column;
     gap: 32px;
   }
+}
+
+
+.columns.columns23 {
+  background: #f2f2f2;
+  border-radius: 14px;
+  padding: 40px 32px;
+  box-sizing: border-box;
+}
+
+/* Main two-column grid layout */
+.columns.columns23 .columns-2-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Column content stacks vertically */
+.columns.columns23 .columns-2-cols div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* Center column titles (h4) */
+.columns.columns23 h4 {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+  font-weight: 400;
+  margin: 0 0 22px;
+}
+
+/* Find blocks that look like icon+text pairs and lay them out horizontally.
+   If your HTML alternates icon <p> and text <p>, treat each <p> with a picture as a row. */
+.columns.columns23 .columns-2-cols div p {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+/* Target the icon (picture or img) within the row */
+.columns.columns23 .columns-2-cols div p picture,
+.columns.columns23 .columns-2-cols div p img {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  border-radius: 50%;
+  background: #900;
+  overflow: hidden;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+
+.columns.columns23 .columns-2-cols div p picture img,
+.columns.columns23 .columns-2-cols div p img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+  margin: 2px;
+}
+
+/* Text beside the icon (multiline, compact, never pushed below icon) */
+.columns.columns23 .columns-2-cols div p strong,
+.columns.columns23 .columns-2-cols div p span,
+.columns.columns23 .columns-2-cols div p em {
+  font-size: 12px;
+  color: #4d4d4d;
+  font-weight: 400;
+  line-height: 1.65;
+  text-align: left;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  word-break: break-all;
+  max-width: calc(100% - 40px);
+}
+
+/* Responsive: stack columns vertically at mobile sizes */
+@media (width <= 900px) {
+  .columns.columns23 {
+    padding: 24px 8px;
+  }
+
+  .columns.columns23 .columns-2-cols {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* Remove bottom margin for last item in column */
+.columns.columns23 .columns-2-cols div p:last-child {
+  margin-bottom: 0;
 }
