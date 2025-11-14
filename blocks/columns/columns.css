@@ -368,3 +368,97 @@
     padding: 0;
   }
 }
+
+
+/* Columns6 block: two-column grid layout, top-aligned, responsive */
+.columns.columns6 {
+  background: var(--background-color);
+  padding: 0;
+}
+
+/* Use CSS Grid on the innermost columns wrapper for robust horizontal and vertical alignment */
+.columns.columns6 .columns div {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(260px,420px);
+  gap: 40px;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive: stack columns vertically on smaller screens */
+@media (width <= 900px) {
+  .columns.columns6 .columns div {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Left column: bullet list styling and spacing */
+.columns.columns6 ul {
+  margin: 0 0 0 28px;
+  padding: 0;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  line-height: 1.7;
+}
+
+.columns.columns6 ul li {
+  margin-bottom: 1.1em;
+  padding-left: 0;
+}
+
+/* Emphasized links and strong/b tags inside bullets */
+.columns.columns6 ul li a,
+.columns.columns6 ul li strong,
+.columns.columns6 ul li b {
+  color: #b51819;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.columns.columns6 ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Right column: vertically stacked video link + caption */
+.columns.columns6 div p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Video link: large red, bold, visually separated from caption */
+.columns.columns6 div a {
+  color: #b51819;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1em;
+  margin-bottom: 10px;
+  display: inline-block;
+  border-radius: 8px;
+  background: none;
+  padding: 0.15em 0;
+  transition: text-decoration 0.12s;
+}
+
+.columns.columns6 div a:hover {
+  text-decoration: underline;
+}
+
+/* Caption: smaller, gray, italic, below link */
+.columns.columns6 div em {
+  display: block;
+  color: #6d6d6d;
+  font-size: 0.95em;
+  font-style: italic;
+  line-height: 1.5;
+  margin-top: 0;
+}
+
+/* Responsive: ensure video/caption block fills column on mobile */
+@media (width <= 900px) {
+  .columns.columns6 div em,
+  .columns.columns6 div a {
+    max-width: 100%;
+  }
+}
