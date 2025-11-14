@@ -172,7 +172,6 @@
   box-sizing: border-box;
 }
 
-/* Layout: Three columns side by side, stack on small screens */
 .cards.cards21 ul {
   display: flex;
   flex-direction: row;
@@ -191,7 +190,6 @@
   }
 }
 
-/* Card container */
 .cards.cards21 li {
   background: #fff;
   border: none;
@@ -208,7 +206,6 @@
   max-width: 360px;
 }
 
-/* Icon/image: left-aligned, grouped with headline, minimal gap */
 .cards.cards21 .cards-card-body picture,
 .cards.cards21 .cards-card-body img {
   display: block;
@@ -222,7 +219,6 @@
   align-self: flex-start;
 }
 
-/* Headline: bold, left-aligned, tight to icon */
 .cards.cards21 .cards-card-body h3 {
   font-size: 16px;
   font-weight: 700;
@@ -234,7 +230,6 @@
   align-self: flex-start;
 }
 
-/* Body text: left aligned, small gap between paragraphs */
 .cards.cards21 .cards-card-body p {
   font-size: 14px;
   color: #444;
@@ -248,7 +243,6 @@
   margin-bottom: 0;
 }
 
-/* CTA link: left aligned, red, underlined, close to last paragraph */
 .cards.cards21 .cards-card-body a:not(.button, .button-container a) {
   color: #C90013;
   font-size: 14px;
@@ -267,7 +261,6 @@
   align-self: flex-start;
 }
 
-/* Remove button-like styles for links inside cards */
 .cards.cards21 .cards-card-body .button,
 .cards.cards21 .cards-card-body .button-container a {
   background: none;
@@ -284,13 +277,11 @@
   cursor: pointer;
 }
 
-/* Remove any card hover shadow or border */
 .cards.cards21 li:hover {
   box-shadow: none;
   border: none;
 }
 
-/* Ensure all nested elements align left and stack vertically */
 .cards.cards21 .cards-card-body {
   width: 100%;
   display: flex;
@@ -298,4 +289,85 @@
   align-items: flex-start;
   gap: 0;
   padding: 0;
+}
+
+
+.cards.cards25 {
+  background-color: #6fa7ab;
+  color: #fff;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Ensure inner content layout does not stack vertically and is spaced appropriately */
+.cards.cards25 ul,
+.cards.cards25 li {
+  all: unset;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* For list items with multiple .cards-card-body divs, display them side by side with spacing */
+.cards.cards25 li .cards-card-body {
+  color: #fff;
+  font-size: 13px;
+  margin: 0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1 1 0;
+}
+
+/* If there are two or more .cards-card-body inside a li, make them share space evenly */
+
+/* Icon style (if present, e.g. as .icon or inline svg) */
+.cards.cards25 .icon,
+.cards.cards25 svg {
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin-left: 8px;
+  fill: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive adjustments: stack vertically on small screens */
+@media (width <= 600px) {
+  .cards.cards25 {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    min-height: unset;
+  }
+
+  .cards.cards25 ul,
+  .cards.cards25 li {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cards.cards25 li .cards-card-body {
+    padding: 8px 0;
+    justify-content: flex-start;
+  }
+
+  .cards.cards25 .icon,
+  .cards.cards25 svg {
+    margin-left: 0;
+    margin-top: 8px;
+  }
 }
