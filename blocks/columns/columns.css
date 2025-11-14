@@ -699,57 +699,6 @@
   align-items: center;
 }
 
-
-.columns.columns17 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 40px 60px 30px;
-  border-bottom: 1px solid #c00c0c;
-  gap: 48px;
-}
-
-.columns.columns17 > div:first-child {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.columns.columns17 > div:last-child {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.columns.columns17 h2 {
-  color: #222;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.columns.columns17 a {
-  color: #c00c0c;
-  text-decoration: underline;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.columns.columns17 a::after {
-  content: " →";
-}
-
-.columns.columns17 hr {
-  border: none;
-  border-top: 1px solid #dedede;
-  margin: 24px 0 0;
-  width: 100%;
-}
-
-/* Right column icon example */
 .brand-icon {
   width: 72px;
   height: 72px;
@@ -768,11 +717,66 @@
   margin-top: 8px;
 }
 
-/* Responsive stacking */
-@media (width <= 800px) {
+
+.columns.columns17 {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 32px;
+  background: #fff;
+  border-bottom: 1px solid #c9a19a;
+}
+
+/* Left column: text */
+.columns.columns17 > div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Right column: branding area */
+.columns.columns17 > div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.columns.columns17 > div:last-of-type::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 72px;
+  background: #930000;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.columns.columns17 > div:last-of-type::after {
+  content: "PFA Seniorboligstandard¹";
+  display: block;
+  color: #930000;
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 8px;
+  text-align: center;
+}
+
+@media (width <= 900px) {
   .columns.columns17 {
-    flex-direction: column;
-    gap: 32px;
-    padding: 32px 16px 24px;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 32px 8px;
+  }
+
+  .columns.columns17 > div:last-of-type {
+    margin-top: 40px;
+    align-items: center;
+    justify-content: flex-start;
   }
 }
