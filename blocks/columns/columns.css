@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .columns > div {
   display: flex;
   flex-direction: column;
@@ -633,7 +634,7 @@
   gap: 32px;
 }
 
-@media (max-width: 700px) {
+@media (width <= 700px) {
   .columns.columns16 {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -696,4 +697,128 @@
 .columns.columns16 div div a {
   justify-content: flex-start;
   align-items: center;
+}
+
+
+.columns.columns17 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #a60000;
+  padding: 40px 0;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+/* Left column: text content */
+.columns.columns17 div {
+  flex: 2 1 0;
+  padding-left: 48px;
+  padding-right: 24px;
+  box-sizing: border-box;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.columns.columns17 h2 {
+  color: #222;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.columns.columns17 p {
+  color: #222;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.columns.columns17 ul {
+  margin-top: 0.5rem;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 0.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.columns.columns17 ul li {
+  margin: 0;
+}
+
+.columns.columns17 ul li a {
+  color: #a60000;
+  font-size: 1rem;
+  text-decoration: none;
+  line-height: 1.5;
+  text-align: left;
+  display: inline-block;
+  transition: text-decoration 0.2s;
+}
+
+.columns.columns17 ul li a:hover,
+.columns.columns17 ul li a:focus {
+  text-decoration: underline;
+}
+
+/* Right column: icon + label */
+.columns.columns17 div + div {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 48px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  min-width: 120px;
+}
+
+.columns.columns17 div + div img,
+.columns.columns17 div + div svg {
+  width: 60px;
+  height: 60px;
+  background: #a60000;
+  border-radius: 50%;
+  display: block;
+  margin-bottom: 0.5rem;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.columns.columns17 div + div span,
+.columns.columns17 div + div p,
+.columns.columns17 div + div label {
+  color: #a60000;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* Responsive stacking for smaller screens */
+@media (width <= 900px) {
+  .columns.columns17 {
+    flex-direction: column;
+    padding: 24px 0;
+  }
+
+  .columns.columns17 div {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .columns.columns17 div + div {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-top: 24px;
+    min-width: 0;
+  }
 }
