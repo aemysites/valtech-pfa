@@ -495,103 +495,93 @@
 
 
 .accordion.accordion31 {
-  background: #ededed;
+  background-color: #eee;
   padding: 48px 0;
+  width: 100%;
   box-sizing: border-box;
 }
 
 .accordion.accordion31 .block {
-  /* Layout: cards side by side on desktop, stack on mobile/tablet */
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  width: 100%;
   max-width: 1200px;
-  margin-left: 32px; /* visually align with Figma's left margin */
-  margin-right: 0;
+  margin: 0 auto;
+  padding: 0 24px;
   box-sizing: border-box;
 }
 
+.accordion.accordion31 .accordion-wrapper {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.accordion.accordion31 .accordion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  place-items: start stretch;
+  margin: 0;
+  padding: 0;
+}
+
 @media (width <= 900px) {
-  .accordion.accordion31 .block {
-    flex-direction: column;
-    max-width: 100%;
-    margin-left: 0;
-    gap: 20px;
-    padding-left: 12px;
-    padding-right: 12px;
+  .accordion.accordion31 .accordion {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
+.accordion.accordion31 .accordion-item,
 .accordion.accordion31 details {
   background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 7%);
-  border: none;
-
-  /* Cards visually fill block width, but leave space between when in row */
-  flex: 1 1 0;
-  min-width: 340px;
-  max-width: 540px;
-  width: 100%;
-  padding: 32px 32px 32px 40px;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
   margin: 0;
+  padding: 32px 24px;
   box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
 }
 
-@media (width <= 900px) {
-  .accordion.accordion31 details {
-    min-width: 0;
-    max-width: 100%;
-    padding: 18px 12px 18px 16px;
-    border-radius: 10px;
-  }
+.accordion.accordion31 .accordion-item-label {
+  color: #333;
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
-.accordion.accordion31 details:not(:last-child) {
-  margin-bottom: 0;
+.accordion.accordion31 .accordion-item-body {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
-.accordion.accordion31 details summary {
-  font-size: 18px;
-  font-weight: 700;
-  color: #383838;
-  margin-bottom: 22px;
-  text-align: left;
-  outline: none;
-  cursor: pointer;
-  line-height: 1.3;
-  padding: 0;
-  background: transparent;
-}
-
-.accordion.accordion31 details[open] summary {
-  margin-bottom: 24px;
-}
-
-.accordion.accordion31 details .accordion-item-body {
-  text-align: left;
-}
-
-.accordion.accordion31 details .accordion-item-body p,
-.accordion.accordion31 details .accordion-item-body li,
-.accordion.accordion31 details .accordion-item-body td,
-.accordion.accordion31 details .accordion-item-body th {
-  color: #505050;
-  font-size: 16px;
-  margin-bottom: 16px;
-}
-
-.accordion.accordion31 details .accordion-item-body table {
+.accordion.accordion31 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin: 16px 0;
 }
 
-.accordion.accordion31 details .accordion-item-body img,
-.accordion.accordion31 details .accordion-item-body picture {
+.accordion.accordion31 th,
+.accordion.accordion31 td {
+  text-align: left;
+  padding: 8px 12px;
+  color: #444;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.accordion.accordion31 th {
+  font-weight: 600;
+  background: #f6f6f6;
+}
+
+.accordion.accordion31 .icon {
+  vertical-align: middle;
+}
+
+.accordion.accordion31 img {
   max-width: 100%;
+  height: auto;
   display: block;
-  margin: 0 auto 16px;
-  border-radius: 6px;
+  margin: 16px 0;
 }
