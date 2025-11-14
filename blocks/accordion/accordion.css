@@ -353,140 +353,131 @@
 
 
 .accordion.accordion19 {
-  background: #393838;
-  border-bottom: 3px solid #8B0000;
-  max-width: 700px;
-  margin: 48px auto 0;
-  padding: 60px 32px;
+  background-color: #373636;
+  padding-top: 64px;
+  padding-bottom: 64px;
   box-sizing: border-box;
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border-bottom: 4px solid #c5122a;
+}
+
+.accordion.accordion19 .accordion-item-label {
+  width: 100%;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.accordion.accordion19 details {
-  width: 100%;
-  max-width: 600px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+.accordion.accordion19 .accordion-item-label p {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
   margin: 0;
-  padding: 0;
+  line-height: 1.18;
 }
 
-.accordion.accordion19 summary {
+.accordion.accordion19 details {
+  width: 100%;
+  max-width: 740px;
+  margin: 0 auto 32px;
+}
+
+.accordion.accordion19 details summary {
+  background: #fff;
+  color: #373636;
+  font-size: 1.18rem;
+  font-weight: 500;
+  border-radius: 6px;
+  min-height: 56px;
+  padding: 0 36px;
+  box-sizing: border-box;
+  margin: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 2.25rem;
-  font-weight: 600;
-  text-align: center;
-  background: transparent;
+  justify-content: space-between;
   border: none;
   outline: none;
-  padding: 0;
-  margin: 0;
   cursor: pointer;
-  line-height: 1.22;
-  gap: 8px;
-  min-height: 60px;
-  transition: color 0.2s;
-}
-
-.accordion.accordion19 summary::-webkit-details-marker,
-.accordion.accordion19 summary::marker {
-  color: #fff;
-  font-size: 2.2rem;
-  vertical-align: middle;
-  margin-left: 2px;
-}
-
-.accordion.accordion19 summary p {
-  margin: 0;
-  color: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-.accordion.accordion19 details[open] summary {
-  margin-bottom: 36px;
 }
 
 .accordion.accordion19 .accordion-item-body {
+  background: #fff;
+  color: #373636;
+  border-radius: 0 0 6px 6px;
+  padding: 32px 36px;
+  box-sizing: border-box;
   width: 100%;
-  max-width: 600px;
-  color: #fff;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  text-align: center;
-  margin-bottom: 32px;
-  padding: 0;
-}
-
-.accordion.accordion19 .accordion-item-body p {
-  color: #fff;
-  margin-bottom: 18px;
-}
-
-.accordion.accordion19 .accordion-item-body strong {
-  color: #fff;
-  font-weight: 600;
-}
-
-.accordion.accordion19 .button,
-.accordion.accordion19 a.button {
-  background: #393838;
-  border: 1.5px solid #fff;
-  color: #fff;
-  border-radius: 24px;
-  padding: 14px 44px;
-  margin: 36px auto 0;
-  font-size: 1.15rem;
-  font-weight: 500;
-  display: inline-block;
-  box-shadow: none;
-  text-align: center;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-}
-
-.accordion.accordion19 .button:hover,
-.accordion.accordion19 .button:focus,
-.accordion.accordion19 a.button:hover,
-.accordion.accordion19 a.button:focus {
-  background: #8B0000;
-  color: #fff;
-  border-color: #fff;
+  max-width: 740px;
+  margin: 0 auto 32px;
+  text-align: left;
 }
 
 .accordion.accordion19 .button-container {
+  width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  margin-top: 40px;
+  align-items: center;
+  margin-top: 24px;
   margin-bottom: 0;
 }
 
-@media (width <= 800px) {
+.accordion.accordion19 .button {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 2em;
+  padding: 0.85em 2.5em;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  margin: 0;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.accordion.accordion19 .button:hover,
+.accordion.accordion19 .button:focus {
+  background: #fff;
+  color: #373636;
+  border-color: #c5122a;
+}
+
+/* Thin red line at the bottom edge */
+
+/* Responsive design */
+@media (width <= 900px) {
   .accordion.accordion19 {
-    max-width: 100%;
-    padding: 32px 8px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    min-height: 0;
   }
 
   .accordion.accordion19 details,
   .accordion.accordion19 .accordion-item-body {
     max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
-  .accordion.accordion19 summary {
+  .accordion.accordion19 .accordion-item-label p {
     font-size: 1.3rem;
-    min-height: 40px;
-    gap: 5px;
   }
 
-  .accordion.accordion19 .button,
-  .accordion.accordion19 a.button {
-    padding: 12px 18px;
+  .accordion.accordion19 .button {
+    padding: 0.65em 1.4em;
     font-size: 1rem;
   }
 }
