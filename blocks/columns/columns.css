@@ -569,7 +569,6 @@
   padding: 0;
 }
 
-/* Use CSS Grid for primary two-column layout with vertical centering */
 .columns.columns14 .block.columns-2-cols {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -581,7 +580,6 @@
   box-sizing: border-box;
 }
 
-/* Responsive: Stack columns on mobile */
 @media (width <= 900px) {
   .columns.columns14 .block.columns-2-cols {
     grid-template-columns: 1fr;
@@ -590,7 +588,6 @@
   }
 }
 
-/* Left column: text content styling */
 .columns.columns14 .block.columns-2-cols div {
   min-width: 0;
   box-sizing: border-box;
@@ -622,4 +619,54 @@
   color: var(--dark-color);
   margin-top: 0.6em;
   margin-bottom: 0.4em;
+}
+
+
+.columns.columns16 {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  background: #fff;
+  padding: 28px 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.columns.columns16 div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+  flex: 1 1 0;
+  background: transparent;
+  padding: 0 8px;
+}
+
+.columns.columns16 div div {
+  color: #991919;
+  font-size: 13px;
+  font-weight: normal;
+  text-align: left;
+  padding: 10px 0;
+  line-height: 1.5;
+  background: transparent;
+  border: none;
+  min-width: 0;
+}
+
+.columns.columns16 div div:not(:last-child) {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+@media (width <= 900px) {
+  .columns.columns16 {
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px 0;
+  }
+
+  .columns.columns16 div {
+    padding: 0 4px;
+  }
 }
