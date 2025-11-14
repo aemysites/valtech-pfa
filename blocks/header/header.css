@@ -1,4 +1,3 @@
-/* stylelint-disable no-descending-specificity */
 
 header .nav-wrapper {
   width: 100%;
@@ -16,11 +15,13 @@ header nav {
   width: 100%;
   margin: 0 auto;
   align-items: center;
+  background: none;
   box-sizing: border-box;
   padding: 0 32px;
-  min-height: 64px;
-  background: none;
+  min-height: 96px;
+  justify-content: space-between;
   position: relative;
+  gap: 0;
 }
 
 header nav[aria-expanded="true"] {
@@ -539,15 +540,11 @@ header nav .nav-sections .default-content-wrapper {
   padding: 0;
 }
 
-/* Top row nav */
-
 header nav .nav-sections .default-content-wrapper ul li a:hover,
 header nav .nav-sections .default-content-wrapper ul li a:focus {
   color: #900;
   text-decoration: underline;
 }
-
-/* Second row nav (use .nav-bottom on <ul>) */
 header nav .nav-sections .nav-bottom {
   display: flex;
   flex-direction: row;
@@ -587,18 +584,10 @@ header nav .nav-sections .nav-bottom li a:hover {
   border-bottom: 3px solid #b22222;
 }
 
-/* Tools section right-aligned */
-
 header nav .nav-tools .tool-link:hover,
 header nav .nav-tools .tool-link:focus {
   color: #900;
 }
-
-/* Hamburger hidden desktop */
-
-/* Body padding to prevent overlap */
-
-/* --- MOBILE/TABLET RESPONSIVE --- */
 @media (width <= 899px) {
   .header-wrapper .nav-wrapper {
     position: static;
@@ -671,9 +660,272 @@ header nav .nav-tools .tool-link:focus {
     height: 22px;
   }
 }
-
-/* Remove unwanted artifacts */
 header, .header-wrapper, .header-wrapper .nav-wrapper {
   border: none;
   box-shadow: none;
 }
+
+/* --- PFA Header Final Optimized CSS --- */
+
+/* EDS Foundation */
+header { display: flex; width: 100%; background: #f8f8f8; }
+/* Merged header nav selector */
+header nav {
+  display: flex;
+  max-width: 1264px;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  background: none;
+  box-sizing: border-box;
+  padding: 0 32px;
+  min-height: 96px;
+  justify-content: space-between;
+  position: relative;
+  gap: 0;
+}
+/* End merged */
+
+/* Flex order: logo left, nav center, tools right */
+header nav .nav-brand { order: 1; display: flex; align-items: center; min-width: 142px; margin-right: 32px; }
+header nav .nav-sections { order: 2; display: flex; flex-direction: column; justify-content: center; flex: 1 1 0%; min-width: 0; }
+header nav .nav-tools { order: 3; display: flex; align-items: center; min-width: 220px; gap: 8px; margin-left: 32px; }
+
+/* Logo */
+header nav .nav-brand img,
+header nav .nav-brand picture img {
+  height: 41px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
+  display: block;
+}
+
+/* Top menu (Privat, Erhverv, Om PFA Pension) */
+header nav .nav-sections .nav-top {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  font-size: 14px;
+  color: #505050;
+  margin-bottom: 2px;
+}
+header nav .nav-sections .nav-top a {
+  color: #131313;
+  text-decoration: none;
+  font-weight: 400;
+  padding: 0 4px;
+  transition: color 0.15s;
+}
+header nav .nav-sections .nav-top a:hover {
+  color: #990000;
+  text-decoration: underline;
+}
+
+/* Main navigation menu ("underline" tabs) */
+header nav .nav-sections .nav-main {
+  display: flex;
+  gap: 32px;
+  align-items: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+header nav .nav-sections .nav-main li {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+header nav .nav-sections .nav-main a {
+  color: #990000;
+  text-decoration: none;
+  padding: 7px 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  font-weight: 600;
+  transition: color 0.16s, border-bottom 0.16s;
+  display: inline-block;
+}
+header nav .nav-sections .nav-main a.active,
+header nav .nav-sections .nav-main li:first-child a {
+  color: #990000;
+  border-bottom: 3px solid #990000;
+  font-weight: 700;
+}
+header nav .nav-sections .nav-main a:hover,
+header nav .nav-sections .nav-main a:focus {
+  color: #750000;
+  border-bottom: 3px solid #990000;
+}
+
+/* Tools section (search, contact, language, CTAs) */
+header nav .nav-tools ul {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+header nav .nav-tools li {
+  display: flex;
+  align-items: center;
+}
+header nav .nav-tools a,
+header nav .nav-tools button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #505050;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 0 8px;
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: 2em;
+  background: none;
+  border: none;
+  transition: color 0.18s, background 0.18s;
+}
+header nav .nav-tools a:hover,
+header nav .nav-tools button:hover,
+header nav .nav-tools a:focus,
+header nav .nav-tools button:focus {
+  color: #990000;
+}
+header nav .nav-tools .tool-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+/* CTA Buttons */
+header nav .nav-tools .cta-teal,
+header nav .nav-tools .cta-red {
+  border-radius: 2.4em;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 24px;
+  min-width: 44px;
+  min-height: 44px;
+  line-height: 1.2;
+  border: none;
+  margin-left: 8px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.16s, color 0.16s;
+}
+header nav .nav-tools .cta-teal {
+  background: #016168;
+  color: #fff;
+}
+header nav .nav-tools .cta-red {
+  background: #990000;
+  color: #fff;
+}
+header nav .nav-tools .cta-teal:hover {
+  background: #01787e;
+}
+header nav .nav-tools .cta-red:hover {
+  background: #750000;
+}
+
+/* Hamburger menu hidden on desktop */
+header nav .nav-hamburger { display: none; visibility: hidden; }
+
+/* Remove unwanted borders, artifacts */
+header, .header-wrapper, .header-wrapper .nav-wrapper {
+  border: none;
+  box-shadow: none;
+}
+
+/* Responsive: mobile/tablet */
+@media (max-width: 899px) {
+  .header-wrapper .nav-wrapper {
+    position: static;
+    min-height: 56px;
+    height: auto;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f8f8f8;
+    padding: 0;
+  }
+  header nav {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 12px;
+    min-height: 56px;
+    max-width: 100vw;
+    gap: 0;
+    background: #f8f8f8;
+  }
+  header nav .nav-brand {
+    min-width: 90px;
+    margin: 0 0 8px 0;
+    align-items: flex-start;
+  }
+  header nav .nav-brand img,
+  header nav .nav-brand picture img {
+    height: 33px;
+    width: auto;
+  }
+  header nav .nav-sections {
+    width: 100%;
+    margin: 0 0 8px 0;
+    align-items: flex-start;
+  }
+  header nav .nav-sections .nav-top {
+    gap: 12px;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  header nav .nav-sections .nav-main {
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 15px;
+    margin-top: 0;
+  }
+  header nav .nav-tools {
+    width: 100%;
+    margin: 0 0 8px 0;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+  header nav .nav-tools .cta-teal,
+  header nav .nav-tools .cta-red {
+    font-size: 15px;
+    padding: 0 16px;
+    min-width: 44px;
+    min-height: 44px;
+    margin-left: 4px;
+  }
+  header nav .nav-tools a,
+  header nav .nav-tools button {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 15px;
+    padding: 0 8px;
+    margin: 0 2px;
+  }
+  header nav .nav-hamburger {
+    display: flex;
+    visibility: visible;
+    align-items: center;
+    margin-bottom: 12px;
+    height: 22px;
+    order: 0;
+  }
+}
+
+/* Accessibility: hide images without alt in nav-brand */
+header nav .nav-brand img:not([alt]) { display: none; }
+
+/* Body offset for header height */
+body { padding-top: 96px; background: #fff; }
+
