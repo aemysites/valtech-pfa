@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -38,7 +39,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
+  justify-content: center;
 }
 
 .cards.cards11 ul {
@@ -74,7 +75,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 25px; /* Increased space to label */
+  margin-bottom: 25px;
 }
 
 .cards.cards11 .cards-card-image img,
@@ -159,4 +160,138 @@
   .cards.cards11 .cards-card-body p {
     font-size: 17px;
   }
+}
+
+
+.cards.cards21 {
+  padding: 32px 0;
+  background: var(--background-color, #fff);
+}
+
+.cards.cards21 ul {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width <= 900px) {
+  .cards.cards21 ul {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+}
+
+.cards.cards21 li {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgb(30 30 30 / 4%);
+  padding: 16px 12px;
+  min-width: 0;
+  flex: 1 1 0;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  transition: box-shadow 0.18s;
+}
+
+.cards.cards21 li:hover {
+  box-shadow: 0 4px 20px rgb(30 30 30 / 9%);
+}
+
+.cards.cards21 .cards-card-body {
+  padding: 0;
+  margin: 0;
+}
+
+.cards.cards21 .cards-card-body:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  min-height: 54px;
+}
+
+.cards.cards21 .cards-card-body img,
+.cards.cards21 .cards-card-body picture {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 4px;
+}
+
+.cards.cards21 .cards-card-body h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--text-color, #222);
+  margin: 0 0 4px;
+  line-height: 1.22;
+}
+
+.cards.cards21 .cards-card-body p {
+  font-size: 1em;
+  color: var(--text-color, #222);
+  margin: 0 0 5px;
+  line-height: 1.5;
+}
+
+.cards.cards21 .cards-card-body a:not(.button, .button-container a) {
+  color: #a51916;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 0 2px;
+  transition: color .15s;
+  display: inline-block;
+}
+
+.cards.cards21 .cards-card-body a:not(.button, .button-container a):hover {
+  color: #7c110e;
+  text-decoration: underline;
+}
+
+.cards.cards21 .button,
+.cards.cards21 .button-container a {
+  background: #a51916;
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  margin: 2px 0 0;
+  box-shadow: none;
+  border: none;
+  display: inline-block;
+  transition: background .18s;
+}
+
+.cards.cards21 .button:hover,
+.cards.cards21 .button-container a:hover {
+  background: #7c110e;
+}
+
+/* Tight vertical stacking for elements within card body */
+.cards.cards21 .cards-card-body h3 + p,
+.cards.cards21 .cards-card-body p + a,
+.cards.cards21 .cards-card-body a + .button,
+.cards.cards21 .cards-card-body a + .button-container a,
+.cards.cards21 .cards-card-body p + .button,
+.cards.cards21 .cards-card-body p + .button-container a {
+  margin-top: 2px;
+}
+
+/* Ensure all cards fill height of row for alignment */
+
+.cards.cards21 li .cards-card-body {
+  flex: unset;
 }
