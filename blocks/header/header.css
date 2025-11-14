@@ -297,6 +297,7 @@ header .nav-top-container:empty, header .nav-bottom-container:empty {
     padding: 0 32px;
   }
 }
+
 header {
   display: flex;
   width: 100%; }
@@ -315,12 +316,12 @@ header {
   left: 0;
   display: flex; }
 
-header nav .nav-brand { 
-  order: 1; 
-  display: flex; 
-  align-items: center; 
-  min-width: 142px; 
-  margin-right: 32px; 
+header nav .nav-brand {
+  order: 1;
+  display: flex;
+  align-items: center;
+  min-width: 142px;
+  margin-right: 32px;
 }
 
 header nav .nav-brand img,
