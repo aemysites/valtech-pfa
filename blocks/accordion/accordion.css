@@ -224,8 +224,6 @@
   background: #80B9BC;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-
-  /* Only right side corners are rounded */
   box-shadow: 0 6px 32px 0 rgb(44 83 100 / 10%);
   padding: 0;
   display: flex;
@@ -233,7 +231,6 @@
   align-items: stretch;
 }
 
-/* FAQ list: vertical stack */
 .accordion.accordion10 details {
   width: 100%;
   margin: 0;
@@ -243,12 +240,10 @@
   box-sizing: border-box;
 }
 
-/* Remove gap between FAQ rows */
 .accordion.accordion10 details + details {
   margin-top: 0;
 }
 
-/* FAQ row: cyan bars, white text, chevron, padded */
 .accordion.accordion10 summary {
   display: flex;
   flex-direction: row;
@@ -272,13 +267,11 @@
   border-bottom: 1px solid rgb(255 255 255 / 7%);
 }
 
-/* Remove default marker/arrow */
 .accordion.accordion10 summary::-webkit-details-marker,
 .accordion.accordion10 summary::marker {
   display: none;
 }
 
-/* Inner paragraph in summary, no margin */
 .accordion.accordion10 summary p {
   margin: 0;
   color: inherit;
@@ -287,7 +280,6 @@
   flex: 1 1 auto;
 }
 
-/* Chevron SVG as icon */
 .accordion.accordion10 summary svg {
   margin-left: 18px;
   width: 24px;
@@ -306,13 +298,10 @@
   transform: rotate(180deg);
 }
 
-/* Subtle row separation for visual grouping */
-
 .accordion.accordion10 details:last-child summary {
   border-bottom: none;
 }
 
-/* Responsive adjustments */
 @media (width <= 900px) {
   .accordion.accordion10 {
     max-width: 98vw;
@@ -359,5 +348,145 @@
     min-width: 14px;
     min-height: 14px;
     margin-left: 8px;
+  }
+}
+
+
+.accordion.accordion19 {
+  background: #393838;
+  border-bottom: 3px solid #8B0000;
+  max-width: 700px;
+  margin: 48px auto 0;
+  padding: 60px 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accordion.accordion19 details {
+  width: 100%;
+  max-width: 600px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+.accordion.accordion19 summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2.25rem;
+  font-weight: 600;
+  text-align: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  line-height: 1.22;
+  gap: 8px;
+  min-height: 60px;
+  transition: color 0.2s;
+}
+
+.accordion.accordion19 summary::-webkit-details-marker,
+.accordion.accordion19 summary::marker {
+  color: #fff;
+  font-size: 2.2rem;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+.accordion.accordion19 summary p {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.accordion.accordion19 details[open] summary {
+  margin-bottom: 36px;
+}
+
+.accordion.accordion19 .accordion-item-body {
+  width: 100%;
+  max-width: 600px;
+  color: #fff;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 0;
+}
+
+.accordion.accordion19 .accordion-item-body p {
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.accordion.accordion19 .accordion-item-body strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.accordion.accordion19 .button,
+.accordion.accordion19 a.button {
+  background: #393838;
+  border: 1.5px solid #fff;
+  color: #fff;
+  border-radius: 24px;
+  padding: 14px 44px;
+  margin: 36px auto 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+  display: inline-block;
+  box-shadow: none;
+  text-align: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.accordion.accordion19 .button:hover,
+.accordion.accordion19 .button:focus,
+.accordion.accordion19 a.button:hover,
+.accordion.accordion19 a.button:focus {
+  background: #8B0000;
+  color: #fff;
+  border-color: #fff;
+}
+
+.accordion.accordion19 .button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+@media (width <= 800px) {
+  .accordion.accordion19 {
+    max-width: 100%;
+    padding: 32px 8px;
+  }
+
+  .accordion.accordion19 details,
+  .accordion.accordion19 .accordion-item-body {
+    max-width: 100%;
+  }
+
+  .accordion.accordion19 summary {
+    font-size: 1.3rem;
+    min-height: 40px;
+    gap: 5px;
+  }
+
+  .accordion.accordion19 .button,
+  .accordion.accordion19 a.button {
+    padding: 12px 18px;
+    font-size: 1rem;
   }
 }
