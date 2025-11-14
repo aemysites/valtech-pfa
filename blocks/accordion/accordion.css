@@ -585,3 +585,163 @@
   display: block;
   margin: 16px 0;
 }
+
+
+.accordion.accordion33 {
+  background: #f4f4f4;
+  padding: 48px 0;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accordion.accordion33 .block.accordion {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 14px 0 rgb(44 62 80 / 9%);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stack accordion items vertically, full width, no gap */
+.accordion.accordion33 .block.accordion details {
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+  transition: background 0.2s;
+  display: block;
+}
+
+.accordion.accordion33 .block.accordion details:last-child {
+  border-bottom: none;
+}
+
+/* Accordion summary: row for text/chevron, left-aligned, padded */
+.accordion.accordion33 .block.accordion summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4em 2em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #474747;
+  background: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  min-height: 56px;
+  text-align: left;
+  letter-spacing: 0;
+  margin: 0;
+  transition: background 0.18s;
+}
+
+.accordion.accordion33 .block.accordion summary:focus,
+.accordion.accordion33 .block.accordion summary:hover {
+  background: #f4f4f4;
+}
+
+.accordion.accordion33 .block.accordion details[open] summary {
+  background: #f4f4f4;
+  color: #2d2d2d;
+}
+
+/* Remove native marker for summary */
+.accordion.accordion33 .block.accordion summary::-webkit-details-marker,
+.accordion.accordion33 .block.accordion summary::marker {
+  display: none;
+}
+
+/* Accordion body: padded, readable, vertical stack */
+.accordion.accordion33 .block.accordion .accordion-item-body {
+  padding: 1.5em 2em 1.75em;
+  background: #fff;
+  color: #474747;
+  font-size: var(--body-font-size-s);
+  border-top: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  margin: 0;
+  display: block;
+}
+
+/* Headings and paragraphs in body */
+.accordion.accordion33 .block.accordion .accordion-item-body h2,
+.accordion.accordion33 .block.accordion .accordion-item-body h3,
+.accordion.accordion33 .block.accordion .accordion-item-body h4 {
+  color: #2d2d2d;
+  margin: 0 0 0.7em;
+  font-weight: 600;
+}
+
+.accordion.accordion33 .block.accordion .accordion-item-body p,
+.accordion.accordion33 .block.accordion .accordion-item-body li {
+  color: #474747;
+  margin: 0 0 0.5em;
+}
+
+/* Two-column layout for .testcolumns (side-by-side), stack on small screens */
+.accordion.accordion33 .block.accordion .accordion-item-body .testcolumns {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.accordion.accordion33 .block.accordion .accordion-item-body .testcolumns div {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stack columns on small screens */
+@media (width <= 850px) {
+  .accordion.accordion33 .block.accordion {
+    max-width: 100vw;
+    border-radius: 0;
+  }
+
+  .accordion.accordion33 .block.accordion .accordion-item-body .testcolumns {
+    flex-direction: column;
+    gap: 1.25em;
+  }
+}
+
+/* Table styling for readability and alignment */
+.accordion.accordion33 .block.accordion .accordion-item-body table {
+  width: 100%;
+  margin-bottom: 1.5em;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.accordion.accordion33 .block.accordion .accordion-item-body th,
+.accordion.accordion33 .block.accordion .accordion-item-body td {
+  padding: 0.5em 0.85em;
+  border: 1px solid #e5e5e5;
+}
+
+/* Links inside accordion body */
+.accordion.accordion33 .block.accordion .accordion-item-body a {
+  color: var(--link-color);
+  transition: color 0.2s;
+}
+
+.accordion.accordion33 .block.accordion .accordion-item-body a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
