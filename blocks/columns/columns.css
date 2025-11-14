@@ -370,95 +370,135 @@
 }
 
 
-/* Columns6 block: two-column grid layout, top-aligned, responsive */
 .columns.columns6 {
-  background: var(--background-color);
-  padding: 0;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: #fff;
 }
 
-/* Use CSS Grid on the innermost columns wrapper for robust horizontal and vertical alignment */
-.columns.columns6 .columns div {
+/* Two-column layout using CSS Grid for robust alignment */
+.columns.columns6 .block.columns {
   display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(260px,420px);
-  gap: 40px;
+  grid-template-columns: 1fr 420px;
+  gap: 56px;
   align-items: start;
-  margin: 0;
-  padding: 0;
 }
 
-/* Responsive: stack columns vertically on smaller screens */
-@media (width <= 900px) {
-  .columns.columns6 .columns div {
-    grid-template-columns: 1fr;
-    gap: 24px;
+@media (width <= 1024px) {
+  .columns.columns6 .block.columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
   }
 }
 
-/* Left column: bullet list styling and spacing */
-.columns.columns6 ul {
-  margin: 0 0 0 28px;
-  padding: 0;
-  font-size: var(--body-font-size-s);
-  color: var(--text-color);
+@media (width <= 700px) {
+  .columns.columns6 .block.columns {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Left column: text and lists */
+.columns.columns6 .block.columns div {
+  color: #222;
+  font-size: 1rem;
   line-height: 1.7;
 }
 
-.columns.columns6 ul li {
-  margin-bottom: 1.1em;
+.columns.columns6 .block.columns ul {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  margin-left: 1.5em;
   padding-left: 0;
+  color: #222;
+  font-size: 1rem;
 }
 
-/* Emphasized links and strong/b tags inside bullets */
-.columns.columns6 ul li a,
-.columns.columns6 ul li strong,
-.columns.columns6 ul li b {
-  color: #b51819;
-  font-weight: bold;
-  text-decoration: none;
+.columns.columns6 .block.columns ul li {
+  margin-bottom: 0.8em;
+  line-height: 1.6;
 }
 
-.columns.columns6 ul li a:hover {
+/* Brand color for left-column links */
+.columns.columns6 .block.columns a,
+.columns.columns6 .block.columns strong,
+.columns.columns6 .block.columns b {
+  color: #c1272d;
   text-decoration: underline;
-}
-
-/* Right column: vertically stacked video link + caption */
-.columns.columns6 div p {
-  margin: 0;
-  padding: 0;
-}
-
-/* Video link: large red, bold, visually separated from caption */
-.columns.columns6 div a {
-  color: #b51819;
   font-weight: bold;
-  text-decoration: none;
-  font-size: 1em;
-  margin-bottom: 10px;
-  display: inline-block;
-  border-radius: 8px;
-  background: none;
-  padding: 0.15em 0;
-  transition: text-decoration 0.12s;
 }
 
-.columns.columns6 div a:hover {
-  text-decoration: underline;
+/* Right column: visually anchored media area */
+.columns.columns6 .block.columns div:last-child {
+  background: #1267a3;
+  border-radius: 18px;
+  min-width: 320px;
+  max-width: 520px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  padding: 40px 32px 32px;
+  overflow: hidden;
 }
 
-/* Caption: smaller, gray, italic, below link */
-.columns.columns6 div em {
-  display: block;
-  color: #6d6d6d;
-  font-size: 0.95em;
-  font-style: italic;
-  line-height: 1.5;
-  margin-top: 0;
-}
-
-/* Responsive: ensure video/caption block fills column on mobile */
-@media (width <= 900px) {
-  .columns.columns6 div em,
-  .columns.columns6 div a {
+@media (width <= 700px) {
+  .columns.columns6 .block.columns div:last-child {
+    min-width: 0;
+    min-height: 180px;
+    padding: 24px 10px 16px;
     max-width: 100%;
   }
+}
+
+/* Center and visually emphasize the first link in the right column */
+.columns.columns6 .block.columns div:last-child a:not(.button) {
+  background: #fff;
+  color: #1267a3;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 13%);
+  width: 64px;
+  height: 64px;
+  font-size: 1.15em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  margin-top: 0;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+/* Caption styling under media "button" */
+.columns.columns6 .block.columns div:last-child em,
+.columns.columns6 .block.columns div:last-child figcaption,
+.columns.columns6 .block.columns div:last-child .caption {
+  color: #e1e8ef;
+  font-size: 1em;
+  margin-top: 18px;
+  margin-bottom: 0;
+  display: block;
+  text-align: center;
+  max-width: 95%;
+  line-height: 1.5;
+  font-style: normal;
+}
+
+/* Add spacing to left column text for density */
+.columns.columns6 .block.columns div p,
+.columns.columns6 .block.columns div h1,
+.columns.columns6 .block.columns div h2,
+.columns.columns6 .block.columns div h3 {
+  margin-top: 0.7em;
+  margin-bottom: 0.8em;
+}
+
+/* Remove list style on nested lists, restore bullets on first-level */
+.columns.columns6 .block.columns ul ul {
+  list-style-type: disc;
+  margin-left: 1em;
 }
