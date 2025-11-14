@@ -585,3 +585,121 @@
   display: block;
   margin: 16px 0;
 }
+
+
+.accordion.accordion35 {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Each accordion item is a full-width teal bar */
+.accordion.accordion35 details {
+  background: #6ca2a6;
+  color: #fff;
+  border: none;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.accordion.accordion35 details:not(:last-child) {
+  border-bottom: 2px solid #fff;
+}
+
+/* Summary row: label left, chevron right */
+.accordion.accordion35 summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: none;
+  color: inherit;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Remove default marker for details/summary */
+.accordion.accordion35 summary::-webkit-details-marker,
+.accordion.accordion35 summary::marker {
+  display: none;
+}
+
+/* Label styling */
+.accordion.accordion35 .accordion-item-label,
+.accordion.accordion35 .accordion-item-label p {
+  color: inherit;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.3;
+  text-align: left;
+  flex: 1 1 auto;
+
+  /* makes sure label uses all available space on the left */
+}
+
+/* Chevron styling (icon must be in DOM, not via CSS content) */
+.accordion.accordion35 .icon,
+.accordion.accordion35 .chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+  margin-left: 16px;
+
+  /* Ensures chevron is vertically centered and separated from label */
+
+  /* Use fill: #fff on SVG or filter: brightness(0) invert(1) for PNG */
+}
+
+/* Accordion content styling */
+.accordion.accordion35 .accordion-item-body {
+  background: #6ca2a6;
+  color: #fff;
+  padding: 16px 20px;
+  font-size: 14px;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+.accordion.accordion35 .accordion-item-body h5,
+.accordion.accordion35 .accordion-item-body p {
+  color: inherit;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Center images if present */
+.accordion.accordion35 .accordion-item-body picture,
+.accordion.accordion35 .accordion-item-body img {
+  display: block;
+  margin: 12px auto 0;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive adjustments */
+@media (width <= 600px) {
+  .accordion.accordion35 summary,
+  .accordion.accordion35 .accordion-item-body {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .accordion.accordion35 summary {
+    min-height: 36px;
+  }
+}
