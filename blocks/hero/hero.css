@@ -118,7 +118,6 @@
 }
 
 .hero .picture {
-  /* Add styling to avoid empty block error */
   display: block;
 }
 
@@ -152,46 +151,47 @@
 
 
 .hero.hero22 {
-  /* Center the container horizontally */
-  max-width: 600px;
-  margin: 64px auto 0;
-  padding: 56px 32px;
-  background: var(--background-color);
-  box-sizing: border-box;
-  border-radius: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Left-align text inside the block */
+  display: grid;
+  grid-template-columns: 1fr 680px;   /* Left column for image/space, right for content */
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  padding: 64px 0;
+  background: white;
 }
 
-.hero.hero22 h2 {
-  font-family: Georgia, Times, 'Times New Roman', serif;
+.hero.hero22 > div:first-child {
+  /* Left empty for whitespace, or image if present */
+}
+
+.hero.hero22 > div:last-child {
+  /* Content */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero.hero22 h1, .hero.hero22 h2 {
   font-size: 2rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 24px;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 18px;
   margin-top: 0;
 }
 
 .hero.hero22 p {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #555;
-  line-height: 1.6;
-  margin: 0 0 32px;
-  max-width: 560px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-/* Responsive adjustments */
-@media (width <= 900px) {
-  .hero.hero22 {
-    max-width: 100%;
-    padding: 32px 16px;
-    margin-top: 32px;
-  }
-
-  .hero.hero22 p {
-    max-width: 100%;
-    margin-bottom: 24px;
-  }
+/* Add CTA/link below paragraph */
+.hero.hero22 a {
+  display: block;
+  color: #b80000;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-top: 16px;
 }
