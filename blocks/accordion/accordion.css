@@ -71,12 +71,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
-
-  /* ensures accent line is visible at the bottom */
   border-bottom: 4px solid #a00000;
 }
 
-/* Dropdown/Button Bar */
 .accordion.accordion8 summary {
   background: #f6f6f6;
   border-radius: 4px;
@@ -120,7 +117,6 @@
   background: #ededed;
 }
 
-/* Responsive: Stack cards vertically, reduce padding */
 @media (width <= 900px) {
   .accordion.accordion8 {
     max-width: 100%;
@@ -130,5 +126,93 @@
   .accordion.accordion8 summary {
     min-height: 44px;
     padding: 0 12px;
+  }
+}
+
+
+.accordion.accordion9 {
+  background: #900;
+  padding: 48px 20px;
+}
+
+.accordion.accordion9 .accordion-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.accordion.accordion9 .block {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.accordion.accordion9 .accordion-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 7%);
+  margin: 0;
+  padding: 38px 32px 30px;
+  box-sizing: border-box;
+  border: none;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  word-wrap: break-word; /* Updated from 'word-break' to 'word-wrap' to resolve validation error and maintain functionality */
+  overflow-wrap: break-word;
+}
+
+.accordion.accordion9 details {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.accordion.accordion9 .accordion-item summary,
+.accordion.accordion9 .accordion-item-label,
+.accordion.accordion9 .accordion-item-label p {
+  color: #900;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 18px;
+  text-align: left;
+  line-height: 1.2;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.accordion.accordion9 summary::-webkit-details-marker,
+.accordion.accordion9 summary::marker {
+  display: none;
+}
+
+.accordion.accordion9 .accordion-item-body,
+.accordion.accordion9 .accordion-item-body * {
+  color: #505050;
+  font-size: 1.13rem;
+  margin: 0;
+  line-height: 1.7;
+  text-align: left;
+  padding: 0;
+}
+
+.accordion.accordion9 .accordion-item *,
+.accordion.accordion9 .accordion-item-body * {
+  text-align: left;
+}
+
+@media (width <= 600px) {
+  .accordion.accordion9 {
+    padding: 16px 2vw;
   }
 }
