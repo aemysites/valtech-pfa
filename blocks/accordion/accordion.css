@@ -61,75 +61,6 @@
 }
 
 
-.accordion.accordion8 {
-  background: #fff;
-  max-width: 880px;
-  margin: 64px auto 0;
-  border-radius: 0 0 8px 8px;
-  box-sizing: border-box;
-  padding: 48px 40px 0;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  border-bottom: 4px solid #a00000;
-}
-
-.accordion.accordion8 summary {
-  background: #f6f6f6;
-  border-radius: 4px;
-  min-height: 48px;
-  width: 100%;
-  padding: 0 24px;
-  color: #555;
-  font-size: 1.14rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  cursor: pointer;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  border: none;
-  outline: none;
-  text-align: left;
-  transition: background 0.2s;
-  margin-top: 0;
-}
-
-.accordion.accordion8 summary svg,
-.accordion.accordion8 summary i,
-.accordion.accordion8 summary em {
-  margin-left: 12px;
-  min-width: 20px;
-  min-height: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.accordion.accordion8 summary::-webkit-details-marker,
-.accordion.accordion8 summary::marker {
-  display: none;
-}
-
-.accordion.accordion8 details[open] summary {
-  background: #ededed;
-}
-
-@media (width <= 900px) {
-  .accordion.accordion8 {
-    max-width: 100%;
-    padding: 28px 8px 0;
-  }
-
-  .accordion.accordion8 summary {
-    min-height: 44px;
-    padding: 0 12px;
-  }
-}
-
-
 .accordion.accordion9 {
   background: #900;
   padding: 48px 20px;
@@ -918,7 +849,6 @@ select:focus {
 
 
 .accordion.accordion33 {
-  /* Center block, set max width, vertical and horizontal padding, background for block */
   display: flex;
   justify-content: center;
   background-color: #f7f7f7;
@@ -941,7 +871,6 @@ select:focus {
   border-bottom: 1px solid #eaeaea;
 }
 
-/* Headings and paragraphs: left align, readable width, increased spacing for clarity */
 .accordion.accordion33 .block h2 {
   font-size: var(--heading-font-size-xl);
   font-weight: 600;
@@ -962,7 +891,6 @@ select:focus {
   max-width: 720px;
 }
 
-/* Accordion: vertical stack, no extra gap between rows */
 .accordion.accordion33 .accordion {
   width: 100%;
   display: flex;
@@ -971,7 +899,6 @@ select:focus {
   margin-top: 30px;
 }
 
-/* Accordion items: light gray background, subtle border, radius, tight vertical gap */
 .accordion.accordion33 .accordion-item {
   background-color: #f2f2f2;
   border-radius: 6px;
@@ -988,7 +915,6 @@ select:focus {
   margin-bottom: 0;
 }
 
-/* Accordion label: left-aligned, bold, chevron right */
 .accordion.accordion33 .accordion-item-label {
   color: #333;
   font-size: 1.1rem;
@@ -1003,7 +929,6 @@ select:focus {
   background: transparent;
 }
 
-/* Chevron icon: ensure vertical centering and spacing */
 .accordion.accordion33 .accordion-item-label .icon,
 .accordion.accordion33 .accordion-item-label svg {
   margin-left: 10px;
@@ -1011,26 +936,22 @@ select:focus {
   vertical-align: middle;
 }
 
-/* Accordion panel content: left-aligned, moderate padding */
 .accordion.accordion33 .accordion-item-body {
   padding: 0 26px 16px;
   text-align: left;
 }
 
-/* Responsive and side-by-side columns for .testcolumns using flex */
 .accordion.accordion33 .accordion-item-body .testcolumns {
   display: flex;
   flex-direction: row;
   gap: 32px;
 }
 
-/* Nested column divs: fill available width, no hardcoded width */
 .accordion.accordion33 .accordion-item-body .testcolumns div {
   flex: 1 1 0;
   min-width: 0;
 }
 
-/* Stack columns vertically on small screens */
 @media (width <= 800px) {
   .accordion.accordion33 .accordion-item-body .testcolumns {
     flex-direction: column;
@@ -1038,7 +959,6 @@ select:focus {
   }
 }
 
-/* Table styling: clean, left-aligned, readable */
 .accordion.accordion33 table {
   width: 100%;
   border-collapse: collapse;
@@ -1059,4 +979,120 @@ select:focus {
   font-weight: 600;
 }
 
-/* Subtle horizontal separator under block (using border) */
+
+.accordion.accordion8 {
+  background: #fff;
+  padding: 56px 0 48px;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.accordion.accordion8 .accordion-item-label p {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #222;
+  margin-top: 0;
+  margin-bottom: 24px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.accordion.accordion8 p:not(.accordion-item-label p) {
+  max-width: 60ch;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.accordion.accordion8 details.accordion-item summary {
+  background: #f5f5f5;
+  border-radius: 4px;
+  min-height: 48px;
+  padding: 0 32px;
+  width: 90%;
+  margin-left: 0;
+  margin-right: auto;
+  color: #222;
+  font-size: 1.125rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.accordion.accordion8 details.accordion-item summary svg {
+  margin-left: auto;
+  color: #888;
+  height: 20px;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.accordion.accordion8 details.accordion-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion.accordion8 .accordion-item-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+.accordion.accordion8 .accordion-item-body table {
+  width: 100%;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  border-collapse: collapse;
+}
+
+.accordion.accordion8 .accordion-item-body table td,
+.accordion.accordion8 .accordion-item-body table th {
+  padding: 8px 12px;
+  vertical-align: top;
+}
+
+.accordion.accordion8 .accordion-item-body p {
+  font-size: 0.96rem;
+  color: #444;
+  margin: 0;
+}
+
+@media (width <= 900px) {
+  .accordion.accordion8 {
+    padding: 32px 0;
+  }
+
+  .accordion.accordion8 .accordion-item-body {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .accordion.accordion8 .accordion-item-body table,
+  .accordion.accordion8 .accordion-item-body p {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}
+
+/* Thin red divider line flush at bottom */
+.accordion.accordion8::after {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #850000;
+  width: 100%;
+  content: "";
+}
