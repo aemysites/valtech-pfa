@@ -1093,9 +1093,9 @@
 
 .columns.columns30 .columns-2-cols {
   display: flex;
-  align-items: center;                /* Vertically center text and icon */
+  align-items: center;
   justify-content: space-between;
-  min-height: 44px;                   /* Short block! */
+  min-height: 44px;
   padding: 0 16px;
   box-sizing: border-box;
   width: 100%;
@@ -1143,4 +1143,93 @@
 .columns.columns30 .columns-2-cols p {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+
+.columns.columns38 {
+  background: #14686a;
+  margin: 0;
+  padding: 0;
+}
+
+.columns.columns38 .block {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.columns.columns38 .block div {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Headings */
+.columns.columns38 h3 {
+  color: #effcfb;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 8px;
+  line-height: 1.22;
+}
+
+/* Body text */
+.columns.columns38 p {
+  color: #c5e3e1;
+  font-size: 16px;
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+/* Remove bullets from list, reset spacing */
+.columns.columns38 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.columns.columns38 ul li:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+/* Link styling: light teal, underline, offset */
+.columns.columns38 a {
+  color: #effcfb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.columns.columns38 a:hover,
+.columns.columns38 a:focus {
+  color: #c5e3e1;
+}
+
+/* Responsive: stack columns vertically, keep vertical gap */
+@media (width <= 900px) {
+  .columns.columns38 .block {
+    flex-direction: column;
+    gap: 0;
+    padding: 24px 8px;
+  }
+
+  .columns.columns38 .block div {
+    margin-bottom: 32px;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
