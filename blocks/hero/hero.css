@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -106,10 +107,8 @@
   position: relative;
 }
 
-/* Hide the image element, use background image instead */
-
 .hero > div:first-child {
-  opacity: 0; /* Hide image content visually, keep for accessibility */
+  opacity: 0;
   pointer-events: none;
   height: 0;
 }
@@ -128,7 +127,7 @@
   flex-direction: column;
   box-sizing: border-box;
   z-index: 2;
-  border-radius: 0; /* flat style */
+  border-radius: 0;
 }
 
 .hero > div:last-child h1 {
@@ -140,7 +139,6 @@
   color: #fff;
 }
 
-/* Responsive adjustments */
 @media (width <= 900px) {
   .hero > div:last-child {
     left: 20px;
@@ -151,5 +149,88 @@
 
   .hero {
     min-height: 260px;
+  }
+}
+
+
+.hero.hero2.block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 450px; /* or your desired height */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero.hero2.block > div:first-child {
+  flex: 3 1 0;
+  position: relative;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+
+  /* Remove unwanted margin/padding from children */
+}
+
+.hero.hero2.block > div:first-child > div {
+  width: 100%;
+  height: 100%;
+}
+
+.hero.hero2.block > div:first-child p,
+.hero.hero2.block > div:first-child img,
+.hero.hero2.block > div:first-child picture {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.hero.hero2.block > div:first-child picture,
+.hero.hero2.block > div:first-child img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+  /* Optionally hide the <img> if you want to use as a background instead */
+}
+
+.hero.hero2.block > div:last-child {
+  flex: 2 1 0;
+  display: flex;
+  align-items: center;
+  background: rgb(166 28 35 / 95%); /* deep red, mostly opaque */
+  color: #fff;
+  padding: 32px;
+  min-width: 0;
+
+  /* To overlay on top of image for visual effect (optional):
+  margin-left: -40px;
+  z-index: 2;
+  */
+}
+
+.hero.hero2.block > div:last-child h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-family: serif;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* Responsive: stack on mobile */
+@media (width <= 900px) {
+  .hero.hero2.block {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .hero.hero2.block > div:first-child,
+  .hero.hero2.block > div:last-child {
+    flex: initial;
+    width: 100%;
+    min-width: 0;
+    min-height: 180px;
   }
 }
