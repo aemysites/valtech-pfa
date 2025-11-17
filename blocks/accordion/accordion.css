@@ -130,94 +130,6 @@
 }
 
 
-.accordion.accordion9 {
-  background: #900;
-  padding: 48px 20px;
-}
-
-.accordion.accordion9 .accordion-wrapper {
-  max-width: 1000px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0;
-}
-
-.accordion.accordion9 .block {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  width: 100%;
-  justify-content: center;
-  align-items: stretch;
-  box-sizing: border-box;
-}
-
-.accordion.accordion9 .accordion-item {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 18px rgb(0 0 0 / 7%);
-  margin: 0;
-  padding: 38px 32px 30px;
-  box-sizing: border-box;
-  border: none;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.accordion.accordion9 details {
-  background: transparent;
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-.accordion.accordion9 .accordion-item summary,
-.accordion.accordion9 .accordion-item-label,
-.accordion.accordion9 .accordion-item-label p {
-  color: #900;
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0 0 18px;
-  text-align: left;
-  line-height: 1.2;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.accordion.accordion9 summary::-webkit-details-marker,
-.accordion.accordion9 summary::marker {
-  display: none;
-}
-
-.accordion.accordion9 .accordion-item-body,
-.accordion.accordion9 .accordion-item-body * {
-  color: #505050;
-  font-size: 1.13rem;
-  margin: 0;
-  line-height: 1.7;
-  text-align: left;
-  padding: 0;
-}
-
-.accordion.accordion9 .accordion-item *,
-.accordion.accordion9 .accordion-item-body * {
-  text-align: left;
-}
-
-@media (width <= 600px) {
-  .accordion.accordion9 {
-    padding: 16px 2vw;
-  }
-}
-
-
 .accordion.accordion10 {
   max-width: 700px;
   margin: 56px auto;
@@ -918,7 +830,6 @@ select:focus {
 
 
 .accordion.accordion33 {
-  /* Center block, set max width, vertical and horizontal padding, background for block */
   display: flex;
   justify-content: center;
   background-color: #f7f7f7;
@@ -941,7 +852,6 @@ select:focus {
   border-bottom: 1px solid #eaeaea;
 }
 
-/* Headings and paragraphs: left align, readable width, increased spacing for clarity */
 .accordion.accordion33 .block h2 {
   font-size: var(--heading-font-size-xl);
   font-weight: 600;
@@ -962,7 +872,6 @@ select:focus {
   max-width: 720px;
 }
 
-/* Accordion: vertical stack, no extra gap between rows */
 .accordion.accordion33 .accordion {
   width: 100%;
   display: flex;
@@ -971,7 +880,6 @@ select:focus {
   margin-top: 30px;
 }
 
-/* Accordion items: light gray background, subtle border, radius, tight vertical gap */
 .accordion.accordion33 .accordion-item {
   background-color: #f2f2f2;
   border-radius: 6px;
@@ -988,7 +896,6 @@ select:focus {
   margin-bottom: 0;
 }
 
-/* Accordion label: left-aligned, bold, chevron right */
 .accordion.accordion33 .accordion-item-label {
   color: #333;
   font-size: 1.1rem;
@@ -1003,7 +910,6 @@ select:focus {
   background: transparent;
 }
 
-/* Chevron icon: ensure vertical centering and spacing */
 .accordion.accordion33 .accordion-item-label .icon,
 .accordion.accordion33 .accordion-item-label svg {
   margin-left: 10px;
@@ -1011,26 +917,22 @@ select:focus {
   vertical-align: middle;
 }
 
-/* Accordion panel content: left-aligned, moderate padding */
 .accordion.accordion33 .accordion-item-body {
   padding: 0 26px 16px;
   text-align: left;
 }
 
-/* Responsive and side-by-side columns for .testcolumns using flex */
 .accordion.accordion33 .accordion-item-body .testcolumns {
   display: flex;
   flex-direction: row;
   gap: 32px;
 }
 
-/* Nested column divs: fill available width, no hardcoded width */
 .accordion.accordion33 .accordion-item-body .testcolumns div {
   flex: 1 1 0;
   min-width: 0;
 }
 
-/* Stack columns vertically on small screens */
 @media (width <= 800px) {
   .accordion.accordion33 .accordion-item-body .testcolumns {
     flex-direction: column;
@@ -1038,7 +940,6 @@ select:focus {
   }
 }
 
-/* Table styling: clean, left-aligned, readable */
 .accordion.accordion33 table {
   width: 100%;
   border-collapse: collapse;
@@ -1059,4 +960,108 @@ select:focus {
   font-weight: 600;
 }
 
-/* Subtle horizontal separator under block (using border) */
+
+.accordion.accordion9 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  background: #a00000;
+  padding: 64px 0;
+  gap: 40px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media (width <= 900px) {
+  .accordion.accordion9 {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 36px 0;
+  }
+}
+
+/* Card: thick white frame, large rounded corners, responsive sizing */
+.accordion.accordion9 details {
+  background: #fff;
+  border: 16px solid #fff;
+  border-radius: 40px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 32px rgb(0 0 0 / 4%);
+  margin: 0;
+  min-width: 340px;
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+@media (width <= 600px) {
+  .accordion.accordion9 details {
+    min-width: 0;
+    max-width: 98vw;
+    border-radius: 20px;
+    border-width: 8px;
+  }
+}
+
+/* Summary: prominent header area, white on red, visual separation */
+.accordion.accordion9 summary,
+.accordion.accordion9 .accordion-item-label {
+  background: #a00000;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  padding: 38px 32px 22px;
+  border-radius: 24px 24px 0 0;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  line-height: 1.2;
+  transition: background 0.18s;
+}
+
+.accordion.accordion9 summary:hover,
+.accordion.accordion9 summary:focus,
+.accordion.accordion9 .accordion-item-label:hover,
+.accordion.accordion9 .accordion-item-label:focus {
+  background: #b11111;
+}
+
+.accordion.accordion9 summary::-webkit-details-marker,
+.accordion.accordion9 summary::marker {
+  display: none;
+}
+
+/* Body: spacious, softer inset look, rounded bottom corners */
+.accordion.accordion9 .accordion-item-body {
+  background: #fff;
+  color: #222;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  border-radius: 0 0 24px 24px;
+  margin: 0;
+  padding: 38px 32px 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.accordion.accordion9 .accordion-item-body strong {
+  color: #a00000;
+  font-weight: 700;
+}
+
+@media (width <= 600px) {
+  .accordion.accordion9 .accordion-item-body {
+    padding: 20px 12px 18px;
+    border-radius: 0 0 12px 12px;
+    font-size: 1rem;
+  }
+}
