@@ -896,7 +896,6 @@
   }
 }
 
-/* Each column block: white background, padding, left/top aligned content */
 .columns.columns27 > div > div {
   background: #fff;
   padding: 24px;
@@ -907,7 +906,6 @@
   justify-content: flex-start;
 }
 
-/* Headings: prominent, dark, top margin removed */
 .columns.columns27 h3 {
   margin-top: 0;
   margin-bottom: 12px;
@@ -917,7 +915,6 @@
   line-height: 1.3;
 }
 
-/* Paragraphs: darker text, good spacing */
 .columns.columns27 p {
   margin: 0 0 16px;
   font-size: 14px;
@@ -925,7 +922,6 @@
   line-height: 1.5;
 }
 
-/* Remove list styling from links list, prevent bullet */
 .columns.columns27 ul {
   list-style: none;
   padding-left: 0;
@@ -936,10 +932,168 @@
   margin-bottom: 0;
 }
 
-/* Link style: left aligned, red, underlined */
 .columns.columns27 a {
   color: #C3261A;
   text-decoration: underline;
   font-size: 13px;
   cursor: pointer;
+}
+
+
+/* --- Columns Block Improved Layout and Styling for .columns.columns29 --- */
+
+/* Outer block styling: white bg, padding, shadow, rounded corners */
+.columns.columns29 {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 28px 0 rgb(0 0 0 / 9%);
+  padding: 48px;
+  margin: 40px auto;
+  max-width: 880px;
+  box-sizing: border-box;
+}
+
+/* Use flex for horizontal layout: left text, right image/icon */
+.columns.columns29 .block,
+.columns.columns29 .columns-2-cols {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;  /* Top-align both columns */
+  justify-content: flex-start;
+  gap: 48px;
+  box-sizing: border-box;
+}
+
+/* Responsive: stack columns vertically below 800px */
+@media (width <= 800px) {
+  .columns.columns29 .block,
+  .columns.columns29 .columns-2-cols {
+    flex-direction: column;
+    gap: 28px;
+    padding: 0;
+  }
+
+  .columns.columns29 {
+    padding: 28px 10px;
+    border-radius: 10px;
+    max-width: 98vw;
+  }
+}
+
+/* Left column: vertical stack, generous spacing */
+.columns.columns29 .block div,
+.columns.columns29 .columns-2-cols div {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Title styling */
+.columns.columns29 h2 {
+  font-weight: 700;
+  font-size: var(--heading-font-size-xl);
+  color: #333;
+  margin-bottom: 1.2em;
+  margin-top: 0.45em;
+  line-height: 1.13;
+}
+
+/* Paragraph styling */
+.columns.columns29 p {
+  font-size: var(--body-font-size-m);
+  color: #333;
+  margin-bottom: 1.9em;
+  margin-top: 0;
+  line-height: 1.7;
+}
+
+/* CTA button/link styling */
+.columns.columns29 a:not(.button) {
+  display: inline-block;
+  padding: 10px 30px 10px 20px;
+  border: 2px solid #910000;
+  border-radius: 20px;
+  background: #fff;
+  color: #910000;
+  font-weight: 600;
+  font-size: var(--body-font-size-m);
+  line-height: 1.3;
+  text-decoration: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.columns.columns29 a:not(.button):hover,
+.columns.columns29 a:not(.button):focus {
+  background: #910000;
+  color: #fff;
+  border-color: #910000;
+}
+
+/* Right column: image/icon top-aligned, never cropped */
+.columns.columns29 .columns-img-col {
+  flex: 0 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  min-width: 80px;
+  min-height: 40px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.columns.columns29 .columns-img-col img,
+.columns.columns29 .columns-img-col picture {
+  display: block;
+  width: 80px;
+  height: 40px;
+  object-fit: contain;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Remove extra margin after last item in left column */
+.columns.columns29 .block div *:last-child,
+.columns.columns29 .columns-2-cols div *:last-child {
+  margin-bottom: 0;
+}
+
+/* Subtle separator below block */
+.columns.columns29::after {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 2px;
+  background: #eaeaea;
+  border-radius: 2px;
+  margin: 32px auto 0;
+  opacity: 0.38;
+}
+
+/* Further reduce column gap on mobile for balanced top-stack look */
+@media (width <= 500px) {
+  .columns.columns29 .block,
+  .columns.columns29 .columns-2-cols {
+    gap: 16px;
+  }
+
+  .columns.columns29 .columns-img-col {
+    min-width: 50px;
+    min-height: 28px;
+  }
+
+  .columns.columns29 {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
 }
