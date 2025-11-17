@@ -915,3 +915,148 @@ select:focus {
     padding-right: 8vw;
   }
 }
+
+
+.accordion.accordion33 {
+  /* Center block, set max width, vertical and horizontal padding, background for block */
+  display: flex;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.accordion.accordion33 .block {
+  background-color: #fff;
+  max-width: 900px;
+  width: 100%;
+  margin-left: 24px;
+  margin-right: 24px;
+  padding: 48px 40px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* Headings and paragraphs: left align, readable width, increased spacing for clarity */
+.accordion.accordion33 .block h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-top: 0;
+  margin-bottom: 24px;
+  text-align: left;
+  max-width: 720px;
+}
+
+.accordion.accordion33 .block p {
+  color: var(--dark-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 18px;
+  text-align: left;
+  max-width: 720px;
+}
+
+/* Accordion: vertical stack, no extra gap between rows */
+.accordion.accordion33 .accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 30px;
+}
+
+/* Accordion items: light gray background, subtle border, radius, tight vertical gap */
+.accordion.accordion33 .accordion-item {
+  background-color: #f2f2f2;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 12px;
+  box-shadow: none;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion.accordion33 .accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Accordion label: left-aligned, bold, chevron right */
+.accordion.accordion33 .accordion-item-label {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 18px 26px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* Chevron icon: ensure vertical centering and spacing */
+.accordion.accordion33 .accordion-item-label .icon,
+.accordion.accordion33 .accordion-item-label svg {
+  margin-left: 10px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Accordion panel content: left-aligned, moderate padding */
+.accordion.accordion33 .accordion-item-body {
+  padding: 0 26px 16px;
+  text-align: left;
+}
+
+/* Responsive and side-by-side columns for .testcolumns using flex */
+.accordion.accordion33 .accordion-item-body .testcolumns {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+/* Nested column divs: fill available width, no hardcoded width */
+.accordion.accordion33 .accordion-item-body .testcolumns div {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Stack columns vertically on small screens */
+@media (width <= 800px) {
+  .accordion.accordion33 .accordion-item-body .testcolumns {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Table styling: clean, left-aligned, readable */
+.accordion.accordion33 table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s);
+  margin-bottom: 20px;
+}
+
+.accordion.accordion33 th,
+.accordion.accordion33 td {
+  border: 1px solid #eaeaea;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.accordion.accordion33 tr:first-child th,
+.accordion.accordion33 tr:first-child td {
+  background-color: #f7f7f7;
+  font-weight: 600;
+}
+
+/* Subtle horizontal separator under block (using border) */
