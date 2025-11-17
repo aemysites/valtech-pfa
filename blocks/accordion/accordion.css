@@ -772,3 +772,69 @@ select {
 select:focus {
   border: 1.5px solid #a60000;
 }
+
+
+.accordion.accordion37 {
+  background: #a10606;
+  padding: 48px 32px;
+  margin: 0 auto;
+  border-radius: 20px;
+  max-width: 960px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.accordion.accordion37 details {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+  padding: 32px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  box-sizing: border-box;
+}
+
+.accordion.accordion37 details:not(:nth-child(1), :nth-child(2)) {
+  grid-column: 1 / span 2;
+}
+
+.accordion.accordion37 summary,
+.accordion.accordion37 .accordion-item-label,
+.accordion.accordion37 .accordion-item-label p {
+  color: #222;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 14px;
+  line-height: 1.22;
+}
+
+.accordion.accordion37 .accordion-item-body,
+.accordion.accordion37 .accordion-item-body p {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.accordion.accordion37 details:focus-within,
+.accordion.accordion37 details[open] {
+  box-shadow: 0 6px 24px rgb(0 0 0 / 15%);
+}
+
+@media (width <= 900px) {
+  .accordion.accordion37 {
+    grid-template-columns: 1fr;
+    padding: 32px 8px;
+    gap: 20px;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .accordion.accordion37 details {
+    min-height: 180px;
+    padding: 20px 12px 16px;
+  }
+}
