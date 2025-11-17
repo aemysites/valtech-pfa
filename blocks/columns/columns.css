@@ -939,10 +939,6 @@
   cursor: pointer;
 }
 
-
-/* --- Columns Block Improved Layout and Styling for .columns.columns29 --- */
-
-/* Outer block styling: white bg, padding, shadow, rounded corners */
 .columns.columns29 {
   background: #fff;
   border-radius: 20px;
@@ -953,18 +949,16 @@
   box-sizing: border-box;
 }
 
-/* Use flex for horizontal layout: left text, right image/icon */
 .columns.columns29 .block,
 .columns.columns29 .columns-2-cols {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;  /* Top-align both columns */
+  align-items: flex-start;
   justify-content: flex-start;
   gap: 48px;
   box-sizing: border-box;
 }
 
-/* Responsive: stack columns vertically below 800px */
 @media (width <= 800px) {
   .columns.columns29 .block,
   .columns.columns29 .columns-2-cols {
@@ -980,7 +974,6 @@
   }
 }
 
-/* Left column: vertical stack, generous spacing */
 .columns.columns29 .block div,
 .columns.columns29 .columns-2-cols div {
   flex: 1 1 0;
@@ -992,7 +985,6 @@
   box-sizing: border-box;
 }
 
-/* Title styling */
 .columns.columns29 h2 {
   font-weight: 700;
   font-size: var(--heading-font-size-xl);
@@ -1002,7 +994,6 @@
   line-height: 1.13;
 }
 
-/* Paragraph styling */
 .columns.columns29 p {
   font-size: var(--body-font-size-m);
   color: #333;
@@ -1011,7 +1002,6 @@
   line-height: 1.7;
 }
 
-/* CTA button/link styling */
 .columns.columns29 a:not(.button) {
   display: inline-block;
   padding: 10px 30px 10px 20px;
@@ -1038,7 +1028,6 @@
   border-color: #910000;
 }
 
-/* Right column: image/icon top-aligned, never cropped */
 .columns.columns29 .columns-img-col {
   flex: 0 0 80px;
   display: flex;
@@ -1062,13 +1051,11 @@
   box-sizing: border-box;
 }
 
-/* Remove extra margin after last item in left column */
 .columns.columns29 .block div *:last-child,
 .columns.columns29 .columns-2-cols div *:last-child {
   margin-bottom: 0;
 }
 
-/* Subtle separator below block */
 .columns.columns29::after {
   content: "";
   display: block;
@@ -1080,7 +1067,6 @@
   opacity: 0.38;
 }
 
-/* Further reduce column gap on mobile for balanced top-stack look */
 @media (width <= 500px) {
   .columns.columns29 .block,
   .columns.columns29 .columns-2-cols {
@@ -1096,4 +1082,65 @@
     padding-left: 5vw;
     padding-right: 5vw;
   }
+}
+
+
+.columns.columns30 {
+  background-color: #EAEAEA;
+  margin: 0;
+  padding: 0;
+}
+
+.columns.columns30 .columns-2-cols {
+  display: flex;
+  align-items: center;                /* Vertically center text and icon */
+  justify-content: space-between;
+  min-height: 44px;                   /* Short block! */
+  padding: 0 16px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.columns.columns30 .columns-2-cols div:not(.columns-img-col) {
+  flex: 1 1 0%;
+  color: #222;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  max-width: 80%;
+  overflow-wrap: break-word;
+}
+
+.columns.columns30 .columns-2-cols .columns-img-col {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 38px;
+  min-width: 38px;
+  min-height: 38px;
+  max-width: 38px;
+  max-height: 38px;
+  margin: 0;
+  padding: 0;
+}
+
+.columns.columns30 .columns-2-cols .columns-img-col img,
+.columns.columns30 .columns-2-cols .columns-img-col picture img,
+.columns.columns30 .columns-2-cols .columns-img-col svg {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.columns.columns30 .columns-2-cols p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
