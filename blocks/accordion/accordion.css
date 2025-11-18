@@ -973,169 +973,140 @@ select:focus {
 
 
 .accordion.accordion10 {
-  background: #eaf3f2;
+  background: #e6f2f1;
   border-radius: 8px;
-  box-shadow: 0 4px 24px 0 rgb(19 41 61 / 12%);
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2.5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-/* Layout for header and FAQ block side-by-side on large screens if both present */
-.accordion.accordion10 .testcolumns {
-  display: flex;
-  flex-direction: row;
-  gap: 4rem;
-  align-items: flex-start;
-}
-
-@media (width <= 900px) {
-  .accordion.accordion10 .testcolumns {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-}
-
-/* Title and description styles */
-.accordion.accordion10 .accordion-title {
-  color: #222;
-  font-size: 2.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  line-height: 1.15;
-  text-align: left;
-}
-
-.accordion.accordion10 .accordion-description {
-  color: #727272;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-  text-align: left;
-}
-
-/* FAQ block container (if needed for side-by-side layout) */
-.accordion.accordion10 .faq-block {
+  box-shadow: 0 2px 16px 0 rgb(125 186 198 / 10%);
+  margin: 40px auto;
+  padding: 40px 32px;
+  max-width: 880px;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
-/* Accordion item stacking */
-.accordion.accordion10 .accordion-items {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 0 2rem;
+.accordion.accordion10 h2,
+.accordion.accordion10 h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #222;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: left;
 }
 
-/* Accordion item row: teal bg, white text, compact, only first/last rounded */
-.accordion.accordion10 .accordion-item {
-  background: #6bb1b1;
-  color: #fff;
+.accordion.accordion10 p {
+  color: #4f4f4f;
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 28px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Accordion list: stack items with minimal vertical gap */
+.accordion.accordion10 details {
+  background: #7dbac6;
   border: none;
   border-radius: 0;
-  margin: 0;
+  margin: 0 0 1px;
   min-height: 54px;
-  transition: background 0.2s;
-  box-shadow: none;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  box-sizing: border-box;
 }
 
-.accordion.accordion10 .accordion-item:first-child {
+/* Only top and bottom items have rounded corners */
+.accordion.accordion10 details:first-of-type {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
 
-.accordion.accordion10 .accordion-item:last-child {
+.accordion.accordion10 details:last-of-type {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
 
-.accordion.accordion10 .accordion-item:not(:last-child) {
-  border-bottom: 1px solid rgb(255 255 255 / 9%);
-}
-
-/* Accordion summary (label/question row) styling */
-.accordion.accordion10 .accordion-item-label {
+/* FAQ bar: summary styling */
+.accordion.accordion10 summary {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0 1.5rem;
+  justify-content: space-between;
   min-height: 54px;
-  font-size: 1rem;
+  padding: 0 24px;
+  color: #fff;
+  font-size: 1.08rem;
   font-weight: 500;
-  color: inherit;
   background: none;
   border: none;
+  outline: none;
   cursor: pointer;
+  line-height: 1.3;
   text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  font-style: normal;
+  transition: background 0.2s;
 }
 
-/* Remove browser default marker */
-.accordion.accordion10 .accordion-item-label::-webkit-details-marker {
+/* Remove native marker */
+.accordion.accordion10 summary::-webkit-details-marker,
+.accordion.accordion10 summary::-moz-details-marker {
   display: none;
 }
 
-/* Left-aligned label text, regular weight */
-.accordion.accordion10 .accordion-item-label p {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
-  color: inherit;
-  text-align: left;
-  font-style: normal;
-  flex: 1;
-}
-
-/* Arrow styling: position and color only (no content property) */
-.accordion.accordion10 .accordion-arrow {
+/* FAQ icon/chevron: right-align, visually prominent */
+.accordion.accordion10 summary svg,
+.accordion.accordion10 summary .icon,
+.accordion.accordion10 summary i {
+  margin-left: 18px;
+  color: #bdbdbd;
+  font-size: 1.25em;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  width: 24px;
-  height: 24px;
-  margin-left: auto;
-  fill: #dbecec;
   transition: transform 0.2s;
 }
 
-/* Rotate arrow if item open */
-.accordion.accordion10 .accordion-item[open] .accordion-arrow {
-  transform: rotate(90deg);
+.accordion.accordion10 details[open] summary svg,
+.accordion.accordion10 details[open] summary .icon,
+.accordion.accordion10 details[open] summary i {
+  transform: rotate(-180deg);
 }
 
-/* Body/answer text styles */
-.accordion.accordion10 .accordion-item-body {
-  background: none;
-  color: #fff;
+/* Accordion answer */
+.accordion.accordion10 details .accordion-body,
+.accordion.accordion10 details div,
+.accordion.accordion10 details p {
+  background: #e6f2f1;
+  color: #4f4f4f;
   font-size: 1rem;
-  padding: 1rem 1.5rem 1.25rem;
-  line-height: 1.6;
+  padding: 24px 24px 12px;
+  border-top: 1px solid rgb(255 255 255 / 9%);
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
+  box-sizing: border-box;
 }
 
-/* Responsive adjustments for block and padding */
-@media (width <= 900px) {
+/* Responsive: Reduce padding and font size on small screens */
+@media (width <= 600px) {
   .accordion.accordion10 {
+    padding: 20px 6px;
     max-width: 100%;
-    padding: 1rem 0;
   }
 
-  .accordion.accordion10 .accordion-title {
-    font-size: 1.5rem;
+  .accordion.accordion10 summary {
+    padding: 0 8px;
+    min-height: 44px;
+    font-size: 1rem;
   }
 
-  .accordion.accordion10 .faq-block {
-    max-width: 100%;
-    padding: 0;
+  .accordion.accordion10 details .accordion-body,
+  .accordion.accordion10 details div,
+  .accordion.accordion10 details p {
+    padding: 14px 8px 8px;
+    font-size: 0.98rem;
   }
 }
-
-/* Remove extra spacing between items */
