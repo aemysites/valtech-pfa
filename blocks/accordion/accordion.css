@@ -975,7 +975,7 @@ select:focus {
 .accordion-item > * {
   background: #a20000;
   border-radius: 2rem;
-  padding: 36px 32px;             /* Increase top/bottom padding for 'luxurious' feel */
+  padding: 36px 32px;
   width: 100%;
   box-sizing: border-box;
   color: #fff;
@@ -1005,5 +1005,102 @@ select:focus {
   .accordion-item > * {
     padding: 24px 14px;
     min-height: 72px;
+  }
+}
+
+
+.accordion.accordion9 {
+  background: #a30000;
+  padding: 48px 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.accordion.accordion9 .accordion-item {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgb(40 0 0 / 6%);
+  color: #5c5c5c;
+  max-width: 600px;
+  width: 100%;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.accordion.accordion9 .accordion-item-label {
+  margin-bottom: 8px;
+}
+
+.accordion.accordion9 .accordion-item-label p,
+.accordion.accordion9 .accordion-item summary {
+  color: #a30000;
+  font-weight: bold;
+  font-size: 1.45em;
+  margin: 0 0 10px;
+}
+
+.accordion.accordion9 .accordion-item-body {
+  margin-bottom: 12px;
+}
+
+.accordion.accordion9 .accordion-item-body p {
+  color: #5c5c5c;
+  font-size: 1em;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.accordion.accordion9 details {
+  border: none;
+  width: 100%;
+}
+
+.accordion.accordion9 summary {
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 6px;
+  background: #f8f8f8;
+  color: #a30000;
+  font-weight: bold;
+}
+
+.accordion.accordion9 select,
+.accordion.accordion9 input[type="text"],
+.accordion.accordion9 textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  color: #5c5c5c;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 1em;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+.accordion.accordion9 .note,
+.accordion.accordion9 .instruction {
+  color: #fff;
+  font-size: 0.95em;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+@media (width <= 900px) {
+  .accordion.accordion9 {
+    padding: 32px 0;
+    grid-template-columns: 1fr;
+  }
+
+  .accordion.accordion9 .accordion-item {
+    max-width: 100%;
+    padding: 20px 10px;
   }
 }
