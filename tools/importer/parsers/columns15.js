@@ -1,58 +1,81 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row as specified
+  // Header row for the block
   const headerRow = ['Columns (columns15)'];
 
-  // Defensive: find the main row containing the columns
-  const mainRow = element.querySelector('.container-fluid > .row');
+  // Defensive: Find the main container holding the four columns
+  const container = element.querySelector('.container-fluid');
+  if (!container) return;
+
+  // Find the row containing the columns
+  const mainRow = container.querySelector('.row');
   if (!mainRow) return;
 
-  // Find the four column containers (three nav columns, one address/social column)
-  // The first three are inside col-xs-landscape-6 col-sm-6 col-md-9 > .row > .col-md-4
-  // The fourth is col-xs-landscape-6 col-sm-6 col-md-3
-  const colGroup = mainRow.querySelector('.col-xs-landscape-6.col-sm-6.col-md-9 > .row');
-  const navCols = colGroup ? Array.from(colGroup.children) : [];
-  const contactCol = mainRow.querySelector('.col-xs-landscape-6.col-sm-6.col-md-3');
+  // Get all direct child columns (should be 2: left 3 columns, right 1 column)
+  const topLevelCols = Array.from(mainRow.children).filter((child) => child.classList.contains('col-xs-landscape-6'));
+  if (topLevelCols.length < 2) return;
 
-  // Defensive: ensure we have the expected columns
-  if (navCols.length !== 3 || !contactCol) return;
+  // Left columns (3 columns grouped)
+  const leftColsContainer = topLevelCols[0];
+  // Defensive: find the row inside the left columns container
+  const leftColsRow = leftColsContainer.querySelector('.row');
+  if (!leftColsRow) return;
+  // Get the 3 left columns
+  const leftCols = Array.from(leftColsRow.children).filter((child) => child.classList.contains('col-md-4'));
 
-  // Helper to extract the full column block (heading + list)
-  function extractNavCol(col) {
-    // We'll include the heading and its list as a block
-    const heading = col.querySelector('.footer__heading');
-    const wrapper = col.querySelector('.footer__wrapper');
-    // Defensive: fallback to all children if wrapper not found
-    if (heading && wrapper) {
-      return [heading, wrapper];
+  // Right column (address + social)
+  const rightCol = topLevelCols[1];
+
+  // Helper to extract a column block (heading + list)
+  function extractColumn(colElem) {
+    const parts = [];
+    // Heading (usually a <p> with class 'footer__heading')
+    const heading = colElem.querySelector('.footer__heading');
+    if (heading) parts.push(heading);
+    // List (usually a <ul> with class 'footer__list')
+    const list = colElem.querySelector('.footer__list');
+    if (list) parts.push(list);
+    return parts;
+  }
+
+  // Build the content row (4 columns)
+  const contentRow = [];
+
+  // First three columns: extract heading + list
+  leftCols.forEach((colElem) => {
+    const colContent = extractColumn(colElem);
+    if (colContent.length) {
+      contentRow.push(colContent);
     } else {
-      // fallback: return all children
-      return Array.from(col.children);
+      // Fallback: push the whole column if structure changes
+      contentRow.push(colElem);
     }
+  });
+
+  // Fourth column: address + social links
+  const rightParts = [];
+  // Heading
+  const rightHeading = rightCol.querySelector('.footer__heading');
+  if (rightHeading) rightParts.push(rightHeading);
+  // Address
+  const address = rightCol.querySelector('address');
+  if (address) rightParts.push(address);
+  // Social links (dl.share)
+  const share = rightCol.querySelector('.share--footer');
+  if (share) rightParts.push(share);
+  if (rightParts.length) {
+    contentRow.push(rightParts);
+  } else {
+    // Fallback: push the whole right column
+    contentRow.push(rightCol);
   }
 
-  // For the contact/social column, include heading, address, and social links
-  function extractContactCol(col) {
-    const heading = col.querySelector('.footer__heading');
-    const address = col.querySelector('address');
-    const social = col.querySelector('.share--footer');
-    const result = [];
-    if (heading) result.push(heading);
-    if (address) result.push(address);
-    if (social) result.push(social);
-    return result;
-  }
+  // Create the block table
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    contentRow,
+  ], document);
 
-  // Build the columns row
-  const columnsRow = [
-    extractNavCol(navCols[0]),
-    extractNavCol(navCols[1]),
-    extractNavCol(navCols[2]),
-    extractContactCol(contactCol)
-  ];
-
-  // Compose the table
-  const cells = [headerRow, columnsRow];
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(block);
+  // Replace the original element with the new table
+  element.replaceWith(table);
 }

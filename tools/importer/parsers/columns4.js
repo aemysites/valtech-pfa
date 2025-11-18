@@ -1,44 +1,62 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row: always block name
+  // Header row as required
   const headerRow = ['Columns (columns4)'];
 
-  // Defensive: get the main row containing the two columns
-  const mainRow = element.querySelector('.row.teasers .row');
-  if (!mainRow) return;
-
-  // Get the two columns
-  const columns = mainRow.querySelectorAll(':scope > div');
-  if (columns.length < 2) return;
-
-  // Left column: video iframe (convert to link)
-  const leftCol = columns[0];
-  const videoIframe = leftCol.querySelector('iframe');
-  let leftCellContent = [];
-  if (videoIframe && videoIframe.src) {
-    const a = document.createElement('a');
-    a.href = videoIframe.src;
-    a.textContent = 'Video';
-    leftCellContent.push(a);
+  // Find the two columns
+  const outerRow = element.querySelector('.row.teasers > .row');
+  let leftCol, rightCol;
+  if (outerRow) {
+    const cols = outerRow.querySelectorAll(':scope > div');
+    leftCol = cols[0];
+    rightCol = cols[1];
+  } else {
+    // fallback: try to find columns directly
+    const cols = element.querySelectorAll('.row.teasers > .col-xs-12');
+    leftCol = cols[0];
+    rightCol = cols[1];
   }
 
-  // Right column: heading + paragraphs
-  const rightCol = columns[1];
-  const heading = rightCol.querySelector('h2');
-  const paragraphs = Array.from(rightCol.querySelectorAll('p')).filter(p => p.textContent.trim() !== '');
-  let rightCellContent = [];
-  if (heading) rightCellContent.push(heading);
-  rightCellContent = rightCellContent.concat(paragraphs);
+  // Defensive: fallback if not found
+  if (!leftCol || !rightCol) {
+    const fallbackCols = element.querySelectorAll(':scope > div > .row > div');
+    leftCol = fallbackCols[0];
+    rightCol = fallbackCols[1];
+  }
 
-  // Build table rows
+  // Left column: heading + paragraphs (only visible heading)
+  let leftContent = [];
+  if (leftCol) {
+    // Only include h2 that is visible (not display:none)
+    const headings = Array.from(leftCol.querySelectorAll('h2'));
+    const visibleHeading = headings.find(h => !h.hasAttribute('style') || !h.getAttribute('style').includes('display:none'));
+    if (visibleHeading) leftContent.push(visibleHeading);
+    const paragraphs = leftCol.querySelectorAll('p');
+    paragraphs.forEach(p => leftContent.push(p));
+  }
+
+  // Right column: images (include all images in rightCol)
+  let rightContent = [];
+  if (rightCol) {
+    // Get all images inside rightCol, including nested divs
+    rightCol.querySelectorAll('img').forEach(img => rightContent.push(img));
+    // FIX: If images are not direct children, check all descendants
+    if (rightContent.length === 0) {
+      Array.from(rightCol.querySelectorAll('*')).forEach(node => {
+        if (node.tagName === 'IMG') rightContent.push(node);
+      });
+    }
+  }
+
+  // Build the table rows
   const rows = [
     headerRow,
-    [leftCellContent, rightCellContent]
+    [leftContent, rightContent]
   ];
 
-  // Create table block
-  const block = WebImporter.DOMUtils.createTable(rows, document);
+  // Create the block table
+  const table = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace original element
-  element.replaceWith(block);
+  // Replace the original element
+  element.replaceWith(table);
 }

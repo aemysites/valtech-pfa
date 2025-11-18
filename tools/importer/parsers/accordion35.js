@@ -1,47 +1,35 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block extraction for Accordion (accordion35)
-  // Header row must match block name exactly
+  // Accordion (accordion35) block
+  // Header row must be a single cell
   const headerRow = ['Accordion (accordion35)'];
   const rows = [headerRow];
 
-  // Find all toggler elements (accordion headers)
-  const togglers = Array.from(element.querySelectorAll('p.accordions__toggler'));
-  togglers.forEach((toggler) => {
-    // The content is the next sibling with class 'accordions__element'
-    let content = toggler.nextElementSibling;
-    if (!content || !content.classList.contains('accordions__element')) return;
+  // Find all toggler elements (titles)
+  const togglers = Array.from(element.querySelectorAll('.accordions__toggler'));
+  // Find all corresponding content elements
+  const contents = Array.from(element.querySelectorAll('.accordions__element'));
 
-    // Title cell: reference the toggler element itself
-    const titleCell = toggler;
+  // Defensive: Only process pairs where both title and content exist
+  const count = Math.min(togglers.length, contents.length);
+  for (let i = 0; i < count; i++) {
+    // Title: Use only the textContent of the toggler
+    const titleText = togglers[i].textContent.trim();
+    // Content: Extract only the inner content, not the wrapper div
+    const contentDiv = contents[i];
+    // Collect all children of the contentDiv into a fragment
+    const frag = document.createDocumentFragment();
+    Array.from(contentDiv.childNodes).forEach((node) => {
+      frag.appendChild(node.cloneNode(true));
+    });
+    rows.push([
+      titleText,
+      frag
+    ]);
+  }
 
-    // Content cell: extract the inner structure
-    let contentCell;
-    const row = content.querySelector('.row');
-    if (row) {
-      // Find left and right columns
-      const leftCol = row.querySelector('.col-sm-8');
-      const rightCol = row.querySelector('.col-sm-4');
-      // Defensive: if both columns exist, combine their teasers
-      if (leftCol && rightCol) {
-        // Reference teasers, not clone or create
-        const leftTeaser = leftCol.querySelector('.teasers__teaser') || leftCol;
-        const rightTeaser = rightCol.querySelector('.teasers__teaser') || rightCol;
-        contentCell = document.createElement('div');
-        contentCell.appendChild(leftTeaser);
-        contentCell.appendChild(rightTeaser);
-      } else {
-        // Fallback: use row itself
-        contentCell = row;
-      }
-    } else {
-      // Fallback: use content itself
-      contentCell = content;
-    }
-    rows.push([titleCell, contentCell]);
-  });
-
-  // Create the block table
+  // Create the table block
   const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Replace the original element with the new block table
   element.replaceWith(table);
 }

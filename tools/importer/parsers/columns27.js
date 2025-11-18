@@ -1,25 +1,31 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always use the block name as the header row
+  // Always use the block name as header row
   const headerRow = ['Columns (columns27)'];
 
-  // Defensive: Get all immediate children that are columns
+  // Get the immediate column wrappers
   const columns = Array.from(element.querySelectorAll(':scope > div'));
 
-  // For each column, grab the content block (teaser)
-  const contentRow = columns.map((col) => {
-    // Defensive: Find the teaser block inside the column
-    const teaser = col.querySelector('.teasers__teaser') || col;
-    // Return the teaser element directly (includes heading, paragraph, and link)
+  // Defensive: Only proceed if we have at least one column
+  if (!columns.length) return;
+
+  // Each column contains a .teasers__teaser div, which holds the content
+  const contentRow = columns.map(col => {
+    // Find the teaser content block
+    const teaser = col.querySelector('.teasers__teaser');
+    if (!teaser) return document.createElement('div'); // fallback empty div
     return teaser;
   });
 
   // Build the table rows
-  const rows = [headerRow, contentRow];
+  const cells = [
+    headerRow,
+    contentRow
+  ];
 
   // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
+  const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Replace the original element with the block
+  // Replace original element with new block table
   element.replaceWith(block);
 }

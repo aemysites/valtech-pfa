@@ -1,33 +1,24 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always start with the block name header row
+  // Always use the required header row for Columns block
   const headerRow = ['Columns (columns24)'];
 
-  // Defensive: get the main row containing columns
-  const mainRow = element.querySelector('.row');
-  if (!mainRow) return;
+  // Find the two column containers
+  const row = element.querySelector('.row');
+  if (!row) return;
 
-  // Get all immediate column divs
-  const columns = Array.from(mainRow.children).filter(
-    (col) => col.classList.contains('col-xs-12')
+  const columns = Array.from(row.children).filter(
+    (col) => col.classList.contains('col-xs-12') && col.classList.contains('col-sm-6')
   );
+  if (columns.length !== 2) return;
 
-  // Each column's content will be grouped into a cell
-  // This ensures resilience to variations in paragraph count
-  const contentRow = columns.map((col) => {
-    // Gather all child nodes (paragraphs, links, etc.)
-    // Only include elements (not stray text nodes)
-    return Array.from(col.childNodes).filter(
-      (node) => node.nodeType === 1 // ELEMENT_NODE
-    );
-  });
+  // For each column, extract only its inner content (paragraphs, links, etc.), not the outer div
+  const contentRow = columns.map(col => Array.from(col.childNodes));
 
-  // Build the table rows
+  // Build the table
   const cells = [headerRow, contentRow];
+  const table = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace the original element with the block table
-  element.replaceWith(block);
+  // Replace the original element with the new table
+  element.replaceWith(table);
 }

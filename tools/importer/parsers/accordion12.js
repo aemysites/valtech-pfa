@@ -1,36 +1,46 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header row
-  const headerRow = ['Accordion (accordion12)'];
+  // Find the main heading (first h5)
+  const heading = element.querySelector('h5');
 
-  // Find all accordion toggler titles and their content
-  // Each accordion item: title (toggler), content (next sibling)
-  // The toggler is a <p> with class 'accordions__toggler'
-  const togglers = Array.from(element.querySelectorAll('p.accordions__toggler'));
-  const rows = [];
+  // Find all toggler titles and their corresponding content blocks
+  const togglers = Array.from(element.querySelectorAll('.accordions__toggler'));
+  const items = [];
 
   togglers.forEach((toggler) => {
-    // Title cell: the toggler itself (reference, not clone)
-    const titleCell = toggler;
-
-    // Content cell: the next sibling .accordions__element
-    let contentCell = null;
-    let sibling = toggler.nextElementSibling;
-    while (sibling && !sibling.classList.contains('accordions__element')) {
-      sibling = sibling.nextElementSibling;
+    // The content block is the next sibling with class 'accordions__element'
+    let content = toggler.nextElementSibling;
+    if (!content || !content.classList.contains('accordions__element')) {
+      // Defensive: fallback to searching siblings
+      content = Array.from(element.querySelectorAll('.accordions__element')).find(
+        el => el.previousElementSibling === toggler
+      );
     }
-    // Reference the actual element, not a clone
-    if (sibling && sibling.classList.contains('accordions__element')) {
-      contentCell = sibling;
+    if (content) {
+      // Use only the text content for the title cell
+      items.push([toggler.textContent.trim(), content]);
     }
-    // Defensive: If not found, leave cell empty
-    rows.push([titleCell, contentCell || document.createElement('div')]);
   });
 
-  // Build the table: header row, then accordion items
-  const tableCells = [headerRow, ...rows];
-  const blockTable = WebImporter.DOMUtils.createTable(tableCells, document);
+  // Build the table rows
+  const headerRow = ['Accordion (accordion12)'];
+  const rows = [headerRow];
 
-  // Replace the original element with the block table
-  element.replaceWith(blockTable);
+  // Add the main heading as a row above the accordion items
+  if (heading) {
+    rows.push([heading.textContent.trim(), '']);
+  }
+
+  items.forEach(([title, contentEl]) => {
+    rows.push([
+      title,
+      contentEl
+    ]);
+  });
+
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(rows, document);
+
+  // Replace the original element
+  element.replaceWith(block);
 }

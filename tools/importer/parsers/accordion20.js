@@ -1,48 +1,70 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper to get all top-level accordion items
-  function getAccordionItems(root) {
-    // Find all toggler elements (accordion headers)
-    const togglers = Array.from(root.querySelectorAll('.accordions__toggler'));
-    const items = [];
-    togglers.forEach((toggler) => {
-      // The next sibling with class 'accordions__element' is the content
-      let content = toggler.nextElementSibling;
-      if (content && content.classList.contains('accordions__element')) {
-        items.push({ title: toggler, content });
-      }
-    });
-    return items;
-  }
-
-  // Build table rows for each accordion item
-  const rows = [];
+  // Table header row
   const headerRow = ['Accordion (accordion20)'];
-  rows.push(headerRow);
+  const rows = [headerRow];
 
-  // Get all accordion items
-  const accordionItems = getAccordionItems(element);
-  accordionItems.forEach(({ title, content }) => {
-    rows.push([title, content]);
+  // Find all accordion toggler elements (titles)
+  const togglers = Array.from(element.querySelectorAll('.accordions__toggler'));
+  // Each toggler is followed by its content element (accordions__element)
+  togglers.forEach((toggler) => {
+    // Title cell: use the toggler text only
+    const titleCell = document.createElement('div');
+    titleCell.textContent = toggler.textContent.trim();
+    // Content cell: find the next sibling with class 'accordions__element'
+    let contentCell = null;
+    let next = toggler.nextElementSibling;
+    while (next && !next.classList.contains('accordions__element')) {
+      next = next.nextElementSibling;
+    }
+    if (next && next.classList.contains('accordions__element')) {
+      // Use all child nodes for maximum flexibility
+      const contentDiv = document.createElement('div');
+      Array.from(next.childNodes).forEach((node) => {
+        contentDiv.appendChild(node.cloneNode(true));
+      });
+      contentCell = contentDiv;
+    } else {
+      // Defensive fallback: if not found, use an empty cell
+      contentCell = document.createElement('div');
+    }
+    rows.push([titleCell, contentCell]);
   });
 
-  // Find informational paragraph and link NOT inside accordion toggler/element
-  const infoParagraphs = Array.from(element.querySelectorAll('p'))
-    .filter(p => !p.classList.contains('accordions__toggler') && !p.closest('.accordions__element'));
-  const infoLinks = Array.from(element.querySelectorAll('a'))
-    .filter(a => a.textContent.trim().length > 0 && !a.closest('.accordions__element'));
-
-  // If there is informational content, add it as a separate row with both cells populated
-  if (infoParagraphs.length || infoLinks.length) {
-    const infoCell = document.createElement('div');
-    infoParagraphs.forEach(p => infoCell.appendChild(p.cloneNode(true)));
-    infoLinks.forEach(a => infoCell.appendChild(a.cloneNode(true)));
-    rows.push([infoCell, infoCell.cloneNode(true)]);
+  // Find the informational paragraph and link at the bottom
+  // Only consider elements after the last accordion
+  let lastAccordionIdx = -1;
+  Array.from(element.children).forEach((child, idx) => {
+    if (child.classList && child.classList.contains('accordions__element')) {
+      lastAccordionIdx = idx;
+    }
+  });
+  const bottomContent = [];
+  Array.from(element.children).slice(lastAccordionIdx + 1).forEach((child) => {
+    if (
+      child.tagName === 'P' &&
+      child.textContent.trim()
+    ) {
+      bottomContent.push(child.cloneNode(true));
+    }
+    if (
+      child.tagName === 'A' &&
+      child.textContent.trim()
+    ) {
+      bottomContent.push(child.cloneNode(true));
+    }
+  });
+  if (bottomContent.length) {
+    const infoDiv = document.createElement('div');
+    bottomContent.forEach((node) => infoDiv.appendChild(node));
+    rows.push([
+      document.createTextNode('Info'),
+      infoDiv
+    ]);
   }
 
   // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
-
-  // Replace the original element with the new block table
+  // Replace the original element
   element.replaceWith(block);
 }

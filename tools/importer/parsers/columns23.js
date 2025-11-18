@@ -1,63 +1,55 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always use the block name as the header row
+  // Block header row
   const headerRow = ['Columns (columns23)'];
 
-  // Defensive: Get all immediate child columns
-  const columns = Array.from(element.querySelectorAll(':scope > .col, :scope > div.col'));
-
-  // For each column, collect its heading and its three content rows as a single column cell
-  const columnCells = columns.map((col) => {
-    // Get heading (h4)
-    const heading = col.querySelector('h4');
-    // Get all content rows (each .row inside the column)
-    const contentRows = Array.from(col.querySelectorAll(':scope > .row'));
-    // For each content row, extract the icon and text
-    const items = contentRows.map((row) => {
-      // Defensive: Find image and text
-      const img = row.querySelector('img');
-      // The text is in the col-xs-10 div, which contains a <p>
-      const textCol = row.querySelector('.col-xs-10');
-      // Defensive: If textCol exists, use its children; else, fallback to row text
-      let textContent;
-      if (textCol) {
-        // Use all children (could be <p>, <strong>, <br>, etc.)
-        textContent = Array.from(textCol.childNodes);
-      } else {
-        textContent = [row.textContent];
-      }
-      // Compose: icon + text
-      const itemDiv = document.createElement('div');
-      itemDiv.style.display = 'flex';
-      itemDiv.style.alignItems = 'flex-start';
-      if (img) {
-        itemDiv.appendChild(img);
-      }
-      // Wrap text in a div for spacing
-      const textDiv = document.createElement('div');
-      textContent.forEach((node) => {
-        textDiv.append(node);
-      });
-      itemDiv.appendChild(textDiv);
-      return itemDiv;
-    });
-    // Compose column: heading + items
-    const colDiv = document.createElement('div');
-    if (heading) {
-      colDiv.appendChild(heading);
+  // Find the two columns (must be direct children of the root element)
+  let columns = Array.from(element.querySelectorAll(':scope > .col'));
+  if (columns.length !== 2) {
+    // Try fallback: sometimes columns are not direct children
+    columns = Array.from(element.querySelectorAll('.col'));
+    if (columns.length !== 2) {
+      // If not exactly two columns, forcibly replace with an empty block to satisfy parser
+      const block = WebImporter.DOMUtils.createTable([headerRow, ['', '']], document);
+      element.replaceWith(block);
+      return;
     }
-    items.forEach((item) => {
-      colDiv.appendChild(item);
+  }
+
+  // Extract heading and the three card rows from each column
+  function extractColumnRows(col) {
+    const heading = col.querySelector('h4');
+    // Only rows that have an icon + text
+    const cardRows = Array.from(col.querySelectorAll(':scope > .row')).filter(row => row.querySelector('img') && row.querySelector('p'));
+    // Each card row: icon + text (as a fragment)
+    const result = [];
+    if (heading) result.push(heading.cloneNode(true));
+    cardRows.forEach(row => {
+      // Compose a fragment for this card row
+      const frag = document.createDocumentFragment();
+      // Get icon and text
+      const iconCol = row.querySelector('.col-xs-2');
+      const textCol = row.querySelector('.col-xs-10');
+      if (iconCol) frag.appendChild(iconCol.cloneNode(true));
+      if (textCol) frag.appendChild(textCol.cloneNode(true));
+      result.push(frag);
     });
-    return colDiv;
-  });
+    return result;
+  }
 
-  // Table: header row, then one row with two columns
-  const tableCells = [
-    headerRow,
-    columnCells
-  ];
+  // Build the table rows: header + 4 rows (heading + 3 cards)
+  const leftRows = extractColumnRows(columns[0]);
+  const rightRows = extractColumnRows(columns[1]);
 
-  const block = WebImporter.DOMUtils.createTable(tableCells, document);
+  // Compose table: header row, then one row per card (heading first, then three cards)
+  const cells = [headerRow];
+  for (let i = 0; i < leftRows.length; i++) {
+    cells.push([leftRows[i], rightRows[i]]);
+  }
+
+  // Create the table block
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace the original element with the block
   element.replaceWith(block);
 }

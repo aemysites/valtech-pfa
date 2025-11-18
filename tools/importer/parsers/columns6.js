@@ -3,71 +3,40 @@ export default function parse(element, { document }) {
   // Header row for Columns block
   const headerRow = ['Columns (columns6)'];
 
-  // Get immediate column containers
-  const columns = element.querySelectorAll(':scope > div');
-  if (columns.length < 2) {
-    return;
-  }
+  // Find the two column divs
+  const columns = Array.from(element.querySelectorAll(':scope > div'));
 
-  // LEFT COLUMN: collect all teaser blocks (text, list, links)
+  // Defensive: Ensure we have at least two columns
+  if (columns.length < 2) return;
+
+  // Left column: collect all teaser content (text, list, link)
   const leftCol = columns[0];
-  const leftTeasers = Array.from(leftCol.querySelectorAll('.teasers__teaser'));
-  const leftCellContent = [];
-
-  let phonePara, listBlock;
+  // Gather all children of leftCol (teaser divs)
+  const leftTeasers = Array.from(leftCol.querySelectorAll(':scope > div'));
+  const leftContent = [];
   leftTeasers.forEach(teaser => {
-    const ul = teaser.querySelector('ul');
-    if (ul) {
-      listBlock = ul.cloneNode(true);
-    } else if (teaser.textContent.includes('Kontakt os på 70 12 50 00')) {
-      // This teaser contains the phone paragraph and intro to the list
-      // Replace the phone number with a clickable link as in the source HTML
-      let html = teaser.innerHTML;
-      html = html.replace(
-        /70 12 50 00/,
-        '<a href="tel:+4570125000">70 12 50 00</a>'
-      );
-      phonePara = document.createElement('p');
-      phonePara.innerHTML = html;
-    } else if (teaser.textContent.trim()) {
-      // Other non-empty teaser blocks as paragraphs
-      const p = document.createElement('p');
-      p.innerHTML = teaser.innerHTML;
-      leftCellContent.push(p);
-    }
+    // Add all children (text, ul, p, etc.)
+    Array.from(teaser.childNodes).forEach(node => {
+      if (node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && node.textContent.trim())) {
+        leftContent.push(node.cloneNode(true));
+      }
+    });
   });
-  // Insert phone paragraph before the list, matching original order
-  if (phonePara) {
-    leftCellContent.push(phonePara);
-  }
-  if (listBlock) {
-    leftCellContent.push(listBlock);
-  }
 
-  // RIGHT COLUMN: video embed + caption
+  // Right column: image only
   const rightCol = columns[1];
-  const rightTeaser = rightCol.querySelector('.teasers__teaser');
-  let videoLink = null;
-  let caption = null;
-  if (rightTeaser) {
-    const iframe = rightTeaser.querySelector('iframe');
-    if (iframe) {
-      videoLink = document.createElement('a');
-      videoLink.href = iframe.src;
-      videoLink.target = '_blank';
-      videoLink.textContent = 'Se video';
-    }
-    caption = rightTeaser.querySelector('em');
-  }
-  const rightCellContent = [];
-  if (videoLink) rightCellContent.push(videoLink);
-  if (caption) rightCellContent.push(caption.cloneNode(true));
+  const img = rightCol.querySelector('img');
+  const rightContent = img ? [img.cloneNode(true)] : [];
 
+  // Table structure: header, then one row with two columns
   const cells = [
     headerRow,
-    [leftCellContent, rightCellContent]
+    [leftContent, rightContent]
   ];
 
-  const table = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(table);
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace the original element with the block table
+  element.replaceWith(block);
 }

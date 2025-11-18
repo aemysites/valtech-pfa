@@ -1,31 +1,46 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row for the block
+  // Block header row must match target block name exactly
   const headerRow = ['Columns (columns38)'];
 
-  // Find all immediate column wrappers
+  // Find all direct column children
   const columns = Array.from(element.querySelectorAll(':scope > div'));
 
-  // Defensive: Only process if we have columns
-  if (!columns.length) return;
+  // For each column, extract heading, paragraphs, and preserve link list structure
+  const cells = columns.map(col => {
+    const teaser = col.querySelector(':scope > div');
+    const source = teaser || col;
+    const container = document.createElement('div');
 
-  // For each column, collect its content as a single cell
-  const columnCells = columns.map((col) => {
-    // Find the teaser content inside the column
-    const teaser = col.querySelector('.teasers__teaser');
-    // Defensive: If teaser not found, use the column itself
-    return teaser || col;
+    // Heading
+    const heading = source.querySelector('h3');
+    if (heading) container.appendChild(heading.cloneNode(true));
+
+    // All non-empty paragraphs
+    source.querySelectorAll('p').forEach(p => {
+      if (p.textContent.trim().replace(/\u00a0/g, '').length > 0) {
+        container.appendChild(p.cloneNode(true));
+      }
+    });
+
+    // Preserve link list structure if present
+    const linkList = source.querySelector('ul.panel__links');
+    if (linkList) {
+      container.appendChild(linkList.cloneNode(true));
+    }
+
+    return container;
   });
 
-  // Build the table rows
+  // Table: header row, then one row with all columns as cells
   const rows = [
     headerRow,
-    columnCells,
+    cells
   ];
 
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
+  // Create the columns block table
+  const table = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace the original element with the block table
-  element.replaceWith(block);
+  // Replace the original element with the table
+  element.replaceWith(table);
 }

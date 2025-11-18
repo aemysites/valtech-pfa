@@ -1,36 +1,30 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block: extract accordion items (title + content)
+  // Accordion block header
   const headerRow = ['Accordion (accordion8)'];
   const rows = [headerRow];
 
-  // Get the main heading and intro paragraph
+  // Find main heading and intro paragraph
   const h2 = element.querySelector('h2');
   const introP = h2 ? h2.nextElementSibling : null;
 
-  // Find the accordion toggler and its content container
-  const toggler = element.querySelector('.accordions__toggler');
-  const accordionContent = element.querySelector('.accordions__element');
-
-  if (toggler && accordionContent) {
-    // Prefer the 'show-in-print' table if present, else any table
-    let table = accordionContent.querySelector('.show-in-print') || accordionContent.querySelector('table');
-    // Get any footnote paragraphs inside accordionContent (those with '*')
-    const footnotes = Array.from(accordionContent.querySelectorAll('p')).filter(p => p.textContent.trim().startsWith('*'));
-    const contentCell = document.createElement('div');
-    if (table) contentCell.appendChild(table.cloneNode(true));
-    footnotes.forEach(fn => contentCell.appendChild(fn.cloneNode(true)));
-    rows.push([
-      document.createTextNode(toggler.textContent.trim()),
-      contentCell
-    ]);
+  // Add heading and intro paragraph as their own row (single cell)
+  if (h2 && introP) {
+    rows.push([ [h2, introP] ]);
   }
 
-  // Create a fragment to hold heading/intro and the block
-  const fragment = document.createDocumentFragment();
-  if (h2) fragment.appendChild(h2.cloneNode(true));
-  if (introP) fragment.appendChild(introP.cloneNode(true));
+  // Find the accordion toggler (title for first item)
+  const toggler = element.querySelector('.accordions__toggler');
+  // Find the accordion content (the expanded/collapsed content)
+  const accordionContent = element.querySelector('.accordions__element');
+
+  // Only add accordion item if toggler and content exist
+  if (toggler && accordionContent) {
+    rows.push([toggler, accordionContent]);
+  }
+
+  // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
-  fragment.appendChild(block);
-  element.replaceWith(fragment);
+  // Replace the original element
+  element.replaceWith(block);
 }
