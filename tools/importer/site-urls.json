@@ -195,12 +195,6 @@
       "id": "b567b6b24d94af44df370ddfa4571bdd039857f8"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/overblik/",
-      "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/overblik",
-      "id": "eb9098d99cd8735689a3a4dc1dfac402f789bfba"
-    },
-    {
       "url": "https://www.pfa.dk/privat/forsikringer/pfa-earlycare/",
       "source": "MANUAL",
       "targetPath": "/privat/forsikringer/pfa-earlycare",
