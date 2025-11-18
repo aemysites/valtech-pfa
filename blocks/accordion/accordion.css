@@ -130,148 +130,6 @@
 }
 
 
-.accordion.accordion19 {
-  background: #393838;
-  position: relative;
-  padding: 48px 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  min-height: 0;
-  border: 1px solid #fff;
-}
-
-.accordion.accordion19 .accordion-item {
-  width: 100%;
-}
-
-.accordion.accordion19 summary,
-.accordion.accordion19 .accordion-item-label,
-.accordion.accordion19 .accordion-item-label * {
-  color: #fff;
-  font-weight: bold;
-  font-size: 2rem;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 32px;
-}
-
-.accordion.accordion19 .accordion-item-body *:not(.button-container, .button) {
-  color: #f0f0f0;
-  font-size: 1rem;
-  line-height: 1.7;
-  text-align: center;
-}
-
-.accordion.accordion19 select {
-  display: block;
-  margin: 0 auto 40px;
-  background: #fff;
-  color: #393838;
-  border: none;
-  border-radius: 0;
-  padding: 0 16px;
-  height: 44px;
-  width: 70%;
-  max-width: 360px;
-  min-width: 200px;
-  box-sizing: border-box;
-  font-size: 1rem;
-  font-weight: 500;
-  appearance: none;
-}
-
-.accordion.accordion19 select:focus {
-  outline: 2px solid #B40000;
-  outline-offset: 2px;
-}
-
-.accordion.accordion19 .button-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 8px;
-  margin-bottom: 48px;
-}
-
-.accordion.accordion19 .button-container .button {
-  padding: 16px 36px;
-  border: 2px solid #fff;
-  border-radius: 999px;
-  background: transparent;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: none;
-  letter-spacing: 0.015em;
-  text-decoration: none;
-  box-shadow: none;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-  min-width: 120px;
-}
-
-.accordion.accordion19 .button-container .button:hover,
-.accordion.accordion19 .button-container .button:focus {
-  background: #B40000;
-  border-color: #B40000;
-  color: #fff;
-}
-
-.accordion.accordion19 .button-container .button:disabled {
-  background: #e0e0e0;
-  color: #888;
-  border-color: #888;
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-.accordion.accordion19 .accordion-item-body {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.accordion.accordion19::after {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: #B40000;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 1;
-  content: "";
-}
-
-@media (width <= 600px) {
-  .accordion.accordion19 {
-    padding: 32px 0 0;
-    max-width: 100%;
-  }
-
-  .accordion.accordion19 select {
-    width: 90%;
-    max-width: none;
-  }
-
-  .accordion.accordion19 .button-container .button {
-    padding: 12px 18px;
-    font-size: 0.95rem;
-  }
-
-  .accordion.accordion19 summary,
-  .accordion.accordion19 .accordion-item-label,
-  .accordion.accordion19 .accordion-item-label * {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-  }
-}
-
-
 .accordion.accordion31 {
   background-color: #eee;
   padding: 48px 0;
@@ -1005,7 +863,6 @@ select:focus {
   text-align: left;
 }
 
-/* Accordion list: stack items with minimal vertical gap */
 .accordion.accordion10 details {
   background: #7dbac6;
   border: none;
@@ -1018,7 +875,6 @@ select:focus {
   box-sizing: border-box;
 }
 
-/* Only top and bottom items have rounded corners */
 .accordion.accordion10 details:first-of-type {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -1029,7 +885,6 @@ select:focus {
   border-bottom-right-radius: 8px;
 }
 
-/* FAQ bar: summary styling */
 .accordion.accordion10 summary {
   display: flex;
   align-items: center;
@@ -1051,13 +906,11 @@ select:focus {
   transition: background 0.2s;
 }
 
-/* Remove native marker */
 .accordion.accordion10 summary::-webkit-details-marker,
 .accordion.accordion10 summary::-moz-details-marker {
   display: none;
 }
 
-/* FAQ icon/chevron: right-align, visually prominent */
 .accordion.accordion10 summary svg,
 .accordion.accordion10 summary .icon,
 .accordion.accordion10 summary i {
@@ -1075,7 +928,6 @@ select:focus {
   transform: rotate(-180deg);
 }
 
-/* Accordion answer */
 .accordion.accordion10 details .accordion-body,
 .accordion.accordion10 details div,
 .accordion.accordion10 details p {
@@ -1090,7 +942,6 @@ select:focus {
   box-sizing: border-box;
 }
 
-/* Responsive: Reduce padding and font size on small screens */
 @media (width <= 600px) {
   .accordion.accordion10 {
     padding: 20px 6px;
@@ -1108,5 +959,133 @@ select:focus {
   .accordion.accordion10 details p {
     padding: 14px 8px 8px;
     font-size: 0.98rem;
+  }
+}
+
+
+.accordion.accordion19 {
+  background-color: #373636;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-bottom: 2px solid #c32026;
+}
+
+.accordion.accordion19 .accordion-item {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accordion.accordion19 .accordion-item-label {
+  width: 100%;
+  margin: 0;
+  padding: 48px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+.accordion.accordion19 .accordion-item-label p {
+  color: #fff;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.accordion.accordion19 .accordion-item-body {
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 48px;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accordion.accordion19 .accordion-item-body p {
+  color: #fff;
+  font-size: 1rem;
+  margin: 0 0 32px;
+  text-align: left;
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+.accordion.accordion19 .button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.accordion.accordion19 .button {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 2em;
+  padding: 10px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.accordion.accordion19 .button:hover,
+.accordion.accordion19 .button:focus {
+  background-color: #fff;
+  color: #373636;
+  cursor: pointer;
+}
+
+@media (width <= 900px) {
+  .accordion.accordion19 {
+    min-height: 20vh;
+  }
+
+  .accordion.accordion19 .accordion-item-label {
+    padding-top: 32px;
+  }
+
+  .accordion.accordion19 .accordion-item-label p {
+    font-size: 1.33rem;
+  }
+
+  .accordion.accordion19 .accordion-item-body {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  .accordion.accordion19 .accordion-item-body p {
+    max-width: 100%;
+    font-size: 0.95rem;
   }
 }
