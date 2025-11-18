@@ -1,12 +1,16 @@
 {
   "templates": [
     {
-      "name": "'Business website template'",
+      "name": "'Corporate Website Template'",
       "cluster": 1,
       "pages": [
         {
           "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
           "uuid": "95c2018375199beb8ab8f2ce46f849d7c71272dc"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+          "uuid": "91b0c288f5058d60137b7131e4315108700a83c6"
         },
         {
           "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
@@ -15,70 +19,110 @@
       ]
     },
     {
-      "name": "'business portfolio'",
+      "name": "'Content Showcase Template'",
       "cluster": 2,
       "pages": [
         {
-          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
-          "uuid": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0"
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring/",
+          "uuid": "aa5feb32cad42af4892587d5f68bad6a7921d340"
         },
         {
-          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
-          "uuid": "e21795e8cf3c19ef9d53253d674efa55b85c0255"
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-earlycare/",
+          "uuid": "dcc00ffb8245fd389e3bedc3e057ece476ea7393"
         },
         {
-          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
-          "uuid": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4"
+          "url": "https://www.pfa.dk/privat/forsikringer/online-sundhedshjaelp/",
+          "uuid": "b567b6b24d94af44df370ddfa4571bdd039857f8"
         },
         {
-          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
-          "uuid": "3fde3a8b7a528182c1c751f0100189055d4a4639"
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring-60-69/",
+          "uuid": "dda75e5189980d7e6e611d17b5e41613f83e34cf"
         },
         {
-          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
-          "uuid": "eac8783b4cfe4dd8175ae8552f63299a46df890a"
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring-60-79/",
+          "uuid": "eef144078a98bedf3f283c62be3566632309fff2"
         },
         {
-          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
-          "uuid": "fab9135e29a157101ff8ca97f8253954eb386471"
+          "url": "https://www.pfa.dk/privat/forsikringer/saadan-faar-du-hjaelp/",
+          "uuid": "172cd49addf4b5985703e0344184b814e8944c1f"
         },
         {
-          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
-          "uuid": "cc4caf43597c5951502deb0124871b848d4e1428"
+          "url": "https://www.pfa.dk/privat/forsikringer/er-du-ok/",
+          "uuid": "3114b18789261760d1642fcf0b16bf42a2d8b004"
         },
         {
-          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
-          "uuid": "aabec4b73b53599039a2302d005ed7f98c95dd95"
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-liv/",
+          "uuid": "65a028a2aed3b02db6c43dc055d301f5460411f0"
         },
         {
-          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
-          "uuid": "41ff4838cef884b2a143471516f62b587f81d234"
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-erhvervsevne/",
+          "uuid": "904422892cd86c33932c0076eda63cac93087311"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/skatteregler-for-forsikring/",
+          "uuid": "4bce4817054ce10b253b5fbfa152dc617fc74877"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/anmeld-skade/",
+          "uuid": "520839b5c2746e425ad174dc3538d7330647c856"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/udbetaling-af-forsikring/",
+          "uuid": "2c855aa93e215d2654b12a6dce689c0b686753f5"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-forebygger/",
+          "uuid": "aba4d835082ed7ae4a0c44b8ca1cd51ef13971cb"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-kritisk-sygdom/",
+          "uuid": "447e71a770642aad903bb4ea3dace620fb636e0b"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/afgiv-helbredsoplysninger/",
+          "uuid": "66cdf62aa13987de63c55d1d364fe00d2eae292c"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/er-du-blevet-sygemeldt/",
+          "uuid": "62f959a3833bcd22cbbf7db58c058018b7e27705"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/hvis-du-bliver-alvorligt-syg/",
+          "uuid": "dd08b323ac002c0db0203cd5f42ebb2e87f6190f"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/udbetaling-til-dine-efterladte/",
+          "uuid": "43790b378b4f52301ae5d92b50a6bac866766f99"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-sundhedslinje/",
+          "uuid": "c34125f5ccacdaee7f8acbb7e4f1b5681e42b9ef"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/mistrives-dit-barn/",
+          "uuid": "62f21dc5364c4d28a2079a02cea1aec487d1261f"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/hjaelp-til-at-leve-sundere/",
+          "uuid": "176810a11eda53d05a6e2f22ce8d4bcf69cf6f28"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/du-kan-ikke-laengere-arbejde/",
+          "uuid": "9a5bc09694d07f32c7df737fe45229a3ef1daaf8"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/har-du-smerter/",
+          "uuid": "8f5aca46dac08fa00f8e251e673bef01622e03aa"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/symptomer-paa-stress/",
+          "uuid": "9873826f74d5d1a81e48579f2046f72c70c737af"
         }
       ]
     },
     {
-      "name": "'form page'",
+      "name": "'Portfolio Grid'",
       "cluster": 3,
-      "pages": [
-        {
-          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
-          "uuid": "84d873f642b401a49aa03825dd5e328401e3ce23"
-        }
-      ]
-    },
-    {
-      "name": "'Service Information Page'",
-      "cluster": 4,
-      "pages": [
-        {
-          "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
-          "uuid": "91b0c288f5058d60137b7131e4315108700a83c6"
-        }
-      ]
-    },
-    {
-      "name": "'Portfolio Showcase'",
-      "cluster": 5,
       "pages": [
         {
           "url": "https://www.pfa.dk/privat/",
@@ -95,28 +139,82 @@
       ]
     },
     {
-      "name": "'video content page'",
-      "cluster": 6,
-      "pages": [
-        {
-          "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
-          "uuid": "9853fd4140067af6fda3271dfd417fcafd7195e3"
-        }
-      ]
-    },
-    {
-      "name": "'Portfolio Page'",
-      "cluster": 7,
+      "name": "'Corporate Dashboard'",
+      "cluster": 4,
       "pages": [
         {
           "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
           "uuid": "88a0c468bd96f4d8ced07444391f684f031c3d62"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+          "uuid": "9c1f9638895128a3afd0e32ab486ef210d656bfe"
+        }
+      ]
+    },
+    {
+      "name": "'business website template'",
+      "cluster": 5,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+          "uuid": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+          "uuid": "e21795e8cf3c19ef9d53253d674efa55b85c0255"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+          "uuid": "eac8783b4cfe4dd8175ae8552f63299a46df890a"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+          "uuid": "3fde3a8b7a528182c1c751f0100189055d4a4639"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+          "uuid": "41ff4838cef884b2a143471516f62b587f81d234"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+          "uuid": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+          "uuid": "cc4caf43597c5951502deb0124871b848d4e1428"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+          "uuid": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+          "uuid": "aabec4b73b53599039a2302d005ed7f98c95dd95"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+          "uuid": "6ae09e4f67dc688791f191f5509c370de3edf1b6"
+        },
+        {
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+          "uuid": "fab9135e29a157101ff8ca97f8253954eb386471"
+        }
+      ]
+    },
+    {
+      "name": "'Basic Homepage'",
+      "cluster": 6,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-earlycare/tak-early/",
+          "uuid": "31676db22321b3082360d49c0aa77a6e99ccdbf3"
         }
       ]
     },
     {
       "name": "'Dashboard Template'",
-      "cluster": 8,
+      "cluster": 7,
       "pages": [
         {
           "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
@@ -125,26 +223,42 @@
       ]
     },
     {
-      "name": "'Dashboard Template'",
-      "cluster": 9,
+      "name": "'Contact Page'",
+      "cluster": 8,
       "pages": [
         {
-          "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
-          "uuid": "9c1f9638895128a3afd0e32ab486ef210d656bfe"
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring-60-79/formular-aftale-hs/",
+          "uuid": "68ad1f96b54b8a98ac67775fed725cc0bc4a3db8"
         }
       ]
     },
     {
-      "name": "'business portfolio'",
+      "name": "'Homepage'",
+      "cluster": 9,
+      "pages": [
+        {
+          "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring-60-79/formular-aftale-hs/kvittering/",
+          "uuid": "190f5c14c698023ac871eca90d50819f00596054"
+        }
+      ]
+    },
+    {
+      "name": "'video content page'",
       "cluster": 10,
       "pages": [
         {
-          "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
-          "uuid": "6ae09e4f67dc688791f191f5509c370de3edf1b6"
-        },
+          "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+          "uuid": "9853fd4140067af6fda3271dfd417fcafd7195e3"
+        }
+      ]
+    },
+    {
+      "name": "'Form page'",
+      "cluster": 11,
+      "pages": [
         {
-          "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
-          "uuid": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d"
+          "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+          "uuid": "84d873f642b401a49aa03825dd5e328401e3ce23"
         }
       ]
     }
