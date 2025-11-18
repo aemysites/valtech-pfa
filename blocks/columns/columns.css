@@ -339,90 +339,6 @@
   }
 }
 
-.columns.columns6 {
-  background: var(--background-color);
-  padding: 0;
-}
-
-.columns.columns6 .columns div {
-  display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(260px,420px);
-  gap: 40px;
-  align-items: start;
-  margin: 0;
-  padding: 0;
-}
-
-@media (width <= 900px) {
-  .columns.columns6 .columns div {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
-.columns.columns6 ul {
-  margin: 0 0 0 28px;
-  padding: 0;
-  font-size: var(--body-font-size-s);
-  color: var(--text-color);
-  line-height: 1.7;
-}
-
-.columns.columns6 ul li {
-  margin-bottom: 1.1em;
-  padding-left: 0;
-}
-
-.columns.columns6 ul li a,
-.columns.columns6 ul li strong,
-.columns.columns6 ul li b {
-  color: #b51819;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.columns.columns6 ul li a:hover {
-  text-decoration: underline;
-}
-
-.columns.columns6 div p {
-  margin: 0;
-  padding: 0;
-}
-
-.columns.columns6 div a {
-  color: #b51819;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1em;
-  margin-bottom: 10px;
-  display: inline-block;
-  border-radius: 8px;
-  background: none;
-  padding: 0.15em 0;
-  transition: text-decoration 0.12s;
-}
-
-.columns.columns6 div a:hover {
-  text-decoration: underline;
-}
-
-.columns.columns6 div em {
-  display: block;
-  color: #6d6d6d;
-  font-size: 0.95em;
-  font-style: italic;
-  line-height: 1.5;
-  margin-top: 0;
-}
-
-@media (width <= 900px) {
-  .columns.columns6 div em,
-  .columns.columns6 div a {
-    max-width: 100%;
-  }
-}
-
 
 .columns.columns7 {
   background: #f5f5f5;
@@ -1199,8 +1115,6 @@
   }
 }
 
-
-/* Columns block improved horizontal layout and styling */
 .columns.columns3 {
   display: flex;
   flex-direction: row;
@@ -1212,7 +1126,6 @@
   border: none;
 }
 
-/* The direct wrapper holding two columns */
 .columns.columns3 div {
   display: flex;
   flex-direction: row;
@@ -1225,7 +1138,6 @@
   gap: 0;
 }
 
-/* Left column: stacked text, ~60% width */
 .columns.columns3 div div:first-child {
   flex: 0 1 60%;
   display: flex;
@@ -1247,7 +1159,6 @@
   font-size: 15px;
 }
 
-/* Right column: video/caption, ~40% width, stack vertically */
 .columns.columns3 div div:last-child {
   flex: 0 1 40%;
   display: flex;
@@ -1260,7 +1171,6 @@
   border: none;
 }
 
-/* Caption: small, italic, lighter gray, left-aligned, margin to video */
 .columns.columns3 div div:last-child em {
   display: block;
   margin-top: 0.15em;
@@ -1274,7 +1184,6 @@
   border: none;
 }
 
-/* Remove any accidental borders or backgrounds from all levels */
 .columns.columns3,
 .columns.columns3 div,
 .columns.columns3 div div {
@@ -1285,7 +1194,6 @@
   padding: 0;
 }
 
-/* Responsive stacking on mobile */
 @media (width <= 900px) {
   .columns.columns3 {
     flex-direction: column;
@@ -1302,4 +1210,145 @@
     width: 100%;
     max-width: 100%;
   }
+}
+
+
+.columns.columns6 {
+  background: #fff;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Main columns row: side-by-side columns using flexbox */
+.columns.columns6 .block.columns-2-cols div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive stacking for mobile */
+@media (width <= 800px) {
+  .columns.columns6 .block.columns-2-cols div {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+/* Left column: allow to grow to ~60% and shrink if needed */
+.columns.columns6 .block.columns-2-cols div div:not([class]) {
+  flex: 1 1 60%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Right column: video/caption, allow to grow to ~40% and shrink if needed */
+.columns.columns6 .block.columns-2-cols div .columns-img-col {
+  flex: 1 1 40%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0;
+  margin: 0;
+}
+
+/* Video thumbnail image: centered, responsive */
+.columns.columns6 .columns-img-col img {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0;
+  border-radius: 6px;
+  box-shadow: none;
+  background: none;
+}
+
+/* Video thumbnail anchor: ensure position relative for overlay use */
+.columns.columns6 .columns-img-col a {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* (Optional) Play button overlay: only position if present in markup */
+.columns.columns6 .columns-img-col a .play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+}
+
+/* Caption styling */
+.columns.columns6 .columns-img-col em,
+.columns.columns6 .columns-img-col .video-caption {
+  font-style: italic;
+  color: #666;
+  font-size: 15px;
+  margin-top: 12px;
+  margin-bottom: 0;
+  text-align: left;
+  width: 100%;
+  align-self: flex-start;
+  display: block;
+}
+
+/* List styles (left column) */
+.columns.columns6 ul,
+.columns.columns6 ol {
+  margin: 0 0 16px;
+  padding-left: 24px;
+}
+
+.columns.columns6 li {
+  color: #222;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Red, underlined links and phone numbers, override default blue */
+.columns.columns6 ul li a,
+.columns.columns6 ul li a[href^="tel:"],
+.columns.columns6 ul li .phone {
+  color: #b92c1f;
+  text-decoration: underline;
+  font-weight: normal;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Remove button styling from links in this block */
+.columns.columns6 a.button,
+.columns.columns6 .button {
+  background: none;
+  color: #b92c1f;
+  border: none;
+  font-weight: normal;
+  text-decoration: underline;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Ensure no extra spacing, border, or box-shadow leaks into block or image */
+.columns.columns6,
+.columns.columns6 .block.columns-2-cols,
+.columns.columns6 img {
+  box-shadow: none;
+  border: none;
+  background: none;
 }
