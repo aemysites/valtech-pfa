@@ -1,42 +1,25 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main content column
-  const mainCol = element.querySelector('.col-sm-12');
-  if (!mainCol) return;
-
-  // Accordion title: Prefer .accordions__toggler, fallback to visible h2
-  let title = mainCol.querySelector('.accordions__toggler');
-  if (!title) {
-    title = mainCol.querySelector('h2:not([style*="display:none"])');
-  }
-  if (!title) {
-    title = mainCol.querySelector('h2');
-  }
-
-  // Accordion content
-  const content = mainCol.querySelector('.accordions__element');
-
-  // CTA button (outside accordion, but visually grouped)
-  const ctaDiv = element.querySelector('.col-xs-12');
-  const cta = ctaDiv ? ctaDiv.querySelector('a.cta-btn') : null;
-
-  // Build table rows
+  // Compose table rows: header row is single cell array, data rows are arrays of two cells
   const headerRow = ['Accordion (accordion19)'];
-  const rows = [];
 
-  if (title && content) {
-    // Compose content cell: content + CTA if present
-    const contentCell = document.createElement('div');
-    contentCell.appendChild(content);
-    if (cta) contentCell.appendChild(cta);
-    rows.push([title, contentCell]);
-  }
+  // Find the accordion toggler (title)
+  const toggler = element.querySelector('.accordions__toggler') || element.querySelector('p');
+  // Find the accordion content
+  const content = element.querySelector('.accordions__element') || element.querySelector('div[class*="accordion"]');
+  // Find the CTA button
+  const cta = element.querySelector('.col-xs-12.text-center a');
 
-  // Create table
-  const table = WebImporter.DOMUtils.createTable([
+  // Only include the header row and one accordion item row
+  // The CTA must be included in the content cell array to ensure all text content is present
+  const cells = [
     headerRow,
-    ...rows
-  ], document);
+    [toggler, [content, cta].filter(Boolean)]
+  ];
 
+  // Create Accordion block table
+  const table = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace original element
   element.replaceWith(table);
 }

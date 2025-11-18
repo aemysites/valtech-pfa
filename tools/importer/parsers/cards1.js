@@ -1,99 +1,70 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper: extract image if present, else create a colored block for cards with colored backgrounds
-  function getImageOrColor(panel) {
-    let img = panel.querySelector('.panel__image img');
-    if (!img) {
-      const imgWrap = panel.querySelector('.panel__image');
-      if (imgWrap) {
-        img = imgWrap.querySelector('img');
-      }
-    }
+  // Helper to extract card image or color block
+  function getCardImage(card) {
+    const img = card.querySelector('.panel__image img');
     if (img) return img;
-    // If no image, check for colored background (panel--primary, panel--green, panel--tertiary, etc.)
-    const classes = panel.className;
-    let color = null;
-    if (classes.includes('panel--primary')) color = '#a2001d'; // red
-    else if (classes.includes('panel--green')) color = '#006d6d'; // teal
-    else if (classes.includes('panel--tertiary')) color = '#fff'; // white
-    // If color found, create a colored div as placeholder
-    if (color) {
+    // Use color block for visually distinct cards (green CTA)
+    if (card.classList.contains('panel--green')) {
       const colorDiv = document.createElement('div');
-      colorDiv.style.width = '60px';
-      colorDiv.style.height = '60px';
-      colorDiv.style.background = color;
-      colorDiv.style.borderRadius = '8px';
-      colorDiv.style.display = 'inline-block';
-      colorDiv.setAttribute('title', 'Color block');
+      colorDiv.setAttribute('style', 'background:#00676e;width:40px;height:40px;border-radius:6px;');
       return colorDiv;
     }
-    // If no image or color, use a default icon for news card
-    if (classes.includes('panel--news')) {
-      // Use a Unicode news icon or create a simple SVG
-      const newsIcon = document.createElement('span');
-      newsIcon.textContent = '\uD83D\uDCF0'; // Newspaper emoji
-      newsIcon.style.fontSize = '40px';
-      newsIcon.style.display = 'inline-block';
-      newsIcon.setAttribute('title', 'News');
-      return newsIcon;
+    // For shortcuts/links card, use the chevron SVG from the first link
+    if (card.classList.contains('panel--shortcuts-secondary')) {
+      const firstChevron = card.querySelector('.panel__link img');
+      if (firstChevron) return firstChevron.cloneNode(true);
     }
-    // Otherwise, return empty string
-    return '';
+    // For news card, use a generic icon (newspaper emoji)
+    if (card.classList.contains('panel--news')) {
+      const iconDiv = document.createElement('div');
+      iconDiv.textContent = '\uD83D\uDCF0';
+      iconDiv.setAttribute('style', 'font-size:32px;line-height:40px;text-align:center;width:40px;height:40px;');
+      return iconDiv;
+    }
+    // If no image or icon, return empty span (never null)
+    return document.createElement('span');
   }
 
-  // Helper: extract all text content from panel body, including links
-  function getText(panel) {
-    const body = panel.querySelector('.panel__body');
-    let content = body ? body.cloneNode(true) : panel.cloneNode(true);
-    // If the panel is an <a>, wrap content in an <a> with the href
-    if (panel.tagName === 'A' && panel.href) {
-      const a = document.createElement('a');
-      a.href = panel.href;
-      if (panel.target) a.target = panel.target;
-      a.appendChild(content);
-      return a;
-    }
-    return content;
+  // Helper to extract all text content from a card, including links, lists, and all visible text
+  function getCardText(card) {
+    const body = card.querySelector('.panel__body');
+    if (!body) return null;
+    const parts = [];
+    body.childNodes.forEach((node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        parts.push(node.cloneNode(true));
+      } else if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+        parts.push(document.createTextNode(node.textContent));
+      }
+    });
+    return parts.length ? parts : null;
   }
 
-  // Find all cards: hero, 6 below
+  // Find all card containers (by column)
   const cards = [];
-
-  // Hero card (desktop)
+  // Hero (desktop)
   const heroDesktop = element.querySelector('.narrow-hero__panel--desktop');
   if (heroDesktop) {
-    cards.push([
-      getImageOrColor(heroDesktop),
-      getText(heroDesktop)
-    ]);
+    const img = getCardImage(heroDesktop);
+    const text = getCardText(heroDesktop);
+    if (text) cards.push([img, text]);
   }
 
-  // Card panels below hero
-  // Select all direct .panel under .row.panels, skipping hero
-  const panelCols = Array.from(element.querySelectorAll('.row.panels > .col-sm-6, .row.panels > .col-sm-4, .row.panels > .col-md-4'));
-  panelCols.forEach(col => {
-    const panel = col.querySelector('.panel');
-    if (panel) {
-      cards.push([
-        getImageOrColor(panel),
-        getText(panel)
-      ]);
-    }
+  // All other cards: select all .col-sm-6.col-md-4 > a or > .panel
+  element.querySelectorAll('.col-sm-6.col-md-4').forEach((col) => {
+    let card = col.querySelector('a.panel, .panel');
+    if (!card) return;
+    const img = getCardImage(card);
+    const text = getCardText(card);
+    if (text) cards.push([img, text]);
   });
 
-  // Also check for .panel--news (news card)
-  const newsPanel = element.querySelector('.panel--news');
-  if (newsPanel && !cards.some(([img, txt]) => txt.isEqualNode(newsPanel.querySelector('.panel__body')))) {
-    cards.push([
-      getImageOrColor(newsPanel),
-      getText(newsPanel)
-    ]);
-  }
-
-  // Header row
+  // Table header
   const headerRow = ['Cards (cards1)'];
   const tableRows = [headerRow, ...cards];
 
+  // Create and replace
   const block = WebImporter.DOMUtils.createTable(tableRows, document);
   element.replaceWith(block);
 }

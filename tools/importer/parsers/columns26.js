@@ -1,57 +1,75 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row for the block
   const headerRow = ['Columns (columns26)'];
-  const rows = [headerRow];
+  const cells = [headerRow];
 
-  const sections = element.querySelectorAll('.mat-card-content');
+  // Find both filter sections
+  const cardContents = Array.from(element.querySelectorAll('mat-card-content'));
 
-  // First section: risk filter (should have three columns)
-  if (sections[0]) {
-    const row = sections[0].querySelector('.cal-row');
-    if (row) {
-      const columns = row.querySelectorAll(':scope > .cal-column');
-      if (columns.length >= 2) {
-        // 1. Left label
-        const leftLabel = columns[0].querySelector('h4');
-        // 2. Left value + label
-        const leftValueContainer = columns[1].querySelectorAll('.share-label-container')[0];
-        // 3. Slider (ng5-slider)
-        const slider = columns[1].querySelector('ng5-slider');
-        // 4. Right value + label
-        const rightValueContainer = columns[1].querySelectorAll('.share-label-container')[1];
-
-        // Compose the three columns:
-        // Column 1: left label
-        // Column 2: left value + label
-        // Column 3: slider + right value + label
-        const col1 = leftLabel;
-        const col2 = leftValueContainer;
-        // For column 3, group slider and right value container together
-        const col3 = [slider, rightValueContainer];
-        rows.push([col1, col2, col3]);
-      }
+  // Helper: create a cell with left label, slider, right label (risk filter)
+  function getRiskRow(riskSection) {
+    const row = riskSection.querySelector('.cal-row');
+    if (!row) return null;
+    const leftCol = row.querySelector('.cal-column--lg-35');
+    const rightCol = row.querySelector('.cal-column--lg-65');
+    if (!leftCol || !rightCol) return null;
+    // Heading (left)
+    const heading = leftCol.querySelector('h4');
+    // Left value/label
+    const labelContainers = rightCol.querySelectorAll('.share-label-container');
+    let leftValue = '';
+    let rightValue = '';
+    if (labelContainers.length > 0) {
+      leftValue = labelContainers[0].cloneNode(true);
     }
+    if (labelContainers.length > 1) {
+      rightValue = labelContainers[1].cloneNode(true);
+    }
+    // Slider (center)
+    const slider = rightCol.querySelector('ng5-slider');
+    // Compose slider cell: left label, slider, right label
+    const sliderCell = document.createElement('div');
+    if (leftValue) sliderCell.appendChild(leftValue);
+    if (slider) sliderCell.appendChild(slider.cloneNode(true));
+    if (rightValue) sliderCell.appendChild(rightValue);
+    return [heading ? heading.textContent.trim() : '', sliderCell];
   }
 
-  // Second section: climate filter (should have three columns)
-  if (sections[1]) {
-    const row = sections[1].querySelector('.cal-row');
-    if (row) {
-      const columns = row.querySelectorAll(':scope > .cal-column');
-      if (columns.length >= 2) {
-        // 1. Left label
-        const leftLabel = columns[0].querySelector('h4');
-        // 2. Slider (ng5-slider)
-        const slider = columns[1].querySelector('ng5-slider');
-        // 3. Value (h4 with percentage)
-        const value = columns[1].querySelector('h4.cal-filter__value');
-        rows.push([leftLabel, slider, value]);
-      }
-    }
+  // Helper: create a cell with slider and right label (climate filter)
+  function getClimateRow(climateSection) {
+    const row = climateSection.querySelector('.cal-row');
+    if (!row) return null;
+    const leftCol = row.querySelector('.cal-column--lg-35');
+    const rightCol = row.querySelector('.cal-column--lg-65');
+    if (!leftCol || !rightCol) return null;
+    // Heading (left)
+    const heading = leftCol.querySelector('h4');
+    // Slider (center)
+    const slider = rightCol.querySelector('ng5-slider');
+    // Right value/label
+    const rightValue = rightCol.querySelector('h4.cal-filter__value');
+    // Compose slider cell: slider, right label
+    const sliderCell = document.createElement('div');
+    if (slider) sliderCell.appendChild(slider.cloneNode(true));
+    if (rightValue) sliderCell.appendChild(document.createTextNode(rightValue.textContent.trim()));
+    return [heading ? heading.textContent.trim() : '', sliderCell];
   }
 
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
+  // Always use 2 columns for all rows after header
+  const riskSection = cardContents.find(c => c.classList.contains('risk-filter'));
+  if (riskSection) {
+    const riskRow = getRiskRow(riskSection);
+    if (riskRow) cells.push(riskRow);
+  }
+  const climateSection = cardContents.find(c => c.classList.contains('climate-filter'));
+  if (climateSection) {
+    const climateRow = getClimateRow(climateSection);
+    if (climateRow) cells.push(climateRow);
+  }
+
+  // Create table block
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace original element
   element.replaceWith(block);
 }

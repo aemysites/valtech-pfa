@@ -1,35 +1,39 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Cards (cards11) block: 2 columns, header row, each card = [image/icon, text]
+  // Cards (cards11) block: 2 columns, multiple rows, first row is block name
   const headerRow = ['Cards (cards11)'];
   const rows = [headerRow];
 
-  // Select all card columns (each card)
-  const cardEls = element.querySelectorAll('.col-xs-12.col-sm-4');
-  cardEls.forEach((cardEl) => {
-    // Find image/icon (first img inside card)
-    const img = cardEl.querySelector('img');
-    // Find title (first h4 inside card)
-    const title = cardEl.querySelector('h4');
-    // Defensive: fallback if h4 not found, try strong, p, or get text
-    let textContent = title;
-    if (!textContent) {
-      textContent = cardEl.querySelector('strong, p');
+  // Find all card columns (each card is a .col-xs-12.col-sm-4)
+  const cardElements = Array.from(element.querySelectorAll('.col-xs-12.col-sm-4'));
+
+  cardElements.forEach((card) => {
+    // Image: first child div > img
+    const imgContainer = card.children[0];
+    const img = imgContainer && imgContainer.querySelector('img');
+
+    // Text: second child div, contains h4
+    const textContainer = card.children[1];
+    let title = '';
+    if (textContainer) {
+      const h4 = textContainer.querySelector('h4');
+      if (h4) {
+        title = h4.textContent.trim();
+      }
     }
-    if (!textContent) {
-      // fallback: get all text
-      textContent = document.createElement('div');
-      textContent.textContent = cardEl.textContent.trim();
+    // Compose the text cell: preserve heading as <h4>
+    const cell = document.createElement('div');
+    if (title) {
+      const heading = document.createElement('h4');
+      heading.textContent = title;
+      cell.appendChild(heading);
     }
-    // Each card row: [image/icon, text]
     rows.push([
-      img,
-      textContent
+      img || document.createTextNode(''),
+      cell
     ]);
   });
 
-  // Create block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace original element
-  element.replaceWith(block);
+  const table = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(table);
 }

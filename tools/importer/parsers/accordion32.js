@@ -1,43 +1,34 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block parsing for Accordion (accordion32)
-  // Find the toggler/title for the accordion item
-  const toggler = element.querySelector('.accordions__toggler');
-
-  // Find the accordion content block (may contain paragraphs, links, images)
-  const accordionElement = element.querySelector('.accordions__element');
-  let contentCell = null;
-  if (accordionElement) {
-    // The actual content is inside the first child div of .accordions__element
-    const contentDiv = accordionElement.querySelector('div');
-    if (contentDiv) {
-      // Put all children of contentDiv into an array
-      contentCell = Array.from(contentDiv.children);
-    } else {
-      // Defensive fallback: use all children of .accordions__element
-      contentCell = Array.from(accordionElement.children);
-    }
-  } else {
-    contentCell = document.createElement('span');
-    contentCell.textContent = '';
-  }
-
-  // Defensive fallback if toggler not found
-  const titleCell = toggler ? toggler : document.createElement('span');
-  if (!toggler) titleCell.textContent = '';
-
-  // Table header row
+  // Accordion block header row
   const headerRow = ['Accordion (accordion32)'];
 
-  // Table rows: each accordion item is a row with [title, content]
-  const rows = [
-    headerRow,
-    [titleCell, contentCell]
-  ];
+  // Find the accordion toggler/title and extract plain text only
+  const toggler = element.querySelector('.accordions__toggler');
+  const titleText = toggler ? toggler.textContent.trim() : 'Accordion Item';
 
-  // Create the block table
+  // Find the accordion content block
+  const accordionElement = element.querySelector('.accordions__element, .accordion__element');
+
+  // Get the content inside the accordion item
+  let contentCell = document.createElement('span');
+  if (accordionElement) {
+    const contentWrapper = accordionElement.querySelector('div');
+    if (contentWrapper) {
+      contentCell = document.createElement('span');
+      Array.from(contentWrapper.children).forEach(child => contentCell.appendChild(child.cloneNode(true)));
+    } else {
+      contentCell = document.createElement('span');
+      Array.from(accordionElement.children).forEach(child => contentCell.appendChild(child.cloneNode(true)));
+    }
+  }
+
+  // Build rows for the table
+  const rows = [headerRow, [titleText, contentCell]];
+
+  // Create the table block
   const block = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace the original element with the block
+  // Replace the original element
   element.replaceWith(block);
 }
