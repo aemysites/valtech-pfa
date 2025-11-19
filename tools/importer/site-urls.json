@@ -333,24 +333,6 @@
       "id": "ef2ce381bab2cccc1c53880d60acd6003b14c6e3"
     },
     {
-      "url": "https://www.pfa.dk/privat/kundefordele/kf-forsikring-target/",
-      "source": "MANUAL",
-      "targetPath": "/privat/kundefordele/kf-forsikring-target",
-      "id": "51ee230c260b0d1fb01a89993576511ec3798c95"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/kundefordele/kf-forsikring/",
-      "source": "MANUAL",
-      "targetPath": "/privat/kundefordele/kf-forsikring",
-      "id": "b6c69050ddd904b06d1ace212dc2306816db94e6"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/kundefordele/kurser/",
-      "source": "MANUAL",
-      "targetPath": "/privat/kundefordele/kurser",
-      "id": "0d8efe32f9834dcb0b68477a1d5b3e8e07c482e8"
-    },
-    {
       "url": "https://www.pfa.dk/privat/kundefordele/kurser/gevinsten-ved-laengere-arbejdsliv/",
       "source": "MANUAL",
       "targetPath": "/privat/kundefordele/kurser/gevinsten-ved-laengere-arbejdsliv",
@@ -759,12 +741,6 @@
       "id": "af57a197dbdfd8a1aba441d521ba2cd06e63657f"
     },
     {
-      "url": "https://www.pfa.dk/erhverv/pension/raadgivning/",
-      "source": "MANUAL",
-      "targetPath": "/erhverv/pension/raadgivning",
-      "id": "d8188879a9a6fd3da2df64ad0a77296114adeb47"
-    },
-    {
       "url": "https://www.pfa.dk/erhverv/produkter/international-raadgivning/",
       "source": "MANUAL",
       "targetPath": "/erhverv/produkter/international-raadgivning",
@@ -801,22 +777,10 @@
       "id": "7776c6ccb7fa4450d2ef97a84d71048951b7fd20"
     },
     {
-      "url": "https://www.pfa.dk/erhverv/sundhed/hr-ledersparring/",
-      "source": "MANUAL",
-      "targetPath": "/erhverv/sundhed/hr-ledersparring",
-      "id": "85f307064f7e2a2ab925946955c8b8074c2ae230"
-    },
-    {
       "url": "https://www.pfa.dk/erhverv/sundhed/online-sundhedshjaelp/",
       "source": "MANUAL",
       "targetPath": "/erhverv/sundhed/online-sundhedshjaelp",
       "id": "a1481dc10ca4c2a55dcd85f04ef2c622de9691bf"
-    },
-    {
-      "url": "https://www.pfa.dk/erhverv/sundhed/overblik/",
-      "source": "MANUAL",
-      "targetPath": "/erhverv/sundhed/overblik",
-      "id": "cb0c560420cad1dcf23df59d8a05bfbb7ff2cc75"
     },
     {
       "url": "https://www.pfa.dk/erhverv/sundhed/sundhed-trivsel-paa-agendaen/",
@@ -825,22 +789,10 @@
       "id": "f2c71463fa67c089c3b573e21122f8bb9aceeced"
     },
     {
-      "url": "https://www.pfa.dk/erhverv/sundhedstilbud/nyt-syn-paa-sundhed/",
-      "source": "MANUAL",
-      "targetPath": "/erhverv/sundhedstilbud/nyt-syn-paa-sundhed",
-      "id": "f12b5302ca47ddd06d6598a668a4f10f71c3eeed"
-    },
-    {
       "url": "https://www.pfa.dk/om-pfa/",
       "source": "MANUAL",
       "targetPath": "/om-pfa",
       "id": "33a005a8f60afd13376dc63e48ebca794a19bf03"
-    },
-    {
-      "url": "https://www.pfa.dk/om-pfa/finansiel-information/aarsrapporter/",
-      "source": "MANUAL",
-      "targetPath": "/om-pfa/finansiel-information/aarsrapporter",
-      "id": "a9192c0db3ece6a803397e6b30f745dd75737733"
     },
     {
       "url": "https://www.pfa.dk/om-pfa/finansiel-information/artikel/",
@@ -925,12 +877,6 @@
       "source": "MANUAL",
       "targetPath": "/om-pfa/job-i-pfa/finanselev",
       "id": "3cf779ff2c7485a7bd75db9f33a2d40ed05edbae"
-    },
-    {
-      "url": "https://www.pfa.dk/om-pfa/job-i-pfa/graduate/",
-      "source": "MANUAL",
-      "targetPath": "/om-pfa/job-i-pfa/graduate",
-      "id": "05db1ddddc72b57de2ea1f1c1d19b03ad9a758fc"
     },
     {
       "url": "https://www.pfa.dk/om-pfa/job-i-pfa/ledige-job/",
@@ -1057,12 +1003,6 @@
       "source": "MANUAL",
       "targetPath": "/andet/behandling-af-personoplysninger",
       "id": "efa46abc19580c4779bab643cda039597edf447f"
-    },
-    {
-      "url": "https://www.pfa.dk/andet/din-kundeoplevelse/",
-      "source": "MANUAL",
-      "targetPath": "/andet/din-kundeoplevelse",
-      "id": "61c929ad4427b926642399413622fc941f06b298"
     },
     {
       "url": "https://www.pfa.dk/andet/eiopa2021/",
@@ -1207,12 +1147,6 @@
       "source": "MANUAL",
       "targetPath": "/andet/nye-investeringsprofiler-klima",
       "id": "e7d28bc0f22dfedeeee4a276c90f3fe2a5880090"
-    },
-    {
-      "url": "https://www.pfa.dk/andet/nye-investeringsprofiler-webinar/",
-      "source": "MANUAL",
-      "targetPath": "/andet/nye-investeringsprofiler-webinar",
-      "id": "be8a1ea9abdeb03739bee1c13c30f23ec5110e08"
     },
     {
       "url": "https://www.pfa.dk/andet/nye-investeringsprofiler/",
