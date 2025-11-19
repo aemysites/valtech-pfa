@@ -470,8 +470,13 @@
 
 
 .accordion-wrapper {
-  background: #a60000;
-  padding: 40px 24px;
+  background: #00646C;
+  padding: 40px 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .accordion {
@@ -1005,7 +1010,6 @@ select:focus {
   text-align: left;
 }
 
-/* Accordion list: stack items with minimal vertical gap */
 .accordion.accordion10 details {
   background: #7dbac6;
   border: none;
@@ -1018,7 +1022,6 @@ select:focus {
   box-sizing: border-box;
 }
 
-/* Only top and bottom items have rounded corners */
 .accordion.accordion10 details:first-of-type {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -1029,7 +1032,6 @@ select:focus {
   border-bottom-right-radius: 8px;
 }
 
-/* FAQ bar: summary styling */
 .accordion.accordion10 summary {
   display: flex;
   align-items: center;
@@ -1051,13 +1053,11 @@ select:focus {
   transition: background 0.2s;
 }
 
-/* Remove native marker */
 .accordion.accordion10 summary::-webkit-details-marker,
 .accordion.accordion10 summary::-moz-details-marker {
   display: none;
 }
 
-/* FAQ icon/chevron: right-align, visually prominent */
 .accordion.accordion10 summary svg,
 .accordion.accordion10 summary .icon,
 .accordion.accordion10 summary i {
@@ -1075,7 +1075,6 @@ select:focus {
   transform: rotate(-180deg);
 }
 
-/* Accordion answer */
 .accordion.accordion10 details .accordion-body,
 .accordion.accordion10 details div,
 .accordion.accordion10 details p {
@@ -1090,7 +1089,6 @@ select:focus {
   box-sizing: border-box;
 }
 
-/* Responsive: Reduce padding and font size on small screens */
 @media (width <= 600px) {
   .accordion.accordion10 {
     padding: 20px 6px;
@@ -1108,5 +1106,35 @@ select:focus {
   .accordion.accordion10 details p {
     padding: 14px 8px 8px;
     font-size: 0.98rem;
+  }
+}
+
+.accordion.accordion39.block {
+  max-width: 960px;
+  width: 100%;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+.accordion.accordion39.block > div {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+.accordion.accordion39.block > div > div {
+  flex: 1 1 0;
+  background: #FFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  padding: 32px;
+  color: #3E3E3E;
+  min-width: 0;
+}
+
+@media (width <= 800px) {
+  .accordion.accordion39.block > div {
+    flex-direction: column;
+    gap: 24px;
   }
 }
