@@ -295,6 +295,264 @@
       "source": "MANUAL",
       "targetPath": "/privat/forsikringer/udbetaling-til-dine-efterladte",
       "id": "43790b378b4f52301ae5d92b50a6bac866766f99"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele",
+      "id": "50e06f0359529cd1361252778eb2a1b054b08ad0"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/dine-fordele-i-pfa-test/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/dine-fordele-i-pfa-test",
+      "id": "95de097fce3996b022ae4aae1f0f07ee0bfe2b33"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/dine-fordele-i-pfa/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/dine-fordele-i-pfa",
+      "id": "3a7e2ce73c638bb5ecc9196dd7b6761df9573acf"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/friplejehjem/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/friplejehjem",
+      "id": "8084c18eca26f51eb699050f6875f0709f7a6e2d"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/fysiske-kurser/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/fysiske-kurser",
+      "id": "5a9d66aacdd5fe2bbdc6b70cac47a55ed3bca10b"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/goodlife/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/goodlife",
+      "id": "ef2ce381bab2cccc1c53880d60acd6003b14c6e3"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/kf-forsikring-target/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/kf-forsikring-target",
+      "id": "51ee230c260b0d1fb01a89993576511ec3798c95"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/kf-forsikring/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/kf-forsikring",
+      "id": "b6c69050ddd904b06d1ace212dc2306816db94e6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/kurser/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/kurser",
+      "id": "0d8efe32f9834dcb0b68477a1d5b3e8e07c482e8"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/kurser/gevinsten-ved-laengere-arbejdsliv/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/kurser/gevinsten-ved-laengere-arbejdsliv",
+      "id": "ee627c6d1a57c4519907a1b55c12de6ed742e149"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/kurser/har-du-taget-stilling/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/kurser/har-du-taget-stilling",
+      "id": "8bb703eca7ed4dc4901967bde56027146d9a5541"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/kurser/skilsmisse-doedsfald/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/kurser/skilsmisse-doedsfald",
+      "id": "dd8a225bfb6d0875d1dc34a0d6ba6a5f842c556c"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/oversigt-boliger/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/oversigt-boliger",
+      "id": "ea420dc63410bea5fdaf9f7e6d04433733c1e4ac"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/pfa-boliger/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/pfa-boliger",
+      "id": "aa4cfcea77c0c83878edbd0faefdc66305767735"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/pfa-kollegier/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/pfa-kollegier",
+      "id": "2acc991635fafb69876dd16fc25b2168e450ead7"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/pfa-seniorboliger/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/pfa-seniorboliger",
+      "id": "ae49173605b8366c384185a41e141dad06d2dcf5"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/podcast/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/podcast",
+      "id": "005de046f49cb0854fc576bea850d215d508c9ff"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/podcast/episoder/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/podcast/episoder",
+      "id": "6b33b36ee6be1550b69b5173d3c122086535edb6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/testamenteservice/",
+      "source": "MANUAL",
+      "targetPath": "/privat/kundefordele/testamenteservice",
+      "id": "322cb538372f072c95309c758c84134d6304801e"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer",
+      "id": "da9a23e68180dd51b067838f669d76eaef38fb39"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/arv-og-testamente/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/arv-og-testamente",
+      "id": "7cedbb129ad277682cbb7726825d842a333363e0"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/er-der-udloebsdato-paa-arbejdslivet/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/er-der-udloebsdato-paa-arbejdslivet",
+      "id": "5b1e85d51776e9eeaa7d578402a5099373a0e16d"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/frivilligt-arbejde-nyrup/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/frivilligt-arbejde-nyrup",
+      "id": "195b66982551dcbcc5e1406d552ef33d88dc4160"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/penge-til-et-langt-liv-schjoelin/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/penge-til-et-langt-liv-schjoelin",
+      "id": "f2824459d3e3484deb2f902e5afcb289fcd502d3"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/tid-til-at-flytte-i-mindre/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/tid-til-at-flytte-i-mindre",
+      "id": "e17464f0af84bd2a2cc06eb951151237617e6f30"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/tiden-gaar-lysten-bestaar-oerting/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/tiden-gaar-lysten-bestaar-oerting",
+      "id": "01dfc39c514de61502dd09f8c206094bf4ab674d"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-seniorliv-hub/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/det-gode-seniorliv-hub",
+      "id": "9faeb9ffff637d45cb754c0351b9f116c6d127a6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/din-boligsituation-aendrer-sig/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/din-boligsituation-aendrer-sig",
+      "id": "c4f29f06219a89f3af90baed39fe64a298a0a6b6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-bliver-arbejdsloes/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-bliver-arbejdsloes",
+      "id": "6c900ed39fd3fdcaeab75be68652497fffa1b158"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-faar-boern/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-faar-boern",
+      "id": "74d80184839600fc0b354118372f499cbf87e074"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-faar-bonus-eller-loenforhoejelse/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-faar-bonus-eller-loenforhoejelse",
+      "id": "9286757e73e5c63aabe2edc2b25c86e9b97c4cd6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-har-faaet-nyt-job/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-har-faaet-nyt-job",
+      "id": "c7e49f55e2939de1ee11def34b97c73269af1cf6"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-skal-giftes",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-skal-giftes",
+      "id": "0d0ceafb3c6b4e34d99561bb736bf1af720e1179"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-skal-giftes/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-skal-giftes",
+      "id": "db082f14b198029ba69b5c53658be70001237f81"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-skal-skilles/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-skal-skilles",
+      "id": "777b2ea86166352fe41a32756258c557a06c0feb"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-skal-udstationeres/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-skal-udstationeres",
+      "id": "59dd618f6ed22ab9afbbaa6706e9a1eb84f217ff"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-tager-orlov/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/du-tager-orlov",
+      "id": "6482bc6f13e4776aac86427aa0bd8445f53b4717"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/gradvis-overgang-til-pension/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/gradvis-overgang-til-pension",
+      "id": "cdb6e5ab8f1094b9630d6ef635261689c9efc271"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/hvis-du-doer-inden-pensionsalderen/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/hvis-du-doer-inden-pensionsalderen",
+      "id": "8f07b07758780bb6bd1a9fdb7fd6d95ecaee1b70"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/indbetalingsfri-pensionsordning/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/indbetalingsfri-pensionsordning",
+      "id": "1a7d2c02129e89b0e7b4dab4b8dc6409ec69dd6d"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/overblik/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/overblik",
+      "id": "bd6153836f11162c5b4a44ede75e9e7c3e9abc2d"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/senkarriere/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/senkarriere",
+      "id": "2bd642737289fe80569bb4b8f2d7ece3835d3617"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/livsaendringer/ved-alvorlig-sygdom/",
+      "source": "MANUAL",
+      "targetPath": "/privat/livsaendringer/ved-alvorlig-sygdom",
+      "id": "f33de0d384ceb9287ea9f80c7cf5348624fabb20"
     }
   ],
   "lastCrawled": "MANUAL",
