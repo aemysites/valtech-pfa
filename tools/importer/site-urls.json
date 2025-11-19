@@ -3,298 +3,262 @@
   "aborted": false,
   "urls": [
     {
-      "url": "https://www.pfa.dk/erhverv/",
+      "url": "https://www.pfa.dk/privat/kundefordele/",
       "source": "MANUAL",
-      "targetPath": "/erhverv",
-      "id": "6dbd0e883e331188e1ca7f674ce9de225f7ef1d0"
+      "targetPath": "/privat/kundefordele",
+      "id": "50e06f0359529cd1361252778eb2a1b054b08ad0"
     },
     {
-      "url": "https://www.pfa.dk/om-pfa/",
+      "url": "https://www.pfa.dk/privat/kundefordele/dine-fordele-i-pfa-test/",
       "source": "MANUAL",
-      "targetPath": "/om-pfa",
-      "id": "33a005a8f60afd13376dc63e48ebca794a19bf03"
+      "targetPath": "/privat/kundefordele/dine-fordele-i-pfa-test",
+      "id": "95de097fce3996b022ae4aae1f0f07ee0bfe2b33"
     },
     {
-      "url": "https://www.pfa.dk/privat/",
+      "url": "https://www.pfa.dk/privat/kundefordele/dine-fordele-i-pfa/",
       "source": "MANUAL",
-      "targetPath": "/privat",
-      "id": "109d2b1ef4db84ec2e6cd8efb3e585e7f9010ab7"
+      "targetPath": "/privat/kundefordele/dine-fordele-i-pfa",
+      "id": "3a7e2ce73c638bb5ecc9196dd7b6761df9573acf"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/aktivsammensaetning/",
+      "url": "https://www.pfa.dk/privat/kundefordele/friplejehjem/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/aktivsammensaetning",
-      "id": "98ff691367671cfa69ede1f5d0f986913825e229"
+      "targetPath": "/privat/kundefordele/friplejehjem",
+      "id": "8084c18eca26f51eb699050f6875f0709f7a6e2d"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/baeredygtighedsrelaterede-oplysninger/",
+      "url": "https://www.pfa.dk/privat/kundefordele/fysiske-kurser/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/baeredygtighedsrelaterede-oplysninger",
-      "id": "9c1f9638895128a3afd0e32ab486ef210d656bfe"
+      "targetPath": "/privat/kundefordele/fysiske-kurser",
+      "id": "5a9d66aacdd5fe2bbdc6b70cac47a55ed3bca10b"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/begunstigelse/",
+      "url": "https://www.pfa.dk/privat/kundefordele/goodlife/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/begunstigelse",
-      "id": "41ff4838cef884b2a143471516f62b587f81d234"
+      "targetPath": "/privat/kundefordele/goodlife",
+      "id": "ef2ce381bab2cccc1c53880d60acd6003b14c6e3"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/bolig-seniorliv/",
+      "url": "https://www.pfa.dk/privat/kundefordele/kf-forsikring-target/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/bolig-seniorliv",
-      "id": "09a46beb0e7314f6e93ca56bc3a1a780d67e17a4"
+      "targetPath": "/privat/kundefordele/kf-forsikring-target",
+      "id": "51ee230c260b0d1fb01a89993576511ec3798c95"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/du-investerer/",
+      "url": "https://www.pfa.dk/privat/kundefordele/kf-forsikring/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/du-investerer",
-      "id": "88a0c468bd96f4d8ced07444391f684f031c3d62"
+      "targetPath": "/privat/kundefordele/kf-forsikring",
+      "id": "b6c69050ddd904b06d1ace212dc2306816db94e6"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/hvad-er-en-pensionsopsparing/",
+      "url": "https://www.pfa.dk/privat/kundefordele/kurser/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/hvad-er-en-pensionsopsparing",
-      "id": "e21795e8cf3c19ef9d53253d674efa55b85c0255"
+      "targetPath": "/privat/kundefordele/kurser",
+      "id": "0d8efe32f9834dcb0b68477a1d5b3e8e07c482e8"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/investeringsformer/",
+      "url": "https://www.pfa.dk/privat/kundefordele/kurser/gevinsten-ved-laengere-arbejdsliv/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/investeringsformer",
-      "id": "3fde3a8b7a528182c1c751f0100189055d4a4639"
+      "targetPath": "/privat/kundefordele/kurser/gevinsten-ved-laengere-arbejdsliv",
+      "id": "ee627c6d1a57c4519907a1b55c12de6ed742e149"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/opsparing-i-gennemsnitsrente/",
+      "url": "https://www.pfa.dk/privat/kundefordele/kurser/har-du-taget-stilling/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/opsparing-i-gennemsnitsrente",
-      "id": "aabec4b73b53599039a2302d005ed7f98c95dd95"
+      "targetPath": "/privat/kundefordele/kurser/har-du-taget-stilling",
+      "id": "8bb703eca7ed4dc4901967bde56027146d9a5541"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/opsparingsformer/",
+      "url": "https://www.pfa.dk/privat/kundefordele/kurser/skilsmisse-doedsfald/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/opsparingsformer",
-      "id": "e5476f6fff0392c9ebca091a887891498140b79e"
+      "targetPath": "/privat/kundefordele/kurser/skilsmisse-doedsfald",
+      "id": "dd8a225bfb6d0875d1dc34a0d6ba6a5f842c556c"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger/",
+      "url": "https://www.pfa.dk/privat/kundefordele/oversigt-boliger/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/pfa-afkast/forudsaetninger-for-afkastberegninger",
-      "id": "9853fd4140067af6fda3271dfd417fcafd7195e3"
+      "targetPath": "/privat/kundefordele/oversigt-boliger",
+      "id": "ea420dc63410bea5fdaf9f7e6d04433733c1e4ac"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/pfa-fleksibel/",
+      "url": "https://www.pfa.dk/privat/kundefordele/pfa-boliger/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/pfa-fleksibel",
-      "id": "fab9135e29a157101ff8ca97f8253954eb386471"
+      "targetPath": "/privat/kundefordele/pfa-boliger",
+      "id": "aa4cfcea77c0c83878edbd0faefdc66305767735"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/pfa-klima-plus/",
+      "url": "https://www.pfa.dk/privat/kundefordele/pfa-kollegier/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/pfa-klima-plus",
-      "id": "95c2018375199beb8ab8f2ce46f849d7c71272dc"
+      "targetPath": "/privat/kundefordele/pfa-kollegier",
+      "id": "2acc991635fafb69876dd16fc25b2168e450ead7"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/pfa-kundekapital/",
+      "url": "https://www.pfa.dk/privat/kundefordele/pfa-seniorboliger/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/pfa-kundekapital",
-      "id": "6772e48d8fb83f4ded061e9eff53dd9ea8114b7d"
+      "targetPath": "/privat/kundefordele/pfa-seniorboliger",
+      "id": "ae49173605b8366c384185a41e141dad06d2dcf5"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/pfa-plus-fri/",
+      "url": "https://www.pfa.dk/privat/kundefordele/podcast/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/pfa-plus-fri",
-      "id": "eac8783b4cfe4dd8175ae8552f63299a46df890a"
+      "targetPath": "/privat/kundefordele/podcast",
+      "id": "005de046f49cb0854fc576bea850d215d508c9ff"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/risikomaerkning/",
+      "url": "https://www.pfa.dk/privat/kundefordele/podcast/episoder/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/risikomaerkning",
-      "id": "84d873f642b401a49aa03825dd5e328401e3ce23"
+      "targetPath": "/privat/kundefordele/podcast/episoder",
+      "id": "6b33b36ee6be1550b69b5173d3c122086535edb6"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/saml-dine-pensionsopsparinger/",
+      "url": "https://www.pfa.dk/privat/kundefordele/testamenteservice/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/saml-dine-pensionsopsparinger",
-      "id": "9f499cd3d14e07e7763bc32ccb337d68b4073ed0"
+      "targetPath": "/privat/kundefordele/testamenteservice",
+      "id": "322cb538372f072c95309c758c84134d6304801e"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/skatteregler/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/skatteregler",
-      "id": "91b0c288f5058d60137b7131e4315108700a83c6"
+      "targetPath": "/privat/livsaendringer",
+      "id": "da9a23e68180dd51b067838f669d76eaef38fb39"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/target-begunstigelse/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/arv-og-testamente/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/target-begunstigelse",
-      "id": "cc4caf43597c5951502deb0124871b848d4e1428"
+      "targetPath": "/privat/livsaendringer/arv-og-testamente",
+      "id": "7cedbb129ad277682cbb7726825d842a333363e0"
     },
     {
-      "url": "https://www.pfa.dk/privat/opsparing/unoterede-investeringer/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/er-der-udloebsdato-paa-arbejdslivet/",
       "source": "MANUAL",
-      "targetPath": "/privat/opsparing/unoterede-investeringer",
-      "id": "6ae09e4f67dc688791f191f5509c370de3edf1b6"
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/er-der-udloebsdato-paa-arbejdslivet",
+      "id": "5b1e85d51776e9eeaa7d578402a5099373a0e16d"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/afgiv-helbredsoplysninger/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/frivilligt-arbejde-nyrup/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/afgiv-helbredsoplysninger",
-      "id": "66cdf62aa13987de63c55d1d364fe00d2eae292c"
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/frivilligt-arbejde-nyrup",
+      "id": "195b66982551dcbcc5e1406d552ef33d88dc4160"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/anmeld-skade/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/penge-til-et-langt-liv-schjoelin/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/anmeld-skade",
-      "id": "520839b5c2746e425ad174dc3538d7330647c856"
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/penge-til-et-langt-liv-schjoelin",
+      "id": "f2824459d3e3484deb2f902e5afcb289fcd502d3"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/du-kan-ikke-laengere-arbejde/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/tid-til-at-flytte-i-mindre/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/du-kan-ikke-laengere-arbejde",
-      "id": "9a5bc09694d07f32c7df737fe45229a3ef1daaf8"
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/tid-til-at-flytte-i-mindre",
+      "id": "e17464f0af84bd2a2cc06eb951151237617e6f30"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/er-du-blevet-sygemeldt/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-senior-liv-artikler/tiden-gaar-lysten-bestaar-oerting/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/er-du-blevet-sygemeldt",
-      "id": "62f959a3833bcd22cbbf7db58c058018b7e27705"
+      "targetPath": "/privat/livsaendringer/det-gode-senior-liv-artikler/tiden-gaar-lysten-bestaar-oerting",
+      "id": "01dfc39c514de61502dd09f8c206094bf4ab674d"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/er-du-ok/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/det-gode-seniorliv-hub/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/er-du-ok",
-      "id": "3114b18789261760d1642fcf0b16bf42a2d8b004"
+      "targetPath": "/privat/livsaendringer/det-gode-seniorliv-hub",
+      "id": "9faeb9ffff637d45cb754c0351b9f116c6d127a6"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/har-du-smerter/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/din-boligsituation-aendrer-sig/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/har-du-smerter",
-      "id": "8f5aca46dac08fa00f8e251e673bef01622e03aa"
+      "targetPath": "/privat/livsaendringer/din-boligsituation-aendrer-sig",
+      "id": "c4f29f06219a89f3af90baed39fe64a298a0a6b6"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/hjaelp-til-at-leve-sundere/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-bliver-arbejdsloes/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/hjaelp-til-at-leve-sundere",
-      "id": "176810a11eda53d05a6e2f22ce8d4bcf69cf6f28"
+      "targetPath": "/privat/livsaendringer/du-bliver-arbejdsloes",
+      "id": "6c900ed39fd3fdcaeab75be68652497fffa1b158"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/hvis-du-bliver-alvorligt-syg/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-faar-boern/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/hvis-du-bliver-alvorligt-syg",
-      "id": "dd08b323ac002c0db0203cd5f42ebb2e87f6190f"
+      "targetPath": "/privat/livsaendringer/du-faar-boern",
+      "id": "74d80184839600fc0b354118372f499cbf87e074"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/mistrives-dit-barn/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-faar-bonus-eller-loenforhoejelse/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/mistrives-dit-barn",
-      "id": "62f21dc5364c4d28a2079a02cea1aec487d1261f"
+      "targetPath": "/privat/livsaendringer/du-faar-bonus-eller-loenforhoejelse",
+      "id": "9286757e73e5c63aabe2edc2b25c86e9b97c4cd6"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/online-sundhedshjaelp/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-har-faaet-nyt-job/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/online-sundhedshjaelp",
-      "id": "b567b6b24d94af44df370ddfa4571bdd039857f8"
+      "targetPath": "/privat/livsaendringer/du-har-faaet-nyt-job",
+      "id": "c7e49f55e2939de1ee11def34b97c73269af1cf6"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-earlycare/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-skal-giftes",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-earlycare",
-      "id": "dcc00ffb8245fd389e3bedc3e057ece476ea7393"
+      "targetPath": "/privat/livsaendringer/du-skal-giftes",
+      "id": "0d0ceafb3c6b4e34d99561bb736bf1af720e1179"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-earlycare/tak-early/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-skal-giftes/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-earlycare/tak-early",
-      "id": "31676db22321b3082360d49c0aa77a6e99ccdbf3"
+      "targetPath": "/privat/livsaendringer/du-skal-giftes",
+      "id": "db082f14b198029ba69b5c53658be70001237f81"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-erhvervsevne/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-skal-skilles/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-erhvervsevne",
-      "id": "904422892cd86c33932c0076eda63cac93087311"
+      "targetPath": "/privat/livsaendringer/du-skal-skilles",
+      "id": "777b2ea86166352fe41a32756258c557a06c0feb"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-forebygger/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-skal-udstationeres/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-forebygger",
-      "id": "aba4d835082ed7ae4a0c44b8ca1cd51ef13971cb"
+      "targetPath": "/privat/livsaendringer/du-skal-udstationeres",
+      "id": "59dd618f6ed22ab9afbbaa6706e9a1eb84f217ff"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring-60-69/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/du-tager-orlov/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-helbredssikring-60-69",
-      "id": "dda75e5189980d7e6e611d17b5e41613f83e34cf"
+      "targetPath": "/privat/livsaendringer/du-tager-orlov",
+      "id": "6482bc6f13e4776aac86427aa0bd8445f53b4717"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring-60-79/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/gradvis-overgang-til-pension/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-helbredssikring-60-79",
-      "id": "eef144078a98bedf3f283c62be3566632309fff2"
+      "targetPath": "/privat/livsaendringer/gradvis-overgang-til-pension",
+      "id": "cdb6e5ab8f1094b9630d6ef635261689c9efc271"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring-60-79/formular-aftale-hs/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/hvis-du-doer-inden-pensionsalderen/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-helbredssikring-60-79/formular-aftale-hs",
-      "id": "68ad1f96b54b8a98ac67775fed725cc0bc4a3db8"
+      "targetPath": "/privat/livsaendringer/hvis-du-doer-inden-pensionsalderen",
+      "id": "8f07b07758780bb6bd1a9fdb7fd6d95ecaee1b70"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring-60-79/formular-aftale-hs/kvittering/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/indbetalingsfri-pensionsordning/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-helbredssikring-60-79/formular-aftale-hs/kvittering",
-      "id": "190f5c14c698023ac871eca90d50819f00596054"
+      "targetPath": "/privat/livsaendringer/indbetalingsfri-pensionsordning",
+      "id": "1a7d2c02129e89b0e7b4dab4b8dc6409ec69dd6d"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-helbredssikring/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/overblik/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-helbredssikring",
-      "id": "aa5feb32cad42af4892587d5f68bad6a7921d340"
+      "targetPath": "/privat/livsaendringer/overblik",
+      "id": "bd6153836f11162c5b4a44ede75e9e7c3e9abc2d"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-kritisk-sygdom/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/senkarriere/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-kritisk-sygdom",
-      "id": "447e71a770642aad903bb4ea3dace620fb636e0b"
+      "targetPath": "/privat/livsaendringer/senkarriere",
+      "id": "2bd642737289fe80569bb4b8f2d7ece3835d3617"
     },
     {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-liv/",
+      "url": "https://www.pfa.dk/privat/livsaendringer/ved-alvorlig-sygdom/",
       "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-liv",
-      "id": "65a028a2aed3b02db6c43dc055d301f5460411f0"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/forsikringer/pfa-sundhedslinje/",
-      "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/pfa-sundhedslinje",
-      "id": "c34125f5ccacdaee7f8acbb7e4f1b5681e42b9ef"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/forsikringer/saadan-faar-du-hjaelp/",
-      "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/saadan-faar-du-hjaelp",
-      "id": "172cd49addf4b5985703e0344184b814e8944c1f"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/forsikringer/skatteregler-for-forsikring/",
-      "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/skatteregler-for-forsikring",
-      "id": "4bce4817054ce10b253b5fbfa152dc617fc74877"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/forsikringer/symptomer-paa-stress/",
-      "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/symptomer-paa-stress",
-      "id": "9873826f74d5d1a81e48579f2046f72c70c737af"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/forsikringer/udbetaling-af-forsikring/",
-      "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/udbetaling-af-forsikring",
-      "id": "2c855aa93e215d2654b12a6dce689c0b686753f5"
-    },
-    {
-      "url": "https://www.pfa.dk/privat/forsikringer/udbetaling-til-dine-efterladte/",
-      "source": "MANUAL",
-      "targetPath": "/privat/forsikringer/udbetaling-til-dine-efterladte",
-      "id": "43790b378b4f52301ae5d92b50a6bac866766f99"
+      "targetPath": "/privat/livsaendringer/ved-alvorlig-sygdom",
+      "id": "f33de0d384ceb9287ea9f80c7cf5348624fabb20"
     }
   ],
   "lastCrawled": "MANUAL",
@@ -310,6 +274,15 @@
       "MANUAL"
     ]
   },
-  "extractionErrors": [],
-  "errorCountMessage": "none"
+  "extractionErrors": [
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/stream/",
+      "message": "resource crawl error: Url https://www.pfa.dk/privat/kundefordele/stream/: 404 Not Found"
+    },
+    {
+      "url": "https://www.pfa.dk/privat/kundefordele/target-kf-forsikring/",
+      "message": "resource crawl error: Url https://www.pfa.dk/privat/kundefordele/target-kf-forsikring/: 404 Not Found"
+    }
+  ],
+  "errorCountMessage": "{\"E_404\":2}"
 }
