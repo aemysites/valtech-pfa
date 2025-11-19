@@ -553,6 +553,492 @@
       "source": "MANUAL",
       "targetPath": "/privat/livsaendringer/ved-alvorlig-sygdom",
       "id": "f33de0d384ceb9287ea9f80c7cf5348624fabb20"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/andet/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/andet",
+      "id": "35e8693fe7abb430e57e10bba9e2a8323d94773c"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/bliv-kunde/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/bliv-kunde",
+      "id": "dea7fc010945a4cd047c55b6aebaf512976d7c7d"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/bliv-kunde/tak-bliv-kunde/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/bliv-kunde/tak-bliv-kunde",
+      "id": "bdc548dba77afe02872cf6afcdd5d8f01cbabfa5"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/administration-i-hverdagen/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/administration-i-hverdagen",
+      "id": "3e50c45d762f67d640aab295fdb14613e2c826ac"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/elever-og-laerlinge/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/elever-og-laerlinge",
+      "id": "6fdccac763788e77ab9be1fd939b251451109972"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/elever-og-laerlinge/formular/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/elever-og-laerlinge/formular",
+      "id": "0439c73a800cc2b0d994497533bcf570803fee0b"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/elever-og-laerlinge/formular/tak/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/elever-og-laerlinge/formular/tak",
+      "id": "002e70e0ff20bc2cdd1bc6b2d6265e29e8b19580"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/indbetaling-og-indberetning/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/indbetaling-og-indberetning",
+      "id": "f4094e47a2588072aa2a5806004ec73f83e2baee"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/individuelle-tilpasninger-til-ordningen/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/individuelle-tilpasninger-til-ordningen",
+      "id": "284b71e7d947b62a33b91d46d76257858133e1c6"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/internationale-medarbejdere/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/internationale-medarbejdere",
+      "id": "dcfd13dc89bc48de075925c1dbf862db9ec7e34d"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/naar-en-medarbejder/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/naar-en-medarbejder",
+      "id": "d585990fccd520eb153c12c19eb2c0fb59cdea66"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/naar-helbredet-svigter/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/naar-helbredet-svigter",
+      "id": "a5904cfb7e633048e6f951efce1347bd729b416c"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/saerlige-medarbejderbehov/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/saerlige-medarbejderbehov",
+      "id": "8143bf211958c086a5eaa8aeb0c50771867638f5"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/samlede-kontaktoplysninger/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/samlede-kontaktoplysninger",
+      "id": "73c7b77fba920329cb860e0a8230c0a0472c614c"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/send-besked/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/send-besked",
+      "id": "577f8c7c114df111cb5c179129af50293dec34cf"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/for-administratorer/vores-pfa-videovejledninger/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/for-administratorer/vores-pfa-videovejledninger",
+      "id": "d0cf02e10ce5c36dbb0123b9fe3e3134cc60b942"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/age-ny/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/age-ny",
+      "id": "81a31aa5c766b9b056d7760c489d4279871a6d55"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/amp-ny/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/amp-ny",
+      "id": "1ba4fe3a14880601860ac556aea4b6eadda87956"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/besked-uden-login/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/besked-uden-login",
+      "id": "9cdafe0508a0c97c8e8372e30d83b10a9d2b87bd"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/besked-uden-login/tak/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/besked-uden-login/tak",
+      "id": "0eb0b4344aa74c3d44fa3aa842243bc3d7d528f0"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/erhvervsupport/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/erhvervsupport",
+      "id": "931cbc08d849c20ebc5cc237fdeae5c08ce47554"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/erhvervsupport/tak/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/erhvervsupport/tak",
+      "id": "39615d921ec4a2ebccc4e6c33767c3b0a33d5406"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/kf-assurandoer/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/kf-assurandoer",
+      "id": "f983c647aaf8474f42e8dbe66d0f755d6733fddd"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/kontaktes-kundechef/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/kontaktes-kundechef",
+      "id": "58538f5b595d4a6955fb36c851a6d93a4ffd912c"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/kontaktes-kundechef/tak/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/kontaktes-kundechef/tak",
+      "id": "eb7f29f57b1f1d0c0a05b1f986434fa0d6261b71"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/mage-ny/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/mage-ny",
+      "id": "425acad5d36b5b158a5bf4efdffcd0c5c773e025"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/formularer/mamp-ny/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/formularer/mamp-ny",
+      "id": "891c709020a536c5ef475d80db87c598f469a0ce"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/pension/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/pension",
+      "id": "b0a9ba8fab82fac1f498d6207271762fd9a471a7"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/pension/firmapension-i-pfa/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/pension/firmapension-i-pfa",
+      "id": "8369f60cdf9e54ce2a5236ea9cd04912143b3c20"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/pension/hoejeste-kundetilfredshed/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/pension/hoejeste-kundetilfredshed",
+      "id": "a66188db20790b674f608a19b47e9e6b9beda8b0"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/pension/konkurrencedygtige-omkostninger/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/pension/konkurrencedygtige-omkostninger",
+      "id": "8adf5e98a36d95a98fecb290131b64650f33822f"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/pension/pfa-kundekapital/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/pension/pfa-kundekapital",
+      "id": "9c4c9865c710750de338d3e8451acf1c7e43580d"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/pension/pfa-senkarriere/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/pension/pfa-senkarriere",
+      "id": "2b02fa3bc6b018c9f97efd4895a1f3fc48994665"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/pension/pfa-som-partner/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/pension/pfa-som-partner",
+      "id": "af57a197dbdfd8a1aba441d521ba2cd06e63657f"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/pension/raadgivning/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/pension/raadgivning",
+      "id": "d8188879a9a6fd3da2df64ad0a77296114adeb47"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/produkter/international-raadgivning/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/produkter/international-raadgivning",
+      "id": "531ab66bb70347f13e8ad85899ac740805e1c36a"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/produkter/pfa-plus/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/produkter/pfa-plus",
+      "id": "55965b8b98ec58d2247b60cb494cb4b4d554f656"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhed/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhed",
+      "id": "59a30e81bb559d1a37d0d447f12015d00e57f7f3"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhed/digital-trivselsraadgiver/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhed/digital-trivselsraadgiver",
+      "id": "bc6b3689dab607d11042d749256165c901e5ab3c"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhed/digital-trivselsraadgiver/fleksibilitet/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhed/digital-trivselsraadgiver/fleksibilitet",
+      "id": "08347c07e2fc3d1c24595df6c65b0a771f8535ef"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhed/earlycare/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhed/earlycare",
+      "id": "7776c6ccb7fa4450d2ef97a84d71048951b7fd20"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhed/hr-ledersparring/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhed/hr-ledersparring",
+      "id": "85f307064f7e2a2ab925946955c8b8074c2ae230"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhed/online-sundhedshjaelp/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhed/online-sundhedshjaelp",
+      "id": "a1481dc10ca4c2a55dcd85f04ef2c622de9691bf"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhed/overblik/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhed/overblik",
+      "id": "cb0c560420cad1dcf23df59d8a05bfbb7ff2cc75"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhed/sundhed-trivsel-paa-agendaen/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhed/sundhed-trivsel-paa-agendaen",
+      "id": "f2c71463fa67c089c3b573e21122f8bb9aceeced"
+    },
+    {
+      "url": "https://www.pfa.dk/erhverv/sundhedstilbud/nyt-syn-paa-sundhed/",
+      "source": "MANUAL",
+      "targetPath": "/erhverv/sundhedstilbud/nyt-syn-paa-sundhed",
+      "id": "f12b5302ca47ddd06d6598a668a4f10f71c3eeed"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa",
+      "id": "33a005a8f60afd13376dc63e48ebca794a19bf03"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/finansiel-information/aarsrapporter/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/finansiel-information/aarsrapporter",
+      "id": "a9192c0db3ece6a803397e6b30f745dd75737733"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/finansiel-information/artikel/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/finansiel-information/artikel",
+      "id": "d847bdbedc4b166e61cf0400b46c2a12fc112ed2"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/finansiel-information/generalforsamling/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/finansiel-information/generalforsamling",
+      "id": "c82c63e06853f8cbb9fd54f48227a2500e3d7eaa"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/finansiel-information/magasin/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/finansiel-information/magasin",
+      "id": "2dcfa9411a1dc58a3eee7f560a54165a0cda9467"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/finansiel-information/omkostninger-og-priser/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/finansiel-information/omkostninger-og-priser",
+      "id": "224fca254cc04866cf6fe6c4bd3deb04f29b4d6c"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/finansiel-information/omkostningsmaaler/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/finansiel-information/omkostningsmaaler",
+      "id": "6d1b531815376296acb00839026878187cf4a816"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/finansiel-information/pfa-indsigt/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/finansiel-information/pfa-indsigt",
+      "id": "5b00e116bdc022c5ca4e62056f182e6667ded2a1"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/hvem-er-vi/bestyrelse/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/hvem-er-vi/bestyrelse",
+      "id": "7fbaf4d0ca4da39999cc6a9ea17b4d402bec8ce7"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/hvem-er-vi/kort-om-pfa/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/hvem-er-vi/kort-om-pfa",
+      "id": "8eb2a57904b23b4f574dbb5e175431c838999410"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/hvem-er-vi/ledelse/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/hvem-er-vi/ledelse",
+      "id": "d7061af46ae5d4add582389b891c7da1423ee201"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/hvem-er-vi/organisation/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/hvem-er-vi/organisation",
+      "id": "134e69f391628dc5764c1e4dc4535779ae1064c7"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/hvem-er-vi/organisation/esg/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/hvem-er-vi/organisation/esg",
+      "id": "ae1aaf6e7cf6eeb4362819d4a8f424cb4672d61b"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/hvem-er-vi/organisation/overholdelse-eu-taksonomien-paa-danske-ejendomme/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/hvem-er-vi/organisation/overholdelse-eu-taksonomien-paa-danske-ejendomme",
+      "id": "640372c16df8fd9f736728e47cfeddd7a68aa6dd"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/hvem-er-vi/presserum/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/hvem-er-vi/presserum",
+      "id": "9b88f605ef3e0e1b35df02ef92b5fde161372400"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/job-i-pfa/finanselev/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/job-i-pfa/finanselev",
+      "id": "3cf779ff2c7485a7bd75db9f33a2d40ed05edbae"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/job-i-pfa/graduate/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/job-i-pfa/graduate",
+      "id": "05db1ddddc72b57de2ea1f1c1d19b03ad9a758fc"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/job-i-pfa/ledige-job/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/job-i-pfa/ledige-job",
+      "id": "a137914c06b4ba9cf04aa3f0e8e1728f8a31fcc0"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/job-i-pfa/pfa-som-arbejdsplads/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/job-i-pfa/pfa-som-arbejdsplads",
+      "id": "ad82113fa3eb8c761d6cbfa9200612a66a1d89ac"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/job-i-pfa/ung-i-pfa/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/job-i-pfa/ung-i-pfa",
+      "id": "94835268e190c1977515d3963cb9acac926dd43b"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/aktivt-ejerskab/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/aktivt-ejerskab",
+      "id": "c13c9b59e68b8fd5711f31e2246f24531a23fef3"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/dataetik/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/dataetik",
+      "id": "a862c901777931bd4d8ca278922071e29ec0dfa4"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/dialog-log/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/dialog-log",
+      "id": "b8fa95e280c308eba2dd402cd7ca127b07dbfeb0"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/eksklusion/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/eksklusion",
+      "id": "63f8fda5905832f7c47e18fd0c124a808355c915"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/groen-omstilling/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/groen-omstilling",
+      "id": "f6f6939f3ab93e1e109043002d7c6077001117dd"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/indsatser-paa-tvaers/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/indsatser-paa-tvaers",
+      "id": "9fe81909503da374db19201c9eb7e43d4e05e58c"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/menneskerettigheder/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/menneskerettigheder",
+      "id": "a93c85ed21cf74301b59b04d47d58c70892e6fa7"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/oekonomisk-tryghed/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/oekonomisk-tryghed",
+      "id": "0c1fb6b9513e5384863e86184cd9a69f43afae44"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/politik-og-retningslinjer/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/politik-og-retningslinjer",
+      "id": "e01215c17a9941a7cd58704526d50566c5b4c5d8"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/rapporter-og-rammer/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/rapporter-og-rammer",
+      "id": "de18c0ec7ab377c401be2ee448a06f7a351c1c44"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/seniorliv/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/seniorliv",
+      "id": "fd1d4a3418e7e2de2036b10d0a8da7ff486b816a"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/skatteadfaerd/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/skatteadfaerd",
+      "id": "5815dcab408dc6aaae23966333c114ae76f3d20b"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/stemmeafgivelse/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/stemmeafgivelse",
+      "id": "be7e95863cd699d9f1491b1482884ac9c2024bbf"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/sundhed/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/sundhed",
+      "id": "41e5e75f8ae134d56a5dce198bebc7960783bd6e"
+    },
+    {
+      "url": "https://www.pfa.dk/om-pfa/samfundsansvar/vores-tilgang/",
+      "source": "MANUAL",
+      "targetPath": "/om-pfa/samfundsansvar/vores-tilgang",
+      "id": "7436d1aa58ca7cf6af7c126b8df38f539928cab3"
     }
   ],
   "lastCrawled": "MANUAL",
