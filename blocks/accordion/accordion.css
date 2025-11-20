@@ -1109,32 +1109,57 @@ select:focus {
   }
 }
 
-.accordion.accordion39.block {
-  max-width: 960px;
-  width: 100%;
-  padding: 0 32px;
+
+.accordion.accordion39 {
+  background: #0c6366;
+  min-height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
-}
-
-.accordion.accordion39.block > div {
   display: flex;
-  flex-direction: row;
-  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.accordion.accordion39.block > div > div {
-  flex: 1 1 0;
-  background: #FFF;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
-  padding: 32px;
-  color: #3E3E3E;
-  min-width: 0;
+.accordion.accordion39.block {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgb(30 54 66 / 12%), 0 2px 8px 0 rgb(0 0 0 / 6%);
+  max-width: 580px;
+  width: 100%;
+  min-width: 280px;
+  box-sizing: border-box;
+  padding: 56px 44px;
+  margin: 64px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.accordion.accordion39.block div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @media (width <= 800px) {
-  .accordion.accordion39.block > div {
-    flex-direction: column;
-    gap: 24px;
+  .accordion.accordion39.block {
+    max-width: 98vw;
+    padding: 32px 5vw;
+    margin: 36px 0;
+    border-radius: 14px;
+    max-height: 90vh;
+  }
+
+  .accordion.accordion39 {
+    min-height: 100vh;
+    padding: 0;
   }
 }
