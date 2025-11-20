@@ -1,62 +1,47 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row as required
+  // Always start with the block header row
   const headerRow = ['Columns (columns4)'];
 
-  // Find the two columns
-  const outerRow = element.querySelector('.row.teasers > .row');
-  let leftCol, rightCol;
-  if (outerRow) {
-    const cols = outerRow.querySelectorAll(':scope > div');
-    leftCol = cols[0];
-    rightCol = cols[1];
+  // Find the main row that contains the columns
+  let columnsRow = null;
+  const teasersRow = element.querySelector('.row.teasers');
+  if (teasersRow) {
+    columnsRow = teasersRow.querySelector('.row') || teasersRow;
   } else {
-    // fallback: try to find columns directly
-    const cols = element.querySelectorAll('.row.teasers > .col-xs-12');
-    leftCol = cols[0];
-    rightCol = cols[1];
+    columnsRow = element.querySelector('.row') || element;
   }
 
-  // Defensive: fallback if not found
-  if (!leftCol || !rightCol) {
-    const fallbackCols = element.querySelectorAll(':scope > div > .row > div');
-    leftCol = fallbackCols[0];
-    rightCol = fallbackCols[1];
+  // Find the two main column divs
+  const colDivs = Array.from(columnsRow.querySelectorAll(':scope > .col-xs-12, :scope > .col-sm-3, :scope > .col-sm-9'));
+  // Fallback if not found
+  const columns = colDivs.length === 2 ? colDivs : Array.from(columnsRow.children).slice(0,2);
+
+  // First column: image only
+  const leftCol = columns[0];
+  let leftCell = leftCol.querySelector('img');
+  if (leftCell) leftCell = leftCell.cloneNode(true);
+  else leftCell = document.createTextNode('');
+
+  // Second column: heading and paragraphs
+  const rightCol = columns[1];
+  const nodes = [];
+  const heading = rightCol.querySelector('h2');
+  if (heading) nodes.push(heading.cloneNode(true));
+  // Add all <p> elements
+  rightCol.querySelectorAll('p').forEach(p => nodes.push(p.cloneNode(true)));
+  // If no heading or paragraphs, fallback to all text
+  if (nodes.length === 0) {
+    nodes.push(document.createTextNode(rightCol.textContent.trim()));
   }
+  const rightCell = nodes.length === 1 ? nodes[0] : nodes;
 
-  // Left column: heading + paragraphs (only visible heading)
-  let leftContent = [];
-  if (leftCol) {
-    // Only include h2 that is visible (not display:none)
-    const headings = Array.from(leftCol.querySelectorAll('h2'));
-    const visibleHeading = headings.find(h => !h.hasAttribute('style') || !h.getAttribute('style').includes('display:none'));
-    if (visibleHeading) leftContent.push(visibleHeading);
-    const paragraphs = leftCol.querySelectorAll('p');
-    paragraphs.forEach(p => leftContent.push(p));
-  }
+  // Build table rows
+  const rows = [headerRow, [leftCell, rightCell]];
 
-  // Right column: images (include all images in rightCol)
-  let rightContent = [];
-  if (rightCol) {
-    // Get all images inside rightCol, including nested divs
-    rightCol.querySelectorAll('img').forEach(img => rightContent.push(img));
-    // FIX: If images are not direct children, check all descendants
-    if (rightContent.length === 0) {
-      Array.from(rightCol.querySelectorAll('*')).forEach(node => {
-        if (node.tagName === 'IMG') rightContent.push(node);
-      });
-    }
-  }
+  // Create the table block
+  const block = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Build the table rows
-  const rows = [
-    headerRow,
-    [leftContent, rightContent]
-  ];
-
-  // Create the block table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-
-  // Replace the original element
-  element.replaceWith(table);
+  // Replace the original element with the block
+  element.replaceWith(block);
 }

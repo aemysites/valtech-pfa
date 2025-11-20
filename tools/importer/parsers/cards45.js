@@ -1,41 +1,41 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
   // Cards (cards45) block parsing
-  // Find the parent container holding all card instances
-  // In this HTML, cards are anchor tags inside .icon-and-text
-
   // 1. Header row
   const headerRow = ['Cards (cards45)'];
 
-  // 2. Find all card elements (anchors)
-  const cardsContainer = element.querySelector('.icon-and-text');
-  if (!cardsContainer) return;
-  const cardLinks = Array.from(cardsContainer.querySelectorAll('a.icon-and-text__link'));
+  // 2. Find all card links in the container
+  // The actual cards are <a class="icon-and-text__link"> elements
+  const cardLinks = Array.from(element.querySelectorAll('.icon-and-text__link'));
 
-  // 3. Build card rows
-  const rows = cardLinks.map(card => {
-    // Image: first child div with img
-    const imgDiv = card.querySelector('.icon-and-text__image');
-    let img = imgDiv ? imgDiv.querySelector('img') : null;
-    // Text: second child div
-    const textDiv = card.querySelector('.icon-and-text__text');
-    // Compose cell 2: text as heading (strong)
-    let textCell;
+  // 3. Build rows for each card
+  const rows = cardLinks.map((link) => {
+    // Image: Find the first <img> inside the link
+    const img = link.querySelector('img');
+    // Text: Find the text container
+    const textDiv = link.querySelector('.icon-and-text__text');
+    // Defensive: If missing, fallback to link.textContent
+    let textContent;
     if (textDiv) {
-      // Wrap in <strong> for heading style, as per block spec
+      // Wrap in <strong> for heading style as per block description
       const strong = document.createElement('strong');
       strong.textContent = textDiv.textContent.trim();
-      textCell = strong;
+      textContent = strong;
     } else {
-      textCell = '';
+      const strong = document.createElement('strong');
+      strong.textContent = link.textContent.trim();
+      textContent = strong;
     }
-    return [img, textCell];
+    // Each row: [image, text]
+    return [img, textContent];
   });
 
-  // 4. Compose table
-  const tableCells = [headerRow, ...rows];
-  const blockTable = WebImporter.DOMUtils.createTable(tableCells, document);
+  // 4. Compose table data
+  const cells = [headerRow, ...rows];
 
-  // 5. Replace original element
-  element.replaceWith(blockTable);
+  // 5. Create table block
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+
+  // 6. Replace original element with block
+  element.replaceWith(block);
 }

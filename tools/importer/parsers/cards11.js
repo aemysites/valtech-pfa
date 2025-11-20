@@ -1,39 +1,45 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Cards (cards11) block: 2 columns, multiple rows, first row is block name
+  // Cards (cards11) block: 2 columns, multiple rows, first row is header
   const headerRow = ['Cards (cards11)'];
   const rows = [headerRow];
 
   // Find all card columns (each card is a .col-xs-12.col-sm-4)
-  const cardElements = Array.from(element.querySelectorAll('.col-xs-12.col-sm-4'));
+  const cardEls = Array.from(element.querySelectorAll('.col-xs-12.col-sm-4'));
 
-  cardElements.forEach((card) => {
-    // Image: first child div > img
-    const imgContainer = card.children[0];
-    const img = imgContainer && imgContainer.querySelector('img');
+  cardEls.forEach((cardEl) => {
+    // Image: first img in card
+    const img = cardEl.querySelector('img');
 
-    // Text: second child div, contains h4
-    const textContainer = card.children[1];
-    let title = '';
-    if (textContainer) {
-      const h4 = textContainer.querySelector('h4');
-      if (h4) {
-        title = h4.textContent.trim();
-      }
+    // Find all text content below the image
+    // This source HTML uses a <div> with <h4> inside for the title
+    // We'll grab the <h4> and any text nodes inside the div
+    const textDiv = cardEl.querySelectorAll('div')[1];
+    let textContent = [];
+    if (textDiv) {
+      // Grab all child nodes except empty text
+      Array.from(textDiv.childNodes).forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          textContent.push(node);
+        } else if (node.nodeType === Node.TEXT_NODE) {
+          const txt = node.textContent.replace(/\u00a0/g, ' ').trim();
+          if (txt) textContent.push(txt);
+        }
+      });
     }
-    // Compose the text cell: preserve heading as <h4>
-    const cell = document.createElement('div');
-    if (title) {
-      const heading = document.createElement('h4');
-      heading.textContent = title;
-      cell.appendChild(heading);
+    // If textContent is empty, fallback to cardEl.textContent
+    if (textContent.length === 0) {
+      const txt = cardEl.textContent.replace(/\u00a0/g, ' ').trim();
+      if (txt) textContent.push(txt);
     }
+
     rows.push([
-      img || document.createTextNode(''),
-      cell
+      img,
+      textContent
     ]);
   });
 
+  // Create table and replace element
   const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

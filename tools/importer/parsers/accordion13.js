@@ -3,28 +3,26 @@ export default function parse(element, { document }) {
   // Accordion block header row
   const headerRow = ['Accordion (accordion13)'];
 
-  // Find the toggler/title for the accordion item
-  const titleEl = element.querySelector('.accordions__toggler');
-  const title = titleEl ? titleEl.textContent.trim() : '';
+  // Find the main accordion title as plain text
+  const mainTitleEl = element.querySelector('.accordions__toggler');
+  const mainTitle = mainTitleEl ? mainTitleEl.textContent.trim() : '';
 
-  // Find all tables that are part of the accordion content
-  // These are inside .accordions__element .table-responsive
-  const contentTables = Array.from(element.querySelectorAll('.accordions__element .table-responsive'));
-  // Compose a fragment with all tables
-  const contentFragment = document.createDocumentFragment();
-  contentTables.forEach(tableWrap => {
-    // Clone all tables inside the wrapper
-    Array.from(tableWrap.querySelectorAll('table')).forEach(table => {
-      contentFragment.appendChild(table.cloneNode(true));
-    });
+  // Find the accordion content (all tables inside all .accordions__element)
+  const accordionElements = element.querySelectorAll('.accordions__element');
+  const frag = document.createDocumentFragment();
+  accordionElements.forEach(accEl => {
+    accEl.querySelectorAll('table').forEach(table => frag.appendChild(table));
   });
 
-  // Compose the rows for the block table
-  const rows = [headerRow, [title, contentFragment]];
+  // Build rows: header, then one accordion item row (main title, all tables)
+  const rows = [
+    headerRow,
+    [mainTitle, frag]
+  ];
 
-  // Create the block table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Create table block
+  const block = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace the original element with the block table
-  element.replaceWith(table);
+  // Replace the original element with the block
+  element.replaceWith(block);
 }

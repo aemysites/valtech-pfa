@@ -1,64 +1,34 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row for the block
+  // Always use the block name as the header row
   const headerRow = ['Columns (columns14)'];
 
-  // Find the two columns in the source HTML
-  const row = element.querySelector('.row.teasers');
-  let leftCol, rightCol;
-  if (row) {
-    const cols = row.querySelectorAll('.col-sm-6');
-    leftCol = cols[0];
-    rightCol = cols[1];
-  }
+  // Defensive: Find the main content container
+  // The main content is inside the first .col-sm-12
+  const col = element.querySelector('.col-sm-12');
+  // If not found, fallback to the first child div
+  const contentRoot = col || element.querySelector('div');
 
-  // Defensive fallback: if columns not found, treat as single column
-  if (!leftCol && !rightCol) {
-    leftCol = element;
-  }
+  // Gather all direct children of the content root
+  // We'll treat all content as a single column, as per screenshot and markdown
+  const children = Array.from(contentRoot.childNodes).filter(node => {
+    // Only include element nodes and non-empty text nodes
+    return (node.nodeType === 1) || (node.nodeType === 3 && node.textContent.trim());
+  });
 
-  // --- LEFT COLUMN: Textual content ---
-  let leftContent = '';
-  if (leftCol) {
-    // Collect heading, list, and paragraph
-    const heading = leftCol.querySelector('h2');
-    const ul = leftCol.querySelector('ul');
-    const p = leftCol.querySelector('p');
-    // Compose content, preserving semantic structure
-    if (heading) leftContent += heading.outerHTML;
-    if (ul) leftContent += ul.outerHTML;
-    if (p) leftContent += p.outerHTML;
-  }
+  // Create a single cell with all content elements
+  // This matches the screenshot: one column with heading, paragraphs, list
+  const contentCell = [children];
 
-  // --- RIGHT COLUMN: Video embed as link ---
-  let rightContent = '';
-  if (rightCol) {
-    const iframe = rightCol.querySelector('iframe');
-    if (iframe) {
-      // Replace iframe with a link to its src
-      const a = document.createElement('a');
-      a.href = iframe.src;
-      a.textContent = 'Video Link';
-      rightContent = a;
-    }
-  }
-
-  // Compose the content row
-  const contentRow = [
-    (() => {
-      const div = document.createElement('div');
-      div.innerHTML = leftContent;
-      return div;
-    })(),
-    rightContent || document.createElement('div')
+  // Build the table rows
+  const rows = [
+    headerRow,
+    contentCell,
   ];
 
-  // Compose table rows
-  const cells = [headerRow, contentRow];
-
   // Create the block table
-  const block = WebImporter.DOMUtils.createTable(cells, document);
+  const block = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace the original element
+  // Replace the original element with the block
   element.replaceWith(block);
 }

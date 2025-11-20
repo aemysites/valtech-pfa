@@ -1,49 +1,48 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper: Get immediate children columns
+  // Always use the block name as the header row
+  const headerRow = ['Columns (columns42)'];
+
+  // Get immediate children (columns)
   const columns = Array.from(element.querySelectorAll(':scope > div'));
 
-  // Defensive: Expecting two main columns (left: text+cta, right: image)
-  let leftCol, rightCol;
-  if (columns.length === 2) {
-    // Find which is wider (sm-9 vs sm-3)
-    leftCol = columns.find(col => col.classList.contains('col-sm-9'));
-    rightCol = columns.find(col => col.classList.contains('col-sm-3'));
-  } else {
-    // Fallback: Use first as left, second as right
-    [leftCol, rightCol] = columns;
+  // Left column: image and caption
+  const leftCol = columns[0];
+  const leftContent = [];
+  const img = leftCol.querySelector('img');
+  if (img) leftContent.push(img);
+  const caption = leftCol.querySelector('em, span');
+  if (caption) leftContent.push(caption);
+
+  // Right column: heading, paragraphs, links, button
+  const rightCol = columns[1];
+  const rightContent = [];
+  const teaser = rightCol.querySelector('.teasers__teaser');
+  if (teaser) {
+    Array.from(teaser.children).forEach((child) => {
+      // Omit empty elements (empty divs, empty paragraphs)
+      if (
+        (child.tagName === 'DIV' || child.tagName === 'P') &&
+        !child.textContent.trim() &&
+        child.querySelectorAll('a, strong, em, img').length === 0
+      ) {
+        return;
+      }
+      rightContent.push(child);
+    });
+  }
+  // Get the button (cta-btn) and place it after meaningful content, inside its parent div if possible
+  const btnDiv = rightCol.querySelector('.col-xs-12.text-center');
+  if (btnDiv && btnDiv.querySelector('.cta-btn')) {
+    // Only push the button div if it contains the button
+    rightContent.push(btnDiv);
   }
 
-  // Left column: extract all paragraphs and CTA
-  let leftContent = [];
-  if (leftCol) {
-    // The actual content is inside .teasers__teaser
-    const teaser = leftCol.querySelector('.teasers__teaser') || leftCol;
-    // Get all paragraphs
-    leftContent = Array.from(teaser.querySelectorAll('p'));
-    // Find CTA (button or link)
-    const ctaWrapper = teaser.querySelector('.col-xs-12.text-left');
-    if (ctaWrapper) {
-      const cta = ctaWrapper.querySelector('a');
-      if (cta) leftContent.push(cta);
-    }
-  }
+  // Build the table rows
+  const row1 = [leftContent, rightContent];
+  const cells = [headerRow, row1];
+  const table = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Right column: extract image
-  let rightContent = [];
-  if (rightCol) {
-    const img = rightCol.querySelector('img');
-    if (img) rightContent.push(img);
-  }
-
-  // Table structure
-  const headerRow = ['Columns (columns42)'];
-  const contentRow = [leftContent, rightContent];
-
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    contentRow
-  ], document);
-
+  // Replace the original element
   element.replaceWith(table);
 }

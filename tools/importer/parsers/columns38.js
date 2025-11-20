@@ -1,46 +1,31 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Block header row must match target block name exactly
+  // Always use the block name as the header row
   const headerRow = ['Columns (columns38)'];
 
-  // Find all direct column children
+  // Get all immediate child column divs
   const columns = Array.from(element.querySelectorAll(':scope > div'));
 
-  // For each column, extract heading, paragraphs, and preserve link list structure
-  const cells = columns.map(col => {
-    const teaser = col.querySelector(':scope > div');
-    const source = teaser || col;
-    const container = document.createElement('div');
+  // Defensive: Only proceed if we have columns
+  if (!columns.length) return;
 
-    // Heading
-    const heading = source.querySelector('h3');
-    if (heading) container.appendChild(heading.cloneNode(true));
-
-    // All non-empty paragraphs
-    source.querySelectorAll('p').forEach(p => {
-      if (p.textContent.trim().replace(/\u00a0/g, '').length > 0) {
-        container.appendChild(p.cloneNode(true));
-      }
-    });
-
-    // Preserve link list structure if present
-    const linkList = source.querySelector('ul.panel__links');
-    if (linkList) {
-      container.appendChild(linkList.cloneNode(true));
-    }
-
-    return container;
+  // For each column, extract its content block (the .teasers__teaser div)
+  const columnCells = columns.map(col => {
+    // Find the teaser content div inside each column
+    const teaser = col.querySelector('.teasers__teaser');
+    // Defensive: fallback to the column itself if teaser not found
+    return teaser || col;
   });
 
-  // Table: header row, then one row with all columns as cells
-  const rows = [
+  // Build the table: header row, then one row with all columns
+  const cells = [
     headerRow,
-    cells
+    columnCells
   ];
 
-  // Create the columns block table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  // Create the table block
+  const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Replace the original element with the table
-  element.replaceWith(table);
+  // Replace the original element with the block table
+  element.replaceWith(block);
 }

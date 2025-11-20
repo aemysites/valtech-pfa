@@ -2,31 +2,37 @@
 export default function parse(element, { document }) {
   // Accordion block header row
   const headerRow = ['Accordion (accordion31)'];
-  const rows = [headerRow];
 
-  // Find all accordion toggler elements (titles)
-  // They are <p class="accordions__toggler"> inside the main block
-  const togglers = Array.from(element.querySelectorAll('p.accordions__toggler'));
+  // Find the main heading (section label)
+  const mainHeading = element.querySelector('h5');
 
-  // Defensive: If no togglers, do nothing
-  if (!togglers.length) return;
-
-  togglers.forEach((toggler) => {
-    // The content for each accordion item is the next sibling .accordions__element
-    let content = toggler.nextElementSibling;
-    // Defensive: Only proceed if content exists and has the right class
-    if (!content || !content.classList.contains('accordions__element')) return;
-
-    // Title cell: use the toggler element itself
-    // Content cell: use the entire .accordions__element block
-    rows.push([
-      toggler,
-      content
-    ]);
+  // Find all accordion toggler titles and their content blocks
+  const togglerNodes = Array.from(element.querySelectorAll('.accordions__toggler'));
+  const rows = togglerNodes.map(toggler => {
+    // The title cell: use the toggler text
+    const titleText = toggler.textContent.trim();
+    // The content cell: find the next sibling .accordions__element
+    let contentCell = '';
+    let next = toggler.nextElementSibling;
+    while (next && !next.classList.contains('accordions__element')) {
+      next = next.nextElementSibling;
+    }
+    if (next && next.classList.contains('accordions__element')) {
+      // Clone the content node for safety
+      contentCell = next.cloneNode(true);
+    }
+    return [titleText, contentCell];
   });
 
-  // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace the original element with the block
-  element.replaceWith(block);
+  // Build the table: header row + accordion rows
+  const tableCells = [headerRow, ...rows];
+  const blockTable = WebImporter.DOMUtils.createTable(tableCells, document);
+
+  // If there is a main heading, insert it before the table
+  if (mainHeading) {
+    blockTable.parentNode?.insertBefore(mainHeading.cloneNode(true), blockTable);
+  }
+
+  // Replace the original element with the block table
+  element.replaceWith(blockTable);
 }

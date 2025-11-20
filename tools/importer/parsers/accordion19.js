@@ -1,25 +1,42 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Compose table rows: header row is single cell array, data rows are arrays of two cells
-  const headerRow = ['Accordion (accordion19)'];
+  // Find the visible heading (not the hidden one)
+  let heading = null;
+  const h2s = Array.from(element.querySelectorAll('h2'));
+  heading = h2s.find(h => h.style.display !== 'none');
+  if (!heading && h2s.length) heading = h2s[0];
 
   // Find the accordion toggler (title)
-  const toggler = element.querySelector('.accordions__toggler') || element.querySelector('p');
+  const toggler = element.querySelector('.accordions__toggler');
   // Find the accordion content
-  const content = element.querySelector('.accordions__element') || element.querySelector('div[class*="accordion"]');
+  const content = element.querySelector('.accordions__element, .accordion__element');
   // Find the CTA button
-  const cta = element.querySelector('.col-xs-12.text-center a');
+  const cta = element.querySelector('.cta-btn');
 
-  // Only include the header row and one accordion item row
-  // The CTA must be included in the content cell array to ensure all text content is present
-  const cells = [
-    headerRow,
-    [toggler, [content, cta].filter(Boolean)]
-  ];
+  // Build rows for the accordion table
+  const headerRow = ['Accordion (accordion19)'];
+  const rows = [headerRow];
+  if (toggler && content) {
+    // Clone content and append CTA if present
+    const contentClone = content.cloneNode(true);
+    if (cta) {
+      contentClone.appendChild(cta.cloneNode(true));
+    }
+    rows.push([
+      toggler,
+      contentClone
+    ]);
+  }
 
-  // Create Accordion block table
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Create the accordion table
+  const table = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace original element
-  element.replaceWith(table);
+  // Replace the original element with heading + table
+  if (heading) {
+    heading.remove();
+    element.replaceWith(heading);
+    heading.after(table);
+  } else {
+    element.replaceWith(table);
+  }
 }

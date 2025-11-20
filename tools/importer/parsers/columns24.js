@@ -1,24 +1,26 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always use the required header row for Columns block
+  // Always use the block name as the header row
   const headerRow = ['Columns (columns24)'];
 
-  // Find the two column containers
+  // Defensive: find the row containing the columns
   const row = element.querySelector('.row');
   if (!row) return;
 
-  const columns = Array.from(row.children).filter(
-    (col) => col.classList.contains('col-xs-12') && col.classList.contains('col-sm-6')
-  );
-  if (columns.length !== 2) return;
+  // Get the two column divs (left and right)
+  const columns = Array.from(row.children).filter(col => col.classList.contains('col-xs-12'));
+  if (columns.length < 2) return;
 
-  // For each column, extract only its inner content (paragraphs, links, etc.), not the outer div
-  const contentRow = columns.map(col => Array.from(col.childNodes));
+  // Each column will be a cell in the table's second row
+  // Use the entire column element for resilience
+  const cellsRow = columns;
 
-  // Build the table
-  const cells = [headerRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Build the table data
+  const tableData = [headerRow, cellsRow];
 
-  // Replace the original element with the new table
-  element.replaceWith(table);
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(tableData, document);
+
+  // Replace the original element with the block table
+  element.replaceWith(block);
 }

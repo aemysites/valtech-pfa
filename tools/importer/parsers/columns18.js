@@ -1,48 +1,46 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the two main columns in the inner .row
-  const innerRow = element.querySelector('.row .row');
-  let leftCol = null, rightCol = null;
-  if (innerRow) {
-    const cols = Array.from(innerRow.children).filter(
-      el => el.className && el.className.match(/col-/)
-    );
-    [leftCol, rightCol] = cols;
-  }
+  // Find the main row containing the columns
+  const mainRow = element.querySelector('.row.teasers .col-sm-12 > .row');
+  if (!mainRow) return;
+  const cols = mainRow.querySelectorAll(':scope > div');
+  if (cols.length < 2) return;
 
-  // Left column: collect ALL content (heading, links, etc)
-  let leftContent = [];
-  if (leftCol) {
-    Array.from(leftCol.childNodes).forEach(node => {
-      if (node.nodeType === 1 && (node.textContent.trim() || node.querySelector('img'))) {
-        leftContent.push(node.cloneNode(true));
-      }
-    });
-    if (!leftContent.some(n => n.tagName === 'H2')) {
-      const heading = leftCol.querySelector('h2');
-      if (heading) leftContent.unshift(heading.cloneNode(true));
+  // Left column: text content
+  const leftCol = cols[0];
+  const leftContent = [];
+
+  // Heading (h4)
+  const h4 = leftCol.querySelector('h4.teasers__teaser');
+  if (h4) leftContent.push(h4);
+
+  // All .teasers__teaser divs and p's (excluding empty divs)
+  leftCol.querySelectorAll('.teasers__teaser').forEach((el) => {
+    if (el.textContent.trim() || el.querySelector('ul')) {
+      leftContent.push(el);
     }
-  }
+  });
 
-  // Right column: image and always add 'Lav' label (per screenshot analysis)
-  let rightContent = [];
-  if (rightCol) {
-    const teaser = rightCol.querySelector('.teasers__teaser') || rightCol;
-    const img = teaser.querySelector('img');
-    if (img) rightContent.push(img.cloneNode(true));
-    // Always add 'Lav' label as seen in the screenshot
-    rightContent.push(document.createTextNode('Lav'));
-  }
+  // Any direct .teasers__teaser p elements
+  leftCol.querySelectorAll(':scope > p.teasers__teaser').forEach((el) => {
+    leftContent.push(el);
+  });
 
-  // Table header
+  // Right column: images only
+  const rightCol = cols[1];
+  const rightContent = [];
+  rightCol.querySelectorAll('img').forEach((img) => {
+    rightContent.push(img);
+  });
+
+  // Create the table with correct block name header
   const headerRow = ['Columns (columns18)'];
-  // Table content row
   const contentRow = [leftContent, rightContent];
 
-  // Build table
-  const cells = [headerRow, contentRow];
-  const block = WebImporter.DOMUtils.createTable(cells, document);
+  const table = WebImporter.DOMUtils.createTable([
+    headerRow,
+    contentRow,
+  ], document);
 
-  // Replace original element
-  element.replaceWith(block);
+  element.replaceWith(table);
 }

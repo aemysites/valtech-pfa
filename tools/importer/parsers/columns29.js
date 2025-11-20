@@ -1,38 +1,65 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Always use the block name as the header row
+  // Helper to get immediate child divs
+  function getImmediateDivs(el) {
+    return Array.from(el.children).filter(child => child.tagName === 'DIV');
+  }
+
+  // Find the main row containing the columns
+  let row;
+  // Defensive: find the first child with class 'row' that contains columns
+  const allRows = element.querySelectorAll('.row');
+  for (const r of allRows) {
+    // Look for a row with at least two column children
+    const colCount = Array.from(r.children).filter(
+      c => c.className && c.className.match(/col-/)
+    ).length;
+    if (colCount >= 2) {
+      row = r;
+      break;
+    }
+  }
+  if (!row) return;
+
+  // Find the columns
+  const columns = Array.from(row.children).filter(
+    c => c.className && c.className.match(/col-/)
+  );
+  if (columns.length < 2) return;
+
   const headerRow = ['Columns (columns29)'];
 
-  // Defensive: get the main row containing the two columns
-  const mainRow = element.querySelector('.row.teasers .row');
-  if (!mainRow) return;
+  // For each column, extract its main content
+  const contentRow = columns.map((col, idx) => {
+    // If the column contains only one child div, use that child
+    const innerDivs = getImmediateDivs(col);
+    let content = innerDivs.length === 1 ? innerDivs[0] : col;
 
-  // Get the two columns
-  const leftCol = mainRow.querySelector('.col-sm-8');
-  const rightCol = mainRow.querySelector('.col-sm-4');
+    // Ensure the visible heading is included if present
+    // For the text column (usually the wider one), prepend the visible heading if present
+    // The text column is usually the one with more text nodes
+    const h2s = Array.from(content.querySelectorAll('h2'));
+    let visibleH2 = null;
+    for (const h2 of h2s) {
+      const style = h2.getAttribute('style') || '';
+      if (!/display\s*:\s*none/.test(style)) {
+        visibleH2 = h2;
+        break;
+      }
+    }
+    if (visibleH2) {
+      const frag = document.createDocumentFragment();
+      frag.appendChild(visibleH2.cloneNode(true));
+      Array.from(content.childNodes).forEach(node => {
+        if (node !== visibleH2) frag.appendChild(node.cloneNode(true));
+      });
+      content = frag;
+    }
+    return content;
+  });
 
-  // Defensive: fallback if columns not found
-  if (!leftCol || !rightCol) return;
-
-  // Left column: get the teaser block (contains heading, paragraph, CTA)
-  const teaser = leftCol.querySelector('.teasers__teaser');
-  // Defensive: fallback to leftCol if teaser not found
-  const leftContent = teaser || leftCol;
-
-  // Right column: get the image (should be only one)
-  const img = rightCol.querySelector('img');
-  // Defensive: fallback to rightCol if image not found
-  const rightContent = img ? img : rightCol;
-
-  // Compose the table rows
-  const cells = [
-    headerRow,
-    [leftContent, rightContent]
-  ];
-
-  // Create the block table
+  const cells = [headerRow, contentRow];
   const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Replace the original element with the block table
   element.replaceWith(block);
 }

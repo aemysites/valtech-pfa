@@ -1,74 +1,61 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main content container (usually col-sm-12)
-  const mainCol = element.querySelector('.col-sm-12') || element;
+  // Accordion block: 2 columns, multiple rows, first row is block name
+  const headerRow = ['Accordion (accordion9)'];
+  const rows = [headerRow];
 
-  // Find heading
-  const heading = mainCol.querySelector('h2');
+  // Collect all children of the element
+  const allChildren = Array.from(element.children);
 
-  // Find all paragraphs
-  const allPs = Array.from(mainCol.querySelectorAll('p'));
-  // Find all accordion toggler paragraphs (headers)
-  const togglers = allPs.filter(p => p.classList.contains('accordions__toggler'));
-  // Find all accordion content elements
-  const accordionContents = Array.from(mainCol.querySelectorAll('.accordions__element'));
+  // Find indices for accordion togglers and elements
+  const togglerIndices = allChildren
+    .map((el, i) => el.classList.contains('accordions__toggler') ? i : -1)
+    .filter(i => i !== -1);
+  const accordionIndices = allChildren
+    .map((el, i) => el.classList.contains('accordions__element') ? i : -1)
+    .filter(i => i !== -1);
 
-  // Find intro paragraphs (before first toggler)
-  const introParas = [];
-  for (const p of allPs) {
-    if (p.classList.contains('accordions__toggler')) break;
-    if (p.textContent.trim() && p.innerHTML.trim() !== '&nbsp;') {
-      introParas.push(p);
+  // Everything before the first toggler is intro content
+  if (togglerIndices.length && togglerIndices[0] > 0) {
+    const frag = document.createElement('div');
+    allChildren.slice(0, togglerIndices[0]).forEach((el) => frag.appendChild(el.cloneNode(true)));
+    // Place intro content in the first cell, second cell empty
+    rows.push([frag, '']);
+  }
+
+  // For each toggler, pair with its accordion content
+  togglerIndices.forEach((tIdx, i) => {
+    const toggler = allChildren[tIdx];
+    // Title cell: use only the text content of the toggler
+    const titleCell = toggler.textContent.trim();
+    // Content cell: find the next sibling .accordions__element
+    let contentCell = '';
+    let next = toggler.nextElementSibling;
+    while (next && !next.classList.contains('accordions__element')) {
+      next = next.nextElementSibling;
+    }
+    if (next && next.classList.contains('accordions__element')) {
+      const frag = document.createElement('div');
+      Array.from(next.childNodes).forEach((node) => frag.appendChild(node.cloneNode(true)));
+      contentCell = frag;
+    }
+    rows.push([titleCell, contentCell]);
+  });
+
+  // Everything after the last accordion element is outro content
+  if (accordionIndices.length) {
+    const lastAccordionIdx = accordionIndices[accordionIndices.length - 1];
+    if (lastAccordionIdx < allChildren.length - 1) {
+      const frag = document.createElement('div');
+      allChildren.slice(lastAccordionIdx + 1).forEach((el) => frag.appendChild(el.cloneNode(true)));
+      // Place outro content in the first cell, second cell empty
+      rows.push([frag, '']);
     }
   }
 
-  // Find outro paragraphs (after last accordion)
-  const outroParas = [];
-  let afterAccordions = false;
-  for (const p of allPs) {
-    if (afterAccordions) {
-      if (p.textContent.trim() && p.innerHTML.trim() !== '&nbsp;') {
-        outroParas.push(p);
-      }
-    }
-    if (accordionContents.length && p === accordionContents[accordionContents.length - 1].nextElementSibling) {
-      afterAccordions = true;
-    }
-  }
-  // Defensive: If no outro found, try last non-empty paragraph
-  if (!outroParas.length && allPs.length) {
-    const lastP = allPs[allPs.length - 1];
-    if (lastP.textContent.trim() && lastP.innerHTML.trim() !== '&nbsp;') {
-      outroParas.push(lastP);
-    }
-  }
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Build table rows: header row, then each accordion item as [title, content]
-  const rows = [];
-  rows.push(['Accordion (accordion9)']);
-
-  for (let i = 0; i < togglers.length && i < accordionContents.length; i++) {
-    rows.push([togglers[i], accordionContents[i]]);
-  }
-
-  // Create fragment to hold everything
-  const fragment = document.createDocumentFragment();
-
-  // Add heading and intro paragraphs (if present)
-  if (heading) fragment.appendChild(heading);
-  if (introParas.length) {
-    introParas.forEach(p => fragment.appendChild(p));
-  }
-
-  // Add the accordion table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
-  fragment.appendChild(table);
-
-  // Add outro paragraphs (if present)
-  if (outroParas.length) {
-    outroParas.forEach(p => fragment.appendChild(p));
-  }
-
-  // Replace original element
-  element.replaceWith(fragment);
+  // Replace the original element
+  element.replaceWith(block);
 }

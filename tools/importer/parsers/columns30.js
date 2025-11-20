@@ -1,38 +1,71 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Header row for the block
+  // Table header row for Columns block
   const headerRow = ['Columns (columns30)'];
 
-  // Defensive: Get immediate children that are columns
-  const columns = Array.from(element.querySelectorAll(':scope > div'));
+  // Find all direct child columns (left and right)
+  const columns = element.querySelectorAll(':scope > div');
 
-  // There should be two columns: left (text), right (image)
-  let leftContent = null;
-  let rightContent = null;
-
-  if (columns.length === 2) {
-    // Left column: likely contains a teaser div with a paragraph
-    const leftCol = columns[0];
-    // Find first paragraph inside left column
-    leftContent = leftCol.querySelector('p') || leftCol;
-
-    // Right column: likely contains a centered image
-    const rightCol = columns[1];
-    // Find first image inside right column
-    rightContent = rightCol.querySelector('img') || rightCol;
-  } else {
-    // Fallback: treat all content as a single column
-    leftContent = element;
-    rightContent = '';
+  // Defensive: fallback if structure changes
+  if (columns.length < 2) {
+    const block = WebImporter.DOMUtils.createTable([headerRow], document);
+    element.replaceWith(block);
+    return;
   }
 
-  // Content row: two columns, text and image
-  const contentRow = [leftContent, rightContent];
+  // LEFT COLUMN: Only include the teaser content ONCE (no duplicate heading)
+  const leftCol = columns[0];
+  let leftCellContent = [];
+  const teaser = leftCol.querySelector('.teasers__teaser');
+  if (teaser) {
+    leftCellContent.push(teaser.cloneNode(true));
+  }
+  // Also include the paragraph with 'Læs mere' if present
+  const teaserPara = leftCol.querySelector('p.teasers__teaser');
+  if (teaserPara && teaserPara !== teaser) {
+    leftCellContent.push(teaserPara.cloneNode(true));
+  }
+  // Also include any direct text nodes not inside those selectors
+  leftCol.childNodes.forEach((node) => {
+    if (node.nodeType === 3 && node.textContent.trim()) {
+      const span = document.createElement('span');
+      span.textContent = node.textContent.trim();
+      leftCellContent.push(span);
+    }
+  });
 
-  // Build table
-  const cells = [headerRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // RIGHT COLUMN: Convert iframe to link, include podcast image if present
+  const rightCol = columns[1];
+  let rightCellContent = [];
+  // Convert iframe to link
+  const iframe = rightCol.querySelector('iframe');
+  if (iframe && iframe.src) {
+    const link = document.createElement('a');
+    link.href = iframe.src;
+    link.textContent = 'Lyt til podcasten';
+    rightCellContent.push(link);
+  }
+  // Include podcast cover image if present (from right column only)
+  const img = rightCol.querySelector('img');
+  if (img) {
+    rightCellContent.push(img.cloneNode(true));
+  }
+  // Also include any direct text nodes not inside those selectors
+  rightCol.childNodes.forEach((node) => {
+    if (node.nodeType === 3 && node.textContent.trim()) {
+      const span = document.createElement('span');
+      span.textContent = node.textContent.trim();
+      rightCellContent.push(span);
+    }
+  });
 
-  // Replace the original element with the block table
-  element.replaceWith(table);
+  // Compose table rows
+  const rows = [
+    headerRow,
+    [leftCellContent, rightCellContent]
+  ];
+
+  // Create table block
+  const block = WebImporter.DOMUtils.createTable(rows, document);
+  element.replaceWith(block);
 }

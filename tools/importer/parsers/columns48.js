@@ -1,68 +1,44 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the main row containing the two columns
-  const mainRow = element.querySelector('.row.teasers > .col-sm-12 > .row');
-  if (!mainRow) return;
-  const columns = mainRow.querySelectorAll(':scope > div');
-  if (columns.length < 2) return;
+  // Get the three columns
+  const columns = Array.from(element.querySelectorAll('.row > .col-xs-12.col-sm-4'));
+  if (columns.length !== 3) return;
 
-  // --- LEFT COLUMN ---
-  const leftCol = columns[0];
-  // Find the VISIBLE heading for the left column
-  let heading = leftCol.querySelector('h2');
-  // Only use the visible heading (not the hidden .teasers__heading)
-  if (!heading) heading = leftCol.firstElementChild;
-
-  // Gather all .teasers__teaser blocks and paragraphs/lists not inside .teasers__teaser
-  const teaserBlocks = Array.from(leftCol.querySelectorAll('.teasers__teaser'));
-  const extraParas = Array.from(leftCol.querySelectorAll(':scope > p, :scope > ul')).filter(el => !el.closest('.teasers__teaser'));
-  // Remove empty paragraphs and empty teaser blocks
-  const leftContent = [];
-  if (heading && heading.textContent.trim()) leftContent.push(heading);
-  teaserBlocks.forEach(tb => {
-    if (tb.textContent.trim()) leftContent.push(tb);
-  });
-  extraParas.forEach(p => {
-    if (p.textContent.trim()) leftContent.push(p);
+  // --- COLUMN 1 ---
+  const col1 = columns[0];
+  const col1Content = [];
+  Array.from(col1.children).forEach((child) => {
+    if (child.classList.contains('teasers__teaser') && child.innerHTML.trim() === '') return;
+    col1Content.push(child);
   });
 
-  // --- RIGHT COLUMN ---
-  const rightCol = columns[1];
-  const rightTeaser = rightCol.querySelector('.teasers__teaser');
-  let rightContent = [];
-  if (rightTeaser) {
-    // Add <br> tags before video if present in original
-    Array.from(rightTeaser.childNodes).forEach(node => {
-      if (node.nodeType === 1 && node.tagName === 'BR') rightContent.push(node.cloneNode());
-    });
-    // Find iframe (video embed)
-    const videoEmbed = rightTeaser.querySelector('iframe');
-    if (videoEmbed) {
-      // Convert iframe to a link as required
-      const videoLink = document.createElement('a');
-      videoLink.href = videoEmbed.src;
-      videoLink.textContent = 'Video Player';
-      rightContent.push(videoLink);
+  // --- COLUMN 2 ---
+  const col2 = columns[1];
+  const col2Content = [];
+  Array.from(col2.childNodes).forEach((node) => {
+    if (node.nodeType === 1 && node.classList && node.classList.contains('teasers__teaser') && node.innerHTML.trim() === '') return;
+    if (node.nodeType === 1 && node.tagName === 'P' && node.innerHTML.trim() === '&nbsp;') return;
+    if (node.nodeType === 1 || (node.nodeType === 3 && node.textContent.trim() !== '')) {
+      col2Content.push(node);
     }
-    // Find caption (em or span)
-    const videoCaption = rightTeaser.querySelector('em, span');
-    if (videoCaption) rightContent.push(videoCaption);
-  } else {
-    // Fallback: just use all children, but convert any iframe to link
-    rightContent = Array.from(rightCol.children).map(child => {
-      if (child.tagName === 'IFRAME' && child.src) {
-        const videoLink = document.createElement('a');
-        videoLink.href = child.src;
-        videoLink.textContent = 'Video Player';
-        return videoLink;
-      }
-      return child;
-    });
+  });
+
+  // --- COLUMN 3 ---
+  const col3 = columns[2];
+  const col3Content = [];
+  // Only one image
+  const img = col3.querySelector('img');
+  if (img) col3Content.push(img);
+  // Find the photo credit text (em element containing the credit)
+  // Must be included as an <em> element below the image
+  const creditEm = col3.querySelector('.teasers__teaser em');
+  if (creditEm && creditEm.textContent.trim()) {
+    col3Content.push(creditEm);
   }
 
-  // Table structure
+  // --- Table Assembly ---
   const headerRow = ['Columns (columns48)'];
-  const contentRow = [leftContent, rightContent];
+  const contentRow = [col1Content, col2Content, col3Content];
   const cells = [headerRow, contentRow];
   const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);

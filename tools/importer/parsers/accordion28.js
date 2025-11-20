@@ -1,35 +1,30 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Extract heading and intro paragraph
-  const heading = element.querySelector('h2, h1');
-  const intro = element.querySelector('p:not(.accordions__toggler)');
-
-  // Accordion block: extract toggler and content
-  const toggler = element.querySelector('.accordions__toggler');
-  const contentBlock = element.querySelector('.accordions__element, .accordion__element');
-
-  // Build the table rows
+  // Accordion block header
   const headerRow = ['Accordion (accordion28)'];
-  const rows = [];
 
-  // Add accordion row if toggler and content exist
-  if (toggler && contentBlock) {
-    // Compose the title cell: heading + intro + toggler
-    const titleCell = document.createElement('div');
-    if (heading) titleCell.appendChild(heading.cloneNode(true));
-    if (intro) titleCell.appendChild(intro.cloneNode(true));
-    titleCell.appendChild(toggler.cloneNode(true));
-    rows.push([
-      titleCell,
-      contentBlock
-    ]);
-  }
+  // Find all accordion toggler/content pairs
+  const accordionRows = [];
+  const togglers = element.querySelectorAll('.accordions__toggler');
 
-  // Create the table using WebImporter.DOMUtils.createTable
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    ...rows
-  ], document);
-  // Replace the original element with the table
+  togglers.forEach((toggler) => {
+    // The content is the next sibling with class .accordions__element or .accordion__element
+    let content = toggler.nextElementSibling;
+    while (content && !content.classList.contains('accordions__element') && !content.classList.contains('accordion__element')) {
+      content = content.nextElementSibling;
+    }
+    if (content) {
+      accordionRows.push([
+        toggler,
+        content
+      ]);
+    }
+  });
+
+  // Create the block table
+  const rows = [headerRow, ...accordionRows];
+  const table = WebImporter.DOMUtils.createTable(rows, document);
+
+  // Replace the original element with the new block
   element.replaceWith(table);
 }
