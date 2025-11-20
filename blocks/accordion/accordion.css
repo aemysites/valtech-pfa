@@ -1178,7 +1178,6 @@ select:focus {
   align-items: flex-start;
 }
 
-/* Heading and description, left-aligned, with proper spacing */
 .accordion.accordion46 h1,
 .accordion.accordion46 h2,
 .accordion.accordion46 h3 {
@@ -1200,7 +1199,6 @@ select:focus {
   text-align: left;
 }
 
-/* ACCORDION: Vertically stacked, full width minus padding, visually grouped */
 .accordion.accordion46 details {
   background: #fff;
   color: #222;
@@ -1216,12 +1214,10 @@ select:focus {
   display: block;
 }
 
-/* Remove gap after last details */
 .accordion.accordion46 details:last-child {
   margin-bottom: 0;
 }
 
-/* Accordion summary: left-aligned, accent color, compact */
 .accordion.accordion46 details summary {
   color: #900d0d;
   font-weight: 600;
@@ -1243,7 +1239,6 @@ select:focus {
   margin-bottom: 0;
 }
 
-/* Accordion content area: left-aligned, padding matches summary */
 .accordion.accordion46 details *:not(summary) {
   color: #222;
   padding: 0 28px 16px;
@@ -1252,7 +1247,6 @@ select:focus {
   text-align: left;
 }
 
-/* Responsive: tighter padding, stack full width */
 @media (width <= 700px) {
   .accordion.accordion46 {
     max-width: 100%;
@@ -1269,5 +1263,91 @@ select:focus {
   .accordion.accordion46 details *:not(summary) {
     padding-left: 5vw;
     padding-right: 5vw;
+  }
+}
+
+
+.accordion.accordion47 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+/* Each details (card) fills available space and is rectangular */
+.accordion.accordion47 details {
+  background: #77a8ad;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 44px;
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Only hide details content after summary when collapsed */
+.accordion.accordion47 details:not([open]) summary ~ * {
+  display: none;
+}
+
+/* Summary: horizontal flex, text left, chevron right, single line */
+.accordion.accordion47 summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  color: #fff;
+  height: 44px;
+  width: 100%;
+  padding: 0 18px;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 1.2;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Label text is left-aligned and fills available space */
+.accordion.accordion47 summary p {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  flex: 1 1 auto;
+  letter-spacing: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (width <= 700px) {
+  .accordion.accordion47 {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .accordion.accordion47 details {
+    width: 100%;
+    min-width: 0;
   }
 }
