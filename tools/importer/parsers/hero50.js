@@ -1,93 +1,55 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Helper: Extract background image URL from panel__image style
-  function getBackgroundImageUrl(panelImageDiv) {
-    if (!panelImageDiv) return null;
-    const style = panelImageDiv.getAttribute('style') || '';
-    // Try --imageDesktop first, fallback to --imageMobile
-    const match = style.match(/--imageDesktop:\s*url\(['"]?([^'")]+)['"]?\)/);
-    if (match && match[1]) return match[1];
-    const matchMobile = style.match(/--imageMobile:\s*url\(['"]?([^'")]+)['"]?\)/);
-    if (matchMobile && matchMobile[1]) return matchMobile[1];
-    return null;
-  }
-
-  // 1. Header row
-  const headerRow = ['Hero (hero50)'];
-
-  // 2. Background image row
-  let imageRow = [''];
-  // Find desktop hero panel
-  const desktopPanel = element.querySelector('.narrow-hero__panel--desktop');
-  let bgUrl = null;
-  if (desktopPanel) {
-    const panelImageDiv = desktopPanel.querySelector('.panel__image');
-    bgUrl = getBackgroundImageUrl(panelImageDiv);
-    if (bgUrl) {
-      // Create image element
-      const img = document.createElement('img');
-      img.src = bgUrl;
-      img.alt = '';
-      imageRow = [img];
+  // Extract hero image (desktop or mobile)
+  function getHeroImage() {
+    const desktopPanel = element.querySelector('.narrow-hero__panel--desktop');
+    const mobilePanel = element.querySelector('.narrow-hero__panel--mobile');
+    let imgDiv = null;
+    if (desktopPanel) {
+      imgDiv = desktopPanel.querySelector('.panel__image');
+    } else if (mobilePanel) {
+      imgDiv = mobilePanel.querySelector('.panel__image');
     }
-  }
-
-  // 3. Content row
-  // Include ALL text content: sticky bar text/button + hero overlay kicker/headline
-  const contentCell = [];
-
-  // Sticky bar text and CTA button
-  const stickyBar = element.querySelector('.module-sticky-cta-bar');
-  if (stickyBar) {
-    const stickyTextDiv = stickyBar.querySelector('.module-sticky-cta-bar-text');
-    if (stickyTextDiv) {
-      const stickyTextElem = document.createElement('div');
-      stickyTextElem.textContent = stickyTextDiv.textContent.trim();
-      contentCell.push(stickyTextElem);
-    }
-    const ctaBtnDiv = stickyBar.querySelector('.module-sticky-cta-bar-btn');
-    if (ctaBtnDiv) {
-      const ctaLink = ctaBtnDiv.querySelector('a');
-      if (ctaLink) {
-        contentCell.push(ctaLink.cloneNode(true));
+    if (imgDiv) {
+      const style = imgDiv.getAttribute('style') || '';
+      let urlMatch = style.match(/--imageDesktop:\s*url\(['"]?([^'")]+)['"]?\)/);
+      if (!urlMatch) {
+        urlMatch = style.match(/--imageMobile:\s*url\(['"]?([^'")]+)['"]?\)/);
+      }
+      if (urlMatch) {
+        const img = document.createElement('img');
+        img.src = urlMatch[1];
+        img.alt = '';
+        return img;
       }
     }
+    return '';
   }
 
-  // Hero overlay text: kicker and headline
-  let panelBody = null;
-  if (desktopPanel) {
-    panelBody = desktopPanel.querySelector('.panel__body');
-  }
-  if (!panelBody) {
-    // fallback to mobile panel
-    const mobilePanel = element.querySelector('.narrow-hero__panel--mobile');
-    if (mobilePanel) {
-      panelBody = mobilePanel.querySelector('.panel__body');
+  // Extract hero text (kicker, headline) from desktop panel only (avoid duplication)
+  function getHeroText() {
+    const desktopPanel = element.querySelector('.narrow-hero__panel--desktop');
+    const panelBody = desktopPanel ? desktopPanel.querySelector('.panel__body') : null;
+    const content = [];
+    if (panelBody) {
+      const kicker = panelBody.querySelector('.panel__kicker');
+      const headline = panelBody.querySelector('.panel__headline');
+      if (kicker) content.push(kicker.textContent.trim());
+      if (headline) {
+        const h1 = document.createElement('h1');
+        h1.textContent = headline.textContent.trim();
+        content.push(h1);
+      }
     }
-  }
-  if (panelBody) {
-    const kicker = panelBody.querySelector('.panel__kicker');
-    if (kicker) {
-      contentCell.push(kicker.cloneNode(true));
-    }
-    const headline = panelBody.querySelector('.panel__headline');
-    if (headline) {
-      contentCell.push(headline.cloneNode(true));
-    }
+    return content;
   }
 
-  // Compose content row
-  const contentRow = [contentCell];
-
-  // Build table
-  const cells = [
-    headerRow,
-    imageRow,
-    contentRow,
-  ];
+  // Build table rows
+  const headerRow = ['Hero (hero50)'];
+  const imageRow = [getHeroImage()];
+  const heroText = getHeroText();
+  const thirdRow = [heroText.length ? heroText : ''];
+  const cells = [headerRow, imageRow, thirdRow];
   const table = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace original element
   element.replaceWith(table);
 }

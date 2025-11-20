@@ -1,31 +1,25 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Columns (columns16) block header row
+  // Always use the block name as the header row
   const headerRow = ['Columns (columns16)'];
 
-  // Find the <a> inside the ul.panel__links > li
-  let columns = [];
-  const ul = element.querySelector('ul.panel__links');
-  if (ul) {
-    const li = ul.querySelector('li');
-    if (li) {
-      const a = li.querySelector('a');
-      if (a) {
-        // Use the anchor element itself for the cell
-        columns.push(a);
-      }
-    }
-  } else {
-    // Fallback: treat the whole element's text as one column
-    columns = [element.textContent.trim()];
-  }
+  // Find all <ul.panel__links> inside the element (not just immediate children)
+  const lists = Array.from(element.querySelectorAll('ul.panel__links'));
 
-  // Build the table rows: header row, then one row with columns
-  const rows = [headerRow, columns];
+  // If there are no lists, do nothing
+  if (!lists.length) return;
+
+  // Each <ul> becomes a column cell (clone to avoid moving original nodes)
+  const columnsRow = lists.map((ul) => ul.cloneNode(true));
+
+  // Table: first row is header, second row is columns
+  const tableCells = [headerRow, columnsRow];
 
   // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
+  const blockTable = WebImporter.DOMUtils.createTable(tableCells, document);
 
   // Replace the original element with the block table
-  element.replaceWith(block);
+  if (element.parentNode) {
+    element.parentNode.replaceChild(blockTable, element);
+  }
 }

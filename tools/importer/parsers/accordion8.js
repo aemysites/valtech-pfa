@@ -1,30 +1,49 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header
+  // Accordion block header row
   const headerRow = ['Accordion (accordion8)'];
-  const rows = [headerRow];
 
   // Find main heading and intro paragraph
-  const h2 = element.querySelector('h2');
-  const introP = h2 ? h2.nextElementSibling : null;
+  const heading = element.querySelector('h2');
+  const intro = heading ? heading.nextElementSibling : null;
 
-  // Add heading and intro paragraph as their own row (single cell)
-  if (h2 && introP) {
-    rows.push([ [h2, introP] ]);
-  }
-
-  // Find the accordion toggler (title for first item)
+  // Find the accordion toggler (title for the first item)
   const toggler = element.querySelector('.accordions__toggler');
-  // Find the accordion content (the expanded/collapsed content)
+  // Find the accordion content element (the expanded/collapsible content)
   const accordionContent = element.querySelector('.accordions__element');
 
-  // Only add accordion item if toggler and content exist
+  const rows = [];
+
   if (toggler && accordionContent) {
-    rows.push([toggler, accordionContent]);
+    // Compose the content cell: heading + intro + both tables + explanatory notes
+    const contentDiv = document.createElement('div');
+    if (heading) contentDiv.appendChild(heading.cloneNode(true));
+    if (intro) contentDiv.appendChild(intro.cloneNode(true));
+    // Include both tables if present
+    const tables = accordionContent.querySelectorAll('table');
+    tables.forEach(table => {
+      contentDiv.appendChild(table.cloneNode(true));
+    });
+    // Also include any explanatory notes after the accordion content
+    let next = accordionContent.nextElementSibling;
+    while (next) {
+      if (next.tagName === 'P' && next.textContent.trim()) {
+        contentDiv.appendChild(next.cloneNode(true));
+      }
+      next = next.nextElementSibling;
+    }
+    rows.push([
+      toggler,
+      contentDiv
+    ]);
   }
 
+  // Compose the final table: header row, then accordion rows
+  const cells = [headerRow, ...rows];
+
   // Create the block table
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace the original element
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace the original element with the block table
   element.replaceWith(block);
 }

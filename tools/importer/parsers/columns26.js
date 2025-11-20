@@ -1,75 +1,51 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
+  // Helper to get immediate child mat-card-content rows
+  function getRows(card) {
+    return Array.from(card.querySelectorAll(':scope > mat-card-content'));
+  }
+
+  // Helper to get columns within a row
+  function getColumns(rowDiv) {
+    return Array.from(rowDiv.querySelectorAll(':scope > div.cal-row > div'));
+  }
+
+  // Find the main card
+  const card = element.querySelector('.mat-card');
+  if (!card) return;
+
+  // Get all filter sections (mat-card-content)
+  const rows = getRows(card);
+
+  // Prepare table rows
+  const tableRows = [];
+
+  // Always start with the block header
   const headerRow = ['Columns (columns26)'];
-  const cells = [headerRow];
+  tableRows.push(headerRow);
 
-  // Find both filter sections
-  const cardContents = Array.from(element.querySelectorAll('mat-card-content'));
-
-  // Helper: create a cell with left label, slider, right label (risk filter)
-  function getRiskRow(riskSection) {
-    const row = riskSection.querySelector('.cal-row');
-    if (!row) return null;
-    const leftCol = row.querySelector('.cal-column--lg-35');
-    const rightCol = row.querySelector('.cal-column--lg-65');
-    if (!leftCol || !rightCol) return null;
-    // Heading (left)
-    const heading = leftCol.querySelector('h4');
-    // Left value/label
-    const labelContainers = rightCol.querySelectorAll('.share-label-container');
-    let leftValue = '';
-    let rightValue = '';
-    if (labelContainers.length > 0) {
-      leftValue = labelContainers[0].cloneNode(true);
+  // For each filter row (risk, climate)
+  rows.forEach((matContent) => {
+    const columns = getColumns(matContent);
+    // Defensive: only process if there are exactly 2 columns (label, content)
+    if (columns.length === 2) {
+      // Left column: label (h4)
+      const labelCol = columns[0];
+      // Right column: slider and value(s)
+      const contentCol = columns[1];
+      // For the risk filter, there are two value blocks and a slider
+      // For the climate filter, there is one slider and one value
+      // We'll keep the full labelCol and contentCol for resilience
+      tableRows.push([
+        labelCol,
+        contentCol
+      ]);
     }
-    if (labelContainers.length > 1) {
-      rightValue = labelContainers[1].cloneNode(true);
-    }
-    // Slider (center)
-    const slider = rightCol.querySelector('ng5-slider');
-    // Compose slider cell: left label, slider, right label
-    const sliderCell = document.createElement('div');
-    if (leftValue) sliderCell.appendChild(leftValue);
-    if (slider) sliderCell.appendChild(slider.cloneNode(true));
-    if (rightValue) sliderCell.appendChild(rightValue);
-    return [heading ? heading.textContent.trim() : '', sliderCell];
-  }
+  });
 
-  // Helper: create a cell with slider and right label (climate filter)
-  function getClimateRow(climateSection) {
-    const row = climateSection.querySelector('.cal-row');
-    if (!row) return null;
-    const leftCol = row.querySelector('.cal-column--lg-35');
-    const rightCol = row.querySelector('.cal-column--lg-65');
-    if (!leftCol || !rightCol) return null;
-    // Heading (left)
-    const heading = leftCol.querySelector('h4');
-    // Slider (center)
-    const slider = rightCol.querySelector('ng5-slider');
-    // Right value/label
-    const rightValue = rightCol.querySelector('h4.cal-filter__value');
-    // Compose slider cell: slider, right label
-    const sliderCell = document.createElement('div');
-    if (slider) sliderCell.appendChild(slider.cloneNode(true));
-    if (rightValue) sliderCell.appendChild(document.createTextNode(rightValue.textContent.trim()));
-    return [heading ? heading.textContent.trim() : '', sliderCell];
-  }
+  // Create the block table
+  const blockTable = WebImporter.DOMUtils.createTable(tableRows, document);
 
-  // Always use 2 columns for all rows after header
-  const riskSection = cardContents.find(c => c.classList.contains('risk-filter'));
-  if (riskSection) {
-    const riskRow = getRiskRow(riskSection);
-    if (riskRow) cells.push(riskRow);
-  }
-  const climateSection = cardContents.find(c => c.classList.contains('climate-filter'));
-  if (climateSection) {
-    const climateRow = getClimateRow(climateSection);
-    if (climateRow) cells.push(climateRow);
-  }
-
-  // Create table block
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace original element
-  element.replaceWith(block);
+  // Replace the original element
+  element.replaceWith(blockTable);
 }

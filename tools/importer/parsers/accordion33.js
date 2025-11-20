@@ -1,51 +1,46 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header row
+  // Collect heading and intro paragraphs (to be included as the first row in the accordion table)
+  const heading = element.querySelector('h2:not([style*="display:none"])');
+  let introParas = [];
+  for (const p of element.querySelectorAll('p')) {
+    if (p.classList.contains('accordions__toggler')) break;
+    introParas.push(p);
+  }
+
+  // Helper: Get all toggler and element pairs
+  function getAccordionItems(root) {
+    const togglers = Array.from(root.querySelectorAll('.accordions__toggler'));
+    const elements = Array.from(root.querySelectorAll('.accordions__element'));
+    const items = [];
+    for (let i = 0; i < Math.min(togglers.length, elements.length); i++) {
+      // Only use textContent for title cell
+      const titleText = togglers[i].textContent.trim();
+      items.push([
+        titleText,
+        elements[i]
+      ]);
+    }
+    return items;
+  }
+
+  // Build table rows
   const headerRow = ['Accordion (accordion33)'];
   const rows = [headerRow];
 
-  // --- FIX: Include heading and intro paragraphs above the accordion ---
-  // Find the heading and intro paragraphs before the first toggler
-  const firstToggler = element.querySelector('p.accordions__toggler');
-  let introNodes = [];
-  if (firstToggler) {
-    let node = element.firstElementChild;
-    while (node && node !== firstToggler) {
-      // Only include headings and paragraphs (skip hidden h2)
-      if (
-        (node.tagName === 'H2' && node.style.display !== 'none') ||
-        node.tagName === 'P'
-      ) {
-        introNodes.push(node.cloneNode(true));
-      }
-      node = node.nextElementSibling;
-    }
-    if (introNodes.length) {
-      // Put all intro nodes into a single cell in a row before accordion items
-      const introCell = document.createElement('div');
-      introNodes.forEach(n => introCell.appendChild(n));
-      rows.push([introCell, '']);
-    }
+  // Add heading and intro as first row in the accordion table
+  if (heading || introParas.length) {
+    const introFragment = document.createElement('div');
+    if (heading) introFragment.appendChild(heading.cloneNode(true));
+    introParas.forEach(p => introFragment.appendChild(p.cloneNode(true)));
+    rows.push(['', introFragment]);
   }
 
-  // Find all toggler paragraphs and their associated content
-  const togglers = Array.from(element.querySelectorAll('p.accordions__toggler'));
-  togglers.forEach((toggler) => {
-    // The content div is the next sibling with class 'accordions__element'
-    let content = toggler.nextElementSibling;
-    if (!content || !content.classList.contains('accordions__element')) {
-      // Defensive: skip if structure is broken
-      return;
-    }
-    // Title cell: use the toggler paragraph directly
-    const titleCell = toggler;
-    // Content cell: use the content div directly
-    const contentCell = content;
-    rows.push([titleCell, contentCell]);
-  });
+  // Get accordion items
+  const accordionItems = getAccordionItems(element);
+  rows.push(...accordionItems);
 
-  // Create the block table
+  // Create block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace the original element with the block
   element.replaceWith(block);
 }

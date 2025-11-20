@@ -1,55 +1,64 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Hero (hero22) block: 1 column, 3 rows
-  // Row 1: Block name
-  // Row 2: Background image (optional, not present here)
-  // Row 3: Heading, subheading, ALL text content (including accordion content)
-
-  // Find heading (h2)
-  const heading = element.querySelector('h2');
-
-  // Find paragraphs
-  const paragraphs = Array.from(element.querySelectorAll('p'));
-
-  // Find CTA (visible 'Læs mere' text)
-  let cta = null;
-  const togglerMore = element.querySelector('.accordions__toggler .more');
-  if (togglerMore) {
-    const a = document.createElement('a');
-    a.textContent = togglerMore.textContent;
-    a.href = '#'; // No actual href in source, so use '#'
-    a.style.color = 'red';
-    cta = a;
-  }
-
-  // Find accordion content (all text inside .accordion__element)
-  const accordionContent = element.querySelector('.accordion__element');
-
-  // Compose content for row 3 (heading, paragraph, accordion content, CTA)
-  const contentRow = [];
-  if (heading) contentRow.push(heading);
-
-  if (paragraphs.length > 0) {
-    // Remove toggler and accordion content from paragraph
-    const p = paragraphs[0].cloneNode(true);
-    Array.from(p.querySelectorAll('.accordions__toggler, .accordion__element')).forEach(e => e.remove());
-    if (p.textContent.trim()) contentRow.push(p);
-  }
-
-  if (accordionContent) {
-    contentRow.push(accordionContent.cloneNode(true));
-  }
-
-  if (cta) contentRow.push(cta);
-
-  // Table rows
+  // Table header row
   const headerRow = ['Hero (hero22)'];
-  const imageRow = ['']; // No image in this block
-  const textRow = [contentRow];
 
-  const cells = [headerRow, imageRow, textRow];
+  // --- Row 2: Background image (none in this case) ---
+  const imageRow = [''];
 
-  // Create and replace
+  // --- Row 3: Content (heading, paragraph, CTA, and ALL accordion content) ---
+  const contentCol = element.querySelector('.col-sm-12') || element;
+
+  // Find heading
+  const heading = contentCol.querySelector('h2');
+
+  // Find all paragraphs
+  const paragraphs = Array.from(contentCol.querySelectorAll('p'));
+
+  // Find the first paragraph with visible text (not the accordion/toggler)
+  let mainParagraph = null;
+  let accordionContent = null;
+  let cta = null;
+  for (const p of paragraphs) {
+    // Find CTA ('Læs mere')
+    const toggler = p.querySelector('.accordions__toggler .more');
+    if (toggler && !cta) {
+      cta = document.createElement('a');
+      cta.textContent = toggler.textContent;
+      cta.href = '#';
+      cta.style.color = 'red';
+    }
+    // Find accordion content
+    const accordion = p.querySelector('.accordion__element');
+    if (accordion && !accordionContent) {
+      accordionContent = accordion.cloneNode(true);
+    }
+    // Find main paragraph
+    if (!mainParagraph) {
+      const pClone = p.cloneNode(true);
+      const togglerEl = pClone.querySelector('.accordions__toggler');
+      if (togglerEl) togglerEl.remove();
+      const accordionEl = pClone.querySelector('.accordion__element');
+      if (accordionEl) accordionEl.remove();
+      if (pClone.textContent.trim()) {
+        mainParagraph = pClone;
+      }
+    }
+  }
+
+  // Compose all content for row 3
+  const contentElements = [];
+  if (heading) contentElements.push(heading);
+  if (mainParagraph) contentElements.push(mainParagraph);
+  if (cta) contentElements.push(cta);
+  if (accordionContent) contentElements.push(accordionContent);
+
+  const contentRow = [contentElements];
+
+  // Build the table
+  const cells = [headerRow, imageRow, contentRow];
   const table = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace the original element with the new block table
   element.replaceWith(table);
 }

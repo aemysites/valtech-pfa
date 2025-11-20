@@ -1,41 +1,40 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Extract heading and intro paragraph from the top of the block
+  // Find heading and intro paragraph (assume first h2 and first p before accordions)
   const heading = element.querySelector('h2');
-  const intro = element.querySelector('h2 + p');
-  if (heading || intro) {
-    const introDiv = document.createElement('div');
-    if (heading) introDiv.appendChild(heading.cloneNode(true));
-    if (intro) introDiv.appendChild(intro.cloneNode(true));
-    // Insert introDiv before the block table
-    element.parentNode.insertBefore(introDiv, element);
-  }
+  const intro = Array.from(element.querySelectorAll('p')).find(p => !p.classList.contains('accordions__toggler') && !p.closest('.accordions__element'));
 
-  // Accordion block header
+  // Accordion block: extract all toggler/content pairs
+  const togglerSelector = '.accordions__toggler';
+  const contentSelector = '.accordions__element';
+  const togglers = Array.from(element.querySelectorAll(togglerSelector));
+  const contents = Array.from(element.querySelectorAll(contentSelector));
+  const numItems = Math.min(togglers.length, contents.length);
+
+  // Table header row (must match block name exactly)
   const headerRow = ['Accordion (accordion10)'];
   const rows = [headerRow];
 
-  // Only include accordion items in the table
-  const togglers = Array.from(element.querySelectorAll('p.accordions__toggler'));
-  togglers.forEach((toggler) => {
-    // Title cell: use the toggler paragraph itself
-    const titleCell = toggler;
-    // Content cell: find the next sibling div with class 'accordions__element'
-    let contentCell = null;
-    let next = toggler.nextElementSibling;
-    while (next && !next.classList.contains('accordions__element')) {
-      next = next.nextElementSibling;
+  // --- FIX: Place heading and intro paragraph together in the first cell of the first accordion item ---
+  // If both heading and intro exist, prepend them to the first accordion content
+  for (let i = 0; i < numItems; i++) {
+    const titleEl = togglers[i];
+    let contentEl = contents[i];
+    if (i === 0 && (heading || intro)) {
+      // Create a wrapper div to hold both heading, intro, and the original content
+      const wrapper = document.createElement('div');
+      if (heading) wrapper.appendChild(heading.cloneNode(true));
+      if (intro) wrapper.appendChild(intro.cloneNode(true));
+      // Append the original content
+      Array.from(contentEl.childNodes).forEach(node => wrapper.appendChild(node.cloneNode(true)));
+      contentEl = wrapper;
     }
-    if (next && next.classList.contains('accordions__element')) {
-      contentCell = next;
-    } else {
-      contentCell = document.createElement('div');
-    }
-    rows.push([titleCell, contentCell]);
-  });
+    rows.push([titleEl, contentEl]);
+  }
 
-  // Create the table block
+  // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
-  // Replace the original element with the block
+
+  // Replace the original element with the block table
   element.replaceWith(block);
 }

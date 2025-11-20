@@ -3,44 +3,36 @@ export default function parse(element, { document }) {
   // Always use the block name as the header row
   const headerRow = ['Columns (columns7)'];
 
-  // Get direct children divs (columns)
-  const columns = element.querySelectorAll(':scope > div');
+  // Defensive: get direct children columns
+  const columns = Array.from(element.querySelectorAll(':scope > div'));
 
-  let leftCol, rightCol;
-  if (columns.length === 2) {
-    leftCol = columns[0];
-    rightCol = columns[1];
-  } else {
-    leftCol = element;
-    rightCol = null;
+  // Expect two columns: left (text + CTA), right (image)
+  // Left column: all paragraphs and CTA
+  const leftCol = columns.find(col => col.classList.contains('col-sm-8'));
+  // Right column: image
+  const rightCol = columns.find(col => col.classList.contains('col-sm-4'));
+
+  let leftContent = [];
+  if (leftCol) {
+    leftContent = Array.from(leftCol.children);
   }
 
-  // Left column: gather all non-empty paragraphs and CTA
-  const leftContent = [];
-  leftCol.querySelectorAll('p').forEach((p) => {
-    if (p.textContent.trim()) {
-      leftContent.push(p);
-    }
-  });
-  const cta = leftCol.querySelector('a.cta-btn');
-  if (cta && !leftContent.includes(cta)) {
-    leftContent.push(cta);
-  }
-
-  // Right column: image only, add visible label 'Middel' below image
   let rightContent = [];
   if (rightCol) {
+    // Get image only (ignore &nbsp;), and ensure 'Middel' text is present as visible text in the cell
     const img = rightCol.querySelector('img');
     if (img) {
-      rightContent.push(img);
-      // Add visible label below image
-      const label = document.createElement('div');
-      label.textContent = 'Middel';
-      rightContent.push(label);
+      if (!img.alt || img.alt.trim() === '') {
+        img.alt = 'Middel';
+      }
+      const wrapper = document.createElement('div');
+      wrapper.appendChild(img);
+      wrapper.appendChild(document.createTextNode(' Middel'));
+      rightContent.push(wrapper);
     }
   }
 
-  // Build the table rows
+  // Compose table rows
   const rows = [
     headerRow,
     [leftContent, rightContent]
@@ -49,6 +41,6 @@ export default function parse(element, { document }) {
   // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace the original element with the block table
+  // Replace original element
   element.replaceWith(block);
 }

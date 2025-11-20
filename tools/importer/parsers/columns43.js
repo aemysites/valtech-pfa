@@ -3,55 +3,51 @@ export default function parse(element, { document }) {
   // Always use the block name as the header row
   const headerRow = ['Columns (columns43)'];
 
-  // Defensive: Get all immediate children of the main row
+  // Get all immediate children of the main row
   const children = Array.from(element.querySelectorAll(':scope > div'));
 
-  // Find the left and right columns by class
-  let leftCol = null;
-  let rightCol = null;
-  children.forEach((child) => {
-    if (child.classList.contains('col-sm-9')) {
-      leftCol = child;
-    } else if (child.classList.contains('col-sm-3')) {
-      rightCol = child;
-    }
-  });
+  // Find the left column (text and CTA)
+  let leftCol = children.find(div => div.classList.contains('col-sm-9'));
+  // Find the right column (image)
+  let rightCol = children.find(div => div.classList.contains('col-sm-3'));
 
-  // Fallback: If classes missing, use order
-  if (!leftCol && children.length > 0) leftCol = children[0];
-  if (!rightCol && children.length > 1) rightCol = children[1];
+  // Defensive fallback if not found
+  if (!leftCol) leftCol = children[0];
+  if (!rightCol) rightCol = children[1];
 
-  // --- LEFT COLUMN CONTENT ---
-  // Collect paragraphs and CTA from left column
+  // Left column: collect all non-empty paragraphs and the CTA button
   const leftContent = [];
-  if (leftCol) {
-    leftCol.querySelectorAll('p').forEach(p => {
-      if (p.textContent.trim()) leftContent.push(p);
-    });
-    const cta = leftCol.querySelector('a.cta-btn');
-    if (cta) leftContent.push(cta);
+  leftCol.querySelectorAll('p').forEach(p => {
+    if (p.textContent.trim()) leftContent.push(p);
+  });
+  // Find the CTA button (anchor only, not the wrapper div)
+  const cta = leftCol.querySelector('.cta-btn');
+  if (cta) {
+    leftContent.push(cta);
   }
 
-  // --- RIGHT COLUMN CONTENT ---
-  // Get image from right column
+  // Right column: add 'Juni' heading as a heading element and the image
   const rightContent = [];
-  if (rightCol) {
-    // Add heading 'Juni' above the image, as seen in the screenshot
-    const heading = document.createElement('div');
-    heading.textContent = 'Juni';
-    rightContent.push(heading);
-    // Find first image
-    const img = rightCol.querySelector('img');
-    if (img) rightContent.push(img);
+  // Add the heading 'Juni' above the image as an <h3>
+  const juniHeading = document.createElement('h3');
+  juniHeading.textContent = 'Juni';
+  juniHeading.style.textAlign = 'center';
+  rightContent.push(juniHeading);
+  // Add the image
+  const img = rightCol.querySelector('img');
+  if (img) {
+    rightContent.push(img);
   }
 
-  // --- BUILD TABLE ---
-  // Two columns: left and right
-  const contentRow = [leftContent, rightContent];
+  // Build the table rows
+  const rows = [
+    headerRow,
+    [leftContent, rightContent]
+  ];
 
-  const cells = [headerRow, contentRow];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(rows, document);
 
   // Replace the original element
-  element.replaceWith(table);
+  element.replaceWith(block);
 }

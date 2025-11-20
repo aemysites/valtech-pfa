@@ -1,34 +1,33 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Accordion block header row
+  // Accordion block header row (single cell)
   const headerRow = ['Accordion (accordion32)'];
 
-  // Find the accordion toggler/title and extract plain text only
+  // Extract the accordion toggler title
   const toggler = element.querySelector('.accordions__toggler');
-  const titleText = toggler ? toggler.textContent.trim() : 'Accordion Item';
+  const titleText = toggler ? toggler.textContent.trim() : '';
 
-  // Find the accordion content block
-  const accordionElement = element.querySelector('.accordions__element, .accordion__element');
-
-  // Get the content inside the accordion item
-  let contentCell = document.createElement('span');
-  if (accordionElement) {
-    const contentWrapper = accordionElement.querySelector('div');
-    if (contentWrapper) {
-      contentCell = document.createElement('span');
-      Array.from(contentWrapper.children).forEach(child => contentCell.appendChild(child.cloneNode(true)));
-    } else {
-      contentCell = document.createElement('span');
-      Array.from(accordionElement.children).forEach(child => contentCell.appendChild(child.cloneNode(true)));
-    }
+  // Extract all content for the accordion body
+  const content = element.querySelector('.accordions__element, .accordion__element');
+  let contentCell = '';
+  if (content) {
+    // Collect all child nodes (including text and elements)
+    const frag = document.createDocumentFragment();
+    Array.from(content.childNodes).forEach((node) => {
+      frag.appendChild(node.cloneNode(true));
+    });
+    contentCell = frag;
   }
 
-  // Build rows for the table
-  const rows = [headerRow, [titleText, contentCell]];
+  // Build the table rows: header row (single cell), then each accordion item as [title, content]
+  const rows = [
+    headerRow,
+    [titleText, contentCell]
+  ];
 
-  // Create the table block
+  // Create the block table
   const block = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace the original element
+  // Replace the original element with the block
   element.replaceWith(block);
 }
