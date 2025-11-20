@@ -1296,8 +1296,6 @@
   }
 }
 
-
-/* --- Layout and container for the block --- */
 .columns.columns41 {
   background: #f5f5f5;
   padding-top: 48px;
@@ -1313,7 +1311,6 @@
   box-sizing: border-box;
 }
 
-/* --- Title --- */
 .columns.columns41 h2 {
   text-align: center;
   font-size: 32px;
@@ -1325,7 +1322,6 @@
   letter-spacing: 0.01em;
 }
 
-/* --- Row of columns: use CSS grid for strict alignment and spacing --- */
 .columns.columns41 .columns div:not(:first-child) {
   display: grid;
   grid-template-columns: repeat(3, minmax(320px, 1fr));
@@ -1343,7 +1339,6 @@
   }
 }
 
-/* --- Individual column styling --- */
 .columns.columns41 .columns div:not(:first-child) div {
   display: flex;
   flex-direction: column;
@@ -1357,7 +1352,6 @@
   margin-right: auto;
 }
 
-/* --- Icon/Image at top of column --- */
 .columns.columns41 .columns div:not(:first-child) div picture,
 .columns.columns41 .columns div:not(:first-child) div img {
   display: block;
@@ -1369,7 +1363,6 @@
   background: none;
 }
 
-/* --- Headings --- */
 .columns.columns41 .columns div:not(:first-child) div h3 {
   font-size: 20px;
   font-weight: 500;
@@ -1381,7 +1374,6 @@
   letter-spacing: 0.01em;
 }
 
-/* --- Body text --- */
 .columns.columns41 .columns div:not(:first-child) div p,
 .columns.columns41 .columns div:not(:first-child) div ul,
 .columns.columns41 .columns div:not(:first-child) div ol,
@@ -1396,7 +1388,6 @@
   padding: 0;
 }
 
-/* --- List compactness --- */
 .columns.columns41 .columns div:not(:first-child) div ul,
 .columns.columns41 .columns div:not(:first-child) div ol {
   padding-left: 1em;
@@ -1407,7 +1398,6 @@
   margin-bottom: 2px;
 }
 
-/* --- Button adjustments for tighter fit, rectangular, and left alignment --- */
 .columns.columns41 .columns div:not(:first-child) div a.button,
 .columns.columns41 .columns div:not(:first-child) div button {
   background-color: var(--link-color);
@@ -1435,7 +1425,6 @@
   color: #fff;
 }
 
-/* --- Link color and underline --- */
 .columns.columns41 .columns div:not(:first-child) div a:not(.button) {
   color: var(--link-color);
   text-decoration: underline;
@@ -1449,7 +1438,6 @@
   text-decoration: underline;
 }
 
-/* --- Inner vertical spacing --- */
 .columns.columns41 .columns div:not(:first-child) div > * {
   margin-bottom: 8px;
 }
@@ -1458,7 +1446,6 @@
   margin-bottom: 0;
 }
 
-/* --- Responsive: tighter horizontal padding on small screens --- */
 @media (width <= 600px) {
   .columns.columns41 .columns {
     padding-left: 6px;
@@ -1470,5 +1457,133 @@
     max-width: 100%;
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+
+.columns.columns42 {
+  background: #fff;
+  padding: 32px;
+  box-sizing: border-box;
+  border-radius: 0;
+  margin: 0 auto;
+}
+
+.columns.columns42 .columns-2-cols {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 56px;
+}
+
+.columns.columns42 .columns-2-cols .columns-img-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  max-width: 180px;
+  flex: 0 0 140px;
+  height: 100%;
+  align-self: center;
+}
+
+.columns.columns42 .columns-2-cols .columns-img-col img {
+  width: 70px;
+  height: 70px;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+  background: #fff;
+  object-fit: contain;
+  margin: auto;
+}
+
+.columns.columns42 .columns-2-cols .columns-img-col > * {
+  margin: auto;
+}
+
+.columns.columns42 .columns-2-cols .button,
+.columns.columns42 .columns-2-cols a.button {
+  background: #fff;
+  color: #be1112;
+  border: 1px solid #be1112;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 8px 18px;
+  margin-top: 28px;
+  margin-left: 0;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  cursor: pointer;
+  min-width: 120px;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+.columns.columns42 .columns-2-cols .button:hover,
+.columns.columns42 .columns-2-cols .button:focus,
+.columns.columns42 .columns-2-cols a.button:hover,
+.columns.columns42 .columns-2-cols a.button:focus {
+  background: #be1112;
+  color: #fff;
+  border-color: #be1112;
+}
+
+.columns.columns42 .columns-2-cols div:not(.columns-img-col) {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 600px;
+  min-width: 0;
+}
+
+.columns.columns42 .columns-2-cols div:not(.columns-img-col) p,
+.columns.columns42 .columns-2-cols div:not(.columns-img-col) ul,
+.columns.columns42 .columns-2-cols div:not(.columns-img-col) ol {
+  color: #3d3d3d;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 1em;
+  max-width: 540px;
+}
+
+.columns.columns42 .columns-2-cols div:not(.columns-img-col) .button,
+.columns.columns42 .columns-2-cols div:not(.columns-img-col) a.button {
+  align-self: flex-start;
+}
+
+@media (width <= 900px) {
+  .columns.columns42 {
+    padding: 18px;
+  }
+
+  .columns.columns42 .columns-2-cols {
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .columns.columns42 .columns-2-cols .columns-img-col {
+    justify-content: flex-start;
+    margin-bottom: 0;
+    max-width: 100%;
+    min-width: 0;
+    flex-basis: auto;
+  }
+
+  .columns.columns42 .columns-2-cols .columns-img-col img {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .columns.columns42 .columns-2-cols div:not(.columns-img-col) {
+    max-width: 100%;
   }
 }
