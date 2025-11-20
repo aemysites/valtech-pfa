@@ -1296,8 +1296,6 @@
   }
 }
 
-
-/* --- Layout and container for the block --- */
 .columns.columns41 {
   background: #f5f5f5;
   padding-top: 48px;
@@ -1313,7 +1311,6 @@
   box-sizing: border-box;
 }
 
-/* --- Title --- */
 .columns.columns41 h2 {
   text-align: center;
   font-size: 32px;
@@ -1325,7 +1322,6 @@
   letter-spacing: 0.01em;
 }
 
-/* --- Row of columns: use CSS grid for strict alignment and spacing --- */
 .columns.columns41 .columns div:not(:first-child) {
   display: grid;
   grid-template-columns: repeat(3, minmax(320px, 1fr));
@@ -1343,7 +1339,6 @@
   }
 }
 
-/* --- Individual column styling --- */
 .columns.columns41 .columns div:not(:first-child) div {
   display: flex;
   flex-direction: column;
@@ -1357,7 +1352,6 @@
   margin-right: auto;
 }
 
-/* --- Icon/Image at top of column --- */
 .columns.columns41 .columns div:not(:first-child) div picture,
 .columns.columns41 .columns div:not(:first-child) div img {
   display: block;
@@ -1369,7 +1363,6 @@
   background: none;
 }
 
-/* --- Headings --- */
 .columns.columns41 .columns div:not(:first-child) div h3 {
   font-size: 20px;
   font-weight: 500;
@@ -1381,7 +1374,6 @@
   letter-spacing: 0.01em;
 }
 
-/* --- Body text --- */
 .columns.columns41 .columns div:not(:first-child) div p,
 .columns.columns41 .columns div:not(:first-child) div ul,
 .columns.columns41 .columns div:not(:first-child) div ol,
@@ -1396,7 +1388,6 @@
   padding: 0;
 }
 
-/* --- List compactness --- */
 .columns.columns41 .columns div:not(:first-child) div ul,
 .columns.columns41 .columns div:not(:first-child) div ol {
   padding-left: 1em;
@@ -1407,7 +1398,6 @@
   margin-bottom: 2px;
 }
 
-/* --- Button adjustments for tighter fit, rectangular, and left alignment --- */
 .columns.columns41 .columns div:not(:first-child) div a.button,
 .columns.columns41 .columns div:not(:first-child) div button {
   background-color: var(--link-color);
@@ -1435,7 +1425,6 @@
   color: #fff;
 }
 
-/* --- Link color and underline --- */
 .columns.columns41 .columns div:not(:first-child) div a:not(.button) {
   color: var(--link-color);
   text-decoration: underline;
@@ -1449,7 +1438,6 @@
   text-decoration: underline;
 }
 
-/* --- Inner vertical spacing --- */
 .columns.columns41 .columns div:not(:first-child) div > * {
   margin-bottom: 8px;
 }
@@ -1458,7 +1446,6 @@
   margin-bottom: 0;
 }
 
-/* --- Responsive: tighter horizontal padding on small screens --- */
 @media (width <= 600px) {
   .columns.columns41 .columns {
     padding-left: 6px;
@@ -1470,5 +1457,109 @@
     max-width: 100%;
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+
+/* Columns block improved layout and styling */
+
+.columns.columns42 {
+  background: var(--background-color);
+  padding: 32px;
+}
+
+/* Main columns two-col row: side-by-side, flexbox, responsive gap */
+.columns.columns42 .block.columns-2-cols {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+/* Left column (text) - make it wider than the image column */
+.columns.columns42 .block.columns-2-cols div {
+  flex: 2 1 0%;
+  min-width: 0;
+  font-size: 14px;
+  color: #393939;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Paragraph spacing */
+.columns.columns42 .block.columns-2-cols div p {
+  margin-top: 0.8em;
+  margin-bottom: 1em;
+  color: #393939;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Right column (image) - narrower, top aligned, never too large */
+.columns.columns42 .block.columns-2-cols .columns-img-col {
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+/* Image scaling and alignment */
+.columns.columns42 .block.columns-2-cols .columns-img-col img,
+.columns.columns42 .block.columns-2-cols .columns-img-col picture {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+}
+
+/* Button styling override for visual match */
+.columns.columns42 .block.columns-2-cols .button,
+.columns.columns42 .block.columns-2-cols a.button {
+  background: #fff;
+  color: #B20000;
+  border: 1px solid #B20000;
+  border-radius: 2em;
+  font-size: 1.06em;
+  font-weight: 500;
+  padding: 10px 28px;
+  line-height: 1.25;
+  margin-top: 24px;
+  margin-bottom: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.columns.columns42 .block.columns-2-cols .button:hover,
+.columns.columns42 .block.columns-2-cols a.button:hover {
+  background: #B20000;
+  color: #fff;
+  border-color: #B20000;
+}
+
+/* Responsive stacking for small screens */
+@media (width <= 900px) {
+  .columns.columns42 .block.columns-2-cols {
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .columns.columns42 .block.columns-2-cols .columns-img-col {
+    max-width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 }
