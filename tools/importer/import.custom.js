@@ -37,4 +37,18 @@ export const customElements = [];
 /**
  * Custom transformers
  */
-export const customTransformers = {};
+export const customTransformers = {
+  removeCookieConsent: (hookName, element) => {
+    if (hookName === 'beforeTransform') {
+      // remove all cookie consent related stuff
+      WebImporter.DOMUtils.remove(element, [
+        '#CybotCookiebotDialog',
+        '#CybotCookiebotDialogBodyUnderlay',
+        '#CookiebotSessionPixel'
+      ]);
+
+      // re-enable scrolling
+      element.setAttribute('style', 'overflow: scroll;');
+    }
+  }
+};
