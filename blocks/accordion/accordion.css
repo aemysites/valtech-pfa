@@ -1349,7 +1349,6 @@ select:focus {
 
 
 .accordion.accordion83 {
-  /* Ensure background is light gray edge-to-edge, remove unwanted padding/margin */
   background: #ededed;
   margin: 0;
   padding: 0;
@@ -1362,7 +1361,6 @@ select:focus {
 }
 
 .accordion.accordion83 details {
-  /* Stack items seamlessly, remove extra spacing, set max width, white background */
   background: #fff;
   margin: 0;
   border: none;
@@ -1375,16 +1373,13 @@ select:focus {
 }
 
 .accordion.accordion83 details + details {
-  /* No gap between items */
   margin-top: 0;
 }
 
-/* Subtle divider line between items except last */
 .accordion.accordion83 details:not(:last-child) {
   border-bottom: 1px solid #e0e0e0;
 }
 
-/* Accordion summary: left-aligned, compact, regular font style, bold, dark */
 .accordion.accordion83 summary {
   display: block;
   padding: 20px 32px;
@@ -1404,19 +1399,16 @@ select:focus {
   transition: background 0.18s;
 }
 
-/* Subtle highlight on hover/focus */
 .accordion.accordion83 summary:hover,
 .accordion.accordion83 summary:focus {
   background: #f8f8f8;
 }
 
-/* Remove default markers */
 .accordion.accordion83 summary::-webkit-details-marker,
 .accordion.accordion83 summary::marker {
   display: none;
 }
 
-/* Accordion body/content: compact, left-aligned, slightly lighter gray */
 .accordion.accordion83 *:not(summary) {
   padding: 18px 32px 24px;
   color: #444;
@@ -1427,7 +1419,6 @@ select:focus {
   box-sizing: border-box;
 }
 
-/* Standardize paragraphs/lists inside details */
 .accordion.accordion83 p,
 .accordion.accordion83 ul,
 .accordion.accordion83 ol,
@@ -1438,13 +1429,11 @@ select:focus {
   line-height: 1.6;
 }
 
-/* Links inside accordion */
 .accordion.accordion83 a {
   color: var(--link-color);
   text-decoration: underline;
 }
 
-/* Responsive: keep block readable, reduce padding on small screens */
 @media (width <= 950px) {
   .accordion.accordion83 details {
     max-width: 100%;
@@ -1468,4 +1457,155 @@ select:focus {
     padding-right: 8px;
     font-size: 1rem;
   }
+}
+
+
+.accordion.accordion57 {
+  background: var(--background-color);
+  width: 100%;
+}
+
+/* Vertically and horizontally center the whole accordion block */
+.accordion.accordion57 .accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 480px;
+  padding: 64px 0;
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* For side-by-side panels: flex row and tighter gap */
+.accordion.accordion57 .accordion.block {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+/* Accordion panel styling */
+.accordion.accordion57 .accordion-item {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--light-color);
+  border-radius: 7px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 4%);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+/* Panel summary/header: more vertical padding for visual balance */
+.accordion.accordion57 .accordion-item summary,
+.accordion.accordion57 .accordion-item .accordion-item-label {
+  padding: 40px 32px 24px;
+  font-size: var(--heading-font-size-l);
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: left;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-style: normal;
+  line-height: 1.3;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Hide default markers for summary (accordion arrow icons) */
+.accordion.accordion57 .accordion-item summary::-webkit-details-marker,
+.accordion.accordion57 .accordion-item summary::marker {
+  display: none;
+}
+
+/* Panel body/content: more bottom padding and left alignment */
+.accordion.accordion57 .accordion-item .accordion-item-body,
+.accordion.accordion57 .accordion-item .accordion-item-body p,
+.accordion.accordion57 .accordion-item .accordion-item-body ul,
+.accordion.accordion57 .accordion-item .accordion-item-body ol {
+  color: var(--dark-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
+  padding: 0 32px 32px;
+  margin: 0;
+  background: none;
+}
+
+/* List spacing inside panel body */
+.accordion.accordion57 .accordion-item .accordion-item-body ul,
+.accordion.accordion57 .accordion-item .accordion-item-body ol {
+  padding-left: 20px;
+}
+
+/* Links in panel body */
+.accordion.accordion57 .accordion-item .accordion-item-body a {
+  color: var(--link-color);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+/* Link hover state */
+.accordion.accordion57 .accordion-item .accordion-item-body a:hover,
+.accordion.accordion57 .accordion-item .accordion-item-body a:focus {
+  color: var(--link-hover-color);
+}
+
+/* Responsive: stack panels vertically at mobile, adjust padding and centering */
+@media (width <= 900px) {
+  .accordion.accordion57 .accordion-wrapper {
+    min-height: 0;
+    padding: 32px 0;
+    max-width: 99vw;
+  }
+
+  .accordion.accordion57 .accordion.block {
+    flex-direction: column;
+    gap: 18px;
+    max-width: 100%;
+  }
+
+  .accordion.accordion57 .accordion-item {
+    width: 100%;
+  }
+}
+
+/* Tighter padding for extra small screens */
+@media (width <= 600px) {
+  .accordion.accordion57 .accordion-wrapper {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .accordion.accordion57 .accordion-item summary,
+  .accordion.accordion57 .accordion-item .accordion-item-label,
+  .accordion.accordion57 .accordion-item .accordion-item-body,
+  .accordion.accordion57 .accordion-item .accordion-item-body p,
+  .accordion.accordion57 .accordion-item .accordion-item-body ul,
+  .accordion.accordion57 .accordion-item .accordion-item-body ol {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Optional: subtle hover effect for accessibility */
+.accordion.accordion57 .accordion-item:hover,
+.accordion.accordion57 .accordion-item:focus-within {
+  box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
 }
