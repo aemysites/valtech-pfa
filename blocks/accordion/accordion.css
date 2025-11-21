@@ -1278,7 +1278,6 @@ select:focus {
   align-items: stretch;
 }
 
-/* Each details (card) fills available space and is rectangular */
 .accordion.accordion47 details {
   background: #77a8ad;
   border: none;
@@ -1294,12 +1293,10 @@ select:focus {
   box-sizing: border-box;
 }
 
-/* Only hide details content after summary when collapsed */
 .accordion.accordion47 details:not([open]) summary ~ * {
   display: none;
 }
 
-/* Summary: horizontal flex, text left, chevron right, single line */
 .accordion.accordion47 summary {
   display: flex;
   align-items: center;
@@ -1322,7 +1319,6 @@ select:focus {
   white-space: nowrap;
 }
 
-/* Label text is left-aligned and fills available space */
 .accordion.accordion47 summary p {
   color: #fff;
   font-size: 12px;
@@ -1339,7 +1335,6 @@ select:focus {
   line-height: 1.2;
 }
 
-/* Responsive: stack vertically on small screens */
 @media (width <= 700px) {
   .accordion.accordion47 {
     flex-direction: column;
@@ -1349,5 +1344,128 @@ select:focus {
   .accordion.accordion47 details {
     width: 100%;
     min-width: 0;
+  }
+}
+
+
+.accordion.accordion83 {
+  /* Ensure background is light gray edge-to-edge, remove unwanted padding/margin */
+  background: #ededed;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.accordion.accordion83 details {
+  /* Stack items seamlessly, remove extra spacing, set max width, white background */
+  background: #fff;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.accordion.accordion83 details + details {
+  /* No gap between items */
+  margin-top: 0;
+}
+
+/* Subtle divider line between items except last */
+.accordion.accordion83 details:not(:last-child) {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Accordion summary: left-aligned, compact, regular font style, bold, dark */
+.accordion.accordion83 summary {
+  display: block;
+  padding: 20px 32px;
+  font-size: 1.13rem;
+  font-weight: 600;
+  color: #222;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  outline: none;
+  line-height: 1.4;
+  cursor: pointer;
+  font-style: normal;
+  box-sizing: border-box;
+  transition: background 0.18s;
+}
+
+/* Subtle highlight on hover/focus */
+.accordion.accordion83 summary:hover,
+.accordion.accordion83 summary:focus {
+  background: #f8f8f8;
+}
+
+/* Remove default markers */
+.accordion.accordion83 summary::-webkit-details-marker,
+.accordion.accordion83 summary::marker {
+  display: none;
+}
+
+/* Accordion body/content: compact, left-aligned, slightly lighter gray */
+.accordion.accordion83 *:not(summary) {
+  padding: 18px 32px 24px;
+  color: #444;
+  font-size: 1rem;
+  background: #fff;
+  text-align: left;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Standardize paragraphs/lists inside details */
+.accordion.accordion83 p,
+.accordion.accordion83 ul,
+.accordion.accordion83 ol,
+.accordion.accordion83 li {
+  margin: 0.8em 0 0.25em;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Links inside accordion */
+.accordion.accordion83 a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+/* Responsive: keep block readable, reduce padding on small screens */
+@media (width <= 950px) {
+  .accordion.accordion83 details {
+    max-width: 100%;
+  }
+
+  .accordion.accordion83 summary,
+  .accordion.accordion83 *:not(summary) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (width <= 600px) {
+  .accordion.accordion83 {
+    padding: 0;
+  }
+
+  .accordion.accordion83 summary,
+  .accordion.accordion83 *:not(summary) {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 1rem;
   }
 }
