@@ -1461,151 +1461,138 @@ select:focus {
 
 
 .accordion.accordion57 {
+  /* Center block horizontally, add generous vertical spacing */
+  margin: 72px auto;
+  max-width: 640px;
   background: var(--background-color);
-  width: 100%;
-}
-
-/* Vertically and horizontally center the whole accordion block */
-.accordion.accordion57 .accordion-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 6px 32px rgb(26 26 26 / 11%);
+  padding: 56px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 480px;
-  padding: 64px 0;
-  width: 100%;
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
+
+  /* For vertical centering within section or viewport use extra margin/padding as needed in parent */
 }
 
-/* For side-by-side panels: flex row and tighter gap */
-.accordion.accordion57 .accordion.block {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
+/* Center inner content, limit width, ensure vertical stacking */
+.accordion.accordion57 .accordion-wrapper {
   width: 100%;
-  margin: 0;
-  box-sizing: border-box;
-  align-items: stretch;
-}
-
-/* Accordion panel styling */
-.accordion.accordion57 .accordion-item {
-  flex: 1 1 0;
-  min-width: 0;
-  background: var(--light-color);
-  border-radius: 7px;
-  box-shadow: 0 2px 10px rgb(0 0 0 / 4%);
+  max-width: 520px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* Accordion items stacked vertically inside wrapper */
+.accordion.accordion57 .block.accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
   margin: 0;
   padding: 0;
-  border: none;
-  overflow: hidden;
-  transition: box-shadow 0.2s;
+  background: transparent;
+  box-shadow: none;
 }
 
-/* Panel summary/header: more vertical padding for visual balance */
-.accordion.accordion57 .accordion-item summary,
-.accordion.accordion57 .accordion-item .accordion-item-label {
-  padding: 40px 32px 24px;
+.accordion.accordion57 details {
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 4%);
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  transition: box-shadow 0.16s;
+}
+
+.accordion.accordion57 details[open] {
+  box-shadow: 0 2px 16px rgb(0 0 0 / 8%);
+}
+
+/* Accordion tab layout and alignment */
+.accordion.accordion57 summary {
+  min-height: 48px;
+  padding: 0 32px;
   font-size: var(--heading-font-size-l);
   font-weight: 600;
-  color: var(--text-color);
-  text-align: left;
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-style: normal;
-  line-height: 1.3;
-  margin: 0;
+  color: var(--dark-color);
+  background: #f5f5f5;
   display: flex;
   align-items: center;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: -0.01em;
+  text-align: left;
+  justify-content: flex-start;
+
+  /* No content injection; keep chevron/icon to the right using margin */
 }
 
-/* Hide default markers for summary (accordion arrow icons) */
-.accordion.accordion57 .accordion-item summary::-webkit-details-marker,
-.accordion.accordion57 .accordion-item summary::marker {
+/* Remove browser default details arrow */
+.accordion.accordion57 summary::-webkit-details-marker,
+.accordion.accordion57 summary::marker {
   display: none;
 }
 
-/* Panel body/content: more bottom padding and left alignment */
-.accordion.accordion57 .accordion-item .accordion-item-body,
-.accordion.accordion57 .accordion-item .accordion-item-body p,
-.accordion.accordion57 .accordion-item .accordion-item-body ul,
-.accordion.accordion57 .accordion-item .accordion-item-body ol {
+/* Chevron/icon alignment: always flush right, larger size */
+.accordion.accordion57 summary .icon,
+.accordion.accordion57 summary svg {
+  margin-left: auto;
+  margin-right: 0;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+/* Rotate icon for open/close indication, if present */
+.accordion.accordion57 details[open] summary .icon,
+.accordion.accordion57 details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+/* Accordion content area, match tab width and spacing */
+.accordion.accordion57 .accordion-item-body,
+.accordion.accordion57 details div,
+.accordion.accordion57 details p {
+  padding: 0 32px 18px;
   color: var(--dark-color);
   font-size: var(--body-font-size-s);
-  font-weight: 400;
   line-height: 1.6;
-  text-align: left;
-  padding: 0 32px 32px;
+  background: #f5f5f5;
   margin: 0;
-  background: none;
 }
 
-/* List spacing inside panel body */
-.accordion.accordion57 .accordion-item .accordion-item-body ul,
-.accordion.accordion57 .accordion-item .accordion-item-body ol {
-  padding-left: 20px;
-}
+/* Responsive adjustments for mobile/small screens */
+@media (width <= 700px) {
+  .accordion.accordion57 {
+    max-width: 100vw;
+    padding: 24px 0;
+    border-radius: 0;
+    margin: 16px 0;
+  }
 
-/* Links in panel body */
-.accordion.accordion57 .accordion-item .accordion-item-body a {
-  color: var(--link-color);
-  text-decoration: underline;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-
-/* Link hover state */
-.accordion.accordion57 .accordion-item .accordion-item-body a:hover,
-.accordion.accordion57 .accordion-item .accordion-item-body a:focus {
-  color: var(--link-hover-color);
-}
-
-/* Responsive: stack panels vertically at mobile, adjust padding and centering */
-@media (width <= 900px) {
   .accordion.accordion57 .accordion-wrapper {
-    min-height: 0;
-    padding: 32px 0;
-    max-width: 99vw;
+    max-width: 100vw;
+    padding: 0 8px;
   }
 
-  .accordion.accordion57 .accordion.block {
-    flex-direction: column;
-    gap: 18px;
-    max-width: 100%;
+  .accordion.accordion57 .block.accordion {
+    gap: 11px;
   }
 
-  .accordion.accordion57 .accordion-item {
-    width: 100%;
-  }
-}
-
-/* Tighter padding for extra small screens */
-@media (width <= 600px) {
-  .accordion.accordion57 .accordion-wrapper {
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-
-  .accordion.accordion57 .accordion-item summary,
-  .accordion.accordion57 .accordion-item .accordion-item-label,
-  .accordion.accordion57 .accordion-item .accordion-item-body,
-  .accordion.accordion57 .accordion-item .accordion-item-body p,
-  .accordion.accordion57 .accordion-item .accordion-item-body ul,
-  .accordion.accordion57 .accordion-item .accordion-item-body ol {
+  .accordion.accordion57 summary,
+  .accordion.accordion57 .accordion-item-body,
+  .accordion.accordion57 details div,
+  .accordion.accordion57 details p {
     padding-left: 12px;
     padding-right: 12px;
   }
-}
-
-/* Optional: subtle hover effect for accessibility */
-.accordion.accordion57 .accordion-item:hover,
-.accordion.accordion57 .accordion-item:focus-within {
-  box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
 }
