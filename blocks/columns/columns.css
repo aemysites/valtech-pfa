@@ -282,90 +282,6 @@
   }
 }
 
-.columns.columns6 {
-  background: var(--background-color);
-  padding: 0;
-}
-
-.columns.columns6 .columns div {
-  display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(260px,420px);
-  gap: 40px;
-  align-items: start;
-  margin: 0;
-  padding: 0;
-}
-
-@media (width <= 900px) {
-  .columns.columns6 .columns div {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
-.columns.columns6 ul {
-  margin: 0 0 0 28px;
-  padding: 0;
-  font-size: var(--body-font-size-s);
-  color: var(--text-color);
-  line-height: 1.7;
-}
-
-.columns.columns6 ul li {
-  margin-bottom: 1.1em;
-  padding-left: 0;
-}
-
-.columns.columns6 ul li a,
-.columns.columns6 ul li strong,
-.columns.columns6 ul li b {
-  color: #b51819;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.columns.columns6 ul li a:hover {
-  text-decoration: underline;
-}
-
-.columns.columns6 div p {
-  margin: 0;
-  padding: 0;
-}
-
-.columns.columns6 div a {
-  color: #b51819;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1em;
-  margin-bottom: 10px;
-  display: inline-block;
-  border-radius: 8px;
-  background: none;
-  padding: 0.15em 0;
-  transition: text-decoration 0.12s;
-}
-
-.columns.columns6 div a:hover {
-  text-decoration: underline;
-}
-
-.columns.columns6 div em {
-  display: block;
-  color: #6d6d6d;
-  font-size: 0.95em;
-  font-style: italic;
-  line-height: 1.5;
-  margin-top: 0;
-}
-
-@media (width <= 900px) {
-  .columns.columns6 div em,
-  .columns.columns6 div a {
-    max-width: 100%;
-  }
-}
-
 
 .columns.columns7 {
   background: #f5f5f5;
@@ -1463,7 +1379,6 @@
 }
 
 .columns.columns4 div {
-  /* The first descendant div is the row holding columns */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1471,11 +1386,9 @@
 }
 
 .columns.columns4 div div {
-  /* These are the actual column containers */
   box-sizing: border-box;
 }
 
-/* Left column: text content */
 .columns.columns4 div div:first-of-type {
   flex: 2 1 0;
   display: flex;
@@ -1504,7 +1417,6 @@
   line-height: 1.5;
 }
 
-/* Right column: images, spaced and centered */
 .columns.columns4 div div:last-of-type {
   flex: 1 1 0;
   display: flex;
@@ -1525,7 +1437,6 @@
   border-radius: 6px;
 }
 
-/* Responsive: stack columns, reduce gaps, scale images down */
 @media (width <= 800px) {
   .columns.columns4 {
     max-width: 100%;
@@ -1554,5 +1465,109 @@
 
   .columns.columns4 div div:last-of-type img {
     height: 40px;
+  }
+}
+
+
+.columns.columns6 {
+  background: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Main block: side by side columns, top-aligned */
+.columns.columns6 .block {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 32px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Column: text block */
+.columns.columns6 .block .columns-2-cols,
+.columns.columns6 .block .columns-2-cols div:not(.columns-img-col) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+  max-width: 320px;
+}
+
+/* Text styling */
+.columns.columns6 .block .columns-2-cols div:not(.columns-img-col),
+.columns.columns6 .block .columns-2-cols p,
+.columns.columns6 .block .columns-2-cols ul,
+.columns.columns6 .block .columns-2-cols li {
+  font-size: 13px;
+  line-height: 1.36;
+  color: #353535;
+  margin: 0;
+  padding: 0;
+}
+
+/* Bulleted list spacing */
+.columns.columns6 .block .columns-2-cols ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+  padding-left: 18px;
+}
+
+.columns.columns6 .block .columns-2-cols ul li {
+  margin-bottom: 0.18em;
+}
+
+/* Column: image block */
+.columns.columns6 .block .columns-img-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-top: 0;
+  min-width: 90px;
+  max-width: 120px;
+}
+
+/* Image sizing and tilt */
+.columns.columns6 .block .columns-img-col img,
+.columns.columns6 .block .columns-img-col picture,
+.columns.columns6 .block .columns-img-col svg {
+  display: block;
+  width: 90px;
+  height: auto;
+  transform: rotate(-20deg);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Responsive: stack columns vertically on small screens */
+@media (width <= 700px) {
+  .columns.columns6 .block {
+    flex-direction: column;
+    gap: 24px;
+    max-width: 100%;
+  }
+
+  .columns.columns6 .block .columns-2-cols,
+  .columns.columns6 .block .columns-2-cols div:not(.columns-img-col) {
+    max-width: 100%;
+  }
+
+  .columns.columns6 .block .columns-img-col {
+    min-width: 56px;
+    max-width: 80px;
+  }
+
+  .columns.columns6 .block .columns-img-col img,
+  .columns.columns6 .block .columns-img-col picture,
+  .columns.columns6 .block .columns-img-col svg {
+    width: 56px;
   }
 }
