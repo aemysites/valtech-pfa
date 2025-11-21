@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .tabs .tabs-list {
   display: flex;
   gap: 0.5ch;
@@ -54,5 +55,234 @@
 }
 
 .tabs .tabs-panel[aria-hidden='true'] {
+  display: none;
+}
+
+
+.tabs.tabs71 {
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0 auto 32px;
+  background: none;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Outer layout: sidebar (left), panel (right) */
+.tabs.tabs71 .tabs {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 340px;
+  background: none;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+/* Sidebar: teal, full height, column layout */
+.tabs.tabs71 .tabs-list {
+  background: #7caeb3;
+  border-right: 2px solid #41777a;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-width: 0;
+  min-height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0;
+  z-index: 0;
+  scrollbar-width: none;
+}
+
+/* Top slim dark teal bar as visual header accent */
+.tabs.tabs71 .tabs-list::before {
+  height: 6px;
+  width: 100%;
+  background: #41777a;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 6px 6px;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+  content: "";
+}
+
+/* Small white header text at very top, must be present in HTML */
+.tabs.tabs71 .tabs-list p,
+.tabs.tabs71 .tabs-list h1,
+.tabs.tabs71 .tabs-list h2,
+.tabs.tabs71 .tabs-list h3,
+.tabs.tabs71 .tabs-list h4,
+.tabs.tabs71 .tabs-list h5,
+.tabs.tabs71 .tabs-list h6,
+.tabs.tabs71 .tabs-list label {
+  color: #fff;
+  font-size: 10px;
+  padding: 16px 24px 8px 36px;
+  font-weight: 500;
+  opacity: 0.92;
+  margin: 0;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  z-index: 3;
+}
+
+/* Vertical tabs: flex row with dot and label */
+.tabs.tabs71 .tabs-list button,
+.tabs.tabs71 .tabs-list a,
+.tabs.tabs71 .tabs-list [role="tab"] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: left;
+  padding: 13px 24px 13px 36px;
+  margin: 0;
+  width: 100%;
+  min-height: 44px;
+  border-radius: 0 22px 22px 0;
+  transition: background 0.18s, font-weight 0.18s;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+  gap: 12px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Selected tab state */
+.tabs.tabs71 .tabs-list button[aria-selected="true"],
+.tabs.tabs71 .tabs-list a[aria-selected="true"],
+.tabs.tabs71 .tabs-list [role="tab"][aria-selected="true"] {
+  background: #41777a;
+  font-weight: 700;
+}
+
+.tabs.tabs71 .tabs-list button:focus-visible,
+.tabs.tabs71 .tabs-list a:focus-visible,
+.tabs.tabs71 .tabs-list [role="tab"]:focus-visible {
+  outline: 2px solid #41777a;
+}
+
+/* Dot/icon: expects a .tab-dot span in the HTML for each tab */
+.tabs.tabs71 .tabs-list .tab-dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #86bfc6;
+  flex-shrink: 0;
+  margin-right: 0;
+  margin-left: 0;
+  box-sizing: border-box;
+}
+
+.tabs.tabs71 .tabs-list .tab-dot.tab-dot-secondary {
+  background: #b3b3b3;
+}
+
+/* Remove extra vertical margin between tabs */
+.tabs.tabs71 .tabs-list button + button,
+.tabs.tabs71 .tabs-list a + a,
+.tabs.tabs71 .tabs-list [role="tab"] + [role="tab"] {
+  margin-top: 0;
+}
+
+/* Remove list styles if present */
+.tabs.tabs71 .tabs-list ul,
+.tabs.tabs71 .tabs-list ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Panel: right, fills block, only right corners rounded */
+.tabs.tabs71 .tabs-panel {
+  background: #f5f5f5;
+  border-radius: 0 20px 20px 0;
+  min-height: 320px;
+  padding: 40px 36px 36px;
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+}
+
+/* Hide inactive panels */
+.tabs.tabs71 .tabs-panel[aria-hidden="true"] {
+  display: none;
+}
+
+/* Responsive: stack sidebar above content, tabs horizontally */
+@media (width <= 800px) {
+  .tabs.tabs71 .tabs {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+    border-radius: 16px;
+  }
+
+  .tabs.tabs71 .tabs-list {
+    flex-direction: row;
+    border-radius: 16px 16px 0 0;
+    border-right: none;
+    border-bottom: 2px solid #41777a;
+    min-width: 0;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    align-items: flex-start;
+    padding: 0;
+    position: relative;
+    min-height: unset;
+  }
+
+  .tabs.tabs71 .tabs-list::before {
+    height: 5px;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .tabs.tabs71 .tabs-list p,
+  .tabs.tabs71 .tabs-list h1,
+  .tabs.tabs71 .tabs-list h2,
+  .tabs.tabs71 .tabs-list h3,
+  .tabs.tabs71 .tabs-list h4,
+  .tabs.tabs71 .tabs-list h5,
+  .tabs.tabs71 .tabs-list h6,
+  .tabs.tabs71 .tabs-list label {
+    display: none;
+  }
+
+  .tabs.tabs71 .tabs-list button,
+  .tabs.tabs71 .tabs-list a,
+  .tabs.tabs71 .tabs-list [role="tab"] {
+    border-radius: 16px;
+    font-size: 15px;
+    min-width: 120px;
+    justify-content: center;
+    padding: 12px 18px;
+    gap: 8px;
+  }
+
+  .tabs.tabs71 .tabs-panel {
+    border-radius: 0 0 16px 16px;
+    padding: 28px 10px 24px;
+    min-height: 160px;
+  }
+}
+
+/* Hide scrollbars for horizontal tab list on mobile */
+
+.tabs.tabs71 .tabs-list::-webkit-scrollbar {
   display: none;
 }
