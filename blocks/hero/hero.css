@@ -378,3 +378,105 @@
 .hero.hero40 img[alt=""]:not([src]) {
   display: none;
 }
+
+
+.hero51 {
+  display: flex;
+  flex-direction: row;          /* Make children side by side */
+  align-items: stretch;         /* Make both columns full height */
+  width: 100%;
+  min-height: 420px;            /* Adjust as needed for design */
+  background: url('PATH/TO/COINS-BACKGROUND.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.hero51 > div:first-child {
+  flex: 1 1 55%;    /* Occupies about 55% of the width */
+  min-width: 0;
+  position: relative;
+}
+
+.hero51 > div:first-child img {
+  display: none;    /* Hide the inner image if using background in parent */
+}
+
+.hero51 > div:last-child {
+  flex: 0 1 45%;    /* Occupies about 45% of the width */
+  min-width: 340px; /* Adjust for minimum width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero51 > div:last-child > div {
+  background: #A72923;
+  padding: 48px 40px;
+  border-radius: 0; /* If the overlay in the design is sharp-edged */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px; /* Keeps overlay from being too wide */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero51 > div:last-child > div p:first-child {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.hero51 > div:last-child > div h1 {
+  color: #fff;
+  font-size: 36px;      /* Adjust as needed */
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.hero51 > div:last-child > div p:last-child a {
+  display: inline-flex;
+  align-items: center;
+  background: #C04137;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px 30px;
+  border-radius: 24px;
+  text-decoration: none;
+  transition: background 0.2s;
+  border: none;
+  gap: 10px;
+}
+
+.hero51 > div:last-child > div p:last-child a:hover,
+.hero51 > div:last-child > div p:last-child a:focus {
+  background: #a72923;
+}
+
+.hero51 > div:last-child > div p:last-child a img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@media (width <= 800px) {
+  .hero51 {
+    flex-direction: column;
+  }
+
+  .hero51 > div:first-child,
+  .hero51 > div:last-child {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .hero51 > div:last-child > div {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 24px 16px;
+  }
+}
