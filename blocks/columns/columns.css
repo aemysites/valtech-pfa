@@ -1208,6 +1208,12 @@
   margin-bottom: 0;
 }
 
+.columns.columns77 .columns-img-col p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 @media (width <= 600px) {
   .columns.columns41 .columns {
     padding-left: 6px;
