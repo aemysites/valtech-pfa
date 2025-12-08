@@ -316,6 +316,8 @@ main .section.light, main .section.highlight {
 .section.section-4 {
     background: #016168 none repeat scroll 0 0;
     color: white;
+    margin-bottom: 0;
+    padding: 38px 0;
 }
 
 .section.section-5 {
