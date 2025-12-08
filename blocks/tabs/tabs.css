@@ -346,8 +346,6 @@
 }
 
 .tabs.tabs73 .tabs-panel div ul {
-  grid-column: 2 / 3;
-  grid-row: 1;
   margin: 0 0 0 10px;
   padding-left: 0;
   list-style-position: inside;
