@@ -9,9 +9,7 @@
   padding: 40px 24px;
   min-height: 450px;
   display: flex;
-  background: #000;
   overflow: hidden;
-  background-image: url('./media_1f1bd83b8878e35924c9755b7476b241b8a63928f.jpg?width=2000&format=jpg&optimize=medium');
   background-size: cover;
   background-position: center;
 }
@@ -108,9 +106,7 @@
 }
 
 .hero > div:first-child {
-  opacity: 0;
   pointer-events: none;
-  height: 0;
 }
 
 .hero > div:last-child {
